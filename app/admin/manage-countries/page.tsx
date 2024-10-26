@@ -61,7 +61,7 @@ export default function ManageCountries() {
           <PlusCircle size={26} />
         </Button>
       </div>
-      {isLoading ? (
+      {isLoading || isPending ? (
         <TableSkeleton columns={3} />
       ) : (
         <>
