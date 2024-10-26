@@ -1,14 +1,13 @@
 "use client";
-import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { TCountry, ICountrySchema } from "@/lib/schemas/country";
+import { ICountry, ICountrySchema } from "@/lib/schemas/country";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/FormSkeleton";
 
@@ -22,7 +21,9 @@ export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
     queryKey: ["country", { itemId }],
     queryFn: async () => {
       const { data } = await axios.get(`/api/countries/${itemId}`);
-      return data.item as TCountry;
+      const { item } = data;
+      delete item._id;
+      return item as ICountry;
     },
   });
 
@@ -33,28 +34,32 @@ export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
       {isLoading ? (
         <FormSkeleton rows={2} />
       ) : (
-        <>{data && <EditFields item={data} setIsOpen={setIsOpen} />}</>
+        <>
+          {data && (
+            <EditFields itemId={itemId} item={data} setIsOpen={setIsOpen} />
+          )}
+        </>
       )}
     </>
   );
 }
 
 interface EditFieldsProps {
-  item: TCountry;
+  itemId: string;
+  item: ICountry;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const EditFields = ({ item, setIsOpen }: EditFieldsProps) => {
+const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const [formValues, setFormValues] = useState<TCountry>(item);
+  const [formValues, setFormValues] = useState<ICountry>(item);
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
-  } = useForm<TCountry>({
+  } = useForm<ICountry>({
     resolver: zodResolver(ICountrySchema),
     defaultValues: item,
     mode: "onBlur",
@@ -62,27 +67,29 @@ const EditFields = ({ item, setIsOpen }: EditFieldsProps) => {
 
   const { mutate: editItem, isPending } = useMutation({
     mutationFn: async () =>
-      await axios.put(`/api/countries/${formValues._id}`, { data: formValues }),
+      await axios.put(`/api/countries/${itemId}`, formValues),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
-        title: "Updated successfully!",
+        title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["countries"] });
+      queryClient.invalidateQueries({ queryKey: ["countries"], exact: true });
+      queryClient.invalidateQueries({
+        queryKey: ["country", { itemId }],
+        exact: true,
+      });
     },
     onError: (response: any) => {
-      // setIsOpen(false);
       toast({
         title: "Error!",
         description: response?.message,
         variant: "destructive",
       });
-      console.log(response);
     },
   });
 
-  const onSubmit = async (values: TCountry) => {
+  const onSubmit = async (values: ICountry) => {
     console.log(values);
     try {
       setFormValues(values);
@@ -94,27 +101,25 @@ const EditFields = ({ item, setIsOpen }: EditFieldsProps) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col space-y-4">
-        <div>
-          <label className="block mb-1" htmlFor="uid">
+        <div className="flex flex-col space-y-1">
+          <label className="font-medium block" htmlFor="uid">
             UID
           </label>
           <Input type="text" {...register("uid")} />
-          <div className="h-8">
-            {errors?.uid && (
-              <small className="text-red-400">{errors.uid?.message}</small>
-            )}
-          </div>
+
+          {errors?.uid && (
+            <small className="text-destructive">{errors.uid?.message}</small>
+          )}
         </div>
-        <div>
-          <label className="block " htmlFor="name">
+        <div className="flex flex-col space-y-1">
+          <label className="font-medium block" htmlFor="name">
             Name
           </label>
           <Input type="text" {...register("name")} />
-          <div className="h-8">
-            {errors?.name && (
-              <small className="text-red-400">{errors.name?.message}</small>
-            )}
-          </div>
+
+          {errors?.name && (
+            <small className="text-destructive">{errors.name?.message}</small>
+          )}
         </div>
         <div className="w-full flex justify-center items-center space-x-3 pt-3">
           <Button
@@ -126,17 +131,13 @@ const EditFields = ({ item, setIsOpen }: EditFieldsProps) => {
           >
             Cancel
           </Button>
-          <Button type="submit" disabled={isPending} className="w-full">
-            <>
-              {isPending ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Saving...
-                </>
-              ) : (
-                "Save"
-              )}
-            </>
+          <Button
+            type="submit"
+            isLoading={isPending}
+            disabled={isPending}
+            className="w-full"
+          >
+            Save
           </Button>
         </div>
       </div>

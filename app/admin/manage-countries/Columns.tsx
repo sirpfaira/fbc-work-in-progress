@@ -43,6 +43,7 @@ const Columns: ColumnDef<TCountry>[] = [
       return (
         <Button
           variant="ghost"
+          size="table"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Country Name
@@ -53,6 +54,7 @@ const Columns: ColumnDef<TCountry>[] = [
   },
   {
     id: "actions",
+    header: "Actions",
     cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];

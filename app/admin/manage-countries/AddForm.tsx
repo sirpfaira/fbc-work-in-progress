@@ -1,12 +1,11 @@
 "use client";
-import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { ICountry, ICountrySchema } from "@/lib/schemas/country";
 
@@ -23,7 +22,6 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<ICountry>({
     resolver: zodResolver(ICountrySchema),
@@ -32,8 +30,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const { mutate: addItem, isPending } = useMutation({
-    mutationFn: async () =>
-      await axios.post(`/api/countries`, { data: formValues }),
+    mutationFn: async () => await axios.post(`/api/countries`, formValues),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
@@ -43,13 +40,11 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
       queryClient.invalidateQueries({ queryKey: ["countries"] });
     },
     onError: (response: any) => {
-      // setIsOpen(false);
       toast({
         title: "Error!",
         description: response?.message,
         variant: "destructive",
       });
-      console.log(response);
     },
   });
 
@@ -66,27 +61,24 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col space-y-4">
-        <div>
-          <label className="block mb-1" htmlFor="uid">
+        <div className="flex flex-col space-y-1">
+          <label className="font-medium block" htmlFor="uid">
             UID
           </label>
           <Input type="text" {...register("uid")} />
-          <div className="h-8">
-            {errors?.uid && (
-              <small className="text-red-400">{errors.uid?.message}</small>
-            )}
-          </div>
+          {errors?.uid && (
+            <small className="text-destructive">{errors.uid?.message}</small>
+          )}
         </div>
-        <div>
-          <label className="block " htmlFor="name">
+        <div className="flex flex-col space-y-1">
+          <label className="font-medium block" htmlFor="name">
             Name
           </label>
           <Input type="text" {...register("name")} />
-          <div className="h-8">
-            {errors?.name && (
-              <small className="text-red-400">{errors.name?.message}</small>
-            )}
-          </div>
+
+          {errors?.name && (
+            <small className="text-destructive">{errors.name?.message}</small>
+          )}
         </div>
         <div className="w-full flex justify-center items-center space-x-3 pt-3">
           <Button
@@ -98,17 +90,13 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
           >
             Cancel
           </Button>
-          <Button type="submit" disabled={isPending} className="w-full">
-            <>
-              {isPending ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Saving...
-                </>
-              ) : (
-                "Save"
-              )}
-            </>
+          <Button
+            type="submit"
+            isLoading={isPending}
+            disabled={isPending}
+            className="w-full"
+          >
+            Save
           </Button>
         </div>
       </div>

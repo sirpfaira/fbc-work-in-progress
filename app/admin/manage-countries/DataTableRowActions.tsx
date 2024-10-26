@@ -7,14 +7,14 @@ import DeleteForm from "./DeleteForm";
 import EditForm from "./EditForm";
 import { ObjectId } from "mongoose";
 
-interface WithId<T> {
+interface WithId<ObjectId> {
   _id: ObjectId;
 }
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
 
-export default function DataTableRowActions<TData extends WithId<string>>({
+export default function DataTableRowActions<TData extends WithId<ObjectId>>({
   row,
 }: DataTableRowActionsProps<TData>) {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -22,7 +22,11 @@ export default function DataTableRowActions<TData extends WithId<string>>({
   const itemId = row.original._id.toString();
   return (
     <>
-      <CustomDialog isOpen={isEditOpen} setIsOpen={setIsEditOpen} title="Edit">
+      <CustomDialog
+        isOpen={isEditOpen}
+        setIsOpen={setIsEditOpen}
+        title="Edit Item"
+      >
         <EditForm itemId={itemId} setIsOpen={setIsEditOpen} />
       </CustomDialog>
       <CustomDialog
@@ -38,15 +42,15 @@ export default function DataTableRowActions<TData extends WithId<string>>({
           onClick={() => {
             setIsEditOpen(true);
           }}
-          className="text-green-600 rounded-md p-2 transition-all duration-75 hover:bg-neutral-100"
+          className="text-rating-top rounded-md p-2 transition-all duration-75 hover:bg-muted-block"
         >
-          <SquarePen className="h-4 w-4" />
+          <SquarePen size={16} />
         </button>
         <button
           onClick={() => {
             setIsDeleteOpen(true);
           }}
-          className="text-red-500 rounded-md p-2 transition-all duration-75 hover:bg-neutral-100"
+          className="text-destructive rounded-md p-2 transition-all duration-75 hover:bg-muted"
         >
           <Trash2 className="h-4 w-4" />
         </button>

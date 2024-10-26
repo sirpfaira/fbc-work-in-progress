@@ -31,6 +31,19 @@ const config: Config = {
         },
         border: "var(--border)",
         outline: "var(--outline)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        destructive: {
+          DEFAULT: "var(--destructive)",
+          foreground: "var(--destructive-foreground)",
+          hover: "var(--destructive-hover)",
+        },
+        rating: {
+          bottom: "var(--destructive)",
+          middle: "var(--middle)",
+          top: "var(--top)",
+        },
+        subtext: "var(--subtext)",
       },
       borderRadius: {
         lg: "var(--radius)",

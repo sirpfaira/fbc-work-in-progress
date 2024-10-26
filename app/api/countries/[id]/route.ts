@@ -24,8 +24,8 @@ export async function PUT(request: NextRequest, { params }: { params: any }) {
     const { id } = params;
     const data = await request.json();
     const validated = ICountrySchema.safeParse(data);
-    console.log(id);
     if (validated.success) {
+      await DatabaseConnection();
       await Country.findByIdAndUpdate(id, validated.data);
       return NextResponse.json({ message: "Success!" }, { status: 200 });
     } else {
@@ -36,35 +36,21 @@ export async function PUT(request: NextRequest, { params }: { params: any }) {
   }
 }
 
-// export async function DELETE(
-//   request: NextRequest,
-//   { params }: { params: any }
-// ) {
-//   try {
-//     const { id } = params;
-//     await new Promise((resolve) => setTimeout(resolve, 2000));
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: any }
+) {
+  try {
+    const { id } = params;
 
-//     if (id) {
-//       // await dbConnect();
-//       // await Country.findByIdAndDelete(id);
-//       const response = await fetch(`${url}/${id}`, {
-//         method: "DELETE",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       });
-//       if (response.ok) {
-//         return NextResponse.json(
-//           { message: `Country with id <${id}> was deleted!` },
-//           { status: 200 }
-//         );
-//       } else {
-//         throw new Error("Server error!");
-//       }
-//     } else {
-//       throw new Error("Country id was not received!");
-//     }
-//   } catch (error: any) {
-//     return NextResponse.json(error.message, { status: 500 });
-//   }
-// }
+    if (id) {
+      await DatabaseConnection();
+      await Country.findByIdAndDelete(id);
+      return NextResponse.json({ message: "Success!" }, { status: 200 });
+    } else {
+      throw new Error("Country id was not received!");
+    }
+  } catch (error: any) {
+    return NextResponse.json(error.message, { status: 500 });
+  }
+}
