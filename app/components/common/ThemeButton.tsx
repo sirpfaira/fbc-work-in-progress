@@ -20,10 +20,6 @@ const ThemeButton = ({ text = false }: ThemeButtonProps) => {
     return null;
   }
 
-  const Icon = () => {
-    return <span></span>;
-  };
-
   if (text) {
     return (
       <button

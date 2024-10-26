@@ -1,11 +1,7 @@
-import React from "react";
-
-type Props = {};
-
-const AdminDashboard = (props: Props) => {
+const AdminDashboard = () => {
   return (
     <div className="p-6 h-screen">
-      <div className="h-20 p-6 card">Card</div>
+      <div className="h-20 p-6 card">Admin Home</div>
     </div>
   );
 };

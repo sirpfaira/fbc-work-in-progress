@@ -1,0 +1,3 @@
+rules:
+  "no-explicit-any": ["off"]
+  NOT "@typescript-eslint/no-explicit-any": ["off"]

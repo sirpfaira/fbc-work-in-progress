@@ -36,6 +36,14 @@ body {
     --icon-active: hsl(238.7, 83.5%, 66.7%);
     --border: hsl(220, 13%, 91%);
     --outline: hsl(217.89, 10.61%, 64.9%);
+    --input: hsl(220, 13%, 91%);
+    --ring: hsl(262.1, 83.3%, 57.8%);
+    --destructive: hsl(0, 84.2%, 60.2%);
+    --destructive-foreground: hsl(210, 20%, 98%);
+    --destructive-hover: hsl(0, 90.6%, 70.78%);
+    --middle: hsl(50.4, 97.8%, 63.5%);
+    --top: hsl(142.1, 70.6%, 45.3%);
+    --subtext: hsl(216.9, 19.1%, 26.7%);
   }
   .dark {
     --background: hsl(215, 27.9%, 16.9%);
@@ -50,6 +58,14 @@ body {
     --icon-active: hsl(238.7, 83.5%, 66.7%);
     --border: hsl(215, 27.9%, 16.9%);
     --outline: hsl(220, 13%, 51%);
+    --input: hsl(215, 27.9%, 16.9%);
+    --ring: hsl(263.4, 70%, 50.4%);
+    --destructive: hsl(0, 72.22%, 50.59%);
+    --destructive-foreground: hsl(210, 20%, 98%);
+    --destructive-hover: hsl(0, 90.6%, 70.78%);
+    --middle: hsl(50.4, 97.8%, 63.5%);
+    --top: hsl(142.1, 70.6%, 45.3%);
+    --subtext: hsl(217.9, 10.6%, 64.9%);
   }
 }
 

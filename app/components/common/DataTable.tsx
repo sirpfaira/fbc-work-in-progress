@@ -44,7 +44,7 @@ export default function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = useState({});
+
   const table = useReactTable({
     data,
     columns,
@@ -55,18 +55,16 @@ export default function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
-      rowSelection,
     },
   });
 
   return (
     <div className="flex flex-col space-y-4">
-      <div className="flex items-center p-4 card">
+      <div className="flex items-center justify-between space-x-3 p-4 card">
         <Input
           placeholder={`Filter ${filter}...`}
           value={(table.getColumn(filter)?.getFilterValue() as string) ?? ""}
@@ -102,7 +100,7 @@ export default function DataTable<TData, TValue>({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border card">
+      <div className="card">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
