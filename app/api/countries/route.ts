@@ -2,7 +2,6 @@ import DatabaseConnection from "@/lib/dbconfig";
 import { ICountrySchema } from "@/lib/schemas/country";
 import { NextRequest, NextResponse } from "next/server";
 import Country from "@/app/api/models/Country";
-// import countries from "./data.json";
 
 export async function GET() {
   try {

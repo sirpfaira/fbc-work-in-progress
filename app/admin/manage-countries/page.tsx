@@ -46,11 +46,6 @@ export default function ManageCountries() {
     },
   });
 
-  function handleDeleteSelected(selected: string[]) {
-    setSelectedRows(selected);
-    deleteSelected();
-  }
-
   if (isError) return <ErrorTile error={error.message} />;
 
   return (
@@ -64,16 +59,7 @@ export default function ManageCountries() {
       {isLoading || isPending ? (
         <TableSkeleton columns={3} />
       ) : (
-        <>
-          {data && (
-            <DataTable
-              columns={Columns}
-              data={data}
-              handleDeleteSelected={handleDeleteSelected}
-              filter="name"
-            />
-          )}
-        </>
+        <>{data && <DataTable columns={Columns} data={data} filter="name" />}</>
       )}
       <CustomDialog isOpen={isAddOpen} setIsOpen={setIsAddOpen} title="Add">
         <AddForm setIsOpen={setIsAddOpen} />
