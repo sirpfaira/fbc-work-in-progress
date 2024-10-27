@@ -6,7 +6,7 @@ import { ColumnDef, Row } from "@tanstack/react-table";
 import { PlusCircle, ArrowUpDown, SquarePen, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ObjectId } from "mongoose";
-import { TCompetition } from "@/lib/schemas/competition";
+import { TTeam } from "@/lib/schemas/team";
 import DataTable from "@/app/components/common/DataTable";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
@@ -16,10 +16,10 @@ import DeleteForm from "@/app/components/common/DeleteForm";
 import AddForm from "./AddForm";
 import EditForm from "./EditForm";
 
-export default function ManageCompetitions() {
+export default function ManageTeams() {
   const [isAddOpen, setIsAddOpen] = useState<boolean>(false);
 
-  const columns = useMemo<ColumnDef<TCompetition>[]>(
+  const columns = useMemo<ColumnDef<TTeam>[]>(
     () => [
       {
         accessorKey: "uid",
@@ -39,23 +39,16 @@ export default function ManageCompetitions() {
                 column.toggleSorting(column.getIsSorted() === "asc")
               }
             >
-              Competition Name
+              Team Name
               <ArrowUpDown className="ml-2 h-4 w-4" />
             </Button>
           );
         },
       },
+
       {
-        accessorKey: "season",
-        header: "Season",
-      },
-      {
-        accessorKey: "priority",
-        header: "Priority",
-      },
-      {
-        accessorKey: "country",
-        header: "Country",
+        accessorKey: "competition",
+        header: "Competition",
       },
       {
         id: "actions",
@@ -67,10 +60,10 @@ export default function ManageCompetitions() {
   );
 
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["competitions"],
+    queryKey: ["teams"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/competitions`);
-      return data.items as TCompetition[];
+      const { data } = await axios.get(`/api/teams`);
+      return data.items as TTeam[];
     },
   });
 
@@ -79,7 +72,7 @@ export default function ManageCompetitions() {
   return (
     <div className="flex flex-col space-y-5">
       <div className="card flex items-center justify-between px-4 py-2">
-        <PageTitle title="Manage competitions" link="/admin" />
+        <PageTitle title="Manage teams" link="/admin" />
         <Button onClick={() => setIsAddOpen(true)} variant={"ghost"}>
           <PlusCircle size={26} />
         </Button>
@@ -124,11 +117,7 @@ function DataTableRowActions<TData extends WithId<ObjectId>>({
         title="Delete Item"
         description="Are you sure you want to delete this item?"
       >
-        <DeleteForm
-          itemId={itemId}
-          setIsOpen={setIsDeleteOpen}
-          route="competitions"
-        />
+        <DeleteForm itemId={itemId} setIsOpen={setIsDeleteOpen} route="teams" />
       </CustomDialog>
       <div className="flex items-center">
         <button

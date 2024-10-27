@@ -1,49 +1,86 @@
 "use client";
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { useToast } from "@/components/hooks/use-toast";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { ICompetition, ICompetitionSchema } from "@/lib/schemas/competition";
+import { useToast } from "@/components/hooks/use-toast";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
+import { ITeam, ITeamSchema } from "@/lib/schemas/team";
+import ErrorTile from "@/app/components/common/ErrorTile";
+import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 
-interface AddFormProps {
+interface EditFormProps {
+  itemId: string;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function AddForm({ setIsOpen }: AddFormProps) {
+export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
+  const { data, isError, error, isLoading } = useQuery({
+    queryKey: ["team", { itemId }],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/teams/${itemId}`);
+      const { item } = data;
+      delete item._id;
+      return item as ITeam;
+    },
+  });
+
+  if (isError) return <ErrorTile error={error.message} />;
+
+  return (
+    <>
+      {isLoading ? (
+        <FormSkeleton rows={2} />
+      ) : (
+        <>
+          {data && (
+            <EditFields itemId={itemId} item={data} setIsOpen={setIsOpen} />
+          )}
+        </>
+      )}
+    </>
+  );
+}
+
+interface EditFieldsProps {
+  itemId: string;
+  item: ITeam;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const initialValues = {
-    uid: 1,
-    name: "",
-    season: 2023,
-    priority: 1,
-    country: "",
-  };
-  const [formValues, setFormValues] = useState<ICompetition>(initialValues);
+  const [formValues, setFormValues] = useState<ITeam>(item);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICompetition>({
-    resolver: zodResolver(ICompetitionSchema),
-    defaultValues: initialValues,
+  } = useForm<ITeam>({
+    resolver: zodResolver(ITeamSchema),
+    defaultValues: item,
     mode: "onBlur",
   });
 
-  const { mutate: addItem, isPending } = useMutation({
-    mutationFn: async () => await axios.post(`/api/competitions`, formValues),
+  const { mutate: editItem, isPending } = useMutation({
+    mutationFn: async () => await axios.put(`/api/teams/${itemId}`, formValues),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["competitions"] });
+      queryClient.invalidateQueries({
+        queryKey: ["teams"],
+        exact: true,
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["team", { itemId }],
+        exact: true,
+      });
     },
     onError: (response: any) => {
       toast({
@@ -54,16 +91,15 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     },
   });
 
-  const onSubmit = async (values: ICompetition) => {
+  const onSubmit = async (values: ITeam) => {
     console.log(values);
     try {
       setFormValues(values);
-      addItem();
+      editItem();
     } catch (error) {
       console.log(error);
     }
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col space-y-4">
@@ -77,6 +113,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
               valueAsNumber: true,
             })}
           />
+
           {errors?.uid && (
             <small className="text-destructive">{errors.uid?.message}</small>
           )}
@@ -92,50 +129,22 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
           )}
         </div>
         <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="season">
-            Season
+          <label className="font-medium block" htmlFor="competition">
+            Competition
           </label>
           <Input
             type="number"
-            {...register("season", {
+            {...register("competition", {
               valueAsNumber: true,
             })}
           />
 
-          {errors?.season && (
-            <small className="text-destructive">{errors.season?.message}</small>
-          )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="priority">
-            Priority
-          </label>
-          <Input
-            type="number"
-            {...register("priority", {
-              valueAsNumber: true,
-            })}
-          />
-
-          {errors?.priority && (
+          {errors?.competition && (
             <small className="text-destructive">
-              {errors.priority?.message}
+              {errors.competition?.message}
             </small>
           )}
         </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="country">
-            Country
-          </label>
-          <Input type="text" {...register("country")} />
-
-          {errors?.country && (
-            <small className="text-destructive">
-              {errors.country?.message}
-            </small>
-          )}
-        </div>
-
         <div className="w-full flex justify-center items-center space-x-3 pt-3">
           <Button
             variant="outline"
@@ -158,4 +167,4 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
       </div>
     </form>
   );
-}
+};

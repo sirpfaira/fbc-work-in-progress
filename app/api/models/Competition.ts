@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const competitionSchema = new Schema(
   {
-    uid: String,
+    uid: Number,
     name: String,
     season: Number,
     priority: Number,

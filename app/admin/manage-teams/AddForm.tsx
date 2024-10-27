@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { ICompetition, ICompetitionSchema } from "@/lib/schemas/competition";
+import { ITeam, ITeamSchema } from "@/lib/schemas/team";
 
 interface AddFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -19,31 +19,29 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   const initialValues = {
     uid: 1,
     name: "",
-    season: 2023,
-    priority: 1,
-    country: "",
+    competition: 2023,
   };
-  const [formValues, setFormValues] = useState<ICompetition>(initialValues);
+  const [formValues, setFormValues] = useState<ITeam>(initialValues);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICompetition>({
-    resolver: zodResolver(ICompetitionSchema),
+  } = useForm<ITeam>({
+    resolver: zodResolver(ITeamSchema),
     defaultValues: initialValues,
     mode: "onBlur",
   });
 
   const { mutate: addItem, isPending } = useMutation({
-    mutationFn: async () => await axios.post(`/api/competitions`, formValues),
+    mutationFn: async () => await axios.post(`/api/teams`, formValues),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["competitions"] });
+      queryClient.invalidateQueries({ queryKey: ["teams"] });
     },
     onError: (response: any) => {
       toast({
@@ -54,7 +52,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     },
   });
 
-  const onSubmit = async (values: ICompetition) => {
+  const onSubmit = async (values: ITeam) => {
     console.log(values);
     try {
       setFormValues(values);
@@ -92,50 +90,22 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
           )}
         </div>
         <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="season">
-            Season
+          <label className="font-medium block" htmlFor="competition">
+            Competition
           </label>
           <Input
             type="number"
-            {...register("season", {
+            {...register("competition", {
               valueAsNumber: true,
             })}
           />
 
-          {errors?.season && (
-            <small className="text-destructive">{errors.season?.message}</small>
-          )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="priority">
-            Priority
-          </label>
-          <Input
-            type="number"
-            {...register("priority", {
-              valueAsNumber: true,
-            })}
-          />
-
-          {errors?.priority && (
+          {errors?.competition && (
             <small className="text-destructive">
-              {errors.priority?.message}
+              {errors.competition?.message}
             </small>
           )}
         </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="country">
-            Country
-          </label>
-          <Input type="text" {...register("country")} />
-
-          {errors?.country && (
-            <small className="text-destructive">
-              {errors.country?.message}
-            </small>
-          )}
-        </div>
-
         <div className="w-full flex justify-center items-center space-x-3 pt-3">
           <Button
             variant="outline"
