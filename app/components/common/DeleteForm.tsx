@@ -8,20 +8,25 @@ import axios from "axios";
 interface DeleteFormProps {
   itemId: string;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  route: string;
 }
 
-export default function DeleteForm({ itemId, setIsOpen }: DeleteFormProps) {
+export default function DeleteForm({
+  itemId,
+  setIsOpen,
+  route,
+}: DeleteFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const { mutate: deleteItem, isPending } = useMutation({
-    mutationFn: async () => await axios.delete(`/api/countries/${itemId}`),
+    mutationFn: async () => await axios.delete(`/api/${route}/${itemId}`),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["countries"] });
+      queryClient.invalidateQueries({ queryKey: [route] });
     },
     onError: (response: any) => {
       toast({

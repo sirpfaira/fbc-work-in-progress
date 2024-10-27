@@ -8,5 +8,10 @@ export const AdminNavigationItems = [
     link: "/admin/manage-countries",
     icon: <Folder size={14} />,
   },
+  {
+    label: "Manage Competitions",
+    link: "/admin/manage-competitions",
+    icon: <Settings size={14} />,
+  },
   { label: "Settings", link: "/admin/settings", icon: <Settings size={14} /> },
 ];

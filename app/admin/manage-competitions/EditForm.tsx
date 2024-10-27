@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { ICountry, ICountrySchema } from "@/lib/schemas/country";
+import { ICompetition, ICompetitionSchema } from "@/lib/schemas/competition";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 
@@ -18,12 +18,12 @@ interface EditFormProps {
 
 export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["country", { itemId }],
+    queryKey: ["competition", { itemId }],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/countries/${itemId}`);
+      const { data } = await axios.get(`/api/competitions/${itemId}`);
       const { item } = data;
       delete item._id;
-      return item as ICountry;
+      return item as ICompetition;
     },
   });
 
@@ -46,37 +46,40 @@ export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
 
 interface EditFieldsProps {
   itemId: string;
-  item: ICountry;
+  item: ICompetition;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const [formValues, setFormValues] = useState<ICountry>(item);
+  const [formValues, setFormValues] = useState<ICompetition>(item);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICountry>({
-    resolver: zodResolver(ICountrySchema),
+  } = useForm<ICompetition>({
+    resolver: zodResolver(ICompetitionSchema),
     defaultValues: item,
     mode: "onBlur",
   });
 
   const { mutate: editItem, isPending } = useMutation({
     mutationFn: async () =>
-      await axios.put(`/api/countries/${itemId}`, formValues),
+      await axios.put(`/api/competitions/${itemId}`, formValues),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["countries"], exact: true });
       queryClient.invalidateQueries({
-        queryKey: ["country", { itemId }],
+        queryKey: ["competitions"],
+        exact: true,
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["competition", { itemId }],
         exact: true,
       });
     },
@@ -89,7 +92,7 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
     },
   });
 
-  const onSubmit = async (values: ICountry) => {
+  const onSubmit = async (values: ICompetition) => {
     console.log(values);
     try {
       setFormValues(values);
@@ -119,6 +122,50 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
 
           {errors?.name && (
             <small className="text-destructive">{errors.name?.message}</small>
+          )}
+        </div>
+        <div className="flex flex-col space-y-1">
+          <label className="font-medium block" htmlFor="season">
+            Season
+          </label>
+          <Input
+            type="number"
+            {...register("season", {
+              valueAsNumber: true,
+            })}
+          />
+
+          {errors?.season && (
+            <small className="text-destructive">{errors.season?.message}</small>
+          )}
+        </div>
+        <div className="flex flex-col space-y-1">
+          <label className="font-medium block" htmlFor="priority">
+            Priority
+          </label>
+          <Input
+            type="number"
+            {...register("priority", {
+              valueAsNumber: true,
+            })}
+          />
+
+          {errors?.priority && (
+            <small className="text-destructive">
+              {errors.priority?.message}
+            </small>
+          )}
+        </div>
+        <div className="flex flex-col space-y-1">
+          <label className="font-medium block" htmlFor="country">
+            Country
+          </label>
+          <Input type="text" {...register("country")} />
+
+          {errors?.country && (
+            <small className="text-destructive">
+              {errors.country?.message}
+            </small>
           )}
         </div>
         <div className="w-full flex justify-center items-center space-x-3 pt-3">

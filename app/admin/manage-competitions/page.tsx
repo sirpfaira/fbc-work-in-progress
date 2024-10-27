@@ -6,7 +6,7 @@ import { ColumnDef, Row } from "@tanstack/react-table";
 import { PlusCircle, ArrowUpDown, SquarePen, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ObjectId } from "mongoose";
-import { TCountry } from "@/lib/schemas/country";
+import { TCompetition } from "@/lib/schemas/competition";
 import DataTable from "@/app/components/common/DataTable";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
@@ -16,10 +16,10 @@ import DeleteForm from "@/app/components/common/DeleteForm";
 import AddForm from "./AddForm";
 import EditForm from "./EditForm";
 
-export default function ManageCountries() {
+export default function ManageCompetitions() {
   const [isAddOpen, setIsAddOpen] = useState<boolean>(false);
 
-  const columns = useMemo<ColumnDef<TCountry>[]>(
+  const columns = useMemo<ColumnDef<TCompetition>[]>(
     () => [
       {
         accessorKey: "uid",
@@ -39,11 +39,23 @@ export default function ManageCountries() {
                 column.toggleSorting(column.getIsSorted() === "asc")
               }
             >
-              Country Name
+              Competition Name
               <ArrowUpDown className="ml-2 h-4 w-4" />
             </Button>
           );
         },
+      },
+      {
+        accessorKey: "season",
+        header: "Season",
+      },
+      {
+        accessorKey: "priority",
+        header: "Priority",
+      },
+      {
+        accessorKey: "country",
+        header: "Country",
       },
       {
         id: "actions",
@@ -55,10 +67,10 @@ export default function ManageCountries() {
   );
 
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["countries"],
+    queryKey: ["competitions"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/countries`);
-      return data.items as TCountry[];
+      const { data } = await axios.get(`/api/competitions`);
+      return data.items as TCompetition[];
     },
   });
 
@@ -115,7 +127,7 @@ function DataTableRowActions<TData extends WithId<ObjectId>>({
         <DeleteForm
           itemId={itemId}
           setIsOpen={setIsDeleteOpen}
-          route="countries"
+          route="competitions"
         />
       </CustomDialog>
       <div className="flex items-center">
