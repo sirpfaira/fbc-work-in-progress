@@ -1,0 +1,34 @@
+[
+    {
+        "_id": "671f796f6cd82a2a8ee8a767",
+        "uid": "RSA-Betway",
+        "markets": [
+            {
+                "_id": 101,
+                "name": "Match Result (1X2) - Home"
+            },
+            {
+                "_id": 102,
+                "name": "Match Result (1X2) - Draw"
+            },
+            {
+                "_id": 103,
+                "name": "Match Result (1X2) - Away"
+            }
+        ]
+    },
+    {
+        "_id": "671f796f6cd82a2a8ee8a767",
+        "uid": "RSA-GBets",
+                "markets": [
+            {
+                "_id": 101,
+                "name": "Match Winner - Home"
+            },
+            {
+                "_id": 102,
+                "name": "Match Winner - Draw"
+            }
+        ]
+    }
+]

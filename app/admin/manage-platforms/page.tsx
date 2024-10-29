@@ -14,7 +14,8 @@ import CustomDialog from "@/app/components/common/CustomDialog";
 import PageTitle from "@/app/components/common/PageTitle";
 import DeleteForm from "@/app/components/common/DeleteForm";
 import AddForm from "./AddForm";
-import EditForm from "./EditForm";
+import Link from "next/link";
+import mongoose from "mongoose";
 
 export default function ManagePlatforms() {
   const [isAddOpen, setIsAddOpen] = useState<boolean>(false);
@@ -29,25 +30,8 @@ export default function ManagePlatforms() {
         },
       },
       {
-        accessorKey: "name",
-        header: ({ column }) => {
-          return (
-            <Button
-              variant="ghost"
-              size="table"
-              onClick={() =>
-                column.toggleSorting(column.getIsSorted() === "asc")
-              }
-            >
-              Platform Name
-              <ArrowUpDown className="ml-2 h-4 w-4" />
-            </Button>
-          );
-        },
-      },
-      {
-        accessorKey: "country",
-        header: "Country",
+        header: "Markets",
+        accessorFn: (row) => row.markets.length || 0,
       },
       {
         id: "actions",
@@ -89,7 +73,7 @@ export default function ManagePlatforms() {
 }
 
 interface WithId<ObjectId> {
-  _id: ObjectId;
+  _id: mongoose.Types.ObjectId;
 }
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -98,18 +82,10 @@ interface DataTableRowActionsProps<TData> {
 function DataTableRowActions<TData extends WithId<ObjectId>>({
   row,
 }: DataTableRowActionsProps<TData>) {
-  const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const itemId = row.original._id.toString();
   return (
     <>
-      <CustomDialog
-        isOpen={isEditOpen}
-        setIsOpen={setIsEditOpen}
-        title="Edit Item"
-      >
-        <EditForm itemId={itemId} setIsOpen={setIsEditOpen} />
-      </CustomDialog>
       <CustomDialog
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
@@ -123,14 +99,12 @@ function DataTableRowActions<TData extends WithId<ObjectId>>({
         />
       </CustomDialog>
       <div className="flex items-center">
-        <button
-          onClick={() => {
-            setIsEditOpen(true);
-          }}
+        <Link
+          href={`/admin/manage-platforms/${itemId}`}
           className="text-rating-top rounded-md p-2 transition-all duration-75 hover:bg-muted-block"
         >
           <SquarePen size={16} />
-        </button>
+        </Link>
         <button
           onClick={() => {
             setIsDeleteOpen(true);

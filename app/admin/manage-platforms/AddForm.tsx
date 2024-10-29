@@ -17,10 +17,8 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const initialValues = {
-    uid: "",
     name: "",
     country: "",
-    markets: [],
   };
   const [formValues, setFormValues] = useState<IPlatform>(initialValues);
 
@@ -68,34 +66,20 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
       <div className="flex flex-col space-y-4">
         <div className="flex flex-col space-y-1">
           <label className="font-medium block" htmlFor="uid">
-            UID
-          </label>
-          <Input
-            type="number"
-            {...register("uid", {
-              valueAsNumber: true,
-            })}
-          />
-          {errors?.uid && (
-            <small className="text-destructive">{errors.uid?.message}</small>
-          )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="name">
-            Name
+            Platform name
           </label>
           <Input type="text" {...register("name")} />
-
           {errors?.name && (
             <small className="text-destructive">{errors.name?.message}</small>
           )}
         </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="country">
-            Country
-          </label>
-          <Input type="text" {...register("country")} />
 
+        <div className="flex flex-col space-y-1">
+          <select {...register("country")}>
+            <option value="RSA">South Africa</option>
+            <option value="ZIM">Zimbabwe</option>
+            <option value="NIG">Nigeria</option>
+          </select>
           {errors?.country && (
             <small className="text-destructive">
               {errors.country?.message}

@@ -58,6 +58,36 @@ const combinedArray = englishArray.map((item) => {
 console.log(combinedArray);
 ```
 
+    columnHelper.accessor("roles", {
+      cell: (info) => {
+        const roles = info.getValue();
+
+        return (
+          <div>
+            {roles.map((role) => (
+              <div className="px-2 py-1 bg-green-500 rounded-full text-white text-center my-2 text-sm">
+                {role.toUpperCase()}
+              </div>
+            ))}
+          </div>
+        );
+      },
+      id: "roles",
+      header: "Roles",
+    }),
+
+    console.time('everything');
+elements.forEach(() => {
+  console.time('methodCall');
+  methodCall(() => {
+    console.time('build');
+	build();
+	console.timeEnd('build');
+  });
+  console.timeEnd('methodCall');
+});
+console.timeEnd('everything');
+
 
 
     

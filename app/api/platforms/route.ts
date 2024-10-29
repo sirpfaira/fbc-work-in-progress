@@ -2,11 +2,12 @@ import DatabaseConnection from "@/lib/dbconfig";
 import { IPlatformSchema } from "@/lib/schemas/platform";
 import { NextRequest, NextResponse } from "next/server";
 import Platform from "@/app/api/models/Platform";
+import platforms from "./data.json";
 
 export async function GET() {
   try {
-    await DatabaseConnection();
-    const platforms = await Platform.find();
+    // await DatabaseConnection();
+    // const platforms = await Platform.find();
     if (platforms) {
       return NextResponse.json({ items: platforms }, { status: 200 });
     } else {
@@ -23,7 +24,11 @@ export async function POST(request: NextRequest) {
     const validated = IPlatformSchema.safeParse(data);
     if (validated.success) {
       await DatabaseConnection();
-      const platform = await Platform.create(validated.data);
+      const { name, country } = validated.data;
+      const platform = await Platform.create({
+        uid: `${country}-${name}`,
+        markets: [],
+      });
       if (platform) {
         return NextResponse.json({ message: "Success!" }, { status: 200 });
       } else {
