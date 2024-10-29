@@ -26,13 +26,22 @@ export default function AdminProfileButton() {
   if (!config?.auth?.enabled) {
     router.back();
   }
-  const user = { imageUrl: "https://randomuser.me/api/portraits/men/64.jpg" };
+  const user = {
+    imageUrl: "",
+    firstName: "Simba",
+    lastName: "Pfaira",
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="w-[2.25rem] h-[2.25rem]">
         <Avatar className="cursor-pointer">
           <AvatarImage src={user?.imageUrl} alt="User Profile" />
-          <AvatarFallback></AvatarFallback>
+          <AvatarFallback>
+            <span className="font-medium">
+              {user?.firstName?.charAt(0)}
+              {user?.lastName?.charAt(0)}
+            </span>
+          </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 px-2 pb-2">

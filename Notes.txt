@@ -7,5 +7,57 @@ rules:
 
   https://stackoverflow.com/questions/19287142/populate-a-mongoose-model-with-a-field-that-isnt-an-id
 
+--- use copilot's answer
+
+  Microsoft Copilot
+  ```
+  const englishArray = [
+  { id: 101, name: "Elephant" },
+  { id: 102, name: "Octopus" }
+];
+
+const chineseArray = [
+  { id: 101, name: "DGHktyi" }
+];
+
+const newArray = englishArray.map(englishItem => {
+  const chineseItem = chineseArray.find(item => item.id === englishItem.id);
+  return {
+    ...englishItem,
+    name: chineseItem ? chineseItem.name : englishItem.name
+  };
+});
+
+console.log(newArray);
+```
+
+Chat Gpt
+
+```
+const englishArray = [
+  { id: 101, name: "Elephant", size: "large" },
+  { id: 102, name: "Octopus", size: "large" },
+];
+
+const chineseArray = [{ id: 101, name: "DGHktyi", size: "large" }];
+
+// Convert chineseArray to a lookup object for quick access
+const chineseLookup = chineseArray.reduce((acc, item) => {
+  acc[item.id] = item.name;
+  return acc;
+}, {});
+
+// Map through the englishArray and use chinese name if available
+const combinedArray = englishArray.map((item) => {
+  return {
+    ...item,
+    name: chineseLookup[item.id] || item.name,
+  };
+});
+
+console.log(combinedArray);
+```
+
+
 
     

@@ -1,20 +1,12 @@
 "use client";
-import { Dispatch, SetStateAction, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { ColumnDef, Row } from "@tanstack/react-table";
-import {
-  PlusCircle,
-  ArrowUpDown,
-  SquarePen,
-  Trash2,
-  ScanEye,
-  CircleCheck,
-  X,
-} from "lucide-react";
+import { PlusCircle, ArrowUpDown, SquarePen, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ObjectId } from "mongoose";
-import { TCountry } from "@/lib/schemas/country";
+import { TPlatform } from "@/lib/schemas/platform";
 import DataTable from "@/app/components/common/DataTable";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
@@ -24,24 +16,14 @@ import DeleteForm from "@/app/components/common/DeleteForm";
 import AddForm from "./AddForm";
 import EditForm from "./EditForm";
 
-export default function ManageCountries() {
+export default function ManagePlatforms() {
   const [isAddOpen, setIsAddOpen] = useState<boolean>(false);
-  const [isValidateOpen, setIsValidateOpen] = useState<boolean>(false);
 
-  const columns = useMemo<ColumnDef<TCountry>[]>(
+  const columns = useMemo<ColumnDef<TPlatform>[]>(
     () => [
       {
         accessorKey: "uid",
-        header: ({ column }) => (
-          <Button
-            variant="ghost"
-            size="table"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            <div className="ml-2">Unique ID</div>
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        ),
+        header: () => <div className="ml-2">Unique ID</div>,
         cell: ({ row }) => {
           return <div className="ml-2">{row.getValue("uid")}</div>;
         },
@@ -57,11 +39,15 @@ export default function ManageCountries() {
                 column.toggleSorting(column.getIsSorted() === "asc")
               }
             >
-              Country Name
+              Platform Name
               <ArrowUpDown className="ml-2 h-4 w-4" />
             </Button>
           );
         },
+      },
+      {
+        accessorKey: "country",
+        header: "Country",
       },
       {
         id: "actions",
@@ -73,10 +59,10 @@ export default function ManageCountries() {
   );
 
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["countries"],
+    queryKey: ["platforms"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/countries`);
-      return data.items as TCountry[];
+      const { data } = await axios.get(`/api/platforms`);
+      return data.items as TPlatform[];
     },
   });
 
@@ -85,25 +71,10 @@ export default function ManageCountries() {
   return (
     <div className="flex flex-col space-y-5">
       <div className="card flex items-center justify-between px-4 py-2">
-        <PageTitle title="Manage countries" link="/admin" />
-        <div className="flex">
-          {data && (
-            <Button
-              onClick={() => setIsValidateOpen(true)}
-              size={"icon"}
-              variant={"ghost"}
-            >
-              <ScanEye size={24} />
-            </Button>
-          )}
-          <Button
-            onClick={() => setIsAddOpen(true)}
-            size={"icon"}
-            variant={"ghost"}
-          >
-            <PlusCircle size={24} />
-          </Button>
-        </div>
+        <PageTitle title="Manage platforms" link="/admin" />
+        <Button onClick={() => setIsAddOpen(true)} variant={"ghost"}>
+          <PlusCircle size={26} />
+        </Button>
       </div>
       {isLoading ? (
         <TableSkeleton columns={3} />
@@ -113,9 +84,6 @@ export default function ManageCountries() {
       <CustomDialog isOpen={isAddOpen} setIsOpen={setIsAddOpen} title="Add">
         <AddForm setIsOpen={setIsAddOpen} />
       </CustomDialog>
-      {isValidateOpen && data && (
-        <ValidateData array={data} setIsValidateOpen={setIsValidateOpen} />
-      )}
     </div>
   );
 }
@@ -151,7 +119,7 @@ function DataTableRowActions<TData extends WithId<ObjectId>>({
         <DeleteForm
           itemId={itemId}
           setIsOpen={setIsDeleteOpen}
-          route="countries"
+          route="platforms"
         />
       </CustomDialog>
       <div className="flex items-center">
@@ -173,63 +141,5 @@ function DataTableRowActions<TData extends WithId<ObjectId>>({
         </button>
       </div>
     </>
-  );
-}
-
-interface ValidateDataProps {
-  array: TCountry[];
-  setIsValidateOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-function ValidateData({ array, setIsValidateOpen }: ValidateDataProps) {
-  const ids = new Set();
-  let duplicates = [];
-
-  for (const item of array) {
-    if (ids.has(item.uid)) {
-      duplicates.push(item.uid);
-    }
-    ids.add(item.uid);
-
-    // if (nested) {
-    //   if (item[nested]) {
-    //     const subIds = new Set();
-    //     for (const subItem of item[nested]) {
-    //       if (subIds.has(subItem._id)) {
-    //         subs.push(`${item.uid}:${subItem._id}`);
-    //       }
-    //       subIds.add(subItem._id);
-    //     }
-    //   }
-    // }
-  }
-
-  return (
-    <div className="card relative p-3 w-full">
-      <Button
-        className="absolute right-0 top-0"
-        onClick={() => setIsValidateOpen(false)}
-        variant={"ghost"}
-      >
-        <X />
-      </Button>
-      {duplicates.length > 0 ? (
-        <div className="flex flex-col">
-          <span className="flex font-medium text-big border-b border-border w-full">
-            Results
-          </span>
-          <div className="flex flex-col space-y-2 w-full">
-            {duplicates.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="flex space-x-3">
-          <CircleCheck className="text-rating-top" />
-          <span className="font-medium">No issues found</span>
-        </div>
-      )}
-    </div>
   );
 }
