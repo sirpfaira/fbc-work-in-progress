@@ -6,12 +6,12 @@ export const ICountrySchema = z.object({
     .string()
     .trim()
     .min(1, { message: "Country UID must not be empty!" })
-    .max(36, { message: "Country UID must not exceed 36 chars!" }),
+    .max(36, { message: "Country UID must not exceed 36 characters!" }),
   name: z
     .string()
     .trim()
     .min(1, { message: "Country name must not be empty!" })
-    .max(36, { message: "Country name must not exceed 36 chars!" }),
+    .max(36, { message: "Country name must not exceed 36 characters!" }),
 });
 
 export type ICountry = z.infer<typeof ICountrySchema>;

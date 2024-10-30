@@ -183,7 +183,7 @@ interface ValidateDataProps {
 
 function ValidateData({ array, setIsValidateOpen }: ValidateDataProps) {
   const ids = new Set();
-  let duplicates = [];
+  const duplicates = [];
 
   for (const item of array) {
     if (ids.has(item.uid)) {

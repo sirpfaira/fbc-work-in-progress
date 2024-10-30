@@ -7,6 +7,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { IPlatform, IPlatformSchema } from "@/lib/schemas/platform";
 
 interface AddFormProps {
@@ -22,11 +38,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   };
   const [formValues, setFormValues] = useState<IPlatform>(initialValues);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IPlatform>({
+  const form = useForm<IPlatform>({
     resolver: zodResolver(IPlatformSchema),
     defaultValues: initialValues,
     mode: "onBlur",
@@ -51,7 +63,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     },
   });
 
-  const onSubmit = async (values: IPlatform) => {
+  const onSubmit = (values: IPlatform) => {
     console.log(values);
     try {
       setFormValues(values);
@@ -62,31 +74,50 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col space-y-4">
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="uid">
-            Platform name
-          </label>
-          <Input type="text" {...register("name")} />
-          {errors?.name && (
-            <small className="text-destructive">{errors.name?.message}</small>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Platform name</FormLabel>
+              <FormControl>
+                <Input placeholder="IXBet" {...field} />
+              </FormControl>
+              <FormDescription>
+                This is the full name of the platform.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
           )}
-        </div>
-
-        <div className="flex flex-col space-y-1">
-          <select {...register("country")}>
-            <option value="RSA">South Africa</option>
-            <option value="ZIM">Zimbabwe</option>
-            <option value="NIG">Nigeria</option>
-          </select>
-          {errors?.country && (
-            <small className="text-destructive">
-              {errors.country?.message}
-            </small>
+        />
+        <FormField
+          control={form.control}
+          name="country"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Country</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a country" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="ART">Argentina</SelectItem>
+                  <SelectItem value="BOT">Bolivia</SelectItem>
+                  <SelectItem value="BRT">Brasilia</SelectItem>
+                  <SelectItem value="CLT">Chile</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                The country in which the platform company operates.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
           )}
-        </div>
-
+        />
         <div className="w-full flex justify-center items-center space-x-3 pt-3">
           <Button
             variant="outline"
@@ -106,7 +137,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
             Save
           </Button>
         </div>
-      </div>
-    </form>
+      </form>
+    </Form>
   );
 }
