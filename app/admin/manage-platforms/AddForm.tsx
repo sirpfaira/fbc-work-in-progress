@@ -23,7 +23,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { IPlatform, IPlatformSchema } from "@/lib/schemas/platform";
+import { BPlatform, BPlatformSchema } from "@/lib/schemas/platform";
 
 interface AddFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -36,10 +36,10 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     name: "",
     country: "",
   };
-  const [formValues, setFormValues] = useState<IPlatform>(initialValues);
+  const [formValues, setFormValues] = useState<BPlatform>(initialValues);
 
-  const form = useForm<IPlatform>({
-    resolver: zodResolver(IPlatformSchema),
+  const form = useForm<BPlatform>({
+    resolver: zodResolver(BPlatformSchema),
     defaultValues: initialValues,
     mode: "onBlur",
   });
@@ -63,7 +63,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     },
   });
 
-  const onSubmit = (values: IPlatform) => {
+  const onSubmit = (values: BPlatform) => {
     console.log(values);
     try {
       setFormValues(values);
