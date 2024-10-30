@@ -4,9 +4,10 @@ import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import axios from "axios";
+import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Trash2 } from "lucide-react";
+import { SquarePen, Trash2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -15,8 +16,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import * as React from "react";
-
 import {
   Select,
   SelectContent,
@@ -33,10 +32,11 @@ import {
 } from "@/lib/schemas/platform";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
-import Link from "next/link";
 import PageTitle from "@/app/components/common/PageTitle";
 
 export default function EditForm() {
+  const params = useParams();
+  const { _id } = params;
   const { data, isError, error, isLoading } = useQuery({
     queryKey: ["platforms"],
     queryFn: async () => {
@@ -46,10 +46,6 @@ export default function EditForm() {
   });
 
   if (isError) return <ErrorTile error={error.message} />;
-
-  const params = useParams();
-  const { _id } = params;
-
   const current = data?.find((item) => item._id.toString() === _id);
 
   return (
@@ -114,7 +110,14 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
   });
 
   const handleSaveToDatabase = () => {
-    // validate with zod
+    toast({
+      title: "You submitted the following values:",
+      description: (
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(newItem, null, 2)}</code>
+        </pre>
+      ),
+    });
     editItem();
   };
 
@@ -137,6 +140,11 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
     });
   }
 
+  function handleEditMarket(item: IPlatformMarket) {
+    handleDeleteMarket(item._id);
+    reset(item);
+  }
+
   function handleClonePlatform() {
     if (!platformToClone) {
       toast({
@@ -145,20 +153,20 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
       });
       return;
     }
-    if (platformToClone == item.uid) {
-      return;
+
+    const platform = platforms.find((p) => p.uid === platformToClone);
+    if (platform) {
+      const newMarkets = [...newItem.markets];
+      platform.markets.map((pItem) => {
+        const newMarketItem = newItem.markets.find(
+          (nItem) => nItem._id === pItem._id
+        );
+        if (!newMarketItem) {
+          newMarkets.push(pItem);
+        }
+      });
+      setNewItem({ ...newItem, markets: newMarkets });
     }
-
-    // clone all items of platform to current platform
-    // skip all that are already there
-
-    // const platform = platforms.find((p) => p.uid === platformToClone);
-    // if (platform) {
-    //   const newMarkets = [...newItem.markets];
-    //   platform.markets.map((i) => {
-    //     return;
-    //   });
-    // }
   }
 
   return (
@@ -167,48 +175,58 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
         <div className="card flex items-center justify-between px-3 py-2">
           <PageTitle title={item.uid} link="/admin/manage-platforms" />
         </div>
-        <form
-          onSubmit={handleSubmit(handleAddMarket)}
-          className="flex flex-col space-y-3 card p-4"
-        >
-          <span className="text-big font-semibold border-b">Add Market</span>
-          <div className="flex flex-col space-y-4">
-            <div className="flex flex-col space-y-1">
-              <label className="font-medium block" htmlFor="_id">
-                Market Id
-              </label>
-              <Input
-                id="_id"
-                type="number"
-                {...register("_id", {
-                  valueAsNumber: true,
-                })}
-              />
-              {errors?._id && (
-                <small className="text-destructive">
-                  {errors._id?.message}
-                </small>
-              )}
-            </div>
-            <div className="flex flex-col space-y-1">
-              <label className="font-medium block" htmlFor="name">
-                Name
-              </label>
-              <Input type="text" {...register("name")} />
+        <div className="flex flex-col px-3 card ">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                <span className="text-big font-semibold px-2">Add Market</span>
+              </AccordionTrigger>
+              <AccordionContent>
+                <form
+                  onSubmit={handleSubmit(handleAddMarket)}
+                  className="flex flex-col space-y-3 p-2"
+                >
+                  <div className="flex flex-col space-y-4">
+                    <div className="flex flex-col space-y-1">
+                      <label className="font-medium block" htmlFor="_id">
+                        Market Id
+                      </label>
+                      <Input
+                        id="_id"
+                        type="number"
+                        {...register("_id", {
+                          valueAsNumber: true,
+                        })}
+                      />
+                      {errors?._id && (
+                        <small className="text-destructive">
+                          {errors._id?.message}
+                        </small>
+                      )}
+                    </div>
+                    <div className="flex flex-col space-y-1">
+                      <label className="font-medium block" htmlFor="name">
+                        Name
+                      </label>
+                      <Input type="text" {...register("name")} />
 
-              {errors?.name && (
-                <small className="text-destructive">
-                  {errors.name?.message}
-                </small>
-              )}
-            </div>
-            <div className="w-full flex items-center space-x-3">
-              <Button type="submit" variant={"outline"}>
-                Add market
-              </Button>
-            </div>
-          </div>
-        </form>
+                      {errors?.name && (
+                        <small className="text-destructive">
+                          {errors.name?.message}
+                        </small>
+                      )}
+                    </div>
+                    <div className="w-full flex items-center space-x-3">
+                      <Button type="submit" variant={"outline"}>
+                        Add market
+                      </Button>
+                    </div>
+                  </div>
+                </form>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
         <div className="flex justify-between p-3 card ">
           <Button
             variant={"outline"}
@@ -228,10 +246,10 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
                 <SelectGroup>
                   <SelectLabel>Platforms</SelectLabel>
                   {platforms
-                    .map((item) => item.uid)
-                    .map((uid) => (
-                      <SelectItem key={uid} value={uid}>
-                        {uid}
+                    .filter((i) => i.uid !== newItem.uid)
+                    .map((item) => (
+                      <SelectItem key={item.uid} value={item.uid}>
+                        {item.uid}
                       </SelectItem>
                     ))}
                 </SelectGroup>
@@ -251,20 +269,42 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
               </AccordionTrigger>
               <AccordionContent>
                 <div className="flex flex-col space-y-3 divide-y divide-border border border-border px-3 rounded-md">
-                  {newItem.markets.map((item) => (
-                    <div
-                      key={item._id}
-                      className="flex justify-between items-center pt-3"
-                    >
-                      <span className="">{`${item._id}: ${item.name}`}</span>
-                      <Button
-                        onClick={() => handleDeleteMarket(item._id)}
-                        variant={"ghost"}
-                      >
-                        <Trash2 size={16} className="text-destructive" />
-                      </Button>
-                    </div>
-                  ))}
+                  {newItem.markets.length > 0 ? (
+                    <>
+                      {newItem.markets
+                        .sort((a, b) => a._id - b._id)
+                        .map((item) => (
+                          <div
+                            key={item._id}
+                            className="flex justify-between items-center pt-3"
+                          >
+                            <span className="">{`${item._id}: ${item.name}`}</span>
+                            <div>
+                              <button
+                                onClick={() => {
+                                  handleEditMarket(item);
+                                }}
+                                className="text-rating-top rounded-md p-2 transition-all duration-75 hover:bg-muted-block"
+                              >
+                                <SquarePen size={16} />
+                              </button>
+                              <Button
+                                onClick={() => handleDeleteMarket(item._id)}
+                                variant={"ghost"}
+                                className="rounded-md p-2 transition-all duration-75 hover:bg-muted-block"
+                              >
+                                <Trash2
+                                  size={16}
+                                  className="text-destructive"
+                                />
+                              </Button>
+                            </div>
+                          </div>
+                        ))}
+                    </>
+                  ) : (
+                    <span className="py-3 ">No markets to show</span>
+                  )}
                 </div>
               </AccordionContent>
             </AccordionItem>

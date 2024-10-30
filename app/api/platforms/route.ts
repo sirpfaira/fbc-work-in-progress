@@ -1,13 +1,12 @@
 import DatabaseConnection from "@/lib/dbconfig";
-import { IPlatformSchema } from "@/lib/schemas/platform";
+import { BPlatformSchema } from "@/lib/schemas/platform";
 import { NextRequest, NextResponse } from "next/server";
 import Platform from "@/app/api/models/Platform";
-import platforms from "./data.json";
 
 export async function GET() {
   try {
-    // await DatabaseConnection();
-    // const platforms = await Platform.find();
+    await DatabaseConnection();
+    const platforms = await Platform.find();
     if (platforms) {
       return NextResponse.json({ items: platforms }, { status: 200 });
     } else {
@@ -21,7 +20,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    const validated = IPlatformSchema.safeParse(data);
+    const validated = BPlatformSchema.safeParse(data);
     if (validated.success) {
       await DatabaseConnection();
       const { name, country } = validated.data;

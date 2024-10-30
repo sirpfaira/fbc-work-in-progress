@@ -15,7 +15,6 @@ import PageTitle from "@/app/components/common/PageTitle";
 import DeleteForm from "@/app/components/common/DeleteForm";
 import AddForm from "./AddForm";
 import Link from "next/link";
-import mongoose from "mongoose";
 
 export default function ManagePlatforms() {
   const [isAddOpen, setIsAddOpen] = useState<boolean>(false);
@@ -73,7 +72,7 @@ export default function ManagePlatforms() {
 }
 
 interface WithId<ObjectId> {
-  _id: mongoose.Types.ObjectId;
+  _id: ObjectId;
 }
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;

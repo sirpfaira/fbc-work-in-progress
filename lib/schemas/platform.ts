@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { ObjectId } from "mongoose";
 import { z } from "zod";
 
 export const IMarketSchema = z.object({
@@ -12,7 +12,7 @@ export const IMarketSchema = z.object({
     }),
 });
 
-export const IPlatformSchema = z.object({
+export const BPlatformSchema = z.object({
   name: z
     .string()
     .trim()
@@ -24,7 +24,7 @@ export const IPlatformSchema = z.object({
     .min(1, { message: "Platform country is required!" }),
 });
 
-export const BPlatformSchema = z.object({
+export const IPlatformSchema = z.object({
   uid: z
     .string()
     .trim()
@@ -36,4 +36,4 @@ export const BPlatformSchema = z.object({
 export type IPlatformMarket = z.infer<typeof IMarketSchema>;
 export type IPlatform = z.infer<typeof IPlatformSchema>;
 export type BPlatform = z.infer<typeof BPlatformSchema>;
-export type TPlatform = BPlatform & { _id: Types.ObjectId };
+export type TPlatform = IPlatform & { _id: ObjectId };

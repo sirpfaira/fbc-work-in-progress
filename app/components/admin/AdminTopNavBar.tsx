@@ -40,7 +40,7 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
                 <SheetTitle>FreeBetCodes</SheetTitle>
               </Link>
             </SheetHeader>
-            <div className="flex flex-col space-y-3 mt-[1rem]">
+            <div className="flex flex-col space-y-3 mt-[1rem] overflow-auto">
               {AdminNavigationItems.map((item) => (
                 <DialogClose asChild key={item.link} className="w-full">
                   <Link href={item.link} className="w-full  ">
