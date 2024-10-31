@@ -40,7 +40,6 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   try {
     const data = await request.json();
-    console.log(data);
     if (data) {
       await DatabaseConnection();
       await Competition.deleteMany({

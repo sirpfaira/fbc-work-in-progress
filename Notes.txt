@@ -9,12 +9,24 @@
   //   });
   // }
 
+
   // const placeholder = {
 //   _id: new mongoose.Types.ObjectId(),
 //   uid: "",
 //   markets: [],
 // };
 
+
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  }
+}, { timestamps: true });
 
 rules:
   "no-explicit-any": ["off"]
@@ -27,7 +39,6 @@ rules:
 
   https://rasitcolakel.medium.com/exploring-zod-a-comprehensive-guide-to-powerful-data-validation-in-javascript-typescript-2c4818b5646d
 
---- use copilot's answer
 
   Microsoft Copilot
   ```
@@ -51,32 +62,28 @@ const newArray = englishArray.map(englishItem => {
 console.log(newArray);
 ```
 
-Chat Gpt
-
-```
-const englishArray = [
-  { id: 101, name: "Elephant", size: "large" },
-  { id: 102, name: "Octopus", size: "large" },
+const objects = [
+  { id: 101, name: "Object 1" },
+  { id: 106, name: "Object 2" },
+  { id: 207, name: "Object 3" },
+  { id: 211, name: "Object 4" },
+  { id: 305, name: "Object 5" },
+  { id: 507, name: "Object 6" },
+  { id: 1110, name: "Object 7" }
 ];
 
-const chineseArray = [{ id: 101, name: "DGHktyi", size: "large" }];
-
-// Convert chineseArray to a lookup object for quick access
-const chineseLookup = chineseArray.reduce((acc, item) => {
-  acc[item.id] = item.name;
+const groupedObjects = objects.reduce((acc, obj) => {
+  const groupKey = Math.floor(obj.id / 100) * 100;
+  if (!acc[groupKey]) {
+    acc[groupKey] = [];
+  }
+  acc[groupKey].push(obj);
   return acc;
 }, {});
 
-// Map through the englishArray and use chinese name if available
-const combinedArray = englishArray.map((item) => {
-  return {
-    ...item,
-    name: chineseLookup[item.id] || item.name,
-  };
-});
+console.log(groupedObjects);
 
-console.log(combinedArray);
-```
+
 
     columnHelper.accessor("roles", {
       cell: (info) => {

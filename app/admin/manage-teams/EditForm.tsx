@@ -92,7 +92,6 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   });
 
   const onSubmit = async (values: ITeam) => {
-    console.log(values);
     try {
       setFormValues(values);
       editItem();

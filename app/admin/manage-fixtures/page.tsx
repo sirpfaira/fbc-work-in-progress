@@ -1,20 +1,12 @@
 "use client";
-import { Dispatch, SetStateAction, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { ColumnDef, Row } from "@tanstack/react-table";
-import {
-  PlusCircle,
-  ArrowUpDown,
-  SquarePen,
-  Trash2,
-  ScanEye,
-  CircleCheck,
-  X,
-} from "lucide-react";
+import { PlusCircle, SquarePen, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ObjectId } from "mongoose";
-import { TOddSelector } from "@/lib/schemas/oddselector";
+import { TFixture } from "@/lib/schemas/fixture";
 import DataTable from "@/app/components/common/DataTable";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
@@ -22,48 +14,28 @@ import CustomDialog from "@/app/components/common/CustomDialog";
 import PageTitle from "@/app/components/common/PageTitle";
 import DeleteForm from "@/app/components/common/DeleteForm";
 import AddForm from "./AddForm";
-import EditForm from "./EditForm";
+import Link from "next/link";
 
-export default function ManageOddSelectors() {
+export default function ManageFixtures() {
   const [isAddOpen, setIsAddOpen] = useState<boolean>(false);
 
-  const columns = useMemo<ColumnDef<TOddSelector>[]>(
+  const columns = useMemo<ColumnDef<TFixture>[]>(
     () => [
       {
-        accessorKey: "uid",
-        header: ({ column }) => (
-          <Button
-            variant="ghost"
-            size="table"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            <div className="ml-2">Unique ID</div>
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        ),
+        accessorKey: "teams",
+        header: () => <div className="ml-2">Teams</div>,
         cell: ({ row }) => {
-          return <div className="ml-2">{row.getValue("uid")}</div>;
+          return <div className="ml-2">{row.getValue("teams")}</div>;
         },
       },
-      { accessorKey: "apiId", header: "API ID" },
       {
-        accessorKey: "name",
-        header: ({ column }) => {
-          return (
-            <Button
-              variant="ghost"
-              size="table"
-              onClick={() =>
-                column.toggleSorting(column.getIsSorted() === "asc")
-              }
-            >
-              Odd Selector Name
-              <ArrowUpDown className="ml-2 h-4 w-4" />
-            </Button>
-          );
-        },
+        accessorKey: "competitionName",
+        header: "Competition",
       },
-      { accessorKey: "alias", header: "Alias(es)" },
+      {
+        accessorKey: "date",
+        header: "Date",
+      },
       {
         id: "actions",
         header: "Actions",
@@ -74,10 +46,10 @@ export default function ManageOddSelectors() {
   );
 
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["oddselectors"],
+    queryKey: ["fixtures"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/oddselectors`);
-      return data.items as TOddSelector[];
+      const { data } = await axios.get(`/api/fixtures`);
+      return data.items as TFixture[];
     },
   });
 
@@ -86,16 +58,10 @@ export default function ManageOddSelectors() {
   return (
     <div className="flex flex-col space-y-5">
       <div className="card flex items-center justify-between px-4 py-2">
-        <PageTitle title="Manage Odd Selectors" link="/admin" />
-        <div className="flex">
-          <Button
-            onClick={() => setIsAddOpen(true)}
-            size={"icon"}
-            variant={"ghost"}
-          >
-            <PlusCircle size={24} />
-          </Button>
-        </div>
+        <PageTitle title="Manage fixtures" link="/admin" />
+        <Button onClick={() => setIsAddOpen(true)} variant={"ghost"}>
+          <PlusCircle size={26} />
+        </Button>
       </div>
       {isLoading ? (
         <TableSkeleton columns={4} />
@@ -106,7 +72,7 @@ export default function ManageOddSelectors() {
         isOpen={isAddOpen}
         setIsOpen={setIsAddOpen}
         title="Add"
-        description="Please provide the information required."
+        description="Add a fixture to the database"
       >
         <AddForm setIsOpen={setIsAddOpen} />
       </CustomDialog>
@@ -124,19 +90,10 @@ interface DataTableRowActionsProps<TData> {
 function DataTableRowActions<TData extends WithId<ObjectId>>({
   row,
 }: DataTableRowActionsProps<TData>) {
-  const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const itemId = row.original._id.toString();
   return (
     <>
-      <CustomDialog
-        isOpen={isEditOpen}
-        setIsOpen={setIsEditOpen}
-        title="Edit Item"
-        description="Please provide the information required"
-      >
-        <EditForm itemId={itemId} setIsOpen={setIsEditOpen} />
-      </CustomDialog>
       <CustomDialog
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
@@ -146,18 +103,16 @@ function DataTableRowActions<TData extends WithId<ObjectId>>({
         <DeleteForm
           itemId={itemId}
           setIsOpen={setIsDeleteOpen}
-          route="oddselectors"
+          route="fixtures"
         />
       </CustomDialog>
       <div className="flex items-center">
-        <button
-          onClick={() => {
-            setIsEditOpen(true);
-          }}
+        <Link
+          href={`/admin/manage-fixtures/${itemId}`}
           className="text-rating-top rounded-md p-2 transition-all duration-75 hover:bg-muted-block"
         >
           <SquarePen size={16} />
-        </button>
+        </Link>
         <button
           onClick={() => {
             setIsDeleteOpen(true);

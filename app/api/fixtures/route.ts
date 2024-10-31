@@ -1,14 +1,14 @@
 import DatabaseConnection from "@/lib/dbconfig";
-import { ICountrySchema } from "@/lib/schemas/country";
+import { IFixtureSchema } from "@/lib/schemas/fixture";
 import { NextRequest, NextResponse } from "next/server";
-import Country from "@/app/api/models/Country";
+import Fixture from "@/app/api/models/Fixture";
 
 export async function GET() {
   try {
     await DatabaseConnection();
-    const countries = await Country.find();
-    if (countries) {
-      return NextResponse.json({ items: countries }, { status: 200 });
+    const fixtures = await Fixture.find();
+    if (fixtures) {
+      return NextResponse.json({ items: fixtures }, { status: 200 });
     } else {
       throw new Error("Something went wrong!");
     }
@@ -20,15 +20,19 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    const validated = ICountrySchema.safeParse(data);
+    const validated = IFixtureSchema.safeParse(data);
+    console.log(data);
+    console.log(validated);
     if (validated.success) {
-      await DatabaseConnection();
-      const country = await Country.create(validated.data);
-      if (country) {
-        return NextResponse.json({ message: "Success!" }, { status: 200 });
-      } else {
-        throw new Error("Something went wrong!");
-      }
+      // await DatabaseConnection();
+      // const fixture = await Fixture.create(validated.data);
+      // if (fixture) {
+      //   return NextResponse.json({ message: "Success!" }, { status: 200 });
+      // } else {
+      //   throw new Error("Something went wrong!");
+      // }
+
+      return NextResponse.json({ message: "Success!" }, { status: 200 });
     } else {
       throw new Error("Invalid data!");
     }
@@ -42,7 +46,7 @@ export async function PATCH(request: NextRequest) {
     const data = await request.json();
     if (data) {
       await DatabaseConnection();
-      await Country.deleteMany({
+      await Fixture.deleteMany({
         _id: { $in: data },
       });
       return NextResponse.json({ message: "Success!" }, { status: 200 });

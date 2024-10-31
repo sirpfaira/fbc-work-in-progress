@@ -25,11 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  IMarketSchema,
-  IPlatformMarket,
-  TPlatform,
-} from "@/lib/schemas/platform";
+import { IMarketSchema, IFixtureMarket, TFixture } from "@/lib/schemas/fixture";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 import PageTitle from "@/app/components/common/PageTitle";
@@ -39,10 +35,10 @@ export default function EditForm() {
   const params = useParams();
   const { _id } = params;
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["platforms"],
+    queryKey: ["fixtures"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/platforms`);
-      return data.items as TPlatform[];
+      const { data } = await axios.get(`/api/fixtures`);
+      return data.items as TFixture[];
     },
   });
 
@@ -56,9 +52,9 @@ export default function EditForm() {
       ) : (
         <>
           {current && data ? (
-            <EditFields item={current} platforms={data} />
+            <EditFields item={current} fixtures={data} />
           ) : (
-            <ErrorTile error={`Platform with id ${_id} was not found!`} />
+            <ErrorTile error={`Fixture with id ${_id} was not found!`} />
           )}
         </>
       )}
@@ -67,15 +63,15 @@ export default function EditForm() {
 }
 
 interface EditFieldsProps {
-  item: TPlatform;
-  platforms: TPlatform[];
+  item: TFixture;
+  fixtures: TFixture[];
 }
 
-const EditFields = ({ item, platforms }: EditFieldsProps) => {
+const EditFields = ({ item, fixtures }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const [newItem, setNewItem] = useState<TPlatform>(item);
-  const [platformToClone, setPlatformToClone] = useState<string>("");
+  const [newItem, setNewItem] = useState<TFixture>(item);
+  const [fixtureToClone, setFixtureToClone] = useState<string>("");
   const [isDeleteAllOpen, setIsDeleteAllOpen] = useState(false);
   const [isAddMarketOpen, setIsAddMarketOpen] = useState<boolean>(false);
 
@@ -84,7 +80,7 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<IPlatformMarket>({
+  } = useForm<IFixtureMarket>({
     resolver: zodResolver(IMarketSchema),
     defaultValues: { _id: 1, name: "" },
     mode: "onBlur",
@@ -92,14 +88,14 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
 
   const { mutate: editItem, isPending } = useMutation({
     mutationFn: async () =>
-      await axios.put(`/api/platforms/${item._id}`, newItem),
+      await axios.put(`/api/fixtures/${item._id}`, newItem),
     onSuccess: (response: any) => {
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
       queryClient.invalidateQueries({
-        queryKey: ["platforms"],
+        queryKey: ["fixtures"],
         exact: true,
       });
     },
@@ -129,7 +125,7 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
     setNewItem({ ...newItem, markets: newMarkets });
   }
 
-  function handleAddMarket(data: IPlatformMarket) {
+  function handleAddMarket(data: IFixtureMarket) {
     reset();
     const item = newItem.markets.find((i) => i._id == data._id);
     if (item) {
@@ -156,16 +152,16 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
     });
   }
 
-  function handleEditMarket(item: IPlatformMarket) {
+  function handleEditMarket(item: IFixtureMarket) {
     reset(item);
     setIsAddMarketOpen(true);
   }
 
-  function handleClonePlatform() {
-    const platform = platforms.find((p) => p.uid === platformToClone);
-    if (platform) {
+  function handleCloneFixture() {
+    const fixture = fixtures.find((p) => p.uid === fixtureToClone);
+    if (fixture) {
       const newMarkets = [...newItem.markets];
-      platform.markets.map((pItem) => {
+      fixture.markets.map((pItem) => {
         const newMarketItem = newItem.markets.find(
           (nItem) => nItem._id === pItem._id
         );
@@ -186,7 +182,7 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
     <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
       <div className="flex flex-col space-y-4">
         <div className="card flex items-center justify-between px-3 py-2">
-          <PageTitle title={item.uid} link="/admin/manage-platforms" />
+          <PageTitle title={item.uid} link="/admin/manage-fixtures" />
         </div>
         <div className="flex justify-between p-3 card ">
           <div className="flex space-x-2">
@@ -208,16 +204,16 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
 
           <div className="flex space-x-2">
             <Select
-              value={platformToClone}
-              onValueChange={(e) => setPlatformToClone(e)}
+              value={fixtureToClone}
+              onValueChange={(e) => setFixtureToClone(e)}
             >
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select platform" />
+                <SelectValue placeholder="Select fixture" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Platforms</SelectLabel>
-                  {platforms
+                  <SelectLabel>Fixtures</SelectLabel>
+                  {fixtures
                     .filter((i) => i.uid !== newItem.uid)
                     .map((item) => (
                       <SelectItem key={item.uid} value={item.uid}>
@@ -229,8 +225,8 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
             </Select>
             <Button
               variant={"outline"}
-              disabled={!platformToClone}
-              onClick={handleClonePlatform}
+              disabled={!fixtureToClone}
+              onClick={handleCloneFixture}
             >
               Clone
             </Button>
@@ -294,7 +290,7 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
             Submit
           </Button>
           <Link
-            href={`/admin/manage-platforms`}
+            href={`/admin/manage-fixtures`}
             className={buttonVariants({ variant: "outline" })}
           >
             Cancel
@@ -304,7 +300,7 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
           isOpen={isAddMarketOpen}
           setIsOpen={setIsAddMarketOpen}
           title="Add market"
-          description="Add a new market to your platform"
+          description="Add a new market to your fixture"
         >
           <form
             onSubmit={handleSubmit(handleAddMarket)}

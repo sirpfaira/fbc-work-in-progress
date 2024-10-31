@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { ICountry, ICountrySchema } from "@/lib/schemas/country";
+import { IOddSelector, IOddSelectorSchema } from "@/lib/schemas/oddselector";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 
@@ -18,12 +18,12 @@ interface EditFormProps {
 
 export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["country", { itemId }],
+    queryKey: ["oddselector", { itemId }],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/countries/${itemId}`);
+      const { data } = await axios.get(`/api/oddselectors/${itemId}`);
       const { item } = data;
       delete item._id;
-      return item as ICountry;
+      return item as IOddSelector;
     },
   });
 
@@ -46,37 +46,40 @@ export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
 
 interface EditFieldsProps {
   itemId: string;
-  item: ICountry;
+  item: IOddSelector;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const [formValues, setFormValues] = useState<ICountry>(item);
+  const [formValues, setFormValues] = useState<IOddSelector>(item);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICountry>({
-    resolver: zodResolver(ICountrySchema),
+  } = useForm<IOddSelector>({
+    resolver: zodResolver(IOddSelectorSchema),
     defaultValues: item,
     mode: "onBlur",
   });
 
   const { mutate: editItem, isPending } = useMutation({
     mutationFn: async () =>
-      await axios.put(`/api/countries/${itemId}`, formValues),
+      await axios.put(`/api/oddselectors/${itemId}`, formValues),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["countries"], exact: true });
       queryClient.invalidateQueries({
-        queryKey: ["country", { itemId }],
+        queryKey: ["oddselectors"],
+        exact: true,
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["oddselector", { itemId }],
         exact: true,
       });
     },
@@ -89,7 +92,7 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
     },
   });
 
-  const onSubmit = async (values: ICountry) => {
+  const onSubmit = async (values: IOddSelector) => {
     try {
       setFormValues(values);
       editItem();
@@ -104,20 +107,51 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
           <label className="font-medium block" htmlFor="uid">
             UID
           </label>
-          <Input type="text" {...register("uid")} />
+          <Input
+            id="uid"
+            type="text"
+            {...register("uid", {
+              valueAsNumber: true,
+            })}
+          />
 
           {errors?.uid && (
             <small className="text-destructive">{errors.uid?.message}</small>
           )}
         </div>
         <div className="flex flex-col space-y-1">
+          <label className="font-medium block" htmlFor="apiId">
+            API ID
+          </label>
+          <Input
+            id="apiId"
+            type="text"
+            {...register("apiId", {
+              valueAsNumber: true,
+            })}
+          />
+          {errors?.apiId && (
+            <small className="text-destructive">{errors.apiId?.message}</small>
+          )}
+        </div>
+        <div className="flex flex-col space-y-1">
           <label className="font-medium block" htmlFor="name">
             Name
           </label>
-          <Input type="text" {...register("name")} />
+          <Input id="name" type="text" {...register("name")} />
 
           {errors?.name && (
             <small className="text-destructive">{errors.name?.message}</small>
+          )}
+        </div>
+        <div className="flex flex-col space-y-1">
+          <label className="font-medium block" htmlFor="alias">
+            Alias(es)
+          </label>
+          <Input id="alias" type="text" {...register("alias")} />
+
+          {errors?.alias && (
+            <small className="text-destructive">{errors.alias?.message}</small>
           )}
         </div>
         <div className="w-full flex justify-center items-center space-x-3 pt-3">

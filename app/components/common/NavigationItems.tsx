@@ -13,19 +13,14 @@ export const AdminNavigationItems = [
     icon: <HomeIcon size={14} />,
   },
   {
-    label: "Manage Fixtures",
-    link: "/admin/manage-fixtures",
-    icon: <HomeIcon size={14} />,
-  },
-  {
     label: "Manage Punters",
     link: "/admin/manage-punters",
     icon: <HomeIcon size={14} />,
   },
   {
-    label: "Manage Markets",
-    link: "/admin/manage-markets",
-    icon: <Settings size={14} />,
+    label: "Manage Fixtures",
+    link: "/admin/manage-fixtures",
+    icon: <HomeIcon size={14} />,
   },
   {
     label: "Manage Odd Selectors",

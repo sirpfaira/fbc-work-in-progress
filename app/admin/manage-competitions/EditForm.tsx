@@ -93,7 +93,6 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   });
 
   const onSubmit = async (values: ICompetition) => {
-    console.log(values);
     try {
       setFormValues(values);
       editItem();
