@@ -33,6 +33,7 @@ import {
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 import PageTitle from "@/app/components/common/PageTitle";
+import CustomDialog from "@/app/components/common/CustomDialog";
 
 export default function EditForm() {
   const params = useParams();
@@ -75,6 +76,8 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
   const queryClient = useQueryClient();
   const [newItem, setNewItem] = useState<TPlatform>(item);
   const [platformToClone, setPlatformToClone] = useState<string>("");
+  const [isDeleteAllOpen, setIsDeleteAllOpen] = useState(false);
+  const [isAddMarketOpen, setIsAddMarketOpen] = useState<boolean>(false);
 
   const {
     register,
@@ -127,9 +130,24 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
   }
 
   function handleAddMarket(data: IPlatformMarket) {
-    const newMarkets = [data, ...newItem.markets];
-    setNewItem({ ...newItem, markets: newMarkets });
     reset();
+    const item = newItem.markets.find((i) => i._id == data._id);
+    if (item) {
+      const newMarkets = newItem.markets.map((market) => {
+        if (market._id == data._id) {
+          // Replace the updated competition
+          return data;
+        } else {
+          // The rest haven't changed
+          return market;
+        }
+      });
+      setNewItem({ ...newItem, markets: newMarkets });
+    } else {
+      const newMarkets = [data, ...newItem.markets];
+      setNewItem({ ...newItem, markets: newMarkets });
+    }
+    setIsAddMarketOpen(false);
     toast({
       title: "You submitted the following values:",
       description: (
@@ -141,19 +159,12 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
   }
 
   function handleEditMarket(item: IPlatformMarket) {
-    handleDeleteMarket(item._id);
+    // handleDeleteMarket(item._id);
     reset(item);
+    setIsAddMarketOpen(true);
   }
 
   function handleClonePlatform() {
-    if (!platformToClone) {
-      toast({
-        title: "Error!",
-        description: "Select a platform first",
-      });
-      return;
-    }
-
     const platform = platforms.find((p) => p.uid === platformToClone);
     if (platform) {
       const newMarkets = [...newItem.markets];
@@ -169,78 +180,42 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
     }
   }
 
+  function deleteAllItemMarkets() {
+    setNewItem({ ...newItem, markets: [] });
+    setIsDeleteAllOpen(false);
+  }
+
   return (
     <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
       <div className="flex flex-col space-y-4">
         <div className="card flex items-center justify-between px-3 py-2">
           <PageTitle title={item.uid} link="/admin/manage-platforms" />
         </div>
-        <div className="flex flex-col px-3 card ">
-          <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              <AccordionTrigger>
-                <span className="text-big font-semibold px-2">Add Market</span>
-              </AccordionTrigger>
-              <AccordionContent>
-                <form
-                  onSubmit={handleSubmit(handleAddMarket)}
-                  className="flex flex-col space-y-3 p-2"
-                >
-                  <div className="flex flex-col space-y-4">
-                    <div className="flex flex-col space-y-1">
-                      <label className="font-medium block" htmlFor="_id">
-                        Market Id
-                      </label>
-                      <Input
-                        id="_id"
-                        type="number"
-                        {...register("_id", {
-                          valueAsNumber: true,
-                        })}
-                      />
-                      {errors?._id && (
-                        <small className="text-destructive">
-                          {errors._id?.message}
-                        </small>
-                      )}
-                    </div>
-                    <div className="flex flex-col space-y-1">
-                      <label className="font-medium block" htmlFor="name">
-                        Name
-                      </label>
-                      <Input type="text" {...register("name")} />
-
-                      {errors?.name && (
-                        <small className="text-destructive">
-                          {errors.name?.message}
-                        </small>
-                      )}
-                    </div>
-                    <div className="w-full flex items-center space-x-3">
-                      <Button type="submit" variant={"outline"}>
-                        Add market
-                      </Button>
-                    </div>
-                  </div>
-                </form>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
         <div className="flex justify-between p-3 card ">
-          <Button
-            variant={"outline"}
-            onClick={() => setNewItem({ ...newItem, markets: [] })}
-          >
-            Delete all
-          </Button>
+          <div className="flex space-x-2">
+            <Button
+              variant={"outline"}
+              disabled={newItem.markets.length < 1}
+              onClick={() => setIsAddMarketOpen(true)}
+            >
+              Add market
+            </Button>
+            <Button
+              variant={"outline"}
+              disabled={newItem.markets.length < 1}
+              onClick={() => setIsDeleteAllOpen(true)}
+            >
+              Delete all
+            </Button>
+          </div>
+
           <div className="flex space-x-2">
             <Select
               value={platformToClone}
               onValueChange={(e) => setPlatformToClone(e)}
             >
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select a platform" />
+                <SelectValue placeholder="Select platform" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
@@ -255,12 +230,15 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <Button variant={"outline"} onClick={handleClonePlatform}>
+            <Button
+              variant={"outline"}
+              disabled={!platformToClone}
+              onClick={handleClonePlatform}
+            >
               Clone
             </Button>
           </div>
         </div>
-
         <div className="flex flex-col px-3 card ">
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
@@ -311,7 +289,11 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
           </Accordion>
         </div>
         <div className="w-full flex justify-end items-center space-x-3 p-3 card">
-          <Button disabled={isPending} onClick={handleSaveToDatabase}>
+          <Button
+            disabled={isPending}
+            isLoading={isPending}
+            onClick={handleSaveToDatabase}
+          >
             Submit
           </Button>
           <Link
@@ -321,6 +303,86 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
             Cancel
           </Link>
         </div>
+        <CustomDialog
+          isOpen={isAddMarketOpen}
+          setIsOpen={setIsAddMarketOpen}
+          title="Add market"
+          description="Add a new market to your platform"
+        >
+          <form
+            onSubmit={handleSubmit(handleAddMarket)}
+            className="flex flex-col space-y-3 p-2"
+          >
+            <div className="flex flex-col space-y-4">
+              <div className="flex flex-col space-y-1">
+                <label className="font-medium block" htmlFor="_id">
+                  Market Id
+                </label>
+                <Input
+                  id="_id"
+                  type="number"
+                  {...register("_id", {
+                    valueAsNumber: true,
+                  })}
+                />
+                {errors?._id && (
+                  <small className="text-destructive">
+                    {errors._id?.message}
+                  </small>
+                )}
+              </div>
+              <div className="flex flex-col space-y-1">
+                <label className="font-medium block" htmlFor="name">
+                  Name
+                </label>
+                <Input type="text" {...register("name")} />
+
+                {errors?.name && (
+                  <small className="text-destructive">
+                    {errors.name?.message}
+                  </small>
+                )}
+              </div>
+              <div className="w-full flex items-center space-x-3">
+                <Button
+                  variant="outline"
+                  type="button"
+                  disabled={isPending}
+                  className="w-full"
+                  onClick={() => setIsAddMarketOpen(false)}
+                >
+                  Cancel
+                </Button>
+                <Button type="submit" className="w-full">
+                  Save
+                </Button>
+              </div>
+            </div>
+          </form>
+        </CustomDialog>
+        <CustomDialog
+          isOpen={isDeleteAllOpen}
+          setIsOpen={setIsDeleteAllOpen}
+          title="Delete All Items"
+          description="Are you sure you want to delete all items?"
+        >
+          <div className="w-full grid grid-cols-2 gap-4">
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => setIsDeleteAllOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              size="lg"
+              onClick={deleteAllItemMarkets}
+              variant="destructive"
+            >
+              Delete all
+            </Button>
+          </div>
+        </CustomDialog>
       </div>
       <div className="hidden lg:flex card p-6">Sidebar</div>
     </div>
