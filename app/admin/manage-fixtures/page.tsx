@@ -15,6 +15,7 @@ import PageTitle from "@/app/components/common/PageTitle";
 import DeleteForm from "@/app/components/common/DeleteForm";
 import AddForm from "./AddForm";
 import Link from "next/link";
+import TimeStamp from "@/app/components/common/TimeStamp";
 
 export default function ManageFixtures() {
   const [isAddOpen, setIsAddOpen] = useState<boolean>(false);
@@ -35,6 +36,13 @@ export default function ManageFixtures() {
       {
         accessorKey: "date",
         header: "Date",
+        cell: ({ row }) => {
+          return <TimeStamp date={row.getValue("date")} />;
+        },
+      },
+      {
+        accessorKey: "status",
+        header: "Status",
       },
       {
         id: "actions",

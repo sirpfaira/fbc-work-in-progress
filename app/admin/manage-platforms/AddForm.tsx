@@ -88,7 +88,9 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
               <FormDescription>
                 This is the full name of the platform.
               </FormDescription>
-              <FormMessage />
+              {form.formState.errors.name && (
+                <FormMessage>{form.formState.errors.name.message}</FormMessage>
+              )}
             </FormItem>
           )}
         />

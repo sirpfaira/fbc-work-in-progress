@@ -1,22 +1,22 @@
 import { ObjectId } from "mongoose";
 import { z } from "zod";
 
-export const IScoreSchema = z.object({
-  tenMinutes: z.string().optional(),
-  halfTime: z.string().optional(),
-  fullTime: z.string().optional(),
-  extraTime: z.string().optional(),
-  penalties: z.string().optional(),
+export const IScoresSchema = z.object({
+  tenMinutes: z.string(),
+  halfTime: z.string(),
+  fullTime: z.string(),
+  extraTime: z.string(),
+  penalties: z.string(),
 });
 
 export const ICornersSchema = z.object({
-  halfTime: z.string().optional(),
-  fullTime: z.string().optional(),
+  halfTime: z.string(),
+  fullTime: z.string(),
 });
 
 export const IBookingsSchema = z.object({
-  halfTime: z.string().optional(),
-  fullTime: z.string().optional(),
+  halfTime: z.string(),
+  fullTime: z.string(),
 });
 
 export const IOddsSchema = z.object({
@@ -25,48 +25,50 @@ export const IOddsSchema = z.object({
 });
 
 export const BFixtureSchema = z.object({
-  uid: z.number({ required_error: "Fixture uid is required!" }),
+  uid: z.coerce.number().min(1, { message: "Fixture uid is required!" }),
   date: z
     .string()
-    .trim()
-    .min(12, { message: "Fixture date must not be less than 12 characters!" })
-    .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
+    .datetime({ message: "Invalid datetime string! Must be UTC." })
+    .pipe(z.coerce.date()),
   status: z
     .string()
     .trim()
     .min(5, { message: "Fixture date must not be less than 5 characters!" })
     .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
-  competition: z.number({ required_error: "Fixture competition is required!" }),
-  homeTeam: z.number({ required_error: "Fixture competition is required!" }),
-  awayTeam: z.number({ required_error: "Fixture competition is required!" }),
+  competition: z
+    .number()
+    .min(1, { message: "Fixture competition is required!" }),
+  homeTeam: z.number().min(1, { message: "Fixture home team is required!" }),
+  awayTeam: z.number().min(1, { message: "Fixture away team is required!" }),
 });
 
 export const IFixtureSchema = z.object({
-  uid: z.number({ required_error: "Fixture uid is required!" }),
+  uid: z.coerce.number().min(1, { message: "Fixture uid is required!" }),
   date: z
     .string()
-    .trim()
-    .min(12, { message: "Fixture date must not be less than 12 characters!" })
-    .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
+    .datetime({ message: "Invalid datetime string! Must be UTC." })
+    .pipe(z.coerce.date()),
   status: z
     .string()
     .trim()
     .min(5, { message: "Fixture date must not be less than 5 characters!" })
     .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
-  competition: z.number({ required_error: "Fixture competition is required!" }),
+  competition: z
+    .number()
+    .min(1, { message: "Fixture competition is required!" }),
   competitionName: z
     .string()
     .trim()
-    .min(5, { message: "Fixture date must not be less than 5 characters!" })
+    .min(3, { message: "Fixture date must not be less than 3 characters!" })
     .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
   teams: z
     .string()
     .trim()
     .min(5, { message: "Fixture date must not be less than 5 characters!" })
     .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
-  homeTeam: z.number({ required_error: "Fixture competition is required!" }),
-  awayTeam: z.number({ required_error: "Fixture competition is required!" }),
-  score: IScoreSchema,
+  homeTeam: z.number().min(1, { message: "Fixture home team is required!" }),
+  awayTeam: z.number().min(1, { message: "Fixture away team is required!" }),
+  scores: IScoresSchema,
   corners: ICornersSchema,
   bookings: IBookingsSchema,
   odds: z.array(IOddsSchema),

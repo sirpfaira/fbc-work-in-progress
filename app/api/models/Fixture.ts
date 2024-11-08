@@ -10,7 +10,7 @@ const fixtureSchema = new Schema(
     teams: String,
     homeTeam: Number,
     awayTeam: Number,
-    score: {
+    scores: {
       tenMinutes: String,
       halfTime: String,
       fullTime: String,
