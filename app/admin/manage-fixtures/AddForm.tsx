@@ -17,23 +17,14 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { BFixture, BFixtureSchema, IFixture } from "@/lib/schemas/fixture";
 import { fixtureStatus } from "@/lib/constants";
+import DateTimePicker from "@/app/components/common/DateTimePicker";
 
 const teamOptions = [
   { value: 100, label: "Arsenal" },
@@ -56,19 +47,11 @@ interface AddFormProps {
 export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const initialValues = {
-    uid: 0,
-    date: new Date(), // .toISOString()
-    status: "",
-    competition: 0,
-    homeTeam: 0,
-    awayTeam: 0,
-  };
+
   const [formValues, setFormValues] = useState<IFixture | null>(null);
 
   const form = useForm<BFixture>({
     resolver: zodResolver(BFixtureSchema),
-    defaultValues: initialValues,
     mode: "onBlur",
   });
 
@@ -164,37 +147,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Fixture date</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-full pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP")
-                      ) : (
-                        <span>Pick a date</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-full p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    onSelect={(e) => field.onChange(e?.toISOString())}
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
-              <FormDescription>
-                Your date of birth is used to calculate your age.
-              </FormDescription>
+              <DateTimePicker setDate={field.onChange} date={field.value} />
               <FormMessage />
             </FormItem>
           )}

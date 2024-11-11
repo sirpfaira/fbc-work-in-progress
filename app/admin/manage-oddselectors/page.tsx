@@ -1,17 +1,9 @@
 "use client";
-import { Dispatch, SetStateAction, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { ColumnDef, Row } from "@tanstack/react-table";
-import {
-  PlusCircle,
-  ArrowUpDown,
-  SquarePen,
-  Trash2,
-  ScanEye,
-  CircleCheck,
-  X,
-} from "lucide-react";
+import { PlusCircle, ArrowUpDown, SquarePen, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ObjectId } from "mongoose";
 import { TOddSelector } from "@/lib/schemas/oddselector";

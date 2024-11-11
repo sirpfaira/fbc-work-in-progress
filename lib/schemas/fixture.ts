@@ -24,23 +24,25 @@ export const IOddsSchema = z.object({
   value: z.number({ required_error: "Fixture odd value is required!" }),
 });
 
-export const BFixtureSchema = z.object({
-  uid: z.coerce.number().min(1, { message: "Fixture uid is required!" }),
-  date: z
-    .string()
-    .datetime({ message: "Invalid datetime string! Must be UTC." })
-    .pipe(z.coerce.date()),
-  status: z
-    .string()
-    .trim()
-    .min(5, { message: "Fixture date must not be less than 5 characters!" })
-    .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
-  competition: z
-    .number()
-    .min(1, { message: "Fixture competition is required!" }),
-  homeTeam: z.number().min(1, { message: "Fixture home team is required!" }),
-  awayTeam: z.number().min(1, { message: "Fixture away team is required!" }),
-});
+export const BFixtureSchema = z
+  .object({
+    uid: z.coerce.number().min(1, { message: "Fixture uid is required!" }),
+    date: z.date(),
+    status: z
+      .string()
+      .trim()
+      .min(5, { message: "Fixture date must not be less than 5 characters!" })
+      .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
+    competition: z
+      .number()
+      .min(1, { message: "Fixture competition is required!" }),
+    homeTeam: z.number().min(1, { message: "Fixture home team is required!" }),
+    awayTeam: z.number().min(1, { message: "Fixture away team is required!" }),
+  })
+  .refine((data) => data.homeTeam !== data.awayTeam, {
+    path: ["awayTeam"],
+    message: "Away team can not be the same as home team!",
+  });
 
 export const IFixtureSchema = z.object({
   uid: z.coerce.number().min(1, { message: "Fixture uid is required!" }),
