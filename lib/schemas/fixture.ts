@@ -2,26 +2,28 @@ import { ObjectId } from "mongoose";
 import { z } from "zod";
 
 export const IScoresSchema = z.object({
-  tenMinutes: z.string(),
-  halfTime: z.string(),
-  fullTime: z.string(),
-  extraTime: z.string(),
-  penalties: z.string(),
+  tenMinutes: z.string().max(5),
+  halfTime: z.string().max(5),
+  fullTime: z.string().max(5),
+  extraTime: z.string().max(5),
+  penalties: z.string().max(5),
 });
 
 export const ICornersSchema = z.object({
-  halfTime: z.string(),
-  fullTime: z.string(),
+  halfTime: z.string().max(5),
+  fullTime: z.string().max(5),
 });
 
 export const IBookingsSchema = z.object({
-  halfTime: z.string(),
-  fullTime: z.string(),
+  halfTime: z.string().max(5),
+  fullTime: z.string().max(5),
 });
 
 export const IOddsSchema = z.object({
-  _id: z.number({ required_error: "Fixture odd id is required!" }),
-  value: z.number({ required_error: "Fixture odd value is required!" }),
+  _id: z.number({ required_error: "Fixture odd id is required!" }).min(100),
+  value: z
+    .number({ required_error: "Fixture odd value is required!" })
+    .min(1.01),
 });
 
 export const BFixtureSchema = z
@@ -46,10 +48,7 @@ export const BFixtureSchema = z
 
 export const IFixtureSchema = z.object({
   uid: z.coerce.number().min(1, { message: "Fixture uid is required!" }),
-  date: z
-    .string()
-    .datetime({ message: "Invalid datetime string! Must be UTC." })
-    .pipe(z.coerce.date()),
+  date: z.string(),
   status: z
     .string()
     .trim()
@@ -76,6 +75,22 @@ export const IFixtureSchema = z.object({
   odds: z.array(IOddsSchema),
 });
 
-export type IFixture = z.infer<typeof IFixtureSchema>;
+export const ICornersBookingsSchema = z.object({
+  corners: ICornersSchema,
+  bookings: IBookingsSchema,
+});
+
+export const IFixtureInfoSchema = IFixtureSchema.omit({
+  scores: true,
+  corners: true,
+  bookings: true,
+  odds: true,
+});
+
+export type IFixtureInfo = z.infer<typeof IFixtureInfoSchema>;
+export type ICornersBookings = z.infer<typeof ICornersBookingsSchema>;
+export type IFixtureScores = z.infer<typeof IScoresSchema>;
+export type IFixtureOdd = z.infer<typeof IOddsSchema>;
 export type BFixture = z.infer<typeof BFixtureSchema>;
+export type IFixture = z.infer<typeof IFixtureSchema>;
 export type TFixture = IFixture & { _id: ObjectId };

@@ -17,33 +17,35 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { IMarketSchema, IFixtureMarket, TFixture } from "@/lib/schemas/fixture";
+  IOddsSchema,
+  IFixtureOdd,
+  TFixture,
+  IFixtureScores,
+  ICornersBookings,
+  BFixture,
+  IFixtureInfo,
+} from "@/lib/schemas/fixture";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 import PageTitle from "@/app/components/common/PageTitle";
 import CustomDialog from "@/app/components/common/CustomDialog";
+import EditScores from "./EditScores";
+import EditCornersBookings from "./EditCornersBookings";
+import TimeStamp from "@/app/components/common/TimeStamp";
+import EditFixtureInfo from "./EditFixtureInfo";
 
 export default function EditForm() {
   const params = useParams();
   const { _id } = params;
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["fixtures"],
+    queryKey: ["fixture", { _id }],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/fixtures`);
-      return data.items as TFixture[];
+      const { data } = await axios.get(`/api/fixtures/${_id}`);
+      return data.item as TFixture;
     },
   });
 
   if (isError) return <ErrorTile error={error.message} />;
-  const current = data?.find((item) => item._id.toString() === _id);
 
   return (
     <>
@@ -51,8 +53,8 @@ export default function EditForm() {
         <FormSkeleton rows={2} />
       ) : (
         <>
-          {current && data ? (
-            <EditFields item={current} fixtures={data} />
+          {data ? (
+            <EditFields item={data} />
           ) : (
             <ErrorTile error={`Fixture with id ${_id} was not found!`} />
           )}
@@ -64,31 +66,29 @@ export default function EditForm() {
 
 interface EditFieldsProps {
   item: TFixture;
-  fixtures: TFixture[];
 }
 
-const EditFields = ({ item, fixtures }: EditFieldsProps) => {
+const EditFields = ({ item }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [newItem, setNewItem] = useState<TFixture>(item);
-  const [fixtureToClone, setFixtureToClone] = useState<string>("");
-  const [isDeleteAllOpen, setIsDeleteAllOpen] = useState(false);
-  const [isAddMarketOpen, setIsAddMarketOpen] = useState<boolean>(false);
+  const [isDeleteAllOddsOpen, setIsDeleteAllOddsOpen] = useState(false);
+  const [isAddOddOpen, setIsAddOddOpen] = useState<boolean>(false);
+  const itemId = item._id;
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<IFixtureMarket>({
-    resolver: zodResolver(IMarketSchema),
-    defaultValues: { _id: 1, name: "" },
+  } = useForm<IFixtureOdd>({
+    resolver: zodResolver(IOddsSchema),
+    defaultValues: { _id: 1, value: 1 },
     mode: "onBlur",
   });
 
   const { mutate: editItem, isPending } = useMutation({
-    mutationFn: async () =>
-      await axios.put(`/api/fixtures/${item._id}`, newItem),
+    mutationFn: async () => await axios.put(`/api/fixtures/${itemId}`, newItem),
     onSuccess: (response: any) => {
       toast({
         title: "Added Successfully!",
@@ -96,6 +96,10 @@ const EditFields = ({ item, fixtures }: EditFieldsProps) => {
       });
       queryClient.invalidateQueries({
         queryKey: ["fixtures"],
+        exact: true,
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["fixture", { itemId }],
         exact: true,
       });
     },
@@ -120,147 +124,189 @@ const EditFields = ({ item, fixtures }: EditFieldsProps) => {
     editItem();
   };
 
-  function handleDeleteMarket(id: number) {
-    const newMarkets = newItem.markets.filter((item) => item._id !== id);
-    setNewItem({ ...newItem, markets: newMarkets });
+  function handleDeleteOdd(id: number) {
+    const newOdds = newItem.odds.filter((item) => item._id !== id);
+    setNewItem({ ...newItem, odds: newOdds });
   }
 
-  function handleAddMarket(data: IFixtureMarket) {
-    reset();
-    const item = newItem.markets.find((i) => i._id == data._id);
+  function handleAddOdd(data: IFixtureOdd) {
+    reset({
+      value: 1,
+      _id: 1,
+    });
+    const item = newItem.odds.find((i) => i._id == data._id);
     if (item) {
-      const newMarkets = newItem.markets.map((market) => {
-        if (market._id == data._id) {
+      const newOdds = newItem.odds.map((odd) => {
+        if (odd._id == data._id) {
           return data;
         } else {
-          return market;
+          return odd;
         }
       });
-      setNewItem({ ...newItem, markets: newMarkets });
+      setNewItem({ ...newItem, odds: newOdds });
     } else {
-      const newMarkets = [data, ...newItem.markets];
-      setNewItem({ ...newItem, markets: newMarkets });
+      const newOdds = [data, ...newItem.odds];
+      setNewItem({ ...newItem, odds: newOdds });
     }
-    setIsAddMarketOpen(false);
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+    setIsAddOddOpen(false);
+  }
+
+  function handleEditOdd(item: IFixtureOdd) {
+    reset(item);
+    setIsAddOddOpen(true);
+  }
+
+  function deleteAllItemOdds() {
+    setNewItem({ ...newItem, odds: [] });
+    setIsDeleteAllOddsOpen(false);
+  }
+
+  function updateScores(values: IFixtureScores) {
+    setNewItem({ ...newItem, scores: values });
+  }
+
+  function updateCornersBookings(values: ICornersBookings) {
+    setNewItem({
+      ...newItem,
+      corners: values.corners,
+      bookings: values.bookings,
     });
   }
 
-  function handleEditMarket(item: IFixtureMarket) {
-    reset(item);
-    setIsAddMarketOpen(true);
-  }
-
-  function handleCloneFixture() {
-    const fixture = fixtures.find((p) => p.uid === fixtureToClone);
-    if (fixture) {
-      const newMarkets = [...newItem.markets];
-      fixture.markets.map((pItem) => {
-        const newMarketItem = newItem.markets.find(
-          (nItem) => nItem._id === pItem._id
-        );
-        if (!newMarketItem) {
-          newMarkets.push(pItem);
-        }
-      });
-      setNewItem({ ...newItem, markets: newMarkets });
-    }
-  }
-
-  function deleteAllItemMarkets() {
-    setNewItem({ ...newItem, markets: [] });
-    setIsDeleteAllOpen(false);
+  function updateFixtureInfo(values: IFixtureInfo) {
+    setNewItem({
+      ...newItem,
+      ...values,
+    });
   }
 
   return (
     <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
       <div className="flex flex-col space-y-4">
         <div className="card flex items-center justify-between px-3 py-2">
-          <PageTitle title={item.uid} link="/admin/manage-fixtures" />
+          <PageTitle title={newItem.teams} link="/admin/manage-fixtures" />
         </div>
-        <div className="flex justify-between p-3 card ">
-          <div className="flex space-x-2">
-            <Button
-              variant={"outline"}
-              disabled={newItem.markets.length < 1}
-              onClick={() => setIsAddMarketOpen(true)}
-            >
-              Add market
-            </Button>
-            <Button
-              variant={"outline"}
-              disabled={newItem.markets.length < 1}
-              onClick={() => setIsDeleteAllOpen(true)}
-            >
-              Delete all
-            </Button>
-          </div>
-
-          <div className="flex space-x-2">
-            <Select
-              value={fixtureToClone}
-              onValueChange={(e) => setFixtureToClone(e)}
-            >
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select fixture" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Fixtures</SelectLabel>
-                  {fixtures
-                    .filter((i) => i.uid !== newItem.uid)
-                    .map((item) => (
-                      <SelectItem key={item.uid} value={item.uid}>
-                        {item.uid}
-                      </SelectItem>
-                    ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <Button
-              variant={"outline"}
-              disabled={!fixtureToClone}
-              onClick={handleCloneFixture}
-            >
-              Clone
-            </Button>
-          </div>
-        </div>
-        <div className="flex flex-col px-3 card ">
+        <div className="flex flex-col px-3 card">
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
               <AccordionTrigger>
-                <span className="text-big font-medium">Markets</span>
+                <div className="flex space-x-3 items-center">
+                  <span className="text-big font-medium"> Fixture Info</span>
+                  <EditFixtureInfo
+                    updateFixtureInfo={updateFixtureInfo}
+                    item={newItem}
+                  />
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="flex flex-col border border-border p-3 rounded-md">
+                  <span>{newItem.teams}</span>
+                  <span>{newItem.competitionName}</span>
+                  <TimeStamp date={newItem.date} />
+                  <span>{newItem.status}</span>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+        <div className="flex flex-col px-3 card">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                <div className="flex space-x-3 items-center">
+                  <span className="text-big font-medium">Scores</span>
+                  <EditScores
+                    updateScores={updateScores}
+                    item={newItem.scores}
+                  />
+                </div>
               </AccordionTrigger>
               <AccordionContent>
                 <div className="flex flex-col space-y-3 divide-y divide-border border border-border px-3 rounded-md">
-                  {newItem.markets.length > 0 ? (
+                  <span>{`Ten Minutes: ${newItem.scores.tenMinutes}`}</span>
+                  <span>{` Half Time: ${newItem.scores.halfTime}`}</span>
+                  <span>{`Full Time: ${newItem.scores.fullTime}`}</span>
+                  <span>{`Extra Time: ${newItem.scores.extraTime}`}</span>
+                  <span>{`Penalties: ${newItem.scores.penalties}`}</span>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+        <div className="flex flex-col px-3 card">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                <div className="flex space-x-3 items-center">
+                  <span className="text-big font-medium">
+                    Corners & Bookings
+                  </span>
+                  <EditCornersBookings
+                    updateCornersBookings={updateCornersBookings}
+                    item={{
+                      corners: newItem.corners,
+                      bookings: newItem.bookings,
+                    }}
+                  />
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="flex flex-col space-y-3 divide-y divide-border border border-border px-3 rounded-md">
+                  <span>Corners</span>
+                  <span>{` Half Time: ${newItem.corners.halfTime}`}</span>
+                  <span>{`Full Time: ${newItem.corners.fullTime}`}</span>
+                  <span>Bookings</span>
+                  <span>{` Half Time: ${newItem.corners.halfTime}`}</span>
+                  <span>{`Full Time: ${newItem.corners.fullTime}`}</span>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+        <div className="flex flex-col px-3 card">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                <span className="text-big font-medium">Odds</span>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="flex flex-col space-y-3 divide-y divide-border border border-border px-3 rounded-md">
+                  <div className="flex space-x-2 pt-3">
+                    <Button
+                      variant={"outline"}
+                      onClick={() => setIsAddOddOpen(true)}
+                    >
+                      Add odd
+                    </Button>
+                    <Button
+                      variant={"outline"}
+                      disabled={newItem.odds.length < 1}
+                      onClick={() => setIsDeleteAllOddsOpen(true)}
+                    >
+                      Delete all
+                    </Button>
+                  </div>
+                  {newItem.odds.length > 0 ? (
                     <>
-                      {newItem.markets
+                      {newItem.odds
                         .sort((a, b) => a._id - b._id)
                         .map((item) => (
                           <div
                             key={item._id}
                             className="flex justify-between items-center pt-3"
                           >
-                            <span className="">{`${item._id}: ${item.name}`}</span>
+                            <span className="">{`${item._id}: ${item.value}`}</span>
                             <div>
                               <button
                                 onClick={() => {
-                                  handleEditMarket(item);
+                                  handleEditOdd(item);
                                 }}
                                 className="text-rating-top rounded-md p-2 transition-all duration-75 hover:bg-muted-block"
                               >
                                 <SquarePen size={16} />
                               </button>
                               <Button
-                                onClick={() => handleDeleteMarket(item._id)}
+                                onClick={() => handleDeleteOdd(item._id)}
                                 variant={"ghost"}
                                 className="rounded-md p-2 transition-all duration-75 hover:bg-muted-block"
                               >
@@ -274,7 +320,7 @@ const EditFields = ({ item, fixtures }: EditFieldsProps) => {
                         ))}
                     </>
                   ) : (
-                    <span className="py-3 ">No markets to show</span>
+                    <span className="py-3 ">No odds to show</span>
                   )}
                 </div>
               </AccordionContent>
@@ -297,13 +343,13 @@ const EditFields = ({ item, fixtures }: EditFieldsProps) => {
           </Link>
         </div>
         <CustomDialog
-          isOpen={isAddMarketOpen}
-          setIsOpen={setIsAddMarketOpen}
-          title="Add market"
-          description="Add a new market to your fixture"
+          isOpen={isAddOddOpen}
+          setIsOpen={setIsAddOddOpen}
+          title="Add odd"
+          description="Add a new odd to your fixture"
         >
           <form
-            onSubmit={handleSubmit(handleAddMarket)}
+            onSubmit={handleSubmit(handleAddOdd)}
             className="flex flex-col space-y-3 p-2"
           >
             <div className="flex flex-col space-y-4">
@@ -326,13 +372,17 @@ const EditFields = ({ item, fixtures }: EditFieldsProps) => {
               </div>
               <div className="flex flex-col space-y-1">
                 <label className="font-medium block" htmlFor="name">
-                  Name
+                  Value
                 </label>
-                <Input type="text" {...register("name")} />
-
-                {errors?.name && (
+                <Input
+                  pattern="^\d*(\.\d{0,2})?$"
+                  {...register("value", {
+                    valueAsNumber: true,
+                  })}
+                />
+                {errors?.value && (
                   <small className="text-destructive">
-                    {errors.name?.message}
+                    {errors.value?.message}
                   </small>
                 )}
               </div>
@@ -342,7 +392,7 @@ const EditFields = ({ item, fixtures }: EditFieldsProps) => {
                   type="button"
                   disabled={isPending}
                   className="w-full"
-                  onClick={() => setIsAddMarketOpen(false)}
+                  onClick={() => setIsAddOddOpen(false)}
                 >
                   Cancel
                 </Button>
@@ -354,8 +404,8 @@ const EditFields = ({ item, fixtures }: EditFieldsProps) => {
           </form>
         </CustomDialog>
         <CustomDialog
-          isOpen={isDeleteAllOpen}
-          setIsOpen={setIsDeleteAllOpen}
+          isOpen={isDeleteAllOddsOpen}
+          setIsOpen={setIsDeleteAllOddsOpen}
           title="Delete All Items"
           description="Are you sure you want to delete all items?"
         >
@@ -363,21 +413,24 @@ const EditFields = ({ item, fixtures }: EditFieldsProps) => {
             <Button
               size="lg"
               variant="outline"
-              onClick={() => setIsDeleteAllOpen(false)}
+              onClick={() => setIsDeleteAllOddsOpen(false)}
             >
               Cancel
             </Button>
-            <Button
-              size="lg"
-              onClick={deleteAllItemMarkets}
-              variant="destructive"
-            >
+            <Button size="lg" onClick={deleteAllItemOdds} variant="destructive">
               Delete all
             </Button>
           </div>
         </CustomDialog>
       </div>
-      <div className="hidden lg:flex card p-6">Sidebar</div>
+      <div className="hidden lg:flex flex-col card p-6">
+        <span>Sidebar</span>
+        <pre className="mt-2 w-full rounded-md bg-muted-block p-4">
+          <code className="text-sky-600">
+            {JSON.stringify(newItem, null, 2)}
+          </code>
+        </pre>
+      </div>
     </div>
   );
 };

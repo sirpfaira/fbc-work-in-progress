@@ -27,7 +27,9 @@ export default function CustomDialog({
           <DialogTitle>{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
-        {children}
+        <div className="flex flex-col overflow-y-scroll max-h-[80vh] no-scrollbar">
+          {children}
+        </div>
       </DialogContent>
     </Dialog>
   );

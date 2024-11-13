@@ -31,6 +31,7 @@ const teamOptions = [
   { value: 105, label: "Leeds" },
   { value: 119, label: "Brighton" },
   { value: 189, label: "Liverpool" },
+  { value: 190, label: "Manchester City" },
 ];
 
 const competitionOptions = [
@@ -74,7 +75,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     },
   });
 
-  const onSubmit = async (values: BFixture) => {
+  const onSubmit = (values: BFixture) => {
     try {
       const competitionName = competitionOptions.find(
         (i) => i.value == values.competition
@@ -87,6 +88,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
       )?.label;
       const newItem: IFixture = {
         ...values,
+        date: values.date?.toISOString(),
         competitionName: competitionName!,
         teams: `${homeTeamName} v ${awayTeamName}`,
         scores: {
@@ -106,18 +108,18 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
         },
         odds: [],
       };
-      await setFormValues(newItem);
+      setFormValues(newItem);
       addItem();
-      // toast({
-      //   title: "You submitted the following values:",
-      //   description: (
-      //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-      //       <code className="text-white">
-      //         {JSON.stringify(newItem, null, 2)}
-      //       </code>
-      //     </pre>
-      //   ),
-      // });
+      toast({
+        title: "You submitted the following values:",
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+            <code className="text-white">
+              {JSON.stringify(newItem, null, 2)}
+            </code>
+          </pre>
+        ),
+      });
     } catch (error) {
       console.log(error);
     }
@@ -132,8 +134,13 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Fixture UID</FormLabel>
-              <FormControl>
-                <Input type="number" placeholder="UID" {...field} />
+              <FormControl className="mx-auto">
+                <Input
+                  type="number"
+                  placeholder="UID"
+                  {...field}
+                  className="w-[97%]"
+                />
               </FormControl>
               {form.formState.errors.uid && (
                 <FormMessage>{form.formState.errors.uid.message}</FormMessage>
@@ -211,7 +218,6 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
             </FormItem>
           )}
         />
-
         <FormField
           control={form.control}
           name="homeTeam"
@@ -274,7 +280,6 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
             </FormItem>
           )}
         />
-
         <div className="w-full flex justify-center items-center space-x-3 pt-3">
           <Button
             variant="outline"

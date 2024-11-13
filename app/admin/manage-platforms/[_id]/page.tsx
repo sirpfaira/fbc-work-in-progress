@@ -192,7 +192,6 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
           <div className="flex space-x-2">
             <Button
               variant={"outline"}
-              disabled={newItem.markets.length < 1}
               onClick={() => setIsAddMarketOpen(true)}
             >
               Add market
@@ -381,7 +380,14 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
           </div>
         </CustomDialog>
       </div>
-      <div className="hidden lg:flex card p-6">Sidebar</div>
+      <div className="hidden lg:flex flex-col card p-6">
+        <span>Sidebar</span>
+        <pre className="mt-2 w-full rounded-md bg-muted-block p-4">
+          <code className="text-sky-600">
+            {JSON.stringify(newItem, null, 2)}
+          </code>
+        </pre>
+      </div>
     </div>
   );
 };

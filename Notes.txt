@@ -9,6 +9,20 @@
   //   });
   // }
 
+   date: z
+    .string()
+    .datetime({ message: "Invalid datetime string! Must be UTC." })
+    .pipe(z.coerce.date()),
+
+
+    <Input
+                  pattern="^\d*(\.\d{0,2})?$"
+                  {...register("value", {
+                    valueAsNumber: true,
+                  })}
+                />
+    
+
 How to Create a Date and Time Picker Form | Next.js & Shadcn
 https://www.youtube.com/watch?v=NJRvABjsE6E
 https://shadcnui-expansions.typeart.cc/docs/datetime-picker

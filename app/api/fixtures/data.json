@@ -22,8 +22,8 @@
     "competition": 100,
     "competitionName": "Premier League",
     "teams": "Arsenal v Leeds",
-    "homeTeam": 105,
-    "awayTeam": 189,
+    "homeTeam": 100,
+    "awayTeam": 105,
     "odds": []
   },
   {
@@ -43,14 +43,14 @@
       "fullTime": ""
     },
     "_id": "672df1a6bf2yt931085a9649",
-    "uid": 100,
+    "uid": 102,
     "date": "2024-11-04T16:30:00.000Z",
     "status": "Not Started",
     "competition": 100,
     "competitionName": "Premier League",
     "teams": "Liverpool v Manchester City",
-    "homeTeam": 104,
-    "awayTeam": 187,
+    "homeTeam": 189,
+    "awayTeam": 190,
     "odds": []
   }
 ]

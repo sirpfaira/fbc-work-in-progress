@@ -2,10 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { IFixtureSchema } from "@/lib/schemas/fixture";
 import DatabaseConnection from "@/lib/dbconfig";
 import Fixture from "@/app/api/models/Fixture";
+// import fixtures from "../data.json";
 
 export async function GET(request: NextRequest, { params }: { params: any }) {
   try {
     const { id } = params;
+    // const fixture = fixtures.find((item) => item._id === id);
     await DatabaseConnection();
     const fixture = await Fixture.findOne({ _id: id });
 
