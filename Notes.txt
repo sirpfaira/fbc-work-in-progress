@@ -1,13 +1,15 @@
-// function onSubmit(values: IPlatform) {
-  //   toast({
-  //     title: "You submitted the following values:",
-  //     description: (
-  //       <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-  //         <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-  //       </pre>
-  //     ),
-  //   });
-  // }
+function onSubmit(values: IPlatform) {
+  toast({
+        title: "You submitted the following values:",
+        description: (
+          <pre className="mt-2 w-full rounded-md bg-muted-block p-4">
+            <code className="text-sky-600">
+              {JSON.stringify(values, null, 2)}
+            </code>
+          </pre>
+        ),
+      });
+   }
 
    date: z
     .string()

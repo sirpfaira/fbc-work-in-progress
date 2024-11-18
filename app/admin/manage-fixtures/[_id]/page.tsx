@@ -22,7 +22,6 @@ import {
   TFixture,
   IFixtureScores,
   ICornersBookings,
-  BFixture,
   IFixtureInfo,
 } from "@/lib/schemas/fixture";
 import ErrorTile from "@/app/components/common/ErrorTile";
