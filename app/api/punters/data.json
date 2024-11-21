@@ -9,8 +9,7 @@
     "image": "",
     "form": [],
     "followers": [],
-    "following": [],
-    "blocked": []
+    "following": []
   },
   {
     "_id": "6735e0afd5b030f1aa40220d",
@@ -22,7 +21,6 @@
     "image": "",
     "form": [],
     "followers": ["kai_wandi"],
-    "following": [],
-    "blocked": []
+    "following": []
   }
 ]

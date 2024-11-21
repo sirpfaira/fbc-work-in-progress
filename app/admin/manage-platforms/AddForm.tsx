@@ -1,5 +1,5 @@
 "use client";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
@@ -32,27 +32,22 @@ interface AddFormProps {
 export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const initialValues = {
-    name: "",
-    country: "",
-  };
-  const [formValues, setFormValues] = useState<BPlatform>(initialValues);
 
   const form = useForm<BPlatform>({
     resolver: zodResolver(BPlatformSchema),
-    defaultValues: initialValues,
     mode: "onBlur",
   });
 
   const { mutate: addItem, isPending } = useMutation({
-    mutationFn: async () => await axios.post(`/api/platforms`, formValues),
+    mutationFn: async (platform: BPlatform) =>
+      await axios.post(`/api/platforms`, platform),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["platforms"] });
+      queryClient.invalidateQueries({ queryKey: ["platforms"], exact: true });
     },
     onError: (response: any) => {
       toast({
@@ -64,13 +59,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const onSubmit = (values: BPlatform) => {
-    console.log(values);
-    try {
-      setFormValues(values);
-      addItem();
-    } catch (error) {
-      console.log(error);
-    }
+    addItem(values);
   };
 
   return (

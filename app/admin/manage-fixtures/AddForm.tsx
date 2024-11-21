@@ -1,5 +1,5 @@
 "use client";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
@@ -49,22 +49,21 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const [formValues, setFormValues] = useState<IFixture | null>(null);
-
   const form = useForm<BFixture>({
     resolver: zodResolver(BFixtureSchema),
     mode: "onBlur",
   });
 
   const { mutate: addItem, isPending } = useMutation({
-    mutationFn: async () => await axios.post(`/api/fixtures`, formValues),
+    mutationFn: async (fixture: IFixture) =>
+      await axios.post(`/api/fixtures`, fixture),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["fixtures"] });
+      queryClient.invalidateQueries({ queryKey: ["fixtures"], exact: true });
     },
     onError: (response: any) => {
       toast({
@@ -76,53 +75,38 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const onSubmit = (values: BFixture) => {
-    try {
-      const competitionName = competitionOptions.find(
-        (i) => i.value == values.competition
-      )?.label;
-      const homeTeamName = teamOptions.find(
-        (i) => i.value == values.homeTeam
-      )?.label;
-      const awayTeamName = teamOptions.find(
-        (i) => i.value == values.awayTeam
-      )?.label;
-      const newItem: IFixture = {
-        ...values,
-        date: values.date?.toISOString(),
-        competitionName: competitionName!,
-        teams: `${homeTeamName} v ${awayTeamName}`,
-        scores: {
-          tenMinutes: "",
-          halfTime: "",
-          fullTime: "",
-          extraTime: "",
-          penalties: "",
-        },
-        corners: {
-          halfTime: "",
-          fullTime: "",
-        },
-        bookings: {
-          halfTime: "",
-          fullTime: "",
-        },
-        odds: [],
-      };
-      setFormValues(newItem);
-      addItem();
-      toast({
-        title: "You submitted the following values:",
-        description: (
-          <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-            <code className="text-white">
-              {JSON.stringify(newItem, null, 2)}
-            </code>
-          </pre>
-        ),
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    const competitionName = competitionOptions.find(
+      (i) => i.value == values.competition
+    )?.label;
+    const homeTeamName = teamOptions.find(
+      (i) => i.value == values.homeTeam
+    )?.label;
+    const awayTeamName = teamOptions.find(
+      (i) => i.value == values.awayTeam
+    )?.label;
+    const newItem: IFixture = {
+      ...values,
+      date: values.date?.toISOString(),
+      competitionName: competitionName!,
+      teams: `${homeTeamName} v ${awayTeamName}`,
+      scores: {
+        tenMinutes: "",
+        halfTime: "",
+        fullTime: "",
+        extraTime: "",
+        penalties: "",
+      },
+      corners: {
+        halfTime: "",
+        fullTime: "",
+      },
+      bookings: {
+        halfTime: "",
+        fullTime: "",
+      },
+      odds: [],
+    };
+    addItem(newItem);
   };
 
   return (

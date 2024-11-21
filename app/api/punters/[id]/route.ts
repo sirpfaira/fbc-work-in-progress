@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { IPunterSchema } from "@/lib/schemas/punter";
 import DatabaseConnection from "@/lib/dbconfig";
 import Punter from "@/app/api/models/Punter";
-import punters from "../data.json";
+// import punters from "../data.json";
 
 export async function GET(request: NextRequest, { params }: { params: any }) {
   try {
     const { id } = params;
-    const punter = punters.find((item) => item._id === id);
-    // await DatabaseConnection();
-    // const punter = await Punter.findOne({ _id: id });
+    // const punter = punters.find((item) => item._id === id);
+    await DatabaseConnection();
+    const punter = await Punter.findOne({ _id: id });
 
     if (punter) {
       return NextResponse.json({ item: punter }, { status: 200 });

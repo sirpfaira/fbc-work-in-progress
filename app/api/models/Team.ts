@@ -5,6 +5,7 @@ const teamSchema = new Schema(
     uid: Number,
     name: String,
     competition: Number,
+    alias: String,
   },
   { versionKey: false }
 );

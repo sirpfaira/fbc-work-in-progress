@@ -24,11 +24,34 @@ function onSubmit(values: IPlatform) {
                   })}
                 />
     
-
+Mongo: tuEmhHkMGhFXFdhw
 How to Create a Date and Time Picker Form | Next.js & Shadcn
 https://www.youtube.com/watch?v=NJRvABjsE6E
 https://shadcnui-expansions.typeart.cc/docs/datetime-picker
 https://medium.com/@dinh.nt/create-your-own-datetime-picker-using-shadcn-409e6723225f
+https://mitchellhein25.github.io/CSharp-and-React-Insights/2023/06/26/React-Query-useMutation-hook.html
+https://tkdodo.eu/blog/mastering-mutations-in-react-query
+
+Use <Button asChild> to have your button clickable where the onclick is in the children of the button
+
+People.findOneAndUpdate(
+{ name: "Yash Salvi" },
+{ $push: { friends: friendNew } },
+{ upsert: true }
+);
+
+People.findOneAndUpdate(
+{ name: "Yash Salvi" },
+{ $push: { friends: friendNew } },
+).exec();
+
+function deleteCOI(companyId: string, buildingId: string) {
+const company = await Companies.findOneAndUpdate(
+{ companyId },
+{ $pull: { cois: { buildingId: buildingId } } }
+);
+return company;
+}
 
   // const placeholder = {
 //   _id: new mongoose.Types.ObjectId(),

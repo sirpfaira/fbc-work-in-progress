@@ -16,6 +16,12 @@ import PageTitle from "@/app/components/common/PageTitle";
 import DeleteForm from "@/app/components/common/DeleteForm";
 import AddForm from "./AddForm";
 import EditForm from "./EditForm";
+import { TDummy } from "@/lib/schemas/dummy";
+
+interface ApiResult {
+  dummies: TDummy[];
+  punters: TPunter[];
+}
 
 export default function ManagePunters() {
   const [isAddOpen, setIsAddOpen] = useState<boolean>(false);
@@ -60,10 +66,10 @@ export default function ManagePunters() {
   );
 
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["punters"],
+    queryKey: ["dummies"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/punters`);
-      return data.items as TPunter[];
+      const { data } = await axios.get(`/api/dummies`);
+      return data.items as ApiResult;
     },
   });
 
@@ -95,29 +101,25 @@ export default function ManagePunters() {
 
 interface DataTableFilterProps {
   columns: ColumnDef<TPunter>[];
-  data: TPunter[];
+  data: ApiResult;
   filter: string;
 }
 
 function DataTableFilter({ columns, data, filter }: DataTableFilterProps) {
   const [showDummy, setShowDummy] = useState<boolean>(false);
-  const [currentItems, setCurrentItems] = useState<TPunter[]>(data);
-  const dummyPunters = [
-    {
-      username: "kai_wandi",
-      realname: "Mkhaya",
-    },
-  ];
+  const [currentItems, setCurrentItems] = useState<TPunter[]>(data?.punters);
+
   useEffect(() => {
     if (showDummy) {
-      const dummy = data.filter((item1) =>
-        dummyPunters.some((item2) => item2.username === item1.username)
+      const dummy = data?.punters?.filter((item1) =>
+        data?.dummies?.some((item2) => item2.username === item1.username)
       );
       setCurrentItems(dummy);
     } else {
-      setCurrentItems(data);
+      setCurrentItems(data?.punters);
     }
   }, [showDummy]);
+
   return (
     <>
       <div className="flex space-x-2 card p-3">

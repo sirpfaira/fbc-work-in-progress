@@ -9,6 +9,7 @@ export const ITeamSchema = z.object({
     .min(1, { message: "Team name must not be empty!" })
     .max(36, { message: "Team name must not exceed 36 characters!" }),
   competition: z.number({ required_error: "Team season is required!" }),
+  alias: z.string().optional(),
 });
 
 export type ITeam = z.infer<typeof ITeamSchema>;

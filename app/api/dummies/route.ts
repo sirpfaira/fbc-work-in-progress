@@ -1,15 +1,20 @@
 import DatabaseConnection from "@/lib/dbconfig";
-import { IPunterSchema } from "@/lib/schemas/punter";
+import { BFullDummySchema, IDummy } from "@/lib/schemas/dummy";
 import { NextRequest, NextResponse } from "next/server";
+import Dummy from "@/app/api/models/Dummy";
 import Punter from "@/app/api/models/Punter";
-// import punters from "./data.json";
+import { IPunter } from "@/lib/schemas/punter";
 
 export async function GET() {
   try {
     await DatabaseConnection();
+    const dummies = await Dummy.find();
     const punters = await Punter.find();
-    if (punters) {
-      return NextResponse.json({ items: punters }, { status: 200 });
+    if (dummies) {
+      return NextResponse.json(
+        { items: { dummies: dummies, punters: punters } },
+        { status: 200 }
+      );
     } else {
       throw new Error("Something went wrong!");
     }
@@ -21,12 +26,28 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    const validated = IPunterSchema.safeParse(data);
-    console.log(data);
+    const validated = BFullDummySchema.safeParse(data);
     if (validated.success) {
+      const newDummy: IDummy = {
+        username: validated.data.username,
+        realname: validated.data.realname,
+        url: validated.data.url,
+      };
+      const newPunter: IPunter = {
+        username: validated.data.username,
+        name: validated.data.name,
+        country: validated.data.country,
+        platform: validated.data.platform,
+        rating: 0,
+        image: "",
+        form: [],
+        followers: [],
+        following: [],
+      };
       await DatabaseConnection();
-      const punter = await Punter.create(validated.data);
-      if (punter) {
+      const dummy = await Dummy.create(newDummy);
+      const punter = await Punter.create(newPunter);
+      if (dummy && punter) {
         return NextResponse.json({ message: "Success!" }, { status: 200 });
       } else {
         throw new Error("Something went wrong!");
@@ -35,7 +56,6 @@ export async function POST(request: NextRequest) {
       throw new Error("Invalid data!");
     }
   } catch (error: any) {
-    console.log(error?.message);
     return NextResponse.json(error.message, { status: 500 });
   }
 }
@@ -45,7 +65,7 @@ export async function PATCH(request: NextRequest) {
     const data = await request.json();
     if (data) {
       await DatabaseConnection();
-      await Punter.deleteMany({
+      await Dummy.deleteMany({
         _id: { $in: data },
       });
       return NextResponse.json({ message: "Success!" }, { status: 200 });

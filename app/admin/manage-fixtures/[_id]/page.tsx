@@ -82,12 +82,12 @@ const EditFields = ({ item }: EditFieldsProps) => {
     formState: { errors },
   } = useForm<IFixtureOdd>({
     resolver: zodResolver(IOddsSchema),
-    defaultValues: { _id: 1, value: 1 },
     mode: "onBlur",
   });
 
   const { mutate: editItem, isPending } = useMutation({
-    mutationFn: async () => await axios.put(`/api/fixtures/${itemId}`, newItem),
+    mutationFn: async (fixture: TFixture) =>
+      await axios.put(`/api/fixtures/${itemId}`, fixture),
     onSuccess: (response: any) => {
       toast({
         title: "Added Successfully!",
@@ -112,15 +112,7 @@ const EditFields = ({ item }: EditFieldsProps) => {
   });
 
   const handleSaveToDatabase = () => {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(newItem, null, 2)}</code>
-        </pre>
-      ),
-    });
-    editItem();
+    editItem(newItem);
   };
 
   function handleDeleteOdd(id: number) {

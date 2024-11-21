@@ -1,5 +1,5 @@
 "use client";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
@@ -16,8 +16,6 @@ interface AddFormProps {
 export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const initialValues = { uid: "", name: "" };
-  const [formValues, setFormValues] = useState<ICountry>(initialValues);
 
   const {
     register,
@@ -25,19 +23,19 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     formState: { errors },
   } = useForm<ICountry>({
     resolver: zodResolver(ICountrySchema),
-    defaultValues: initialValues,
     mode: "onBlur",
   });
 
   const { mutate: addItem, isPending } = useMutation({
-    mutationFn: async () => await axios.post(`/api/countries`, formValues),
+    mutationFn: async (country: ICountry) =>
+      await axios.post(`/api/countries`, country),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["countries"] });
+      queryClient.invalidateQueries({ queryKey: ["countries"], exact: true });
     },
     onError: (response: any) => {
       toast({
@@ -49,13 +47,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const onSubmit = async (values: ICountry) => {
-    console.log(values);
-    try {
-      setFormValues(values);
-      addItem();
-    } catch (error) {
-      console.log(error);
-    }
+    addItem(values);
   };
 
   return (

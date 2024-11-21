@@ -3,16 +3,6 @@ import { Banknote, Folder, HomeIcon, Settings } from "lucide-react";
 export const AdminNavigationItems = [
   { label: "Home", link: "/admin", icon: <HomeIcon size={14} /> },
   {
-    label: "Manage Trending",
-    link: "/admin/manage-trending",
-    icon: <HomeIcon size={14} />,
-  },
-  {
-    label: "Manage Codes",
-    link: "/admin/manage-codes",
-    icon: <HomeIcon size={14} />,
-  },
-  {
     label: "Manage Punters",
     link: "/admin/manage-punters",
     icon: <HomeIcon size={14} />,
@@ -50,3 +40,14 @@ export const AdminNavigationItems = [
   { label: "Test", link: "/admin/test", icon: <Banknote size={14} /> },
   { label: "Settings", link: "/admin/settings", icon: <Settings size={14} /> },
 ];
+
+// {
+//   label: "Manage Trending",
+//   link: "/admin/manage-trending",
+//   icon: <HomeIcon size={14} />,
+// },
+// {
+//   label: "Manage Codes",
+//   link: "/admin/manage-codes",
+//   icon: <HomeIcon size={14} />,
+// },

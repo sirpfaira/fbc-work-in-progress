@@ -1,5 +1,5 @@
 "use client";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
@@ -22,7 +22,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { BPunter, BPunterSchema, IPunter } from "@/lib/schemas/punter";
+import { BFullDummy, BFullDummySchema } from "@/lib/schemas/dummy";
 
 const platformOptions = [
   { value: "Betway", label: "Betway" },
@@ -41,23 +41,22 @@ interface AddFormProps {
 export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const [formValues, setFormValues] = useState<BPunter | null>(null);
 
-  const form = useForm<BPunter>({
-    resolver: zodResolver(BPunterSchema),
+  const form = useForm<BFullDummy>({
+    resolver: zodResolver(BFullDummySchema),
     mode: "onBlur",
   });
 
-  const { mutate: addItem, isPending } = useMutation({
-    mutationFn: async () =>
-      await axios.post(`/api/punters?cat=dummy`, formValues),
+  const { mutate: addDummy, isPending } = useMutation({
+    mutationFn: async (dummy: BFullDummy) =>
+      await axios.post(`/api/dummies`, dummy),
     onSuccess: (response: any) => {
+      queryClient.invalidateQueries({ queryKey: ["dummies"], exact: true });
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["punters"] });
     },
     onError: (response: any) => {
       toast({
@@ -68,21 +67,8 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     },
   });
 
-  const onSubmit = async (values: BPunter) => {
-    try {
-      const newItem: IPunter = {
-        ...values,
-        rating: 0,
-        image: "",
-        form: [],
-        followers: [],
-        following: [],
-      };
-      setFormValues(newItem);
-      addItem();
-    } catch (error) {
-      console.log(error);
-    }
+  const onSubmit = (values: BFullDummy) => {
+    addDummy(values);
   };
 
   return (
@@ -170,6 +156,38 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
                 </SelectContent>
               </Select>
               <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="realname"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Real name</FormLabel>
+              <FormControl>
+                <Input placeholder="Real Name" {...field} />
+              </FormControl>
+              {form.formState.errors.realname && (
+                <FormMessage>
+                  {form.formState.errors.realname.message}
+                </FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="url"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>URL</FormLabel>
+              <FormControl>
+                <Input placeholder="url" {...field} />
+              </FormControl>
+              {form.formState.errors.url && (
+                <FormMessage>{form.formState.errors.url.message}</FormMessage>
+              )}
             </FormItem>
           )}
         />

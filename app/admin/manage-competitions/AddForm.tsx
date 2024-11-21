@@ -1,5 +1,5 @@
 "use client";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
@@ -16,14 +16,6 @@ interface AddFormProps {
 export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const initialValues = {
-    uid: 1,
-    name: "",
-    season: 2023,
-    priority: 1,
-    country: "",
-  };
-  const [formValues, setFormValues] = useState<ICompetition>(initialValues);
 
   const {
     register,
@@ -31,19 +23,22 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     formState: { errors },
   } = useForm<ICompetition>({
     resolver: zodResolver(ICompetitionSchema),
-    defaultValues: initialValues,
     mode: "onBlur",
   });
 
   const { mutate: addItem, isPending } = useMutation({
-    mutationFn: async () => await axios.post(`/api/competitions`, formValues),
+    mutationFn: async (competition: ICompetition) =>
+      await axios.post(`/api/competitions`, competition),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["competitions"] });
+      queryClient.invalidateQueries({
+        queryKey: ["competitions"],
+        exact: true,
+      });
     },
     onError: (response: any) => {
       toast({
@@ -55,13 +50,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const onSubmit = async (values: ICompetition) => {
-    console.log(values);
-    try {
-      setFormValues(values);
-      addItem();
-    } catch (error) {
-      console.log(error);
-    }
+    addItem(values);
   };
 
   return (

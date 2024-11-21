@@ -1,5 +1,5 @@
 "use client";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -53,7 +53,6 @@ interface EditFieldsProps {
 const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const [formValues, setFormValues] = useState<ITeam>(item);
 
   const {
     register,
@@ -66,7 +65,8 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   });
 
   const { mutate: editItem, isPending } = useMutation({
-    mutationFn: async () => await axios.put(`/api/teams/${itemId}`, formValues),
+    mutationFn: async (team: ITeam) =>
+      await axios.put(`/api/teams/${itemId}`, team),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
@@ -92,13 +92,9 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   });
 
   const onSubmit = async (values: ITeam) => {
-    try {
-      setFormValues(values);
-      editItem();
-    } catch (error) {
-      console.log(error);
-    }
+    editItem(values);
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col space-y-4">

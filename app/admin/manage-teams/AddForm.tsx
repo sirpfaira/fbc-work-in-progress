@@ -1,5 +1,5 @@
 "use client";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
@@ -16,12 +16,6 @@ interface AddFormProps {
 export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const initialValues = {
-    uid: 1,
-    name: "",
-    competition: 2023,
-  };
-  const [formValues, setFormValues] = useState<ITeam>(initialValues);
 
   const {
     register,
@@ -29,19 +23,18 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     formState: { errors },
   } = useForm<ITeam>({
     resolver: zodResolver(ITeamSchema),
-    defaultValues: initialValues,
     mode: "onBlur",
   });
 
   const { mutate: addItem, isPending } = useMutation({
-    mutationFn: async () => await axios.post(`/api/teams`, formValues),
+    mutationFn: async (team: ITeam) => await axios.post(`/api/teams`, team),
     onSuccess: (response: any) => {
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
         description: response.data.message,
       });
-      queryClient.invalidateQueries({ queryKey: ["teams"] });
+      queryClient.invalidateQueries({ queryKey: ["teams"], exact: true });
     },
     onError: (response: any) => {
       toast({
@@ -53,13 +46,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const onSubmit = async (values: ITeam) => {
-    console.log(values);
-    try {
-      setFormValues(values);
-      addItem();
-    } catch (error) {
-      console.log(error);
-    }
+    addItem(values);
   };
 
   return (
@@ -104,6 +91,16 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
             <small className="text-destructive">
               {errors.competition?.message}
             </small>
+          )}
+        </div>
+        <div className="flex flex-col space-y-1">
+          <label className="font-medium block" htmlFor="alias">
+            Alias
+          </label>
+          <Input type="text" {...register("alias")} />
+
+          {errors?.alias && (
+            <small className="text-destructive">{errors.alias?.message}</small>
           )}
         </div>
         <div className="w-full flex justify-center items-center space-x-3 pt-3">

@@ -91,8 +91,8 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
   });
 
   const { mutate: editItem, isPending } = useMutation({
-    mutationFn: async () =>
-      await axios.put(`/api/platforms/${item._id}`, newItem),
+    mutationFn: async (platform: TPlatform) =>
+      await axios.put(`/api/platforms/${item._id}`, platform),
     onSuccess: (response: any) => {
       toast({
         title: "Added Successfully!",
@@ -113,15 +113,7 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
   });
 
   const handleSaveToDatabase = () => {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(newItem, null, 2)}</code>
-        </pre>
-      ),
-    });
-    editItem();
+    editItem(newItem);
   };
 
   function handleDeleteMarket(id: number) {
