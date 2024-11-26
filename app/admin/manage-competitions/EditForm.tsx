@@ -7,9 +7,30 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { ICompetition, ICompetitionSchema } from "@/lib/schemas/competition";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import {
+  ICompetition,
+  ICompetitionSchema,
+  TCompetition,
+} from "@/lib/schemas/competition";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
+import { getSeasonsOptions } from "@/lib/helpers";
+import { TCountry } from "@/lib/schemas/country";
 
 interface EditFormProps {
   itemId: string;
@@ -54,11 +75,23 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ICompetition>({
+  const { data: countries } = useQuery({
+    queryKey: ["countries"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/countries`);
+      return data.items as TCountry[];
+    },
+  });
+
+  const { data: competitions } = useQuery({
+    queryKey: ["competitions"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/competitions`);
+      return data.items as TCompetition[];
+    },
+  });
+
+  const form = useForm<ICompetition>({
     resolver: zodResolver(ICompetitionSchema),
     defaultValues: item,
     mode: "onBlur",
@@ -92,76 +125,136 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   });
 
   const onSubmit = async (values: ICompetition) => {
+    if (item.uid !== values.uid) {
+      const uidExists = competitions?.find((i) => i.uid === values.uid);
+      if (uidExists) {
+        toast({
+          title: "Error!",
+          description: "Competition with that uid already exists!",
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+
     editItem(values);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col space-y-4">
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="uid">
-            UID
-          </label>
-          <Input type="text" {...register("uid")} />
-
-          {errors?.uid && (
-            <small className="text-destructive">{errors.uid?.message}</small>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
+        <FormField
+          control={form.control}
+          name="uid"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Competition UID</FormLabel>
+              <FormControl className="mx-auto">
+                <Input
+                  type="number"
+                  placeholder="UID"
+                  {...field}
+                  className="w-[97%]"
+                />
+              </FormControl>
+              {form.formState.errors.uid && (
+                <FormMessage>{form.formState.errors.uid.message}</FormMessage>
+              )}
+            </FormItem>
           )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="name">
-            Name
-          </label>
-          <Input type="text" {...register("name")} />
-
-          {errors?.name && (
-            <small className="text-destructive">{errors.name?.message}</small>
+        />
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Competition name</FormLabel>
+              <FormControl>
+                <Input placeholder="Premier League" {...field} />
+              </FormControl>
+              {form.formState.errors.name && (
+                <FormMessage>{form.formState.errors.name.message}</FormMessage>
+              )}
+            </FormItem>
           )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="season">
-            Season
-          </label>
-          <Input
-            type="number"
-            {...register("season", {
-              valueAsNumber: true,
-            })}
-          />
-
-          {errors?.season && (
-            <small className="text-destructive">{errors.season?.message}</small>
+        />
+        <FormField
+          control={form.control}
+          name="season"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Competition season</FormLabel>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={String(field.value)}
+              >
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a season" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {getSeasonsOptions().map((item) => (
+                    <SelectItem key={item} value={String(item)}>
+                      {item}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
           )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="priority">
-            Priority
-          </label>
-          <Input
-            type="number"
-            {...register("priority", {
-              valueAsNumber: true,
-            })}
-          />
-
-          {errors?.priority && (
-            <small className="text-destructive">
-              {errors.priority?.message}
-            </small>
+        />
+        <FormField
+          control={form.control}
+          name="priority"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Priority</FormLabel>
+              <FormControl className="mx-auto">
+                <Input
+                  type="number"
+                  placeholder="Priority"
+                  {...field}
+                  className="w-[97%]"
+                />
+              </FormControl>
+              {form.formState.errors.priority && (
+                <FormMessage>
+                  {form.formState.errors.priority.message}
+                </FormMessage>
+              )}
+            </FormItem>
           )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="country">
-            Country
-          </label>
-          <Input type="text" {...register("country")} />
-
-          {errors?.country && (
-            <small className="text-destructive">
-              {errors.country?.message}
-            </small>
+        />
+        <FormField
+          control={form.control}
+          name="country"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Country</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a country" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {countries?.map((item) => (
+                    <SelectItem key={item.uid} value={item.uid}>
+                      {item.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {form.formState.errors.country && (
+                <FormMessage>
+                  {form.formState.errors.country.message}
+                </FormMessage>
+              )}
+            </FormItem>
           )}
-        </div>
+        />
         <div className="w-full flex justify-center items-center space-x-3 pt-3">
           <Button
             variant="outline"
@@ -181,7 +274,7 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
             Save
           </Button>
         </div>
-      </div>
-    </form>
+      </form>
+    </Form>
   );
 };

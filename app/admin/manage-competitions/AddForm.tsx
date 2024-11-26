@@ -1,13 +1,36 @@
 "use client";
 import React, { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/hooks/use-toast";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { ICompetition, ICompetitionSchema } from "@/lib/schemas/competition";
+import {
+  ICompetition,
+  ICompetitionSchema,
+  TCompetition,
+} from "@/lib/schemas/competition";
+import ErrorTile from "@/app/components/common/ErrorTile";
+import { FormSkeleton } from "@/app/components/common/LoadingSkeletons";
+import { TCountry } from "@/lib/schemas/country";
+import { getSeasonsOptions } from "@/lib/helpers";
 
 interface AddFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -17,11 +40,28 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
+  const { data: competitions } = useQuery({
+    queryKey: ["competitions"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/competitions`);
+      return data.items as TCompetition[];
+    },
+  });
+
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ICompetition>({
+    data: countries,
+    isError,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["countries"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/countries`);
+      return data.items as TCountry[];
+    },
+  });
+
+  const form = useForm<ICompetition>({
     resolver: zodResolver(ICompetitionSchema),
     mode: "onBlur",
   });
@@ -50,101 +90,168 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const onSubmit = async (values: ICompetition) => {
+    const uidExists = competitions?.find((i) => i.uid === values.uid);
+    if (uidExists) {
+      toast({
+        title: "Error!",
+        description: "Country with that uid already exists!",
+        variant: "destructive",
+      });
+      return;
+    }
     addItem(values);
   };
 
+  if (isError) return <ErrorTile error={error.message} />;
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col space-y-4">
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="uid">
-            UID
-          </label>
-          <Input
-            type="number"
-            {...register("uid", {
-              valueAsNumber: true,
-            })}
-          />
-          {errors?.uid && (
-            <small className="text-destructive">{errors.uid?.message}</small>
-          )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="name">
-            Name
-          </label>
-          <Input type="text" {...register("name")} />
-
-          {errors?.name && (
-            <small className="text-destructive">{errors.name?.message}</small>
-          )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="season">
-            Season
-          </label>
-          <Input
-            type="number"
-            {...register("season", {
-              valueAsNumber: true,
-            })}
-          />
-
-          {errors?.season && (
-            <small className="text-destructive">{errors.season?.message}</small>
-          )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="priority">
-            Priority
-          </label>
-          <Input
-            type="number"
-            {...register("priority", {
-              valueAsNumber: true,
-            })}
-          />
-
-          {errors?.priority && (
-            <small className="text-destructive">
-              {errors.priority?.message}
-            </small>
-          )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="country">
-            Country
-          </label>
-          <Input type="text" {...register("country")} />
-
-          {errors?.country && (
-            <small className="text-destructive">
-              {errors.country?.message}
-            </small>
-          )}
-        </div>
-
-        <div className="w-full flex justify-center items-center space-x-3 pt-3">
-          <Button
-            variant="outline"
-            type="button"
-            disabled={isPending}
-            className="w-full"
-            onClick={() => setIsOpen(false)}
+    <>
+      {isLoading ? (
+        <FormSkeleton rows={1} />
+      ) : (
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-full space-y-6"
           >
-            Cancel
-          </Button>
-          <Button
-            type="submit"
-            isLoading={isPending}
-            disabled={isPending}
-            className="w-full"
-          >
-            Save
-          </Button>
-        </div>
-      </div>
-    </form>
+            <FormField
+              control={form.control}
+              name="country"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Country</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a country" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {countries?.map((item) => (
+                        <SelectItem key={item.uid} value={item.uid}>
+                          {item.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {form.formState.errors.country && (
+                    <FormMessage>
+                      {form.formState.errors.country.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="uid"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Competition UID</FormLabel>
+                  <FormControl className="mx-auto">
+                    <Input
+                      type="number"
+                      placeholder="UID"
+                      {...field}
+                      className="w-[97%]"
+                    />
+                  </FormControl>
+                  {form.formState.errors.uid && (
+                    <FormMessage>
+                      {form.formState.errors.uid.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Competition name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Premier League" {...field} />
+                  </FormControl>
+                  {form.formState.errors.name && (
+                    <FormMessage>
+                      {form.formState.errors.name.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="season"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Competition season</FormLabel>
+                  <Select onValueChange={field.onChange}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a season" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {getSeasonsOptions().map((item) => (
+                        <SelectItem key={item} value={String(item)}>
+                          {item}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="priority"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Priority</FormLabel>
+                  <FormControl className="mx-auto">
+                    <Input
+                      type="number"
+                      placeholder="Priority"
+                      {...field}
+                      className="w-[97%]"
+                    />
+                  </FormControl>
+                  {form.formState.errors.priority && (
+                    <FormMessage>
+                      {form.formState.errors.priority.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <div className="w-full flex justify-center items-center space-x-3 pt-3">
+              <Button
+                variant="outline"
+                type="button"
+                disabled={isPending}
+                className="w-full"
+                onClick={() => setIsOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                isLoading={isPending}
+                disabled={isPending}
+                className="w-full"
+              >
+                Save
+              </Button>
+            </div>
+          </form>
+        </Form>
+      )}
+    </>
   );
 }

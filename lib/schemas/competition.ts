@@ -2,14 +2,14 @@ import { ObjectId } from "mongoose";
 import { z } from "zod";
 
 export const ICompetitionSchema = z.object({
-  uid: z.number({ required_error: "Competition uid is required!" }),
+  uid: z.coerce.number().min(1),
   name: z
     .string()
     .trim()
     .min(1, { message: "Competition name must not be empty!" })
     .max(36, { message: "Competition name must not exceed 36 characters!" }),
-  season: z.number({ required_error: "Competition season is required!" }),
-  priority: z.number({ required_error: "Competition priority is required!" }),
+  season: z.coerce.number().min(1),
+  priority: z.coerce.number().min(1),
   country: z
     .string()
     .trim()

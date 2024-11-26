@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/hooks/use-toast";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,6 +24,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { BPlatform, BPlatformSchema } from "@/lib/schemas/platform";
+import { TCountry } from "@/lib/schemas/country";
+import { FormSkeleton } from "@/app/components/common/LoadingSkeletons";
+import ErrorTile from "@/app/components/common/ErrorTile";
 
 interface AddFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -32,6 +35,19 @@ interface AddFormProps {
 export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
+  const {
+    data: countries,
+    isError,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["countries"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/countries`);
+      return data.items as TCountry[];
+    },
+  });
 
   const form = useForm<BPlatform>({
     resolver: zodResolver(BPlatformSchema),
@@ -62,73 +78,91 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     addItem(values);
   };
 
+  if (isError) return <ErrorTile error={error.message} />;
+
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Platform name</FormLabel>
-              <FormControl>
-                <Input placeholder="IXBet" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is the full name of the platform.
-              </FormDescription>
-              {form.formState.errors.name && (
-                <FormMessage>{form.formState.errors.name.message}</FormMessage>
+    <>
+      {isLoading ? (
+        <FormSkeleton rows={1} />
+      ) : (
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-full space-y-6"
+          >
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Platform Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Betway" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    This is the full name of the platform.
+                  </FormDescription>
+                  {form.formState.errors.name && (
+                    <FormMessage>
+                      {form.formState.errors.name.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
               )}
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="country"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Country</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a country" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="ART">Argentina</SelectItem>
-                  <SelectItem value="BOT">Bolivia</SelectItem>
-                  <SelectItem value="BRT">Brasilia</SelectItem>
-                  <SelectItem value="CLT">Chile</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormDescription>
-                The country in which the platform company operates.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="w-full flex justify-center items-center space-x-3 pt-3">
-          <Button
-            variant="outline"
-            type="button"
-            disabled={isPending}
-            className="w-full"
-            onClick={() => setIsOpen(false)}
-          >
-            Cancel
-          </Button>
-          <Button
-            type="submit"
-            isLoading={isPending}
-            disabled={isPending}
-            className="w-full"
-          >
-            Save
-          </Button>
-        </div>
-      </form>
-    </Form>
+            />
+            <FormField
+              control={form.control}
+              name="country"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Country</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a country" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {countries?.map((item) => (
+                        <SelectItem key={item.uid} value={item.uid}>
+                          {item.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {form.formState.errors.country && (
+                    <FormMessage>
+                      {form.formState.errors.country.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <div className="w-full flex justify-center items-center space-x-3 pt-3">
+              <Button
+                variant="outline"
+                type="button"
+                disabled={isPending}
+                className="w-full"
+                onClick={() => setIsOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                isLoading={isPending}
+                disabled={isPending}
+                className="w-full"
+              >
+                Save
+              </Button>
+            </div>
+          </form>
+        </Form>
+      )}
+    </>
   );
 }

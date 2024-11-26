@@ -2,7 +2,7 @@ import { ObjectId } from "mongoose";
 import { z } from "zod";
 
 export const IMarketSchema = z.object({
-  _id: z.number({ required_error: "Platform market id is required!" }),
+  _id: z.coerce.number().min(1),
   name: z
     .string()
     .trim()

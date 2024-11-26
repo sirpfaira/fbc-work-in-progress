@@ -7,9 +7,25 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { ITeam, ITeamSchema } from "@/lib/schemas/team";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { ITeam, ITeamSchema, TTeam } from "@/lib/schemas/team";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
+import { TCompetition } from "@/lib/schemas/competition";
 
 interface EditFormProps {
   itemId: string;
@@ -54,11 +70,23 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ITeam>({
+  const { data: competitions } = useQuery({
+    queryKey: ["competitions"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/competitions`);
+      return data.items as TCompetition[];
+    },
+  });
+
+  const { data: teams } = useQuery({
+    queryKey: ["teams"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/teams`);
+      return data.items as TTeam[];
+    },
+  });
+
+  const form = useForm<ITeam>({
     resolver: zodResolver(ITeamSchema),
     defaultValues: item,
     mode: "onBlur",
@@ -92,54 +120,100 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   });
 
   const onSubmit = async (values: ITeam) => {
+    if (item.uid !== values.uid) {
+      const uidExists = teams?.find((i) => i.uid === values.uid);
+      if (uidExists) {
+        toast({
+          title: "Error!",
+          description: "Team with that uid already exists!",
+          variant: "destructive",
+        });
+        return;
+      }
+    }
     editItem(values);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col space-y-4">
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="uid">
-            UID
-          </label>
-          <Input
-            type="number"
-            {...register("uid", {
-              valueAsNumber: true,
-            })}
-          />
-
-          {errors?.uid && (
-            <small className="text-destructive">{errors.uid?.message}</small>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
+        <FormField
+          control={form.control}
+          name="uid"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Team UID</FormLabel>
+              <FormControl className="mx-auto">
+                <Input
+                  type="number"
+                  placeholder="UID"
+                  {...field}
+                  className="w-[97%]"
+                />
+              </FormControl>
+              {form.formState.errors.uid && (
+                <FormMessage>{form.formState.errors.uid.message}</FormMessage>
+              )}
+            </FormItem>
           )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="name">
-            Name
-          </label>
-          <Input type="text" {...register("name")} />
-
-          {errors?.name && (
-            <small className="text-destructive">{errors.name?.message}</small>
+        />
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Team name</FormLabel>
+              <FormControl>
+                <Input placeholder="Arsenal" {...field} />
+              </FormControl>
+              {form.formState.errors.name && (
+                <FormMessage>{form.formState.errors.name.message}</FormMessage>
+              )}
+            </FormItem>
           )}
-        </div>
-        <div className="flex flex-col space-y-1">
-          <label className="font-medium block" htmlFor="competition">
-            Competition
-          </label>
-          <Input
-            type="number"
-            {...register("competition", {
-              valueAsNumber: true,
-            })}
-          />
-
-          {errors?.competition && (
-            <small className="text-destructive">
-              {errors.competition?.message}
-            </small>
+        />
+        <FormField
+          control={form.control}
+          name="competition"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Team Competition</FormLabel>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={String(field.value)}
+              >
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a competition" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {competitions?.map((item) => (
+                    <SelectItem key={item.uid} value={String(item.uid)}>
+                      {item.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
           )}
-        </div>
+        />
+        <FormField
+          control={form.control}
+          name="alias"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Team alias</FormLabel>
+              <FormControl>
+                <Input placeholder="alias" {...field} />
+              </FormControl>
+              {form.formState.errors.alias && (
+                <FormMessage>{form.formState.errors.alias.message}</FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
         <div className="w-full flex justify-center items-center space-x-3 pt-3">
           <Button
             variant="outline"
@@ -159,7 +233,7 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
             Save
           </Button>
         </div>
-      </div>
-    </form>
+      </form>
+    </Form>
   );
 };

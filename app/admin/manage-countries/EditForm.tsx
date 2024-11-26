@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { ICountry, ICountrySchema } from "@/lib/schemas/country";
+import { ICountry, ICountrySchema, TCountry } from "@/lib/schemas/country";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 
@@ -17,7 +17,12 @@ interface EditFormProps {
 }
 
 export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
-  const { data, isError, error, isLoading } = useQuery({
+  const {
+    data: country,
+    isError,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: ["country", { itemId }],
     queryFn: async () => {
       const { data } = await axios.get(`/api/countries/${itemId}`);
@@ -35,8 +40,8 @@ export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
         <FormSkeleton rows={2} />
       ) : (
         <>
-          {data && (
-            <EditFields itemId={itemId} item={data} setIsOpen={setIsOpen} />
+          {country && (
+            <EditFields itemId={itemId} item={country} setIsOpen={setIsOpen} />
           )}
         </>
       )}
@@ -53,6 +58,14 @@ interface EditFieldsProps {
 const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
+  const { data: countries } = useQuery({
+    queryKey: ["countries"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/countries`);
+      return data.items as TCountry[];
+    },
+  });
 
   const {
     register,
@@ -89,6 +102,15 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   });
 
   const onSubmit = async (values: ICountry) => {
+    const uidExists = countries?.find((i) => i.uid === values.uid);
+    if (uidExists) {
+      toast({
+        title: "Error!",
+        description: "Country with that uid already exists!",
+        variant: "destructive",
+      });
+      return;
+    }
     editItem(values);
   };
 

@@ -17,6 +17,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import {
   Select,
   SelectContent,
   SelectGroup,
@@ -34,6 +42,7 @@ import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 import PageTitle from "@/app/components/common/PageTitle";
 import CustomDialog from "@/app/components/common/CustomDialog";
+import { TOddSelector } from "@/lib/schemas/oddselector";
 
 export default function EditForm() {
   const params = useParams();
@@ -79,14 +88,16 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
   const [isDeleteAllOpen, setIsDeleteAllOpen] = useState(false);
   const [isAddMarketOpen, setIsAddMarketOpen] = useState<boolean>(false);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<IPlatformMarket>({
+  const { data: oddselectors } = useQuery({
+    queryKey: ["oddselectors"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/oddselectors`);
+      return data.items as TOddSelector[];
+    },
+  });
+
+  const form = useForm<IPlatformMarket>({
     resolver: zodResolver(IMarketSchema),
-    defaultValues: { _id: 1, name: "" },
     mode: "onBlur",
   });
 
@@ -122,7 +133,7 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
   }
 
   function handleAddMarket(data: IPlatformMarket) {
-    reset();
+    form.reset();
     const item = newItem.markets.find((i) => i._id == data._id);
     if (item) {
       const newMarkets = newItem.markets.map((market) => {
@@ -149,7 +160,7 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
   }
 
   function handleEditMarket(item: IPlatformMarket) {
-    reset(item);
+    form.reset(item);
     setIsAddMarketOpen(true);
   }
 
@@ -196,7 +207,6 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
               Delete all
             </Button>
           </div>
-
           <div className="flex space-x-2">
             <Select
               value={platformToClone}
@@ -297,40 +307,53 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
           title="Add market"
           description="Add a new market to your platform"
         >
-          <form
-            onSubmit={handleSubmit(handleAddMarket)}
-            className="flex flex-col space-y-3 p-2"
-          >
-            <div className="flex flex-col space-y-4">
-              <div className="flex flex-col space-y-1">
-                <label className="font-medium block" htmlFor="_id">
-                  Market Id
-                </label>
-                <Input
-                  id="_id"
-                  type="number"
-                  {...register("_id", {
-                    valueAsNumber: true,
-                  })}
-                />
-                {errors?._id && (
-                  <small className="text-destructive">
-                    {errors._id?.message}
-                  </small>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(handleAddMarket)}
+              className="w-full space-y-6"
+            >
+              <FormField
+                control={form.control}
+                name="_id"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Market UID</FormLabel>
+                    <Select onValueChange={field.onChange}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a season" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {oddselectors?.map((item) => (
+                          <SelectItem key={item.uid} value={String(item.uid)}>
+                            {item.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
                 )}
-              </div>
-              <div className="flex flex-col space-y-1">
-                <label className="font-medium block" htmlFor="name">
-                  Name
-                </label>
-                <Input type="text" {...register("name")} />
+              />
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Market name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Premier League" {...field} />
+                    </FormControl>
+                    {form.formState.errors.name && (
+                      <FormMessage>
+                        {form.formState.errors.name.message}
+                      </FormMessage>
+                    )}
+                  </FormItem>
+                )}
+              />
 
-                {errors?.name && (
-                  <small className="text-destructive">
-                    {errors.name?.message}
-                  </small>
-                )}
-              </div>
               <div className="w-full flex items-center space-x-3">
                 <Button
                   variant="outline"
@@ -345,8 +368,8 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
                   Save
                 </Button>
               </div>
-            </div>
-          </form>
+            </form>
+          </Form>
         </CustomDialog>
         <CustomDialog
           isOpen={isDeleteAllOpen}
