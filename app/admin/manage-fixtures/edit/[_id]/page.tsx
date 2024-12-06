@@ -17,6 +17,23 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   IOddsSchema,
   IFixtureOdd,
   TFixture,
@@ -32,6 +49,7 @@ import EditScores from "./EditScores";
 import EditCornersBookings from "./EditCornersBookings";
 import TimeStamp from "@/app/components/common/TimeStamp";
 import EditFixtureInfo from "./EditFixtureInfo";
+import { TOddSelector } from "@/lib/schemas/oddselector";
 
 export default function EditForm() {
   const params = useParams();
@@ -75,12 +93,15 @@ const EditFields = ({ item }: EditFieldsProps) => {
   const [isAddOddOpen, setIsAddOddOpen] = useState<boolean>(false);
   const itemId = item._id;
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<IFixtureOdd>({
+  const { data: oddselectors } = useQuery({
+    queryKey: ["oddselectors"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/oddselectors`);
+      return data.items as TOddSelector[];
+    },
+  });
+
+  const form = useForm<IFixtureOdd>({
     resolver: zodResolver(IOddsSchema),
     mode: "onBlur",
   });
@@ -121,7 +142,7 @@ const EditFields = ({ item }: EditFieldsProps) => {
   }
 
   function handleAddOdd(data: IFixtureOdd) {
-    reset({
+    form.reset({
       value: 1,
       _id: 1,
     });
@@ -143,7 +164,7 @@ const EditFields = ({ item }: EditFieldsProps) => {
   }
 
   function handleEditOdd(item: IFixtureOdd) {
-    reset(item);
+    form.reset(item);
     setIsAddOddOpen(true);
   }
 
@@ -339,44 +360,56 @@ const EditFields = ({ item }: EditFieldsProps) => {
           title="Add odd"
           description="Add a new odd to your fixture"
         >
-          <form
-            onSubmit={handleSubmit(handleAddOdd)}
-            className="flex flex-col space-y-3 p-2"
-          >
-            <div className="flex flex-col space-y-4">
-              <div className="flex flex-col space-y-1">
-                <label className="font-medium block" htmlFor="_id">
-                  Market Id
-                </label>
-                <Input
-                  id="_id"
-                  type="number"
-                  {...register("_id", {
-                    valueAsNumber: true,
-                  })}
-                />
-                {errors?._id && (
-                  <small className="text-destructive">
-                    {errors._id?.message}
-                  </small>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(handleAddOdd)}
+              className="w-full space-y-6"
+            >
+              <FormField
+                control={form.control}
+                name="_id"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Market UID</FormLabel>
+                    <Select onValueChange={field.onChange}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a market" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {oddselectors?.map((item) => (
+                          <SelectItem key={item.uid} value={String(item.uid)}>
+                            {item.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
                 )}
-              </div>
-              <div className="flex flex-col space-y-1">
-                <label className="font-medium block" htmlFor="name">
-                  Value
-                </label>
-                <Input
-                  pattern="^\d*(\.\d{0,2})?$"
-                  {...register("value", {
-                    valueAsNumber: true,
-                  })}
-                />
-                {errors?.value && (
-                  <small className="text-destructive">
-                    {errors.value?.message}
-                  </small>
+              />
+              <FormField
+                control={form.control}
+                name="value"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Market name</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="1.1"
+                        pattern="^\d*(\.\d{0,2})?$"
+                        {...field}
+                      />
+                    </FormControl>
+                    {form.formState.errors.value && (
+                      <FormMessage>
+                        {form.formState.errors.value.message}
+                      </FormMessage>
+                    )}
+                  </FormItem>
                 )}
-              </div>
+              />
               <div className="w-full flex items-center space-x-3">
                 <Button
                   variant="outline"
@@ -391,8 +424,8 @@ const EditFields = ({ item }: EditFieldsProps) => {
                   Save
                 </Button>
               </div>
-            </div>
-          </form>
+            </form>
+          </Form>
         </CustomDialog>
         <CustomDialog
           isOpen={isDeleteAllOddsOpen}

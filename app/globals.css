@@ -54,7 +54,7 @@ body {
     --muted: hsl(215, 27.9%, 16.9%);
     --muted-foreground: hsl(217.9, 10.6%, 64.9%);
     --muted-block: hsl(215, 27.9%, 16.9%);
-    --icon-inactive: hsl(0, 0%, 100%);
+    --icon-inactive: hsl(215, 27.9%, 16.9%);
     --icon-active: hsl(238.7, 83.5%, 66.7%);
     --border: hsl(215, 27.9%, 16.9%);
     --outline: hsl(220, 13%, 51%);

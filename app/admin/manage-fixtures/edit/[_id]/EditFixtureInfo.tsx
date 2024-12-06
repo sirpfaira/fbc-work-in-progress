@@ -29,21 +29,10 @@ import {
 import DateTimePicker from "@/app/components/common/DateTimePicker";
 import CustomDialog from "@/app/components/common/CustomDialog";
 import { fixtureStatus } from "@/lib/constants";
-
-const teamOptions = [
-  { value: 100, label: "Arsenal" },
-  { value: 105, label: "Leeds" },
-  { value: 119, label: "Brighton" },
-  { value: 189, label: "Liverpool" },
-  { value: 190, label: "Manchester City" },  
-];
-
-const competitionOptions = [
-  { value: 100, label: "EPL" },
-  { value: 105, label: "UCL" },
-  { value: 119, label: "Laliga" },
-  { value: 189, label: "Seria A" },
-];
+import { TCompetition } from "@/lib/schemas/competition";
+import { useQuery } from "@tanstack/react-query";
+import { TTeam } from "@/lib/schemas/team";
+import axios from "axios";
 
 interface EditFixtureInfoProps {
   updateFixtureInfo: (values: IFixtureInfo) => void;
@@ -56,6 +45,22 @@ export default function EditFixtureInfo({
 }: EditFixtureInfoProps) {
   const [isEditFixtureInfoOpen, setIsEditFixtureInfoOpen] =
     useState<boolean>(false);
+
+  const { data: competitions } = useQuery({
+    queryKey: ["competitions"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/competitions`);
+      return data.items as TCompetition[];
+    },
+  });
+
+  const { data: teams } = useQuery({
+    queryKey: ["teams"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/teams`);
+      return data.items as TTeam[];
+    },
+  });
 
   const initialValues: BFixture = {
     uid: item.uid,
@@ -74,15 +79,11 @@ export default function EditFixtureInfo({
 
   const onSubmit = async (values: BFixture) => {
     try {
-      const competitionName = competitionOptions.find(
-        (i) => i.value == values.competition
-      )?.label;
-      const homeTeamName = teamOptions.find(
-        (i) => i.value == values.homeTeam
-      )?.label;
-      const awayTeamName = teamOptions.find(
-        (i) => i.value == values.awayTeam
-      )?.label;
+      const competitionName = competitions?.find(
+        (i) => i.uid == values.competition
+      )?.name;
+      const homeTeamName = teams?.find((i) => i.uid == values.homeTeam)?.name;
+      const awayTeamName = teams?.find((i) => i.uid == values.awayTeam)?.name;
       const newItem: IFixtureInfo = {
         ...values,
         date: values.date?.toISOString(),
@@ -195,9 +196,9 @@ export default function EditFixtureInfo({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {competitionOptions.map((item) => (
-                        <SelectItem key={item.value} value={String(item.value)}>
-                          {item.label}
+                      {competitions?.map((item) => (
+                        <SelectItem key={item.uid} value={String(item.uid)}>
+                          {item.name}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -226,9 +227,9 @@ export default function EditFixtureInfo({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {teamOptions.map((item) => (
-                        <SelectItem key={item.value} value={String(item.value)}>
-                          {item.label}
+                      {teams?.map((item) => (
+                        <SelectItem key={item.uid} value={String(item.uid)}>
+                          {item.name}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -257,9 +258,9 @@ export default function EditFixtureInfo({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {teamOptions.map((item) => (
-                        <SelectItem key={item.value} value={String(item.value)}>
-                          {item.label}
+                      {teams?.map((item) => (
+                        <SelectItem key={item.uid} value={String(item.uid)}>
+                          {item.name}
                         </SelectItem>
                       ))}
                     </SelectContent>

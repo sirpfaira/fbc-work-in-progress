@@ -7,7 +7,11 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { IOddSelector, IOddSelectorSchema } from "@/lib/schemas/oddselector";
+import {
+  IOddSelector,
+  IOddSelectorSchema,
+  TOddSelector,
+} from "@/lib/schemas/oddselector";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 
@@ -54,6 +58,14 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
+  const { data: oddselectors } = useQuery({
+    queryKey: ["oddselectors"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/oddselectors`);
+      return data.items as TOddSelector[];
+    },
+  });
+
   const {
     register,
     handleSubmit,
@@ -92,6 +104,17 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
   });
 
   const onSubmit = async (values: IOddSelector) => {
+    if (item.uid !== values.uid) {
+      const uidExists = oddselectors?.find((i) => i.uid === values.uid);
+      if (uidExists) {
+        toast({
+          title: "Error!",
+          description: "Odd selector with that uid already exists!",
+          variant: "destructive",
+        });
+        return;
+      }
+    }
     editItem(values);
   };
 

@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "6745d86eefdc3bb3cc42abd9",
+    "uid": 33,
+    "name": "Manchester United",
+    "competition": 39,
+    "alias": "Man U,Man Utd"
+  },
+  {
+    "_id": "6745d9b3f75025710ff53f9c",
+    "uid": 34,
+    "name": "Newcastle United",
+    "competition": 39,
+    "alias": "Newcastle"
+  },
+  {
+    "_id": "6749bffcb6efe37d4f82de68",
+    "uid": 35,
+    "name": "Bournemouth",
+    "competition": 39,
+    "alias": "Bournem"
+  },
+  {
+    "_id": "674d9bea76a2310c525f3751",
+    "uid": 49,
+    "name": "Chelsea",
+    "competition": 39,
+    "alias": "Chelsea"
+  },
+  {
+    "_id": "674d9bfb76a2310c525f3757",
+    "uid": 47,
+    "name": "Tottenham",
+    "competition": 39,
+    "alias": "Tottenham"
+  },
+  {
+    "_id": "674d9c2a76a2310c525f375e",
+    "uid": 51,
+    "name": "Brighton",
+    "competition": 39,
+    "alias": "Brighton"
+  }
+]

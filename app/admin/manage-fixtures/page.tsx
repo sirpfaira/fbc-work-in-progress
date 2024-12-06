@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { ColumnDef, Row } from "@tanstack/react-table";
-import { PlusCircle, SquarePen, Trash2 } from "lucide-react";
+import { Download, PlusCircle, SquarePen, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ObjectId } from "mongoose";
 import { TFixture } from "@/lib/schemas/fixture";
@@ -67,9 +67,14 @@ export default function ManageFixtures() {
     <div className="flex flex-col space-y-5">
       <div className="card flex items-center justify-between px-4 py-2">
         <PageTitle title="Manage fixtures" link="/admin" />
-        <Button onClick={() => setIsAddOpen(true)} variant={"ghost"}>
-          <PlusCircle size={26} />
-        </Button>
+        <div className="flex space-x-1 items-center">
+          <Link href="/admin/manage-fixtures/fetch">
+            <Download size={26} />
+          </Link>
+          <Button onClick={() => setIsAddOpen(true)} variant={"ghost"}>
+            <PlusCircle size={26} />
+          </Button>
+        </div>
       </div>
       {isLoading ? (
         <TableSkeleton columns={4} />
@@ -116,7 +121,7 @@ function DataTableRowActions<TData extends WithId<ObjectId>>({
       </CustomDialog>
       <div className="flex items-center">
         <Link
-          href={`/admin/manage-fixtures/${itemId}`}
+          href={`/admin/manage-fixtures/edit/${itemId}`}
           className="text-rating-top rounded-md p-2 transition-all duration-75 hover:bg-muted-block"
         >
           <SquarePen size={16} />

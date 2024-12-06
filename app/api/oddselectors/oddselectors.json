@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "6723ed22b276b8ef12c760a9",
+    "uid": 101,
+    "apiId": 100,
+    "name": "Match Result (1X2) - Home",
+    "alias": "1,Home"
+  },
+  {
+    "_id": "672a1a862fce2c4b10855a93",
+    "uid": 201,
+    "apiId": 3,
+    "name": "BTS - Yes",
+    "alias": "GG"
+  }
+]

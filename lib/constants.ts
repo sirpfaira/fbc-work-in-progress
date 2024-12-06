@@ -4,3 +4,5 @@ export const fixtureStatus = [
   "Postponed",
   "Cancelled",
 ];
+
+export const autoMarkets = [101, 102, 103, 201, 202];

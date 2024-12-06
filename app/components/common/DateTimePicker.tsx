@@ -28,7 +28,7 @@ interface DateTimePickerProps {
 export default function DateTimePicker({
   startYear = getYear(new Date()) - 100,
   endYear = getYear(new Date()) + 100,
-  date,
+  date = new Date(new Date().setHours(12, 0, 0, 0)),
   setDate,
 }: DateTimePickerProps) {
   const months = [

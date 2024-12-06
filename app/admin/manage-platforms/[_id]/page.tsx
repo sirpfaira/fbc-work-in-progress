@@ -191,7 +191,7 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
         <div className="card flex items-center justify-between px-3 py-2">
           <PageTitle title={item.uid} link="/admin/manage-platforms" />
         </div>
-        <div className="flex justify-between p-3 card ">
+        <div className="flex flex-col  gap-2 items-center md:flex-row md:justify-between p-3 card">
           <div className="flex space-x-2">
             <Button
               variant={"outline"}
@@ -321,7 +321,7 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
                     <Select onValueChange={field.onChange}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a season" />
+                          <SelectValue placeholder="Select a market" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>

@@ -1,7 +1,7 @@
 "use client";
 import React, { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/hooks/use-toast";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,24 +22,18 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { BFixture, BFixtureSchema, IFixture } from "@/lib/schemas/fixture";
+import {
+  BFixture,
+  BFixtureSchema,
+  IFixture,
+  TFixture,
+} from "@/lib/schemas/fixture";
 import { fixtureStatus } from "@/lib/constants";
 import DateTimePicker from "@/app/components/common/DateTimePicker";
-
-const teamOptions = [
-  { value: 100, label: "Arsenal" },
-  { value: 105, label: "Leeds" },
-  { value: 119, label: "Brighton" },
-  { value: 189, label: "Liverpool" },
-  { value: 190, label: "Manchester City" },
-];
-
-const competitionOptions = [
-  { value: 100, label: "EPL" },
-  { value: 105, label: "UCL" },
-  { value: 119, label: "Laliga" },
-  { value: 189, label: "Seria A" },
-];
+import { TCompetition } from "@/lib/schemas/competition";
+import { FormSkeleton } from "@/app/components/common/LoadingSkeletons";
+import ErrorTile from "@/app/components/common/ErrorTile";
+import { TTeam } from "@/lib/schemas/team";
 
 interface AddFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -48,6 +42,35 @@ interface AddFormProps {
 export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
+  const {
+    data: competitions,
+    isError,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["competitions"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/competitions`);
+      return data.items as TCompetition[];
+    },
+  });
+
+  const { data: teams } = useQuery({
+    queryKey: ["teams"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/teams`);
+      return data.items as TTeam[];
+    },
+  });
+
+  const { data: fixtures } = useQuery({
+    queryKey: ["fixtures"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/fixtures`);
+      return data.items as TFixture[];
+    },
+  });
 
   const form = useForm<BFixture>({
     resolver: zodResolver(BFixtureSchema),
@@ -75,215 +98,236 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const onSubmit = (values: BFixture) => {
-    const competitionName = competitionOptions.find(
-      (i) => i.value == values.competition
-    )?.label;
-    const homeTeamName = teamOptions.find(
-      (i) => i.value == values.homeTeam
-    )?.label;
-    const awayTeamName = teamOptions.find(
-      (i) => i.value == values.awayTeam
-    )?.label;
+    const uidExists = fixtures?.find((i) => i.uid === values.uid);
+    if (uidExists) {
+      toast({
+        title: "Error!",
+        description: "Fixture with that uid already exists!",
+        variant: "destructive",
+      });
+      return;
+    }
+    const competitionName = competitions?.find(
+      (i) => i.uid == values.competition
+    )?.name;
+    const homeTeamName = teams?.find((i) => i.uid == values.homeTeam)?.name;
+    const awayTeamName = teams?.find((i) => i.uid == values.awayTeam)?.name;
     const newItem: IFixture = {
       ...values,
       date: values.date?.toISOString(),
       competitionName: competitionName!,
       teams: `${homeTeamName} v ${awayTeamName}`,
       scores: {
-        tenMinutes: "",
-        halfTime: "",
-        fullTime: "",
-        extraTime: "",
-        penalties: "",
+        tenMinutes: null,
+        halfTime: null,
+        fullTime: null,
+        extraTime: null,
+        penalties: null,
       },
       corners: {
-        halfTime: "",
-        fullTime: "",
+        halfTime:null,
+        fullTime: null,
       },
       bookings: {
-        halfTime: "",
-        fullTime: "",
+        halfTime: null,
+        fullTime: null,
       },
       odds: [],
     };
     addItem(newItem);
   };
 
+  if (isError) return <ErrorTile error={error.message} />;
+
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
-        <FormField
-          control={form.control}
-          name="uid"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Fixture UID</FormLabel>
-              <FormControl className="mx-auto">
-                <Input
-                  type="number"
-                  placeholder="UID"
-                  {...field}
-                  className="w-[97%]"
-                />
-              </FormControl>
-              {form.formState.errors.uid && (
-                <FormMessage>{form.formState.errors.uid.message}</FormMessage>
-              )}
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="date"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Fixture date</FormLabel>
-              <DateTimePicker setDate={field.onChange} date={field.value} />
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="status"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Status</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a status" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {fixtureStatus.map((item) => (
-                    <SelectItem key={item} value={item}>
-                      {item}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {form.formState.errors.status && (
-                <FormMessage>
-                  {form.formState.errors.status.message}
-                </FormMessage>
-              )}
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="competition"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Competition</FormLabel>
-              <Select
-                onValueChange={(value) => field.onChange(Number(value))}
-                defaultValue={String(field.value)}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a competition" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {competitionOptions.map((item) => (
-                    <SelectItem key={item.value} value={String(item.value)}>
-                      {item.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {form.formState.errors.competition && (
-                <FormMessage>
-                  {form.formState.errors.competition.message}
-                </FormMessage>
-              )}
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="homeTeam"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Home Team</FormLabel>
-              <Select
-                onValueChange={(value) => field.onChange(Number(value))}
-                defaultValue={String(field.value)}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select home team" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {teamOptions.map((item) => (
-                    <SelectItem key={item.value} value={String(item.value)}>
-                      {item.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {form.formState.errors.homeTeam && (
-                <FormMessage>
-                  {form.formState.errors.homeTeam.message}
-                </FormMessage>
-              )}
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="awayTeam"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Away Team</FormLabel>
-              <Select
-                onValueChange={(value) => field.onChange(Number(value))}
-                defaultValue={String(field.value)}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select away team" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {teamOptions.map((item) => (
-                    <SelectItem key={item.value} value={String(item.value)}>
-                      {item.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {form.formState.errors.awayTeam && (
-                <FormMessage>
-                  {form.formState.errors.awayTeam.message}
-                </FormMessage>
-              )}
-            </FormItem>
-          )}
-        />
-        <div className="w-full flex justify-center items-center space-x-3 pt-3">
-          <Button
-            variant="outline"
-            type="button"
-            disabled={isPending}
-            className="w-full"
-            onClick={() => setIsOpen(false)}
+    <>
+      {isLoading ? (
+        <FormSkeleton rows={1} />
+      ) : (
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-full space-y-6"
           >
-            Cancel
-          </Button>
-          <Button
-            type="submit"
-            isLoading={isPending}
-            disabled={isPending}
-            className="w-full"
-          >
-            Save
-          </Button>
-        </div>
-      </form>
-    </Form>
+            <FormField
+              control={form.control}
+              name="uid"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Fixture UID</FormLabel>
+                  <FormControl className="mx-auto">
+                    <Input
+                      type="number"
+                      placeholder="UID"
+                      {...field}
+                      className="w-[97%]"
+                    />
+                  </FormControl>
+                  {form.formState.errors.uid && (
+                    <FormMessage>
+                      {form.formState.errors.uid.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="date"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel>Fixture date</FormLabel>
+                  <DateTimePicker setDate={field.onChange} date={field.value} />
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="status"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Status</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a status" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {fixtureStatus.map((item) => (
+                        <SelectItem key={item} value={item}>
+                          {item}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {form.formState.errors.status && (
+                    <FormMessage>
+                      {form.formState.errors.status.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="competition"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Competition</FormLabel>
+                  <Select
+                    onValueChange={(value) => field.onChange(Number(value))}
+                    defaultValue={String(field.value)}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a competition" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {competitions?.map((item) => (
+                        <SelectItem key={item.uid} value={String(item.uid)}>
+                          {item.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {form.formState.errors.competition && (
+                    <FormMessage>
+                      {form.formState.errors.competition.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="homeTeam"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Home Team</FormLabel>
+                  <Select
+                    onValueChange={(value) => field.onChange(Number(value))}
+                    defaultValue={String(field.value)}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select home team" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {teams?.map((item) => (
+                        <SelectItem key={item.uid} value={String(item.uid)}>
+                          {item.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {form.formState.errors.homeTeam && (
+                    <FormMessage>
+                      {form.formState.errors.homeTeam.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="awayTeam"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Away Team</FormLabel>
+                  <Select
+                    onValueChange={(value) => field.onChange(Number(value))}
+                    defaultValue={String(field.value)}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select away team" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {teams?.map((item) => (
+                        <SelectItem key={item.uid} value={String(item.uid)}>
+                          {item.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {form.formState.errors.awayTeam && (
+                    <FormMessage>
+                      {form.formState.errors.awayTeam.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <div className="w-full flex justify-center items-center space-x-3 pt-3">
+              <Button
+                variant="outline"
+                type="button"
+                disabled={isPending}
+                className="w-full"
+                onClick={() => setIsOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                isLoading={isPending}
+                disabled={isPending}
+                className="w-full"
+              >
+                Save
+              </Button>
+            </div>
+          </form>
+        </Form>
+      )}
+    </>
   );
 }

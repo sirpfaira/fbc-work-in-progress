@@ -1,29 +1,42 @@
 import { ObjectId } from "mongoose";
 import { z } from "zod";
 
+export const BLeagueSchema = z.object({
+  competition: z.number().min(1),
+  date: z.date(),
+});
+
+export const ILeagueSchema = z.object({
+  uid: z.number().min(1),
+  name: z.string().min(1),
+  season: z.number().min(1),
+  date: z.string().min(1),
+  count: z.number(),
+  auto: z.number(),
+  fetched: z.boolean(),
+});
+
 export const IScoresSchema = z.object({
-  tenMinutes: z.string().max(5),
-  halfTime: z.string().max(5),
-  fullTime: z.string().max(5),
-  extraTime: z.string().max(5),
-  penalties: z.string().max(5),
+  tenMinutes: z.string().nullable(),
+  halfTime: z.string().nullable(),
+  fullTime: z.string().nullable(),
+  extraTime: z.string().nullable(),
+  penalties: z.string().nullable(),
 });
 
 export const ICornersSchema = z.object({
-  halfTime: z.string().max(5),
-  fullTime: z.string().max(5),
+  halfTime: z.string().nullable(),
+  fullTime: z.string().nullable(),
 });
 
 export const IBookingsSchema = z.object({
-  halfTime: z.string().max(5),
-  fullTime: z.string().max(5),
+  halfTime: z.string().nullable(),
+  fullTime: z.string().nullable(),
 });
 
 export const IOddsSchema = z.object({
-  _id: z.number({ required_error: "Fixture odd id is required!" }).min(100),
-  value: z
-    .number({ required_error: "Fixture odd value is required!" })
-    .min(1.01),
+  _id: z.coerce.number().min(1),
+  value: z.coerce.number().min(1.01),
 });
 
 export const BFixtureSchema = z
@@ -87,6 +100,8 @@ export const IFixtureInfoSchema = IFixtureSchema.omit({
   odds: true,
 });
 
+export type BLeague = z.infer<typeof BLeagueSchema>;
+export type ILeague = z.infer<typeof ILeagueSchema>;
 export type IFixtureInfo = z.infer<typeof IFixtureInfoSchema>;
 export type ICornersBookings = z.infer<typeof ICornersBookingsSchema>;
 export type IFixtureScores = z.infer<typeof IScoresSchema>;

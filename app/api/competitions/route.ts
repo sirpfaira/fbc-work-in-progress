@@ -2,11 +2,12 @@ import DatabaseConnection from "@/lib/dbconfig";
 import { ICompetitionSchema } from "@/lib/schemas/competition";
 import { NextRequest, NextResponse } from "next/server";
 import Competition from "@/app/api/models/Competition";
+import competitions from "./competitions.json";
 
 export async function GET() {
   try {
-    await DatabaseConnection();
-    const competitions = await Competition.find();
+    // await DatabaseConnection();
+    // const competitions = await Competition.find();
     if (competitions) {
       return NextResponse.json({ items: competitions }, { status: 200 });
     } else {

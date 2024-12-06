@@ -1,0 +1,58 @@
+[
+  {
+    "_id": "674ff00b16d30aadd958cfb7",
+    "uid": "1035428-101-39",
+    "date": "2024-05-02T18:30:00.000Z",
+    "competition": 39,
+    "competitionName": "ENG · Premier League",
+    "fixture": 1035428,
+    "fixtureName": "Chelsea v Tottenham",
+    "market": 101,
+    "marketName": "Match Result (1X2) · Home",
+    "result": null,
+    "count": 23456,
+    "value": 1.45
+  },
+  {
+    "_id": "674ff01916d30aadd958cfb9",
+    "uid": "1035514-103-39",
+    "date": "2024-04-28T13:00:00.000Z",
+    "competition": 39,
+    "competitionName": "ENG · Premier League",
+    "fixture": 1035514,
+    "fixtureName": "Brighton v Bournemouth",
+    "market": 103,
+    "marketName": "Match Result (1X2) · Away",
+    "result": null,
+    "count": 23456,
+    "value": 1.45
+  },
+  {
+    "_id": "674ff02a16d30aadd958cfbb",
+    "uid": "1035514-201-39",
+    "date": "2024-04-28T13:00:00.000Z",
+    "competition": 39,
+    "competitionName": "ENG · Premier League",
+    "fixture": 1035514,
+    "fixtureName": "Brighton v Bournemouth",
+    "market": 201,
+    "marketName": "Double Chance · Home or Away",
+    "result": null,
+    "count": 234563,
+    "value": 1.95
+  },
+  {
+    "_id": "674ff03516d30aadd958cfbd",
+    "uid": "1035428-501-39",
+    "date": "2024-05-02T18:30:00.000Z",
+    "competition": 39,
+    "competitionName": "ENG · Premier League",
+    "fixture": 355414,
+    "fixtureName": "Chelsea v Tottenham",
+    "market": 501,
+    "marketName": "Goals Overs/Unders · Over 1.5",
+    "result": null,
+    "count": 9563,
+    "value": 1.59
+  }
+]

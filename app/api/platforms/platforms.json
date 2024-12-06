@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "67214ae6d1bbfd875c6042c0",
+    "uid": "RSA-Betway",
+    "markets": [
+      {
+        "_id": 101,
+        "name": "Match Result (1X2) - Home"
+      },
+      {
+        "_id": 201,
+        "name": "Both Teams To Score - Yes"
+      }
+    ]
+  },
+  {
+    "_id": "6746b47eba295da6ddc5ec06",
+    "uid": "ZAR-GBets",
+    "markets": [
+      {
+        "_id": 101,
+        "name": "Match Result (1X2) - Home"
+      }
+    ]
+  }
+]

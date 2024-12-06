@@ -3,6 +3,11 @@ import { Banknote, Folder, HomeIcon, Settings } from "lucide-react";
 export const AdminNavigationItems = [
   { label: "Home", link: "/admin", icon: <HomeIcon size={14} /> },
   {
+    label: "Manage Bets",
+    link: "/admin/manage-bets",
+    icon: <HomeIcon size={14} />,
+  },
+  {
     label: "Manage Punters",
     link: "/admin/manage-punters",
     icon: <HomeIcon size={14} />,
@@ -13,14 +18,14 @@ export const AdminNavigationItems = [
     icon: <HomeIcon size={14} />,
   },
   {
-    label: "Manage Odd Selectors",
-    link: "/admin/manage-oddselectors",
-    icon: <Settings size={14} />,
-  },
-  {
     label: "Manage Platforms",
     link: "/admin/manage-platforms",
     icon: <Settings size={14} />,
+  },
+  {
+    label: "Manage Odd Selectors",
+    link: "/admin/manage-oddselectors",
+    icon: <Folder size={14} />,
   },
   {
     label: "Manage Teams",

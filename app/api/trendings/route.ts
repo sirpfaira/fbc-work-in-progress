@@ -1,15 +1,15 @@
 import DatabaseConnection from "@/lib/dbconfig";
-import { ITeamSchema } from "@/lib/schemas/team";
+import { ITrendingSchema } from "@/lib/schemas/trending";
 import { NextRequest, NextResponse } from "next/server";
-import Team from "@/app/api/models/Team";
-import teams from "./teams.json";
+import Trending from "@/app/api/models/Trending";
+// import trending from "./trending.json";
 
 export async function GET() {
   try {
-    // await DatabaseConnection();
-    // const teams = await Team.find();
-    if (teams) {
-      return NextResponse.json({ items: teams }, { status: 200 });
+    await DatabaseConnection();
+    const trending = await Trending.find();
+    if (trending) {
+      return NextResponse.json({ items: trending }, { status: 200 });
     } else {
       throw new Error("Something went wrong!");
     }
@@ -21,11 +21,11 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    const validated = ITeamSchema.safeParse(data);
+    const validated = ITrendingSchema.safeParse(data);
     if (validated.success) {
       await DatabaseConnection();
-      const team = await Team.create(validated.data);
-      if (team) {
+      const trending = await Trending.create(validated.data);
+      if (trending) {
         return NextResponse.json({ message: "Success!" }, { status: 200 });
       } else {
         throw new Error("Something went wrong!");
@@ -43,7 +43,7 @@ export async function PATCH(request: NextRequest) {
     const data = await request.json();
     if (data) {
       await DatabaseConnection();
-      await Team.deleteMany({
+      await Trending.deleteMany({
         _id: { $in: data },
       });
       return NextResponse.json({ message: "Success!" }, { status: 200 });

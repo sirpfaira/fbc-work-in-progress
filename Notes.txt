@@ -16,6 +16,8 @@ function onSubmit(values: IPlatform) {
     .datetime({ message: "Invalid datetime string! Must be UTC." })
     .pipe(z.coerce.date()),
 
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
 
     <Input
                   pattern="^\d*(\.\d{0,2})?$"

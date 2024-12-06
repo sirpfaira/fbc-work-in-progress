@@ -136,7 +136,6 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
         return;
       }
     }
-
     editItem(values);
   };
 

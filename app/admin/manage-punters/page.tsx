@@ -114,24 +114,27 @@ interface DataTableFilterProps {
 }
 
 function DataTableFilter({ columns, data, filter }: DataTableFilterProps) {
-  const [showDummy, setShowDummy] = useState<boolean>(false);
+  const [showDummiesOnly, setShowDummiesOnly] = useState<boolean>(false);
   const [currentItems, setCurrentItems] = useState<TPunter[]>(data?.punters);
 
   useEffect(() => {
-    if (showDummy) {
-      const dummy = data?.punters?.filter((item1) =>
+    if (showDummiesOnly) {
+      const dummies = data?.punters?.filter((item1) =>
         data?.dummies?.some((item2) => item2.username === item1.username)
       );
-      setCurrentItems(dummy);
+      setCurrentItems(dummies);
     } else {
       setCurrentItems(data?.punters);
     }
-  }, [showDummy]);
+  }, [showDummiesOnly]);
 
   return (
     <>
       <div className="flex space-x-2 card p-3">
-        <Switch checked={showDummy} onCheckedChange={setShowDummy} />
+        <Switch
+          checked={showDummiesOnly}
+          onCheckedChange={setShowDummiesOnly}
+        />
         <span>Show Dummy Punters Only</span>
       </div>
       {data && (

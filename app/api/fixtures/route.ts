@@ -2,11 +2,12 @@ import DatabaseConnection from "@/lib/dbconfig";
 import { IFixtureSchema } from "@/lib/schemas/fixture";
 import { NextRequest, NextResponse } from "next/server";
 import Fixture from "@/app/api/models/Fixture";
+import fixtures from "./fixtures.json";
 
 export async function GET() {
   try {
-    await DatabaseConnection();
-    const fixtures = await Fixture.find();
+    // await DatabaseConnection();
+    // const fixtures = await Fixture.find();
     if (fixtures) {
       return NextResponse.json({ items: fixtures }, { status: 200 });
     } else {
@@ -21,7 +22,6 @@ export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
     const validated = IFixtureSchema.safeParse(data);
-    console.log(data);
     if (validated.success) {
       await DatabaseConnection();
       const fixture = await Fixture.create(validated.data);
@@ -30,8 +30,6 @@ export async function POST(request: NextRequest) {
       } else {
         throw new Error("Something went wrong!");
       }
-
-      // return NextResponse.json({ message: "Success!" }, { status: 200 });
     } else {
       throw new Error("Invalid data!");
     }
