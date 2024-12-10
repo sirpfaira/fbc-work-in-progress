@@ -15,7 +15,10 @@ export function getSeasonsOptions() {
 }
 
 export function getTrendingResult(fixture: TFixture, market: number) {
-  return "won";
+  if (fixture && market) {
+    return "won";
+  }
+  return null;
 }
 
 export function getShortDate(isoDateString: string): string {

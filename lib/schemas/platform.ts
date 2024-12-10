@@ -30,6 +30,10 @@ export const IPlatformSchema = z.object({
     .trim()
     .min(1, { message: "Platform uid must not be empty!" })
     .max(36, { message: "Platform uid must not exceed 36 characters!" }),
+  country: z
+    .string()
+    .trim()
+    .min(1, { message: "Platform country is required!" }),
   markets: z.array(IMarketSchema),
 });
 

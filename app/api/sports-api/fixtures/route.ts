@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import apiFixturesResponse from "./api-fixtures.json";
-// import moment from "moment";
 import { IFixture } from "@/lib/schemas/fixture";
 
 interface RawFixture {
@@ -92,9 +91,10 @@ interface TApiFixtureResponse {
 export async function POST(request: NextRequest) {
   // Fetches one league at a time
   try {
-    const league = await request.json();
+    // const league = await request.json();
+    // console.log(league)
     const result: TApiFixtureResponse = apiFixturesResponse;
-    let rawFixtures = result.response;
+    const rawFixtures = result.response;
     const fbcFixtures = getFbcFixtures(rawFixtures);
     return NextResponse.json({ items: fbcFixtures }, { status: 200 });
   } catch (error: any) {
@@ -103,16 +103,15 @@ export async function POST(request: NextRequest) {
 }
 
 const getResult = (homeResult: number | null, awayResult: number | null) => {
-  let result = null;
   if (homeResult !== null && awayResult !== null) {
-    result = `${homeResult}:${awayResult}`;
+    return `${homeResult}:${awayResult}`;
   }
-  return result;
+  return null;
 };
 
 const getFixture = (rawFixture: RawFixture) => {
   if (rawFixture) {
-    let fixture: IFixture = {
+    const fixture: IFixture = {
       uid: rawFixture.fixture.id || 9999,
       date: rawFixture.fixture.date || "",
       status: rawFixture.fixture.status.long || "",
@@ -157,9 +156,9 @@ const getFixture = (rawFixture: RawFixture) => {
 };
 
 const getFbcFixtures = (rawFixtures: RawFixture[]) => {
-  let fixtures: IFixture[] = [];
-  for (let x in rawFixtures) {
-    let fixture = getFixture(rawFixtures?.[x]);
+  const fixtures: IFixture[] = [];
+  for (const x in rawFixtures) {
+    const fixture = getFixture(rawFixtures?.[x]);
     if (fixture) {
       fixtures.push(fixture);
     }

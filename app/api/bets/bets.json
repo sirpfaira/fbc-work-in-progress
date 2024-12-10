@@ -1,0 +1,66 @@
+[
+  {
+    "_id": "67580fdd1de50632a9a16e37",
+    "uid": "kai_wandi-20241210095437",
+    "username": "kai_wandi",
+    "title": "Bet1",
+    "boom": [],
+    "doom": [],
+    "selections": ["1035428-101-20241212183000"],
+    "codes": []
+  },
+  {
+    "_id": "6758144d1de50632a9a16e42",
+    "uid": "dummy_3-20241210101333",
+    "username": "dummy_3",
+    "title": "Bet 2",
+    "boom": [],
+    "doom": [],
+    "selections": ["1035524-101-20241213113000", "1035428-201-20241212183000"],
+    "codes": [
+      {
+        "username": "dummy_3",
+        "platform": "Betway_-_South_Africa",
+        "value": "MDCG54R67U",
+        "flagged": [],
+        "_id": "6758144d1de50632a9a16e43"
+      }
+    ]
+  },
+  {
+    "_id": "6758148d1de50632a9a16e4b",
+    "uid": "dummy_99-20241210101437",
+    "username": "dummy_99",
+    "title": "Bet 5",
+    "boom": [],
+    "doom": [],
+    "selections": ["1035524-201-20241213113000", "1035428-101-20241212183000"],
+    "codes": [
+      {
+        "username": "dummy_3",
+        "platform": "Betway_-_South_Africa",
+        "value": "MDCG54R67U",
+        "flagged": [],
+        "_id": "6758148d1de50632a9a16e4c"
+      }
+    ]
+  },
+  {
+    "_id": "675814d51de50632a9a16e58",
+    "uid": "dummy_5-20241210101549",
+    "username": "dummy_5",
+    "title": "Bet 5",
+    "boom": [],
+    "doom": [],
+    "selections": ["1035524-201-20241213113000", "1035428-101-20241212183000"],
+    "codes": [
+      {
+        "username": "dummy_3",
+        "platform": "Betway_-_South_Africa",
+        "value": "MDCG54R67U",
+        "flagged": [],
+        "_id": "675814d51de50632a9a16e59"
+      }
+    ]
+  }
+]

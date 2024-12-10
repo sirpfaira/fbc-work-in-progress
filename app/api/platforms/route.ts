@@ -1,5 +1,5 @@
 import DatabaseConnection from "@/lib/dbconfig";
-import { BPlatformSchema } from "@/lib/schemas/platform";
+import { IPlatformSchema } from "@/lib/schemas/platform";
 import { NextRequest, NextResponse } from "next/server";
 import Platform from "@/app/api/models/Platform";
 import platforms from "./platforms.json";
@@ -21,14 +21,10 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    const validated = BPlatformSchema.safeParse(data);
+    const validated = IPlatformSchema.safeParse(data);
     if (validated.success) {
       await DatabaseConnection();
-      const { name, country } = validated.data;
-      const platform = await Platform.create({
-        uid: `${country}-${name}`,
-        markets: [],
-      });
+      const platform = await Platform.create(validated.data);
       if (platform) {
         return NextResponse.json({ message: "Success!" }, { status: 200 });
       } else {

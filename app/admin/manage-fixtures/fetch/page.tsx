@@ -83,6 +83,43 @@ export default function FetchFixtures() {
   });
 
   useEffect(() => {
+    function getInitialLeagues(
+      trendings: TTrending[],
+      competitions: TCompetition[]
+    ) {
+      const nullTrending = trendings.filter((item) => {
+        return item.result === null && isFixtureFinished(item.date);
+      });
+
+      const newLeagues: ILeague[] = competitions.map((item) => ({
+        uid: item.uid,
+        name: item.name,
+        season: item.season,
+        date: new Date().toISOString(),
+        count: 0,
+        auto: 0,
+        fetched: false,
+        error: false,
+      }));
+
+      const result: ILeague[] = newLeagues.map((league) => {
+        for (const trend of nullTrending) {
+          if (league.uid === trend.competition) {
+            league.count++;
+            if (new Date(trend.date) < new Date(league.date)) {
+              league.date = trend.date;
+            }
+            if (autoMarkets.includes(trend.market)) {
+              league.auto++;
+            }
+          }
+        }
+        return league;
+      });
+
+      const final: ILeague[] = result.filter((item) => item.count > 0);
+      return final;
+    }
     if (trendings && competitions) {
       const leagues = getInitialLeagues(trendings, competitions);
       setLeagues(leagues);
@@ -141,44 +178,6 @@ export default function FetchFixtures() {
     return final;
   }
 
-  function getInitialLeagues(
-    trendings: TTrending[],
-    competitions: TCompetition[]
-  ) {
-    const nullTrending = trendings.filter((item) => {
-      return item.result === null && isFixtureFinished(item.date);
-    });
-
-    const newLeagues: ILeague[] = competitions.map((item) => ({
-      uid: item.uid,
-      name: item.name,
-      season: item.season,
-      date: new Date().toISOString(),
-      count: 0,
-      auto: 0,
-      fetched: false,
-      error: false,
-    }));
-
-    const result: ILeague[] = newLeagues.map((league) => {
-      for (const trend of nullTrending) {
-        if (league.uid === trend.competition) {
-          league.count++;
-          if (new Date(trend.date) < new Date(league.date)) {
-            league.date = trend.date;
-          }
-          if (autoMarkets.includes(trend.market)) {
-            league.auto++;
-          }
-        }
-      }
-      return league;
-    });
-
-    const final: ILeague[] = result.filter((item) => item.count > 0);
-    return final;
-  }
-
   async function updateTrendings(newFixture: TFixture) {
     try {
       if (trendings) {
@@ -209,7 +208,7 @@ export default function FetchFixtures() {
     try {
       if (fixtures) {
         if (newFixtures.length > 0) {
-          let brandNewFixtures: IFixture[] = [];
+          const brandNewFixtures: IFixture[] = [];
           for (const newFixture of newFixtures) {
             const oldFixture = fixtures.find((f) => f.uid === newFixture.uid);
             if (oldFixture) {

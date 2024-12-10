@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
 }
 
 function validateArray(array: IFixture[]) {
-  let valid: IFixture[] = [];
+  const valid: IFixture[] = [];
   for (const item of array) {
     const validated = IFixtureSchema.safeParse(item);
     if (validated.success) {

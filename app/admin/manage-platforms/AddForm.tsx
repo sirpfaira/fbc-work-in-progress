@@ -23,7 +23,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { BPlatform, BPlatformSchema } from "@/lib/schemas/platform";
+import { BPlatform, BPlatformSchema, IPlatform } from "@/lib/schemas/platform";
 import { TCountry } from "@/lib/schemas/country";
 import { FormSkeleton } from "@/app/components/common/LoadingSkeletons";
 import ErrorTile from "@/app/components/common/ErrorTile";
@@ -55,7 +55,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const { mutate: addItem, isPending } = useMutation({
-    mutationFn: async (platform: BPlatform) =>
+    mutationFn: async (platform: IPlatform) =>
       await axios.post(`/api/platforms`, platform),
     onSuccess: (response: any) => {
       setIsOpen(false);
@@ -75,7 +75,15 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const onSubmit = (values: BPlatform) => {
-    addItem(values);
+    const countryName = countries?.find(
+      (item) => item.uid === values.country
+    )?.name;
+    const newItem = {
+      uid: `${values.name} - ${countryName}`.replaceAll(" ", "_"),
+      country: values.country,
+      markets: [],
+    };
+    addItem(newItem);
   };
 
   if (isError) return <ErrorTile error={error.message} />;

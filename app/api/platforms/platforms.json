@@ -1,7 +1,8 @@
 [
   {
-    "_id": "67214ae6d1bbfd875c6042c0",
-    "uid": "RSA-Betway",
+    "_id": "67569ac107e3191fda1b8014",
+    "uid": "Betway_-_South_Africa",
+    "country": "ZAR",
     "markets": [
       {
         "_id": 101,
@@ -14,8 +15,9 @@
     ]
   },
   {
-    "_id": "6746b47eba295da6ddc5ec06",
-    "uid": "ZAR-GBets",
+    "_id": "67569ae907e3191fda1b8017",
+    "uid": "GBets_-_South_Africa",
+    "country": "ZAR",
     "markets": [
       {
         "_id": 101,

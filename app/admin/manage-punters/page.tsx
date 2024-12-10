@@ -18,11 +18,6 @@ import AddForm from "./AddForm";
 import EditForm from "./EditForm";
 import { TDummy } from "@/lib/schemas/dummy";
 
-interface ApiResult {
-  dummies: TDummy[];
-  punters: TPunter[];
-}
-
 export default function ManagePunters() {
   const [isAddOpen, setIsAddOpen] = useState<boolean>(false);
 
@@ -73,11 +68,24 @@ export default function ManagePunters() {
     []
   );
 
-  const { data, isError, error, isLoading } = useQuery({
+  const {
+    data: dummies,
+    isError,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: ["dummies"],
     queryFn: async () => {
       const { data } = await axios.get(`/api/dummies`);
-      return data.items as ApiResult;
+      return data.items as TDummy[];
+    },
+  });
+
+  const { data: punters } = useQuery({
+    queryKey: ["punters"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/punters`);
+      return data.items as TPunter[];
     },
   });
 
@@ -95,8 +103,13 @@ export default function ManagePunters() {
         <TableSkeleton columns={3} />
       ) : (
         <>
-          {data && (
-            <DataTableFilter columns={columns} data={data} filter="name" />
+          {dummies && punters && (
+            <DataTableFilter
+              columns={columns}
+              dummies={dummies}
+              punters={punters}
+              filter="name"
+            />
           )}
         </>
       )}
@@ -109,24 +122,30 @@ export default function ManagePunters() {
 
 interface DataTableFilterProps {
   columns: ColumnDef<TPunter>[];
-  data: ApiResult;
+  dummies: TDummy[];
+  punters: TPunter[];
   filter: string;
 }
 
-function DataTableFilter({ columns, data, filter }: DataTableFilterProps) {
+function DataTableFilter({
+  columns,
+  dummies,
+  punters,
+  filter,
+}: DataTableFilterProps) {
   const [showDummiesOnly, setShowDummiesOnly] = useState<boolean>(false);
-  const [currentItems, setCurrentItems] = useState<TPunter[]>(data?.punters);
+  const [currentItems, setCurrentItems] = useState<TPunter[]>(punters);
 
   useEffect(() => {
     if (showDummiesOnly) {
-      const dummies = data?.punters?.filter((item1) =>
-        data?.dummies?.some((item2) => item2.username === item1.username)
+      const dummyPunters = punters?.filter((item1) =>
+        dummies?.some((item2) => item2.username === item1.username)
       );
-      setCurrentItems(dummies);
+      setCurrentItems(dummyPunters);
     } else {
-      setCurrentItems(data?.punters);
+      setCurrentItems(punters);
     }
-  }, [showDummiesOnly]);
+  }, [showDummiesOnly, dummies, punters]);
 
   return (
     <>
@@ -137,7 +156,7 @@ function DataTableFilter({ columns, data, filter }: DataTableFilterProps) {
         />
         <span>Show Dummy Punters Only</span>
       </div>
-      {data && (
+      {currentItems && (
         <DataTable columns={columns} data={currentItems} filter={filter} />
       )}
     </>

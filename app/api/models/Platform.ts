@@ -3,6 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const platformSchema = new Schema(
   {
     uid: String,
+    country: String,
     markets: [{ _id: Number, name: String }],
   },
   { versionKey: false }

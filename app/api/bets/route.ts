@@ -1,0 +1,149 @@
+import DatabaseConnection from "@/lib/dbconfig";
+import { CBet, CBetSchema, IBet, ISelection } from "@/lib/schemas/bet";
+import { NextRequest, NextResponse } from "next/server";
+import Bet from "@/app/api/models/Bet";
+import { getShortDate } from "@/lib/helpers";
+import Trending from "../models/Trending";
+import { ITrending, TTrending } from "@/lib/schemas/trending";
+import bets from "./bets.json";
+
+export async function GET() {
+  try {
+    // await DatabaseConnection();
+    // const bets = await Bet.find();
+    if (bets) {
+      return NextResponse.json({ items: bets }, { status: 200 });
+    } else {
+      throw new Error("Something went wrong!");
+    }
+  } catch (error: any) {
+    return NextResponse.json(error.message, { status: 500 });
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const data = await request.json();
+    console.log(data);
+    const validated = CBetSchema.safeParse(data);
+    if (validated.success) {
+      await DatabaseConnection();
+      const newBet = validated.data;
+      const selections = validateSelections(newBet.selections);
+      if (selections.length > 0 || newBet.codes.length > 0) {
+        newBet.selections = selections;
+        const databaseBet = createBet(newBet);
+        const bet = await Bet.create(databaseBet);
+        if (bet && selections.length > 0) {
+          const trendings: TTrending[] = await Trending.find();
+          const newTrends: ITrending[] = [];
+          const oldTrends: TTrending[] = [];
+          selections.map((item) => {
+            const trend = trendings.find(
+              (element) =>
+                element.fixture === item.fixture &&
+                element.market === item.market
+            );
+            if (trend) {
+              const updatedTrend: TTrending = {
+                _id: trend._id,
+                date: trend.date,
+                result: trend.result,
+                uid: trend.uid,
+                value: trend.value,
+                fixture: trend.fixture,
+                fixtureName: trend.fixtureName,
+                market: trend.market,
+                marketName: trend.marketName,
+                competition: trend.competition,
+                competitionName: trend.competitionName,
+                count: trend.count + 1,
+              };
+              oldTrends.push(updatedTrend);
+            } else {
+              const newTrend: ITrending = {
+                uid: `${item.fixture}-${item.market}-${getShortDate(
+                  item.date
+                )}`,
+                fixture: item.fixture,
+                fixtureName: item.fixtureName,
+                market: item.market,
+                marketName: item.marketName,
+                competition: item.competition,
+                competitionName: item.competitionName,
+                date: item.date,
+                result: null,
+                count: 1,
+                value: item.value,
+              };
+              newTrends.push(newTrend);
+            }
+          });
+
+          await Trending.insertMany(newTrends);
+          console.log(oldTrends);
+
+          for (const item of oldTrends) {
+            await Trending.findByIdAndUpdate(item._id, item);
+          }
+
+          return NextResponse.json({ message: "Success!" }, { status: 200 });
+        } else {
+          throw new Error("Something went wrong!");
+        }
+      } else {
+        throw new Error("Fixtures already in progress!");
+      }
+    } else {
+      throw new Error("Invalid data!");
+    }
+  } catch (error: any) {
+    console.log(error);
+    return NextResponse.json(error.message, { status: 500 });
+  }
+}
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const data = await request.json();
+    if (data) {
+      await DatabaseConnection();
+      await Bet.deleteMany({
+        _id: { $in: data },
+      });
+      return NextResponse.json({ message: "Success!" }, { status: 200 });
+    } else {
+      throw new Error("Invalid data!");
+    }
+  } catch (error: any) {
+    return NextResponse.json(error.message, { status: 500 });
+  }
+}
+
+function createBet(bet: CBet): IBet {
+  const selections: string[] = bet.selections?.map((item) => {
+    return `${item.fixture}-${item.market}-${getShortDate(item.date)}`;
+  });
+  const databaseItem: IBet = {
+    uid: `${bet.username}-${getShortDate(new Date().toISOString())}`,
+    username: bet.username,
+    title: bet.title,
+    boom: [],
+    doom: [],
+    selections: selections,
+    codes: bet.codes,
+  };
+  return databaseItem;
+}
+
+function validateSelections(selections: ISelection[]): ISelection[] {
+  const newSelections: ISelection[] = [];
+  selections.map((item) => {
+    const date = new Date(item.date);
+    const now = new Date();
+    const diffInMs = now.getTime() - date.getTime();
+    const diffInMins = diffInMs / (1000 * 60);
+    if (diffInMins <= 0) newSelections.push(item);
+  });
+  return newSelections;
+}
