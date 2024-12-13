@@ -1,4 +1,20 @@
-import { Banknote, Folder, HomeIcon, Settings } from "lucide-react";
+import {
+  Banknote,
+  ChartNoAxesColumn,
+  Flame,
+  Folder,
+  HomeIcon,
+  House,
+  Layers,
+  PersonStanding,
+  Settings,
+  SquarePen,
+  Star,
+  Trophy,
+  User,
+  Volleyball,
+  Youtube,
+} from "lucide-react";
 
 export const AdminNavigationItems = [
   { label: "Home", link: "/admin", icon: <HomeIcon size={14} /> },
@@ -46,13 +62,43 @@ export const AdminNavigationItems = [
   { label: "Settings", link: "/admin/settings", icon: <Settings size={14} /> },
 ];
 
-// {
-//   label: "Manage Trending",
-//   link: "/admin/manage-trending",
-//   icon: <HomeIcon size={14} />,
-// },
-// {
-//   label: "Manage Codes",
-//   link: "/admin/manage-codes",
-//   icon: <HomeIcon size={14} />,
-// },
+export const EnMiddleNavItems = [
+  { name: "Home", icon: <House size={32} />, link: "/en" },
+  { name: "Trending", icon: <Flame size={32} />, link: "/en/trending" },
+  { name: "Bets", icon: <Layers size={32} />, link: "/en/bets" },
+  { name: "Challenges", icon: <Trophy size={32} />, link: "/en/challenges" },
+  { name: "Playground", icon: <Youtube size={32} />, link: "/en/playground" },
+];
+
+export const EnRightNavItems = [
+  { name: "Create", icon: <SquarePen size={18} />, link: "/en/create" },
+  {
+    name: "Leaderboard",
+    icon: <ChartNoAxesColumn size={18} />,
+    link: "/en/punters",
+  },
+];
+
+export const EnSideBarItems = [
+  { name: "Create", icon: <SquarePen size={18} />, link: "/en/create" },
+  {
+    name: "Leaderboard",
+    icon: <ChartNoAxesColumn size={18} />,
+    link: "/en/punters",
+  },
+  {
+    name: "Run Or Stay",
+    icon: <PersonStanding size={18} />,
+    link: "/en/runorstay",
+  },
+  { name: "Fixtures", icon: <Volleyball size={18} />, link: "/en/fixtures" },
+  { name: "Starred", icon: <Star size={18} />, link: "/en/starred" },
+  { name: "My Account", icon: <User size={18} />, link: "/en/account" },
+];
+
+export const EnFooterItems = [
+  { name: "About", link: "/en" },
+  { name: "Privacy Policy", link: "/en" },
+  { name: "Help", link: "/en" },
+  { name: "Contact", link: "/en" },
+];

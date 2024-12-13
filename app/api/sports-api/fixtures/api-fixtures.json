@@ -1,13 +1,13 @@
 {
   "get": "fixtures",
   "parameters": {
-    "league": "39",
-    "season": "2023",
-    "from": "2024-04-27",
-    "to": "2024-05-05"
+    "league": "140",
+    "season": "2024",
+    "from": "2024-12-06",
+    "to": "2024-12-22"
   },
   "errors": [],
-  "results": 20,
+  "results": 32,
   "paging": {
     "current": 1,
     "total": 1
@@ -15,119 +15,52 @@
   "response": [
     {
       "fixture": {
-        "id": 1035428,
-        "referee": "R. Jones",
+        "id": 1208631,
+        "referee": "Ricardo De Burgos",
         "timezone": "UTC",
-        "date": "2024-05-02T18:30:00+00:00",
-        "timestamp": 1714674600,
+        "date": "2024-12-06T20:00:00+00:00",
+        "timestamp": 1733515200,
         "periods": {
-          "first": null,
-          "second": null
+          "first": 1733515200,
+          "second": 1733518800
         },
         "venue": {
-          "id": 519,
-          "name": "Stamford Bridge",
-          "city": "London"
-        },
-        "status": {
-          "long": "Not Started",
-          "short": "NS",
-          "elapsed": null
-        }
-      },
-      "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 26"
-      },
-      "teams": {
-        "home": {
-          "id": 49,
-          "name": "Chelsea",
-          "logo": "https://media.api-sports.io/football/teams/49.png",
-          "winner": null
-        },
-        "away": {
-          "id": 47,
-          "name": "Tottenham",
-          "logo": "https://media.api-sports.io/football/teams/47.png",
-          "winner": null
-        }
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "score": {
-        "halftime": {
-          "home": null,
-          "away": null
-        },
-        "fulltime": {
-          "home": null,
-          "away": null
-        },
-        "extratime": {
-          "home": null,
-          "away": null
-        },
-        "penalty": {
-          "home": null,
-          "away": null
-        }
-      }
-    },
-    {
-      "fixture": {
-        "id": 1035514,
-        "referee": "Paul Tierney, England",
-        "timezone": "UTC",
-        "date": "2024-04-28T13:00:00+00:00",
-        "timestamp": 1714309200,
-        "periods": {
-          "first": 1714309200,
-          "second": 1714312800
-        },
-        "venue": {
-          "id": 504,
-          "name": "Vitality Stadium",
-          "city": "Bournemouth, Dorset"
+          "id": null,
+          "name": "Estadio Abanca-Balaídos",
+          "city": "Vigo"
         },
         "status": {
           "long": "Match Finished",
           "short": "FT",
-          "elapsed": 90
+          "elapsed": 90,
+          "extra": 8
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 35"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 16"
       },
       "teams": {
         "home": {
-          "id": 35,
-          "name": "Bournemouth",
-          "logo": "https://media.api-sports.io/football/teams/35.png",
+          "id": 538,
+          "name": "Celta Vigo",
+          "logo": "https://media.api-sports.io/football/teams/538.png",
           "winner": true
         },
         "away": {
-          "id": 51,
-          "name": "Brighton",
-          "logo": "https://media.api-sports.io/football/teams/51.png",
+          "id": 798,
+          "name": "Mallorca",
+          "logo": "https://media.api-sports.io/football/teams/798.png",
           "winner": false
         }
       },
       "goals": {
-        "home": 3,
+        "home": 2,
         "away": 0
       },
       "score": {
@@ -136,7 +69,7 @@
           "away": 0
         },
         "fulltime": {
-          "home": 3,
+          "home": 2,
           "away": 0
         },
         "extratime": {
@@ -151,46 +84,116 @@
     },
     {
       "fixture": {
-        "id": 1035515,
-        "referee": "Craig Pawson, England",
+        "id": 1208633,
+        "referee": "Isidro Díaz de Mera",
         "timezone": "UTC",
-        "date": "2024-04-27T19:00:00+00:00",
-        "timestamp": 1714244400,
+        "date": "2024-12-07T13:00:00+00:00",
+        "timestamp": 1733576400,
         "periods": {
-          "first": 1714244400,
-          "second": 1714248000
+          "first": 1733576400,
+          "second": 1733580000
         },
         "venue": {
-          "id": 495,
-          "name": "Villa Park",
-          "city": "Birmingham"
+          "id": 1481,
+          "name": "Estadio de Gran Canaria",
+          "city": "Las Palmas de Gran Canaria"
         },
         "status": {
           "long": "Match Finished",
           "short": "FT",
-          "elapsed": 90
+          "elapsed": 90,
+          "extra": 10
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 35"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 16"
       },
       "teams": {
         "home": {
-          "id": 66,
-          "name": "Aston Villa",
-          "logo": "https://media.api-sports.io/football/teams/66.png",
+          "id": 534,
+          "name": "Las Palmas",
+          "logo": "https://media.api-sports.io/football/teams/534.png",
+          "winner": true
+        },
+        "away": {
+          "id": 720,
+          "name": "Valladolid",
+          "logo": "https://media.api-sports.io/football/teams/720.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 2,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 1,
+          "away": 1
+        },
+        "fulltime": {
+          "home": 2,
+          "away": 1
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208635,
+        "referee": "Alejandro Muñiz",
+        "timezone": "UTC",
+        "date": "2024-12-07T15:15:00+00:00",
+        "timestamp": 1733584500,
+        "periods": {
+          "first": 1733584500,
+          "second": 1733588100
+        },
+        "venue": {
+          "id": 1489,
+          "name": "Estadio Benito Villamarín",
+          "city": "Sevilla"
+        },
+        "status": {
+          "long": "Match Finished",
+          "short": "FT",
+          "elapsed": 90,
+          "extra": 11
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 16"
+      },
+      "teams": {
+        "home": {
+          "id": 543,
+          "name": "Real Betis",
+          "logo": "https://media.api-sports.io/football/teams/543.png",
           "winner": null
         },
         "away": {
-          "id": 49,
-          "name": "Chelsea",
-          "logo": "https://media.api-sports.io/football/teams/49.png",
+          "id": 529,
+          "name": "Barcelona",
+          "logo": "https://media.api-sports.io/football/teams/529.png",
           "winner": null
         }
       },
@@ -200,8 +203,8 @@
       },
       "score": {
         "halftime": {
-          "home": 2,
-          "away": 0
+          "home": 0,
+          "away": 1
         },
         "fulltime": {
           "home": 2,
@@ -219,324 +222,53 @@
     },
     {
       "fixture": {
-        "id": 1035516,
-        "referee": "Darren England, England",
+        "id": 1208636,
+        "referee": "José Munuera",
         "timezone": "UTC",
-        "date": "2024-04-27T16:30:00+00:00",
-        "timestamp": 1714235400,
+        "date": "2024-12-07T17:30:00+00:00",
+        "timestamp": 1733592600,
         "periods": {
-          "first": 1714235400,
-          "second": 1714239000
+          "first": 1733592600,
+          "second": 1733596200
         },
         "venue": {
-          "id": 8560,
-          "name": "Goodison Park",
-          "city": "Liverpool"
+          "id": 1497,
+          "name": "Estadio de Mestalla",
+          "city": "Valencia"
         },
         "status": {
           "long": "Match Finished",
           "short": "FT",
-          "elapsed": 90
+          "elapsed": 90,
+          "extra": 7
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 35"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 16"
       },
       "teams": {
         "home": {
-          "id": 45,
-          "name": "Everton",
-          "logo": "https://media.api-sports.io/football/teams/45.png",
-          "winner": true
-        },
-        "away": {
-          "id": 55,
-          "name": "Brentford",
-          "logo": "https://media.api-sports.io/football/teams/55.png",
-          "winner": false
-        }
-      },
-      "goals": {
-        "home": 1,
-        "away": 0
-      },
-      "score": {
-        "halftime": {
-          "home": 0,
-          "away": 0
-        },
-        "fulltime": {
-          "home": 1,
-          "away": 0
-        },
-        "extratime": {
-          "home": null,
-          "away": null
-        },
-        "penalty": {
-          "home": null,
-          "away": null
-        }
-      }
-    },
-    {
-      "fixture": {
-        "id": 1035517,
-        "referee": "Stuart Attwell, England",
-        "timezone": "UTC",
-        "date": "2024-04-27T14:00:00+00:00",
-        "timestamp": 1714226400,
-        "periods": {
-          "first": 1714226400,
-          "second": 1714230000
-        },
-        "venue": {
-          "id": 535,
-          "name": "Craven Cottage",
-          "city": "London"
-        },
-        "status": {
-          "long": "Match Finished",
-          "short": "FT",
-          "elapsed": 90
-        }
-      },
-      "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 35"
-      },
-      "teams": {
-        "home": {
-          "id": 36,
-          "name": "Fulham",
-          "logo": "https://media.api-sports.io/football/teams/36.png",
-          "winner": null
-        },
-        "away": {
-          "id": 52,
-          "name": "Crystal Palace",
-          "logo": "https://media.api-sports.io/football/teams/52.png",
-          "winner": null
-        }
-      },
-      "goals": {
-        "home": 1,
-        "away": 1
-      },
-      "score": {
-        "halftime": {
-          "home": 0,
-          "away": 0
-        },
-        "fulltime": {
-          "home": 1,
-          "away": 1
-        },
-        "extratime": {
-          "home": null,
-          "away": null
-        },
-        "penalty": {
-          "home": null,
-          "away": null
-        }
-      }
-    },
-    {
-      "fixture": {
-        "id": 1035518,
-        "referee": "John Brooks, England",
-        "timezone": "UTC",
-        "date": "2024-04-27T14:00:00+00:00",
-        "timestamp": 1714226400,
-        "periods": {
-          "first": 1714226400,
-          "second": 1714230000
-        },
-        "venue": {
-          "id": 556,
-          "name": "Old Trafford",
-          "city": "Manchester"
-        },
-        "status": {
-          "long": "Match Finished",
-          "short": "FT",
-          "elapsed": 90
-        }
-      },
-      "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 35"
-      },
-      "teams": {
-        "home": {
-          "id": 33,
-          "name": "Manchester United",
-          "logo": "https://media.api-sports.io/football/teams/33.png",
-          "winner": null
-        },
-        "away": {
-          "id": 44,
-          "name": "Burnley",
-          "logo": "https://media.api-sports.io/football/teams/44.png",
-          "winner": null
-        }
-      },
-      "goals": {
-        "home": 1,
-        "away": 1
-      },
-      "score": {
-        "halftime": {
-          "home": 0,
-          "away": 0
-        },
-        "fulltime": {
-          "home": 1,
-          "away": 1
-        },
-        "extratime": {
-          "home": null,
-          "away": null
-        },
-        "penalty": {
-          "home": null,
-          "away": null
-        }
-      }
-    },
-    {
-      "fixture": {
-        "id": 1035519,
-        "referee": "Tony Harrington, England",
-        "timezone": "UTC",
-        "date": "2024-04-27T14:00:00+00:00",
-        "timestamp": 1714226400,
-        "periods": {
-          "first": 1714226400,
-          "second": 1714230000
-        },
-        "venue": {
-          "id": 562,
-          "name": "St. James' Park",
-          "city": "Newcastle upon Tyne"
-        },
-        "status": {
-          "long": "Match Finished",
-          "short": "FT",
-          "elapsed": 90
-        }
-      },
-      "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 35"
-      },
-      "teams": {
-        "home": {
-          "id": 34,
-          "name": "Newcastle",
-          "logo": "https://media.api-sports.io/football/teams/34.png",
-          "winner": true
-        },
-        "away": {
-          "id": 62,
-          "name": "Sheffield Utd",
-          "logo": "https://media.api-sports.io/football/teams/62.png",
-          "winner": false
-        }
-      },
-      "goals": {
-        "home": 5,
-        "away": 1
-      },
-      "score": {
-        "halftime": {
-          "home": 1,
-          "away": 1
-        },
-        "fulltime": {
-          "home": 5,
-          "away": 1
-        },
-        "extratime": {
-          "home": null,
-          "away": null
-        },
-        "penalty": {
-          "home": null,
-          "away": null
-        }
-      }
-    },
-    {
-      "fixture": {
-        "id": 1035520,
-        "referee": "Simon Hooper, England",
-        "timezone": "UTC",
-        "date": "2024-04-28T15:30:00+00:00",
-        "timestamp": 1714318200,
-        "periods": {
-          "first": 1714318200,
-          "second": 1714321800
-        },
-        "venue": {
-          "id": 566,
-          "name": "The City Ground",
-          "city": "Nottingham, Nottinghamshire"
-        },
-        "status": {
-          "long": "Match Finished",
-          "short": "FT",
-          "elapsed": 90
-        }
-      },
-      "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 35"
-      },
-      "teams": {
-        "home": {
-          "id": 65,
-          "name": "Nottingham Forest",
-          "logo": "https://media.api-sports.io/football/teams/65.png",
+          "id": 532,
+          "name": "Valencia",
+          "logo": "https://media.api-sports.io/football/teams/532.png",
           "winner": false
         },
         "away": {
-          "id": 50,
-          "name": "Manchester City",
-          "logo": "https://media.api-sports.io/football/teams/50.png",
+          "id": 728,
+          "name": "Rayo Vallecano",
+          "logo": "https://media.api-sports.io/football/teams/728.png",
           "winner": true
         }
       },
       "goals": {
         "home": 0,
-        "away": 2
+        "away": 1
       },
       "score": {
         "halftime": {
@@ -545,7 +277,7 @@
         },
         "fulltime": {
           "home": 0,
-          "away": 2
+          "away": 1
         },
         "extratime": {
           "home": null,
@@ -559,60 +291,61 @@
     },
     {
       "fixture": {
-        "id": 1035521,
-        "referee": "Michael Oliver, England",
+        "id": 1208632,
+        "referee": "Gil Manzano",
         "timezone": "UTC",
-        "date": "2024-04-28T13:00:00+00:00",
-        "timestamp": 1714309200,
+        "date": "2024-12-07T20:00:00+00:00",
+        "timestamp": 1733601600,
         "periods": {
-          "first": 1714309200,
-          "second": 1714312800
+          "first": 1733601600,
+          "second": 1733605200
         },
         "venue": {
-          "id": 593,
-          "name": "Tottenham Hotspur Stadium",
-          "city": "London"
+          "id": 1478,
+          "name": "Estadi Municipal de Montilivi",
+          "city": "Girona"
         },
         "status": {
           "long": "Match Finished",
           "short": "FT",
-          "elapsed": 90
+          "elapsed": 90,
+          "extra": 5
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 35"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 16"
       },
       "teams": {
         "home": {
-          "id": 47,
-          "name": "Tottenham",
-          "logo": "https://media.api-sports.io/football/teams/47.png",
+          "id": 547,
+          "name": "Girona",
+          "logo": "https://media.api-sports.io/football/teams/547.png",
           "winner": false
         },
         "away": {
-          "id": 42,
-          "name": "Arsenal",
-          "logo": "https://media.api-sports.io/football/teams/42.png",
+          "id": 541,
+          "name": "Real Madrid",
+          "logo": "https://media.api-sports.io/football/teams/541.png",
           "winner": true
         }
       },
       "goals": {
-        "home": 2,
+        "home": 0,
         "away": 3
       },
       "score": {
         "halftime": {
           "home": 0,
-          "away": 3
+          "away": 1
         },
         "fulltime": {
-          "home": 2,
+          "home": 0,
           "away": 3
         },
         "extratime": {
@@ -627,46 +360,185 @@
     },
     {
       "fixture": {
-        "id": 1035522,
-        "referee": "Anthony Taylor, England",
+        "id": 1208634,
+        "referee": "Pablo González",
         "timezone": "UTC",
-        "date": "2024-04-27T11:30:00+00:00",
-        "timestamp": 1714217400,
+        "date": "2024-12-08T13:00:00+00:00",
+        "timestamp": 1733662800,
         "periods": {
-          "first": 1714217400,
-          "second": 1714221000
+          "first": 1733662800,
+          "second": 1733666400
         },
         "venue": {
-          "id": 598,
-          "name": "London Stadium",
-          "city": "London"
+          "id": 1464,
+          "name": "Estadio Municipal de Butarque",
+          "city": "Leganés"
         },
         "status": {
           "long": "Match Finished",
           "short": "FT",
-          "elapsed": 90
+          "elapsed": 90,
+          "extra": 6
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 35"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 16"
       },
       "teams": {
         "home": {
-          "id": 48,
-          "name": "West Ham",
-          "logo": "https://media.api-sports.io/football/teams/48.png",
+          "id": 537,
+          "name": "Leganes",
+          "logo": "https://media.api-sports.io/football/teams/537.png",
+          "winner": false
+        },
+        "away": {
+          "id": 548,
+          "name": "Real Sociedad",
+          "logo": "https://media.api-sports.io/football/teams/548.png",
+          "winner": true
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 3
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 1
+        },
+        "fulltime": {
+          "home": 0,
+          "away": 3
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208629,
+        "referee": "Víctor García",
+        "timezone": "UTC",
+        "date": "2024-12-08T15:15:00+00:00",
+        "timestamp": 1733670900,
+        "periods": {
+          "first": 1733670900,
+          "second": 1733674500
+        },
+        "venue": {
+          "id": 1460,
+          "name": "San Mamés Barria",
+          "city": "Bilbao"
+        },
+        "status": {
+          "long": "Match Finished",
+          "short": "FT",
+          "elapsed": 90,
+          "extra": 7
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 16"
+      },
+      "teams": {
+        "home": {
+          "id": 531,
+          "name": "Athletic Club",
+          "logo": "https://media.api-sports.io/football/teams/531.png",
+          "winner": true
+        },
+        "away": {
+          "id": 533,
+          "name": "Villarreal",
+          "logo": "https://media.api-sports.io/football/teams/533.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 2,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 1,
+          "away": 0
+        },
+        "fulltime": {
+          "home": 2,
+          "away": 0
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208637,
+        "referee": "César Soto",
+        "timezone": "UTC",
+        "date": "2024-12-08T17:30:00+00:00",
+        "timestamp": 1733679000,
+        "periods": {
+          "first": 1733679000,
+          "second": 1733682600
+        },
+        "venue": {
+          "id": 1486,
+          "name": "Estadio El Sadar",
+          "city": "Iruñea"
+        },
+        "status": {
+          "long": "Match Finished",
+          "short": "FT",
+          "elapsed": 90,
+          "extra": 8
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 16"
+      },
+      "teams": {
+        "home": {
+          "id": 727,
+          "name": "Osasuna",
+          "logo": "https://media.api-sports.io/football/teams/727.png",
           "winner": null
         },
         "away": {
-          "id": 40,
-          "name": "Liverpool",
-          "logo": "https://media.api-sports.io/football/teams/40.png",
+          "id": 542,
+          "name": "Alaves",
+          "logo": "https://media.api-sports.io/football/teams/542.png",
           "winner": null
         }
       },
@@ -676,8 +548,8 @@
       },
       "score": {
         "halftime": {
-          "home": 1,
-          "away": 0
+          "home": 0,
+          "away": 1
         },
         "fulltime": {
           "home": 2,
@@ -695,52 +567,122 @@
     },
     {
       "fixture": {
-        "id": 1035523,
-        "referee": "David Coote, England",
+        "id": 1208630,
+        "referee": "Javier Alberola",
         "timezone": "UTC",
-        "date": "2024-04-27T14:00:00+00:00",
-        "timestamp": 1714226400,
+        "date": "2024-12-08T20:00:00+00:00",
+        "timestamp": 1733688000,
         "periods": {
-          "first": 1714226400,
-          "second": 1714230000
+          "first": 1733688000,
+          "second": 1733691600
         },
         "venue": {
-          "id": 600,
-          "name": "Molineux Stadium",
-          "city": "Wolverhampton, West Midlands"
+          "id": 19217,
+          "name": "Riyadh Air Metropolitano",
+          "city": "Madrid"
         },
         "status": {
           "long": "Match Finished",
           "short": "FT",
-          "elapsed": 90
+          "elapsed": 90,
+          "extra": 9
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 35"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 16"
       },
       "teams": {
         "home": {
-          "id": 39,
-          "name": "Wolves",
-          "logo": "https://media.api-sports.io/football/teams/39.png",
+          "id": 530,
+          "name": "Atletico Madrid",
+          "logo": "https://media.api-sports.io/football/teams/530.png",
           "winner": true
         },
         "away": {
-          "id": 1359,
-          "name": "Luton",
-          "logo": "https://media.api-sports.io/football/teams/1359.png",
+          "id": 536,
+          "name": "Sevilla",
+          "logo": "https://media.api-sports.io/football/teams/536.png",
           "winner": false
         }
       },
       "goals": {
-        "home": 2,
-        "away": 1
+        "home": 4,
+        "away": 3
+      },
+      "score": {
+        "halftime": {
+          "home": 1,
+          "away": 2
+        },
+        "fulltime": {
+          "home": 4,
+          "away": 3
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1212925,
+        "referee": "Mateo Busquets",
+        "timezone": "UTC",
+        "date": "2024-12-09T20:00:00+00:00",
+        "timestamp": 1733774400,
+        "periods": {
+          "first": 1733774400,
+          "second": 1733778000
+        },
+        "venue": {
+          "id": 20422,
+          "name": "Estadio Coliseum",
+          "city": "Getafe"
+        },
+        "status": {
+          "long": "Match Finished",
+          "short": "FT",
+          "elapsed": 90,
+          "extra": 4
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 16"
+      },
+      "teams": {
+        "home": {
+          "id": 546,
+          "name": "Getafe",
+          "logo": "https://media.api-sports.io/football/teams/546.png",
+          "winner": true
+        },
+        "away": {
+          "id": 540,
+          "name": "Espanyol",
+          "logo": "https://media.api-sports.io/football/teams/540.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 1,
+        "away": 0
       },
       "score": {
         "halftime": {
@@ -748,8 +690,8 @@
           "away": 0
         },
         "fulltime": {
-          "home": 2,
-          "away": 1
+          "home": 1,
+          "away": 0
         },
         "extratime": {
           "home": null,
@@ -763,46 +705,47 @@
     },
     {
       "fixture": {
-        "id": 1035524,
-        "referee": null,
+        "id": 1208645,
+        "referee": "Miguel Ortiz",
         "timezone": "UTC",
-        "date": "2024-05-04T11:30:00+00:00",
-        "timestamp": 1714822200,
+        "date": "2024-12-13T20:00:00+00:00",
+        "timestamp": 1734120000,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 494,
-          "name": "Emirates Stadium",
-          "city": "London"
+          "id": 1492,
+          "name": "Estadio Municipal José Zorrilla",
+          "city": "Valladolid"
         },
         "status": {
           "long": "Not Started",
           "short": "NS",
-          "elapsed": null
+          "elapsed": null,
+          "extra": null
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 36"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 42,
-          "name": "Arsenal",
-          "logo": "https://media.api-sports.io/football/teams/42.png",
+          "id": 720,
+          "name": "Valladolid",
+          "logo": "https://media.api-sports.io/football/teams/720.png",
           "winner": null
         },
         "away": {
-          "id": 35,
-          "name": "Bournemouth",
-          "logo": "https://media.api-sports.io/football/teams/35.png",
+          "id": 532,
+          "name": "Valencia",
+          "logo": "https://media.api-sports.io/football/teams/532.png",
           "winner": null
         }
       },
@@ -831,46 +774,47 @@
     },
     {
       "fixture": {
-        "id": 1035525,
-        "referee": null,
+        "id": 1212926,
+        "referee": "Adrián Cordero",
         "timezone": "UTC",
-        "date": "2024-05-04T14:00:00+00:00",
-        "timestamp": 1714831200,
+        "date": "2024-12-14T13:00:00+00:00",
+        "timestamp": 1734181200,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 10503,
-          "name": "Gtech Community Stadium",
-          "city": "Brentford, Middlesex"
+          "id": 1474,
+          "name": "RCDE Stadium",
+          "city": "Cornella de Llobregat"
         },
         "status": {
           "long": "Not Started",
           "short": "NS",
-          "elapsed": null
+          "elapsed": null,
+          "extra": null
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 36"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 55,
-          "name": "Brentford",
-          "logo": "https://media.api-sports.io/football/teams/55.png",
+          "id": 540,
+          "name": "Espanyol",
+          "logo": "https://media.api-sports.io/football/teams/540.png",
           "winner": null
         },
         "away": {
-          "id": 36,
-          "name": "Fulham",
-          "logo": "https://media.api-sports.io/football/teams/36.png",
+          "id": 727,
+          "name": "Osasuna",
+          "logo": "https://media.api-sports.io/football/teams/727.png",
           "winner": null
         }
       },
@@ -899,46 +843,47 @@
     },
     {
       "fixture": {
-        "id": 1035526,
-        "referee": null,
+        "id": 1208644,
+        "referee": "Francisco Hernández",
         "timezone": "UTC",
-        "date": "2024-05-05T13:00:00+00:00",
-        "timestamp": 1714914000,
+        "date": "2024-12-14T15:15:00+00:00",
+        "timestamp": 1734189300,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 508,
-          "name": "American Express Stadium",
-          "city": "Falmer, East Sussex"
+          "id": 19940,
+          "name": "Estadi Mallorca Son Moix",
+          "city": "Palma de Mallorca"
         },
         "status": {
           "long": "Not Started",
           "short": "NS",
-          "elapsed": null
+          "elapsed": null,
+          "extra": null
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 36"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 51,
-          "name": "Brighton",
-          "logo": "https://media.api-sports.io/football/teams/51.png",
+          "id": 798,
+          "name": "Mallorca",
+          "logo": "https://media.api-sports.io/football/teams/798.png",
           "winner": null
         },
         "away": {
-          "id": 66,
-          "name": "Aston Villa",
-          "logo": "https://media.api-sports.io/football/teams/66.png",
+          "id": 547,
+          "name": "Girona",
+          "logo": "https://media.api-sports.io/football/teams/547.png",
           "winner": null
         }
       },
@@ -967,46 +912,47 @@
     },
     {
       "fixture": {
-        "id": 1035527,
-        "referee": null,
+        "id": 1208643,
+        "referee": "Gil Manzano",
         "timezone": "UTC",
-        "date": "2024-05-04T14:00:00+00:00",
-        "timestamp": 1714831200,
+        "date": "2024-12-14T17:30:00+00:00",
+        "timestamp": 1734197400,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 512,
-          "name": "Turf Moor",
-          "city": "Burnley"
+          "id": 1494,
+          "name": "Estadio Ramón Sánchez Pizjuán",
+          "city": "Sevilla"
         },
         "status": {
           "long": "Not Started",
           "short": "NS",
-          "elapsed": null
+          "elapsed": null,
+          "extra": null
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 36"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 44,
-          "name": "Burnley",
-          "logo": "https://media.api-sports.io/football/teams/44.png",
+          "id": 536,
+          "name": "Sevilla",
+          "logo": "https://media.api-sports.io/football/teams/536.png",
           "winner": null
         },
         "away": {
-          "id": 34,
-          "name": "Newcastle",
-          "logo": "https://media.api-sports.io/football/teams/34.png",
+          "id": 538,
+          "name": "Celta Vigo",
+          "logo": "https://media.api-sports.io/football/teams/538.png",
           "winner": null
         }
       },
@@ -1035,46 +981,47 @@
     },
     {
       "fixture": {
-        "id": 1035528,
-        "referee": null,
+        "id": 1208640,
+        "referee": "Juan Martínez",
         "timezone": "UTC",
-        "date": "2024-05-05T13:00:00+00:00",
-        "timestamp": 1714914000,
+        "date": "2024-12-14T20:00:00+00:00",
+        "timestamp": 1734206400,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 519,
-          "name": "Stamford Bridge",
-          "city": "London"
+          "id": 1488,
+          "name": "Estadio de Vallecas",
+          "city": "Madrid"
         },
         "status": {
           "long": "Not Started",
           "short": "NS",
-          "elapsed": null
+          "elapsed": null,
+          "extra": null
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 36"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 49,
-          "name": "Chelsea",
-          "logo": "https://media.api-sports.io/football/teams/49.png",
+          "id": 728,
+          "name": "Rayo Vallecano",
+          "logo": "https://media.api-sports.io/football/teams/728.png",
           "winner": null
         },
         "away": {
-          "id": 48,
-          "name": "West Ham",
-          "logo": "https://media.api-sports.io/football/teams/48.png",
+          "id": 541,
+          "name": "Real Madrid",
+          "logo": "https://media.api-sports.io/football/teams/541.png",
           "winner": null
         }
       },
@@ -1103,46 +1050,47 @@
     },
     {
       "fixture": {
-        "id": 1035530,
-        "referee": null,
+        "id": 1208638,
+        "referee": "César Soto",
         "timezone": "UTC",
-        "date": "2024-05-05T15:30:00+00:00",
-        "timestamp": 1714923000,
+        "date": "2024-12-15T13:00:00+00:00",
+        "timestamp": 1734267600,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 550,
-          "name": "Anfield",
-          "city": "Liverpool"
+          "id": 19217,
+          "name": "Riyadh Air Metropolitano",
+          "city": "Madrid"
         },
         "status": {
           "long": "Not Started",
           "short": "NS",
-          "elapsed": null
+          "elapsed": null,
+          "extra": null
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 36"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 40,
-          "name": "Liverpool",
-          "logo": "https://media.api-sports.io/football/teams/40.png",
+          "id": 530,
+          "name": "Atletico Madrid",
+          "logo": "https://media.api-sports.io/football/teams/530.png",
           "winner": null
         },
         "away": {
-          "id": 47,
-          "name": "Tottenham",
-          "logo": "https://media.api-sports.io/football/teams/47.png",
+          "id": 546,
+          "name": "Getafe",
+          "logo": "https://media.api-sports.io/football/teams/546.png",
           "winner": null
         }
       },
@@ -1171,46 +1119,47 @@
     },
     {
       "fixture": {
-        "id": 1035531,
-        "referee": null,
+        "id": 1208641,
+        "referee": "José Sánchez",
         "timezone": "UTC",
-        "date": "2024-05-03T19:00:00+00:00",
-        "timestamp": 1714762800,
+        "date": "2024-12-15T15:15:00+00:00",
+        "timestamp": 1734275700,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 551,
-          "name": "Kenilworth Road",
-          "city": "Luton, Bedfordshire"
+          "id": 1470,
+          "name": "Estadio de Mendizorroza",
+          "city": "Vitoria-Gasteiz"
         },
         "status": {
           "long": "Not Started",
           "short": "NS",
-          "elapsed": null
+          "elapsed": null,
+          "extra": null
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 36"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 1359,
-          "name": "Luton",
-          "logo": "https://media.api-sports.io/football/teams/1359.png",
+          "id": 542,
+          "name": "Alaves",
+          "logo": "https://media.api-sports.io/football/teams/542.png",
           "winner": null
         },
         "away": {
-          "id": 45,
-          "name": "Everton",
-          "logo": "https://media.api-sports.io/football/teams/45.png",
+          "id": 531,
+          "name": "Athletic Club",
+          "logo": "https://media.api-sports.io/football/teams/531.png",
           "winner": null
         }
       },
@@ -1239,46 +1188,47 @@
     },
     {
       "fixture": {
-        "id": 1035532,
-        "referee": null,
+        "id": 1208642,
+        "referee": "Guillermo Cuadra",
         "timezone": "UTC",
-        "date": "2024-05-04T16:30:00+00:00",
-        "timestamp": 1714840200,
+        "date": "2024-12-15T17:30:00+00:00",
+        "timestamp": 1734283800,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 555,
-          "name": "Etihad Stadium",
-          "city": "Manchester"
+          "id": 1498,
+          "name": "Estadio de la Cerámica",
+          "city": "Villarreal"
         },
         "status": {
           "long": "Not Started",
           "short": "NS",
-          "elapsed": null
+          "elapsed": null,
+          "extra": null
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 36"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 50,
-          "name": "Manchester City",
-          "logo": "https://media.api-sports.io/football/teams/50.png",
+          "id": 533,
+          "name": "Villarreal",
+          "logo": "https://media.api-sports.io/football/teams/533.png",
           "winner": null
         },
         "away": {
-          "id": 39,
-          "name": "Wolves",
-          "logo": "https://media.api-sports.io/football/teams/39.png",
+          "id": 543,
+          "name": "Real Betis",
+          "logo": "https://media.api-sports.io/football/teams/543.png",
           "winner": null
         }
       },
@@ -1307,46 +1257,944 @@
     },
     {
       "fixture": {
-        "id": 1035533,
-        "referee": null,
+        "id": 1208646,
+        "referee": "Mario Melero",
         "timezone": "UTC",
-        "date": "2024-05-04T14:00:00+00:00",
-        "timestamp": 1714831200,
+        "date": "2024-12-15T17:30:00+00:00",
+        "timestamp": 1734283800,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 581,
-          "name": "Bramall Lane",
-          "city": "Sheffield"
+          "id": 1491,
+          "name": "Reale Arena",
+          "city": "Donostia-San Sebastián"
         },
         "status": {
           "long": "Not Started",
           "short": "NS",
-          "elapsed": null
+          "elapsed": null,
+          "extra": null
         }
       },
       "league": {
-        "id": 39,
-        "name": "Premier League",
-        "country": "England",
-        "logo": "https://media.api-sports.io/football/leagues/39.png",
-        "flag": "https://media.api-sports.io/flags/gb.svg",
-        "season": 2023,
-        "round": "Regular Season - 36"
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 62,
-          "name": "Sheffield Utd",
-          "logo": "https://media.api-sports.io/football/teams/62.png",
+          "id": 548,
+          "name": "Real Sociedad",
+          "logo": "https://media.api-sports.io/football/teams/548.png",
           "winner": null
         },
         "away": {
-          "id": 65,
-          "name": "Nottingham Forest",
-          "logo": "https://media.api-sports.io/football/teams/65.png",
+          "id": 534,
+          "name": "Las Palmas",
+          "logo": "https://media.api-sports.io/football/teams/534.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208639,
+        "referee": "Alejandro Quintero",
+        "timezone": "UTC",
+        "date": "2024-12-15T20:00:00+00:00",
+        "timestamp": 1734292800,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 19939,
+          "name": "Estadi Olímpic Lluís Companys",
+          "city": "Barcelona"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 17"
+      },
+      "teams": {
+        "home": {
+          "id": 529,
+          "name": "Barcelona",
+          "logo": "https://media.api-sports.io/football/teams/529.png",
+          "winner": null
+        },
+        "away": {
+          "id": 537,
+          "name": "Leganes",
+          "logo": "https://media.api-sports.io/football/teams/537.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208599,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-18T20:30:00+00:00",
+        "timestamp": 1734553800,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 1498,
+          "name": "Estadio de la Cerámica",
+          "city": "Villarreal"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 12"
+      },
+      "teams": {
+        "home": {
+          "id": 533,
+          "name": "Villarreal",
+          "logo": "https://media.api-sports.io/football/teams/533.png",
+          "winner": null
+        },
+        "away": {
+          "id": 728,
+          "name": "Rayo Vallecano",
+          "logo": "https://media.api-sports.io/football/teams/728.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1212922,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-18T20:30:00+00:00",
+        "timestamp": 1734553800,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 1474,
+          "name": "RCDE Stadium",
+          "city": "Cornella de Llobregat"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 13"
+      },
+      "teams": {
+        "home": {
+          "id": 540,
+          "name": "Espanyol",
+          "logo": "https://media.api-sports.io/football/teams/540.png",
+          "winner": null
+        },
+        "away": {
+          "id": 532,
+          "name": "Valencia",
+          "logo": "https://media.api-sports.io/football/teams/532.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208650,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-20T20:00:00+00:00",
+        "timestamp": 1734724800,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 1478,
+          "name": "Estadi Municipal de Montilivi",
+          "city": "Girona"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 18"
+      },
+      "teams": {
+        "home": {
+          "id": 547,
+          "name": "Girona",
+          "logo": "https://media.api-sports.io/football/teams/547.png",
+          "winner": null
+        },
+        "away": {
+          "id": 720,
+          "name": "Valladolid",
+          "logo": "https://media.api-sports.io/football/teams/720.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208649,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-21T13:00:00+00:00",
+        "timestamp": 1734786000,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 20422,
+          "name": "Estadio Coliseum",
+          "city": "Getafe"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 18"
+      },
+      "teams": {
+        "home": {
+          "id": 546,
+          "name": "Getafe",
+          "logo": "https://media.api-sports.io/football/teams/546.png",
+          "winner": null
+        },
+        "away": {
+          "id": 798,
+          "name": "Mallorca",
+          "logo": "https://media.api-sports.io/football/teams/798.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208648,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-21T15:15:00+00:00",
+        "timestamp": 1734794100,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": null,
+          "name": "Estadio Abanca-Balaídos",
+          "city": "Vigo"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 18"
+      },
+      "teams": {
+        "home": {
+          "id": 538,
+          "name": "Celta Vigo",
+          "logo": "https://media.api-sports.io/football/teams/538.png",
+          "winner": null
+        },
+        "away": {
+          "id": 548,
+          "name": "Real Sociedad",
+          "logo": "https://media.api-sports.io/football/teams/548.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208653,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-21T17:30:00+00:00",
+        "timestamp": 1734802200,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 1486,
+          "name": "Estadio El Sadar",
+          "city": "Iruñea"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 18"
+      },
+      "teams": {
+        "home": {
+          "id": 727,
+          "name": "Osasuna",
+          "logo": "https://media.api-sports.io/football/teams/727.png",
+          "winner": null
+        },
+        "away": {
+          "id": 531,
+          "name": "Athletic Club",
+          "logo": "https://media.api-sports.io/football/teams/531.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208654,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-21T20:00:00+00:00",
+        "timestamp": 1734811200,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 19939,
+          "name": "Estadi Olímpic Lluís Companys",
+          "city": "Barcelona"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 18"
+      },
+      "teams": {
+        "home": {
+          "id": 529,
+          "name": "Barcelona",
+          "logo": "https://media.api-sports.io/football/teams/529.png",
+          "winner": null
+        },
+        "away": {
+          "id": 530,
+          "name": "Atletico Madrid",
+          "logo": "https://media.api-sports.io/football/teams/530.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208655,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-22T13:00:00+00:00",
+        "timestamp": 1734872400,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 1497,
+          "name": "Estadio de Mestalla",
+          "city": "Valencia"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 18"
+      },
+      "teams": {
+        "home": {
+          "id": 532,
+          "name": "Valencia",
+          "logo": "https://media.api-sports.io/football/teams/532.png",
+          "winner": null
+        },
+        "away": {
+          "id": 542,
+          "name": "Alaves",
+          "logo": "https://media.api-sports.io/football/teams/542.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208651,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-22T15:15:00+00:00",
+        "timestamp": 1734880500,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 1456,
+          "name": "Estadio Santiago Bernabéu",
+          "city": "Madrid"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 18"
+      },
+      "teams": {
+        "home": {
+          "id": 541,
+          "name": "Real Madrid",
+          "logo": "https://media.api-sports.io/football/teams/541.png",
+          "winner": null
+        },
+        "away": {
+          "id": 536,
+          "name": "Sevilla",
+          "logo": "https://media.api-sports.io/football/teams/536.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1212927,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-22T17:30:00+00:00",
+        "timestamp": 1734888600,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 1481,
+          "name": "Estadio de Gran Canaria",
+          "city": "Las Palmas de Gran Canaria"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 18"
+      },
+      "teams": {
+        "home": {
+          "id": 534,
+          "name": "Las Palmas",
+          "logo": "https://media.api-sports.io/football/teams/534.png",
+          "winner": null
+        },
+        "away": {
+          "id": 540,
+          "name": "Espanyol",
+          "logo": "https://media.api-sports.io/football/teams/540.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208652,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-22T17:30:00+00:00",
+        "timestamp": 1734888600,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 1464,
+          "name": "Estadio Municipal de Butarque",
+          "city": "Leganés"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 18"
+      },
+      "teams": {
+        "home": {
+          "id": 537,
+          "name": "Leganes",
+          "logo": "https://media.api-sports.io/football/teams/537.png",
+          "winner": null
+        },
+        "away": {
+          "id": 533,
+          "name": "Villarreal",
+          "logo": "https://media.api-sports.io/football/teams/533.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "score": {
+        "halftime": {
+          "home": null,
+          "away": null
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1208647,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2024-12-22T20:00:00+00:00",
+        "timestamp": 1734897600,
+        "periods": {
+          "first": null,
+          "second": null
+        },
+        "venue": {
+          "id": 1489,
+          "name": "Estadio Benito Villamarín",
+          "city": "Sevilla"
+        },
+        "status": {
+          "long": "Not Started",
+          "short": "NS",
+          "elapsed": null,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 140,
+        "name": "La Liga",
+        "country": "Spain",
+        "logo": "https://media.api-sports.io/football/leagues/140.png",
+        "flag": "https://media.api-sports.io/flags/es.svg",
+        "season": 2024,
+        "round": "Regular Season - 18"
+      },
+      "teams": {
+        "home": {
+          "id": 543,
+          "name": "Real Betis",
+          "logo": "https://media.api-sports.io/football/teams/543.png",
+          "winner": null
+        },
+        "away": {
+          "id": 728,
+          "name": "Rayo Vallecano",
+          "logo": "https://media.api-sports.io/football/teams/728.png",
           "winner": null
         }
       },

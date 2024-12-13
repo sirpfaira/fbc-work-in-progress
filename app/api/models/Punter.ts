@@ -6,7 +6,6 @@ const punterSchema = new Schema(
     username: String,
     country: String,
     platform: String,
-    rating: Number,
     image: String,
     form: [String],
     followers: [String],

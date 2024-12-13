@@ -5,12 +5,12 @@ import Bet from "@/app/api/models/Bet";
 import { getShortDate } from "@/lib/helpers";
 import Trending from "../models/Trending";
 import { ITrending, TTrending } from "@/lib/schemas/trending";
-import bets from "./bets.json";
+// import bets from "./bets.json";
 
 export async function GET() {
   try {
-    // await DatabaseConnection();
-    // const bets = await Bet.find();
+    await DatabaseConnection();
+    const bets = await Bet.find();
     if (bets) {
       return NextResponse.json({ items: bets }, { status: 200 });
     } else {
@@ -128,6 +128,7 @@ function createBet(bet: CBet): IBet {
     uid: `${bet.username}-${getShortDate(new Date().toISOString())}`,
     username: bet.username,
     title: bet.title,
+    date: bet.date,
     boom: [],
     doom: [],
     selections: selections,

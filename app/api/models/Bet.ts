@@ -4,6 +4,7 @@ const codeSchema = new Schema(
   {
     username: String,
     platform: String,
+    country: String,
     value: String,
     flagged: [String],
   },
@@ -15,6 +16,7 @@ const betSchema = new Schema(
     uid: String,
     username: String,
     title: String,
+    date: String,
     boom: [String],
     doom: [String],
     selections: [String],

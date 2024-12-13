@@ -91,8 +91,8 @@ interface TApiFixtureResponse {
 export async function POST(request: NextRequest) {
   // Fetches one league at a time
   try {
-    // const league = await request.json();
-    // console.log(league)
+    const league = await request.json();
+    // console.log(league);
     const result: TApiFixtureResponse = apiFixturesResponse;
     const rawFixtures = result.response;
     const fbcFixtures = getFbcFixtures(rawFixtures);

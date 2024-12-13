@@ -2,12 +2,12 @@ import DatabaseConnection from "@/lib/dbconfig";
 import { ITeamSchema } from "@/lib/schemas/team";
 import { NextRequest, NextResponse } from "next/server";
 import Team from "@/app/api/models/Team";
-import teams from "./teams.json";
+// import teams from "./teams.json";
 
 export async function GET() {
   try {
-    // await DatabaseConnection();
-    // const teams = await Team.find();
+    await DatabaseConnection();
+    const teams = await Team.find();
     if (teams) {
       return NextResponse.json({ items: teams }, { status: 200 });
     } else {

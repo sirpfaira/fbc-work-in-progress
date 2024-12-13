@@ -2,12 +2,12 @@ import DatabaseConnection from "@/lib/dbconfig";
 import { IFixtureSchema } from "@/lib/schemas/fixture";
 import { NextRequest, NextResponse } from "next/server";
 import Fixture from "@/app/api/models/Fixture";
-import fixtures from "./fixtures.json";
+// import fixtures from "./fixtures.json";
 
 export async function GET() {
   try {
-    // await DatabaseConnection();
-    // const fixtures = await Fixture.find();
+    await DatabaseConnection();
+    const fixtures = await Fixture.find();
     if (fixtures) {
       return NextResponse.json({ items: fixtures }, { status: 200 });
     } else {

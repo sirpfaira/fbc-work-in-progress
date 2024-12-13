@@ -27,12 +27,10 @@ const ThemeButton = ({ text = false }: ThemeButtonProps) => {
         className="flex items-center space-x-2"
       >
         <span>
-          <div className="icon-wrapper">
-            <span>
-              {resolvedTheme === "light" && <Moon size={18} />}
-              {resolvedTheme === "dark" && <Sun size={18} />}
-            </span>
-          </div>
+          <span>
+            {resolvedTheme === "light" && <Moon size={18} />}
+            {resolvedTheme === "dark" && <Sun size={18} />}
+          </span>
         </span>
         <span className="text-standard font-medium">
           {resolvedTheme === "light" ? "Dark Mode" : "Light Mode"}
@@ -44,7 +42,6 @@ const ThemeButton = ({ text = false }: ThemeButtonProps) => {
   return (
     <button
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="icon-wrapper"
     >
       {resolvedTheme === "light" && <Moon size={18} />}
       {resolvedTheme === "dark" && <Sun size={18} />}

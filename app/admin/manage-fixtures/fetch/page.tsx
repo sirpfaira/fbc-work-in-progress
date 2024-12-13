@@ -180,7 +180,7 @@ export default function FetchFixtures() {
 
   async function updateTrendings(newFixture: TFixture) {
     try {
-      if (trendings) {
+      if (trendings && trendings.length > 0) {
         const fixtureTrendings = trendings.filter(
           (i) => i.fixture === newFixture.uid && i.result === null
         );
@@ -394,7 +394,15 @@ export default function FetchFixtures() {
                     </div>
                   </div>
                 ) : (
-                  <p>No competitions to fetch</p>
+                  <div className="flex justify-between items-center w-full card px-4 py-2">
+                    <p>No competitions to fetch!</p>
+                    <Button
+                      onClick={() => setIsAddOpen(true)}
+                      variant={"ghost"}
+                    >
+                      <PlusCircle size={26} />
+                    </Button>
+                  </div>
                 )}
                 <CustomDialog
                   isOpen={isAddOpen}

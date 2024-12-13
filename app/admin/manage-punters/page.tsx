@@ -52,10 +52,6 @@ export default function ManagePunters() {
         header: "Country",
       },
       {
-        accessorKey: "rating",
-        header: "Rating",
-      },
-      {
         header: "Followers",
         accessorFn: (row) => row.followers.length || 0,
       },

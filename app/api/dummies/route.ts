@@ -4,12 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 import Dummy from "@/app/api/models/Dummy";
 import Punter from "@/app/api/models/Punter";
 import { IPunter } from "@/lib/schemas/punter";
-import dummies from "./dummies.json";
+// import dummies from "./dummies.json";
 
 export async function GET() {
   try {
-    // await DatabaseConnection();
-    // const dummies = await Dummy.find();
+    await DatabaseConnection();
+    const dummies = await Dummy.find();
     if (dummies) {
       return NextResponse.json({ items: dummies }, { status: 200 });
     } else {
@@ -35,7 +35,6 @@ export async function POST(request: NextRequest) {
         name: validated.data.name,
         country: validated.data.country,
         platform: validated.data.platform,
-        rating: 0,
         image: "",
         form: [],
         followers: [],

@@ -65,6 +65,7 @@ import { TOddSelector } from "@/lib/schemas/oddselector";
 import TimeStamp from "@/app/components/common/TimeStamp";
 import { getShortDate } from "@/lib/helpers";
 import Link from "next/link";
+import DateTimePicker from "@/app/components/common/DateTimePicker";
 
 export default function Create() {
   const { toast } = useToast();
@@ -85,6 +86,7 @@ export default function Create() {
   const initialBet: CBet = {
     username: "",
     title: "",
+    date: "",
     selections: [],
     codes: [],
   };
@@ -167,7 +169,12 @@ export default function Create() {
   });
 
   function updateBetInfo(values: BBetInfo) {
-    setNewItem({ ...newItem, username: values.username, title: values.title });
+    setNewItem({
+      ...newItem,
+      username: values.username,
+      title: values.title,
+      date: values.date.toISOString(),
+    });
   }
 
   function getNewSelection(values: ISelection) {
@@ -277,6 +284,7 @@ export default function Create() {
     const newCode = {
       username: newItem.username,
       platform: values.platform,
+      country: platforms?.find((i) => i.uid === values.platform)?.country!,
       value: values.value,
       flagged: [],
     };
@@ -310,6 +318,7 @@ export default function Create() {
     if (
       newItem.username !== "" &&
       newItem.title.trim() !== "" &&
+      newItem.date.trim() !== "" &&
       (newItem.selections.length > 0 || newItem.codes.length > 0)
     ) {
       createDummyBet(newItem);
@@ -367,6 +376,20 @@ export default function Create() {
                               {form.formState.errors.title.message}
                             </FormMessage>
                           )}
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="date"
+                      render={({ field }) => (
+                        <FormItem className="flex flex-col">
+                          <FormLabel>Bet date</FormLabel>
+                          <DateTimePicker
+                            setDate={field.onChange}
+                            date={field.value}
+                          />
+                          <FormMessage />
                         </FormItem>
                       )}
                     />
@@ -736,11 +759,15 @@ function AddSelection({
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {fixtures?.map((item) => (
-                    <SelectItem key={item.uid} value={String(item.uid)}>
-                      {item.teams}
-                    </SelectItem>
-                  ))}
+                  {fixtures
+                    ?.sort((a, b) =>
+                      a.teams > b.teams ? 1 : b.teams > a.teams ? -1 : 0
+                    )
+                    ?.map((item) => (
+                      <SelectItem key={item.uid} value={String(item.uid)}>
+                        {item.teams}
+                      </SelectItem>
+                    ))}
                 </SelectContent>
               </Select>
               <FormMessage />

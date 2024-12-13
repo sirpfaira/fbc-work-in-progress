@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { BFullDummySchema } from "@/lib/schemas/dummy";
 import DatabaseConnection from "@/lib/dbconfig";
 import Dummy from "@/app/api/models/Dummy";
-import Punter from "../../models/Punter";
+import Punter from "@/app/api/models/Punter";
 
 export async function GET(request: NextRequest, { params }: { params: any }) {
   try {

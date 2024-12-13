@@ -8,6 +8,8 @@ import PageTitle from "@/app/components/common/PageTitle";
 import { TDummy } from "@/lib/schemas/dummy";
 import { TBet } from "@/lib/schemas/bet";
 import Link from "next/link";
+import { TTrending } from "@/lib/schemas/trending";
+import Bets from "@/app/en/bets/Bets";
 
 export default function ManageBets() {
   const {
@@ -31,6 +33,14 @@ export default function ManageBets() {
     },
   });
 
+  const { data: trendings } = useQuery({
+    queryKey: ["trendings"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/trendings`);
+      return data.items as TTrending[];
+    },
+  });
+
   if (isError) return <ErrorTile error={error.message} />;
 
   return (
@@ -44,7 +54,11 @@ export default function ManageBets() {
       {isLoading ? (
         <TableSkeleton columns={3} />
       ) : (
-        <>{bets && dummies && <DummyBets bets={bets} dummies={dummies} />}</>
+        <>
+          {bets && dummies && trendings && (
+            <DummyBets bets={bets} dummies={dummies} trendings={trendings} />
+          )}
+        </>
       )}
     </div>
   );
@@ -53,9 +67,10 @@ export default function ManageBets() {
 interface DummyBetsProps {
   bets: TBet[];
   dummies: TDummy[];
+  trendings: TTrending[];
 }
 
-function DummyBets({ bets, dummies }: DummyBetsProps) {
+function DummyBets({ bets, dummies, trendings }: DummyBetsProps) {
   const dummyUsernames = dummies.map((item) => {
     return item.username;
   });
@@ -63,12 +78,27 @@ function DummyBets({ bets, dummies }: DummyBetsProps) {
     dummyUsernames.includes(item.username)
   );
   return (
-    <div>
-      {dummyBets.map((item) => (
-        <div key={item.uid}>
-          <span>{item.title}</span>
+    <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
+      <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4">
+          {dummyBets?.map((bet) => (
+            <div key={bet._id.toString()} className="">
+              <Bets bets={dummyBets} trendings={trendings} />
+            </div>
+          ))}
         </div>
-      ))}
+        {/* <div className="flex w-full justify-center items-center px-4 py-2 card">
+                <PaginationComponent hasNext={hasNext} />
+              </div> */}
+      </div>
+      <div className="hidden lg:flex flex-col card p-6">
+        <span>Sidebar</span>
+        <pre className="mt-2 w-full rounded-md bg-muted-block p-4">
+          <code className="text-sky-600">
+            {JSON.stringify(dummyBets?.[0], null, 2)}
+          </code>
+        </pre>
+      </div>
     </div>
   );
 }

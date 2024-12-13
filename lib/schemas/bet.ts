@@ -1,5 +1,6 @@
 import { ObjectId } from "mongoose";
 import { z } from "zod";
+import { ITrending } from "./trending";
 
 export const BSelectionSchema = z.object({
   fixture: z.coerce.number().min(1),
@@ -26,6 +27,7 @@ export const BCodeSchema = z.object({
 export const ICodeSchema = z.object({
   username: z.string().trim().min(1),
   platform: z.string().trim().min(1),
+  country: z.string().trim().min(1),
   value: z.string().trim().min(1),
   flagged: z.array(z.string()),
 });
@@ -33,11 +35,13 @@ export const ICodeSchema = z.object({
 export const BBetInfoSchema = z.object({
   username: z.string().trim().min(1),
   title: z.string().trim().min(1),
+  date: z.date(),
 });
 
 export const CBetSchema = z.object({
   username: z.string().trim().min(1),
   title: z.string().trim().min(1),
+  date: z.string(),
   selections: z.array(ISelectionSchema),
   codes: z.array(ICodeSchema),
 });
@@ -45,6 +49,7 @@ export const CBetSchema = z.object({
 export const IBetSchema = z.object({
   uid: z.string().trim().min(1),
   username: z.string().trim().min(1),
+  date: z.string(),
   title: z.string().trim().min(1),
   boom: z.array(z.string()),
   doom: z.array(z.string()),
@@ -62,3 +67,21 @@ export type IBet = z.infer<typeof IBetSchema>;
 export type TBet = z.infer<typeof IBetSchema> & {
   _id: ObjectId;
 };
+
+export interface XBet {
+  _id: ObjectId;
+  uid: string;
+  username: string;
+  title: string;
+  date: string;
+  boom: string[];
+  doom: string[];
+  selections: ITrending[];
+  codes: {
+    username: string;
+    value: string;
+    platform: string;
+    country: string;
+    flagged: string[];
+  }[];
+}

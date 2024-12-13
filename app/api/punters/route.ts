@@ -2,7 +2,7 @@ import DatabaseConnection from "@/lib/dbconfig";
 import { IPunterSchema } from "@/lib/schemas/punter";
 import { NextRequest, NextResponse } from "next/server";
 import Punter from "@/app/api/models/Punter";
-// import punters from "./data.json";
+// import punters from "./punters.json";
 
 export async function GET() {
   try {
