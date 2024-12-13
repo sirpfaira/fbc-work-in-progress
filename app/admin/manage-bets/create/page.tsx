@@ -284,7 +284,9 @@ export default function Create() {
     const newCode = {
       username: newItem.username,
       platform: values.platform,
-      country: platforms?.find((i) => i.uid === values.platform)?.country!,
+      country:
+        platforms?.find((i) => i.uid === values.platform)?.country ||
+        "No Country",
       value: values.value,
       flagged: [],
     };

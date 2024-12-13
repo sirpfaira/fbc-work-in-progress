@@ -6,8 +6,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { AtSign, Copy, Share2 } from "lucide-react";
+import { AtSign, Copy, MessageCircle, Share2 } from "lucide-react";
 import IconWrapper from "@/app/components/common/IconWrapper";
+import Link from "next/link";
 
 interface ShareSelectionProps {
   link: string;
@@ -39,14 +40,17 @@ const ShareSelectionButton = ({ link }: Readonly<ShareSelectionProps>) => {
                   </IconWrapper>
                   <span>Copy To Clipboard</span>
                 </button>
-                {/* <Link
-                  href={"/account"}
+                <Link
+                  href={`wa.me/?message=${link}`}
                   target="_blank"
                   className="flex items-center space-x-2 group menu-item"
                 >
-                  <IconWrapper>{getIcon(Icons.WHATSAPP, 18)}</IconWrapper>
+                  <IconWrapper>
+                    <MessageCircle size={18} />
+                  </IconWrapper>
                   <span>WhatsApp</span>
                 </Link>
+                {/*
                 <Link
                   href={"/account"}
                   target="_blank"
