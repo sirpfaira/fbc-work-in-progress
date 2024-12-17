@@ -14,7 +14,7 @@ import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 import CustomDialog from "@/app/components/common/CustomDialog";
 import PageTitle from "@/app/components/common/PageTitle";
 import DeleteForm from "@/app/components/common/DeleteForm";
-import AddForm from "./AddForm";
+import AddForm from "./AddPunterForm";
 import EditForm from "./EditForm";
 import { TDummy } from "@/lib/schemas/dummy";
 

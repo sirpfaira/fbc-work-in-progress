@@ -3,7 +3,13 @@ import { useState, useMemo } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { ColumnDef, Row } from "@tanstack/react-table";
-import { Download, PlusCircle, SquarePen, Trash2 } from "lucide-react";
+import {
+  ArrowUpDown,
+  Download,
+  PlusCircle,
+  SquarePen,
+  Trash2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ObjectId } from "mongoose";
 import { TFixture } from "@/lib/schemas/fixture";
@@ -24,7 +30,21 @@ export default function ManageFixtures() {
     () => [
       {
         accessorKey: "teams",
-        header: () => <div className="ml-2">Teams</div>,
+        header: ({ column }) => {
+          return (
+            <Button
+              variant="ghost"
+              size="table"
+              onClick={() =>
+                column.toggleSorting(column.getIsSorted() === "asc")
+              }
+              className="ml-2"
+            >
+              Teams
+              <ArrowUpDown className="ml-2 h-4 w-4" />
+            </Button>
+          );
+        },
         cell: ({ row }) => {
           return <div className="ml-2">{row.getValue("teams")}</div>;
         },
@@ -79,7 +99,9 @@ export default function ManageFixtures() {
       {isLoading ? (
         <TableSkeleton columns={4} />
       ) : (
-        <>{data && <DataTable columns={columns} data={data} filter="name" />}</>
+        <>
+          {data && <DataTable columns={columns} data={data} filter="teams" />}
+        </>
       )}
       <CustomDialog
         isOpen={isAddOpen}

@@ -2,13 +2,9 @@ import { ObjectId } from "mongoose";
 import { z } from "zod";
 
 export const IOddSelectorSchema = z.object({
-  uid: z.number({ required_error: "OddSelector uid is required!" }),
-  apiId: z.number({ required_error: "OddSelector apiId is required!" }),
-  name: z
-    .string()
-    .trim()
-    .min(1, { message: "OddSelector name must not be empty!" })
-    .max(36, { message: "OddSelector name must not exceed 36 characters!" }),
+  uid: z.number().min(100),
+  apiId: z.number().min(1),
+  name: z.string().trim().min(1).max(60),
   alias: z.string().optional(),
 });
 

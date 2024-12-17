@@ -3,8 +3,8 @@ import { z } from "zod";
 import { BPunterSchema, IPunterSchema } from "./punter";
 
 export const IDummySchema = z.object({
-  realname: z.string().trim().min(3).max(36),
-  username: z.string().trim().min(3).max(15),
+  realname: z.string().trim().min(3).max(50),
+  username: z.string().trim().min(3).max(20),
   url: z.string(),
 });
 

@@ -57,9 +57,11 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
             </div>
           </SheetContent>
         </Dialog>
-        <span className="inline-block font-semibold text-big lg:hidden">
-          FreeBetCodes
-        </span>
+        <Link href="/">
+          <span className="inline-block font-semibold text-big lg:hidden">
+            FreeBetCodes
+          </span>
+        </Link>
         <div className="flex justify-center items-center gap-2 ml-auto">
           <ThemeButton />
           {config?.auth?.enabled && <AdminProfileButton />}

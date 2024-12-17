@@ -3,37 +3,17 @@ import { z } from "zod";
 
 export const IMarketSchema = z.object({
   _id: z.coerce.number().min(1),
-  name: z
-    .string()
-    .trim()
-    .min(1, { message: "Platform market name must not be empty!" })
-    .max(36, {
-      message: "Platform market name must not exceed 36 characters!",
-    }),
+  name: z.string().trim().min(1).max(60),
 });
 
 export const BPlatformSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(3, { message: "Platform uid must not be less than 3 characters!" })
-    .max(36, { message: "Platform uid must not exceed 36 characters!" }),
-  country: z
-    .string()
-    .trim()
-    .min(1, { message: "Platform country is required!" }),
+  name: z.string().trim().min(3).max(50),
+  country: z.string().trim().min(1),
 });
 
 export const IPlatformSchema = z.object({
-  uid: z
-    .string()
-    .trim()
-    .min(1, { message: "Platform uid must not be empty!" })
-    .max(36, { message: "Platform uid must not exceed 36 characters!" }),
-  country: z
-    .string()
-    .trim()
-    .min(1, { message: "Platform country is required!" }),
+  uid: z.string().trim().min(1).max(100),
+  country: z.string().trim().min(1),
   markets: z.array(IMarketSchema),
 });
 

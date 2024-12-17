@@ -28,11 +28,11 @@ import ErrorTile from "@/app/components/common/ErrorTile";
 import { TPlatform } from "@/lib/schemas/platform";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 
-interface AddFormProps {
+interface AddPunterFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function AddForm({ setIsOpen }: AddFormProps) {
+export default function AddPunterForm({ setIsOpen }: AddPunterFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 

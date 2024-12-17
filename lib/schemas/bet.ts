@@ -85,3 +85,9 @@ export interface XBet {
     flagged: string[];
   }[];
 }
+
+export const XSelectionSchema = z.object({
+  fixture: z.string().trim().min(1),
+  market: z.string().trim().min(1),
+});
+export type XSelection = z.infer<typeof XSelectionSchema>;

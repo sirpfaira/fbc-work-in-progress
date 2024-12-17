@@ -62,7 +62,7 @@ export default function ManagePlatforms() {
       {isLoading ? (
         <TableSkeleton columns={3} />
       ) : (
-        <>{data && <DataTable columns={columns} data={data} filter="name" />}</>
+        <>{data && <DataTable columns={columns} data={data} filter="uid" />}</>
       )}
       <CustomDialog isOpen={isAddOpen} setIsOpen={setIsAddOpen} title="Add">
         <AddForm setIsOpen={setIsAddOpen} />

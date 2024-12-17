@@ -1,6 +1,12 @@
 "use client";
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { Check, ChevronsUpDown, SquarePen, Trash2 } from "lucide-react";
+import {
+  Check,
+  ChevronsUpDown,
+  SquarePen,
+  Trash2,
+  UserRoundPlus,
+} from "lucide-react";
 import { useToast } from "@/components/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -22,8 +28,8 @@ import {
   BBetInfoSchema,
   BCode,
   BCodeSchema,
-  BSelection,
-  BSelectionSchema,
+  XSelection,
+  XSelectionSchema,
   CBet,
   ISelection,
 } from "@/lib/schemas/bet";
@@ -32,6 +38,7 @@ import { TPlatform } from "@/lib/schemas/platform";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { utils, writeFile } from "xlsx";
 import {
   Command,
   CommandEmpty,
@@ -43,7 +50,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -66,6 +72,8 @@ import TimeStamp from "@/app/components/common/TimeStamp";
 import { getShortDate } from "@/lib/helpers";
 import Link from "next/link";
 import DateTimePicker from "@/app/components/common/DateTimePicker";
+import AddPunterForm from "@/app/admin/manage-punters/AddPunterForm";
+import moment from "moment";
 
 export default function Create() {
   const { toast } = useToast();
@@ -75,7 +83,7 @@ export default function Create() {
     uid: "",
     fixture: 0,
     fixtureName: "",
-    market: 0,
+    market: 101,
     marketName: "",
     competition: 0,
     competitionName: "",
@@ -85,7 +93,7 @@ export default function Create() {
 
   const initialBet: CBet = {
     username: "",
-    title: "",
+    title: `My Bet ${getShortDate(new Date().toISOString())}`,
     date: "",
     selections: [],
     codes: [],
@@ -100,6 +108,7 @@ export default function Create() {
   const [isAddCodeOpen, setIsAddCodeOpen] = useState<boolean>(false);
   const [isDeleteAllCodesOpen, setIsDeleteAllCodesOpen] =
     useState<boolean>(false);
+  const [isAddPunterOpen, setIsAddPunterOpen] = useState<boolean>(false);
 
   const { data: platforms } = useQuery({
     queryKey: ["platforms"],
@@ -113,7 +122,10 @@ export default function Create() {
     queryKey: ["fixtures"],
     queryFn: async () => {
       const { data } = await axios.get(`/api/fixtures`);
-      return data.items as TFixture[];
+      const result = data.items as TFixture[];
+      return result?.sort((a, b) =>
+        a.teams > b.teams ? 1 : b.teams > a.teams ? -1 : 0
+      );
     },
   });
 
@@ -140,6 +152,11 @@ export default function Create() {
 
   const form = useForm<BBetInfo>({
     resolver: zodResolver(BBetInfoSchema),
+    defaultValues: {
+      title: `My Bet ${getShortDate(new Date().toISOString())}`,
+      date: new Date(),
+      username: "",
+    },
   });
 
   const { mutate: createDummyBet, isPending } = useMutation({
@@ -344,12 +361,34 @@ export default function Create() {
     }
   };
 
+  function downloadFixtures() {
+    if (fixtures) {
+      const exportArray = fixtures.map((item) => {
+        return {
+          uid: item.uid,
+          teams: item.teams,
+          date: moment(item.date).format("DD/MM/YYYY"),
+        };
+      });
+      const headings = [["UID", "Teams", "Date"]];
+      const wb = utils.book_new();
+      const ws = utils.json_to_sheet([]);
+      utils.sheet_add_aoa(ws, headings);
+      utils.sheet_add_json(ws, exportArray, { origin: "A2", skipHeader: true });
+      utils.book_append_sheet(wb, ws, "Fixtures");
+      writeFile(wb, "Fixtures.xlsx");
+    }
+  }
+
   if (isError) return <ErrorTile error={error.message} />;
 
   return (
     <div className="flex flex-col space-y-5">
       <div className="card flex items-center justify-between px-4 py-2">
         <PageTitle title="Create Dummy Bet" link="/admin/manage-bets" />
+        <Button onClick={() => setIsAddPunterOpen(true)} variant={"ghost"}>
+          <UserRoundPlus size={26} />
+        </Button>
       </div>
 
       {isLoading ? (
@@ -359,115 +398,129 @@ export default function Create() {
           {dummies && oddselectors && fixtures && platforms && (
             <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
               <div className="flex flex-col space-y-5 card p-4">
-                <Form {...form}>
-                  <form
-                    onSubmit={form.handleSubmit(updateBetInfo)}
-                    className="space-y-6 border border-border p-4 rounded-md w-full"
-                  >
-                    <FormField
-                      control={form.control}
-                      name="title"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Bet Title</FormLabel>
-                          <FormControl>
-                            <Input placeholder="My Bet 1" {...field} />
-                          </FormControl>
-                          {form.formState.errors.title && (
-                            <FormMessage>
-                              {form.formState.errors.title.message}
-                            </FormMessage>
-                          )}
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="date"
-                      render={({ field }) => (
-                        <FormItem className="flex flex-col">
-                          <FormLabel>Bet date</FormLabel>
-                          <DateTimePicker
-                            setDate={field.onChange}
-                            date={field.value}
-                          />
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="username"
-                      render={({ field }) => (
-                        <FormItem className="flex flex-col">
-                          <FormLabel>Dummy Username</FormLabel>
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <FormControl>
-                                <Button
-                                  variant="outline"
-                                  role="combobox"
-                                  className={cn(
-                                    "w-full justify-between",
-                                    !field.value && "text-muted-foreground"
+                <div className="border border-border px-4 rounded-md">
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <span className="text-big font-medium">
+                          Information
+                        </span>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <Form {...form}>
+                          <form
+                            onSubmit={form.handleSubmit(updateBetInfo)}
+                            className="space-y-6 border border-border p-4 rounded-md w-full"
+                          >
+                            <FormField
+                              control={form.control}
+                              name="title"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Bet Title</FormLabel>
+                                  <FormControl>
+                                    <Input placeholder="My Bet 1" {...field} />
+                                  </FormControl>
+                                  {form.formState.errors.title && (
+                                    <FormMessage>
+                                      {form.formState.errors.title.message}
+                                    </FormMessage>
                                   )}
-                                >
-                                  {field.value
-                                    ? dummies.find(
-                                        (item) => item.username === field.value
-                                      )?.realname
-                                    : "Select dummy"}
-                                  <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                </Button>
-                              </FormControl>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-full p-0">
-                              <Command>
-                                <CommandInput placeholder="Search dummy..." />
-                                <CommandList>
-                                  <CommandEmpty>
-                                    No language found.
-                                  </CommandEmpty>
-                                  <CommandGroup>
-                                    {dummies.map((item) => (
-                                      <CommandItem
-                                        value={item.realname}
-                                        key={item.username}
-                                        onSelect={() => {
-                                          form.setValue(
-                                            "username",
-                                            item.username
-                                          );
-                                        }}
-                                      >
-                                        {item.realname}
-                                        <Check
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="date"
+                              render={({ field }) => (
+                                <FormItem className="flex flex-col">
+                                  <FormLabel>Bet date</FormLabel>
+                                  <DateTimePicker
+                                    setDate={field.onChange}
+                                    date={field.value}
+                                  />
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="username"
+                              render={({ field }) => (
+                                <FormItem className="flex flex-col">
+                                  <FormLabel>Dummy Username</FormLabel>
+                                  <Popover>
+                                    <PopoverTrigger asChild>
+                                      <FormControl>
+                                        <Button
+                                          variant="outline"
+                                          role="combobox"
                                           className={cn(
-                                            "ml-auto",
-                                            item.username === field.value
-                                              ? "opacity-100"
-                                              : "opacity-0"
+                                            "w-full justify-between",
+                                            !field.value &&
+                                              "text-muted-foreground"
                                           )}
-                                        />
-                                      </CommandItem>
-                                    ))}
-                                  </CommandGroup>
-                                </CommandList>
-                              </Command>
-                            </PopoverContent>
-                          </Popover>
-                          <FormDescription>
-                            This is the language that will be used in the
-                            dashboard.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <Button type="submit">Update</Button>
-                  </form>
-                </Form>
-                {newItem.username.trim() !== "" && (
+                                        >
+                                          {field.value
+                                            ? dummies.find(
+                                                (item) =>
+                                                  item.username === field.value
+                                              )?.realname
+                                            : "Select dummy"}
+                                          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                        </Button>
+                                      </FormControl>
+                                    </PopoverTrigger>
+                                    <PopoverContent className="w-full p-0">
+                                      <Command>
+                                        <CommandInput placeholder="Search dummy..." />
+                                        <CommandList>
+                                          <CommandEmpty>
+                                            No language found.
+                                          </CommandEmpty>
+                                          <CommandGroup>
+                                            {dummies.map((item) => (
+                                              <CommandItem
+                                                value={item.realname}
+                                                key={item.username}
+                                                onSelect={() => {
+                                                  form.setValue(
+                                                    "username",
+                                                    item.username
+                                                  );
+                                                }}
+                                              >
+                                                {item.realname}
+                                                <Check
+                                                  className={cn(
+                                                    "ml-auto",
+                                                    item.username ===
+                                                      field.value
+                                                      ? "opacity-100"
+                                                      : "opacity-0"
+                                                  )}
+                                                />
+                                              </CommandItem>
+                                            ))}
+                                          </CommandGroup>
+                                        </CommandList>
+                                      </Command>
+                                    </PopoverContent>
+                                  </Popover>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <Button type="submit" variant={"outline"}>
+                              Update
+                            </Button>
+                          </form>
+                        </Form>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+                {newItem.title.trim() !== "" && (
                   <div className="flex flex-col space-y-5">
                     <div className="border border-border px-4 rounded-md">
                       <Accordion type="single" collapsible>
@@ -687,9 +740,19 @@ export default function Create() {
                     </Button>
                   </div>
                 </CustomDialog>
+                <CustomDialog
+                  isOpen={isAddPunterOpen}
+                  setIsOpen={setIsAddPunterOpen}
+                  title="Add"
+                >
+                  <AddPunterForm setIsOpen={setIsAddPunterOpen} />
+                </CustomDialog>
               </div>
-              <div className="hidden lg:flex flex-col card p-6">
+              <div className="hidden lg:flex flex-col space-y-4 card p-6">
                 <span>Sidebar</span>
+                <div>
+                  <Button onClick={downloadFixtures}>Download Fixtures</Button>
+                </div>
                 <pre className="mt-2 w-full rounded-md bg-muted-block p-4">
                   <code className="text-sky-600">
                     {JSON.stringify(newItem, null, 2)}
@@ -719,20 +782,20 @@ function AddSelection({
   oddselectors,
   setIsAddSelectionOpen,
 }: AddSelectionProps) {
-  const form = useForm<BSelection>({
+  const form = useForm<XSelection>({
     defaultValues: {
-      fixture: oldSelection.fixture,
-      market: oldSelection.market,
+      fixture: String(oldSelection.fixture),
+      market: String(oldSelection.market),
     },
-    resolver: zodResolver(BSelectionSchema),
+    resolver: zodResolver(XSelectionSchema),
   });
 
-  const onSubmit = async (values: BSelection) => {
+  const onSubmit = async (values: XSelection) => {
     const newItem = {
       uid: oldSelection.uid,
-      fixture: values.fixture,
+      fixture: Number(values.fixture),
       fixtureName: "",
-      market: values.market,
+      market: Number(values.market),
       marketName: "",
       competition: 0,
       competitionName: "",
@@ -749,56 +812,123 @@ function AddSelection({
           control={form.control}
           name="fixture"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="flex flex-col">
               <FormLabel>Fixture</FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={String(field.value)}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a fixture" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {fixtures
-                    ?.sort((a, b) =>
-                      a.teams > b.teams ? 1 : b.teams > a.teams ? -1 : 0
-                    )
-                    ?.map((item) => (
-                      <SelectItem key={item.uid} value={String(item.uid)}>
-                        {item.teams}
-                      </SelectItem>
-                    ))}
-                </SelectContent>
-              </Select>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      className={cn(
+                        "w-full justify-between",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value
+                        ? fixtures.find(
+                            (item) => item.uid === Number(field.value)
+                          )?.teams
+                        : "Select fixture"}
+                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput placeholder="Search fixture..." />
+                    <CommandList>
+                      <CommandEmpty>No fixture found.</CommandEmpty>
+                      <CommandGroup>
+                        {fixtures.map((item) => (
+                          <CommandItem
+                            value={`${item.teams}|${item.uid}`}
+                            key={item.uid}
+                            onSelect={() => {
+                              form.setValue("fixture", String(item.uid));
+                            }}
+                          >
+                            {item.teams}
+                            <Check
+                              className={cn(
+                                "ml-auto",
+                                item.uid === Number(field.value)
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              )}
+                            />
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
               <FormMessage />
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="market"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="flex flex-col">
               <FormLabel>Market</FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={String(field.value)}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a market" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {oddselectors?.map((item) => (
-                    <SelectItem key={item.uid} value={String(item.uid)}>
-                      {item.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      className={cn(
+                        "w-full justify-between",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value
+                        ? oddselectors.find(
+                            (item) => item.uid === Number(field.value)
+                          )?.name
+                        : "Select market"}
+                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput placeholder="Search market..." />
+                    <CommandList>
+                      <CommandEmpty>No market found.</CommandEmpty>
+                      <CommandGroup>
+                        {oddselectors
+                          ?.sort((a, b) =>
+                            a.uid > b.uid ? 1 : b.uid > a.uid ? -1 : 0
+                          )
+                          ?.map((item) => (
+                            <CommandItem
+                              value={`${item.name}|${item.uid}`}
+                              key={item.uid}
+                              onSelect={() => {
+                                form.setValue("market", String(item.uid));
+                              }}
+                            >
+                              {item.name}
+                              <Check
+                                className={cn(
+                                  "ml-auto",
+                                  item.uid === Number(field.value)
+                                    ? "opacity-100"
+                                    : "opacity-0"
+                                )}
+                              />
+                            </CommandItem>
+                          ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
               <FormMessage />
             </FormItem>
           )}

@@ -3,18 +3,10 @@ import { z } from "zod";
 
 export const ICompetitionSchema = z.object({
   uid: z.coerce.number().min(1),
-  name: z
-    .string()
-    .trim()
-    .min(1, { message: "Competition name must not be empty!" })
-    .max(50, { message: "Competition name must not exceed 50 characters!" }),
+  name: z.string().trim().min(1).max(60),
   season: z.coerce.number().min(1),
   priority: z.coerce.number().min(1),
-  country: z
-    .string()
-    .trim()
-    .min(1, { message: "Competition country must not be empty!" })
-    .max(4, { message: "Competition country must not exceed 36 characters!" }),
+  country: z.string().trim().min(1).max(20),
 });
 
 export type ICompetition = z.infer<typeof ICompetitionSchema>;

@@ -3,11 +3,7 @@ import { z } from "zod";
 
 export const ITeamSchema = z.object({
   uid: z.coerce.number().min(1),
-  name: z
-    .string()
-    .trim()
-    .min(1, { message: "Team name must not be empty!" })
-    .max(36, { message: "Team name must not exceed 36 characters!" }),
+  name: z.string().trim().min(1).max(60),
   competition: z.coerce.number().min(1),
   alias: z.string(),
 });

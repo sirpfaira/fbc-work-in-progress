@@ -74,18 +74,16 @@ function DummyBets({ bets, dummies, trendings }: DummyBetsProps) {
   const dummyUsernames = dummies.map((item) => {
     return item.username;
   });
+
   const dummyBets = bets.filter((item) =>
     dummyUsernames.includes(item.username)
   );
+
   return (
     <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
       <div className="flex flex-col space-y-4">
         <div className="flex flex-col space-y-4">
-          {dummyBets?.map((bet) => (
-            <div key={bet._id.toString()} className="">
-              <Bets bets={dummyBets} trendings={trendings} />
-            </div>
-          ))}
+          <Bets bets={dummyBets} trendings={trendings} />
         </div>
         {/* <div className="flex w-full justify-center items-center px-4 py-2 card">
                 <PaginationComponent hasNext={hasNext} />

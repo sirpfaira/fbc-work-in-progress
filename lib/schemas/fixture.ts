@@ -41,18 +41,12 @@ export const IOddsSchema = z.object({
 
 export const BFixtureSchema = z
   .object({
-    uid: z.coerce.number().min(1, { message: "Fixture uid is required!" }),
+    uid: z.coerce.number().min(1),
     date: z.date(),
-    status: z
-      .string()
-      .trim()
-      .min(5, { message: "Fixture date must not be less than 5 characters!" })
-      .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
-    competition: z
-      .number()
-      .min(1, { message: "Fixture competition is required!" }),
-    homeTeam: z.number().min(1, { message: "Fixture home team is required!" }),
-    awayTeam: z.number().min(1, { message: "Fixture away team is required!" }),
+    status: z.string().trim().min(5).max(36),
+    competition: z.number().min(1),
+    homeTeam: z.number().min(1),
+    awayTeam: z.number().min(1),
   })
   .refine((data) => data.homeTeam !== data.awayTeam, {
     path: ["awayTeam"],
@@ -60,28 +54,14 @@ export const BFixtureSchema = z
   });
 
 export const IFixtureSchema = z.object({
-  uid: z.coerce.number().min(1, { message: "Fixture uid is required!" }),
+  uid: z.coerce.number().min(1),
   date: z.string(),
-  status: z
-    .string()
-    .trim()
-    .min(5, { message: "Fixture date must not be less than 5 characters!" })
-    .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
-  competition: z
-    .number()
-    .min(1, { message: "Fixture competition is required!" }),
-  competitionName: z
-    .string()
-    .trim()
-    .min(3, { message: "Fixture date must not be less than 3 characters!" })
-    .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
-  teams: z
-    .string()
-    .trim()
-    .min(5, { message: "Fixture date must not be less than 5 characters!" })
-    .max(36, { message: "Fixture uid must not exceed 36 characters!" }),
-  homeTeam: z.number().min(1, { message: "Fixture home team is required!" }),
-  awayTeam: z.number().min(1, { message: "Fixture away team is required!" }),
+  status: z.string().trim().min(5).max(36),
+  competition: z.number().min(1),
+  competitionName: z.string().trim().min(3).max(50),
+  teams: z.string().trim().min(5).max(100),
+  homeTeam: z.number().min(1),
+  awayTeam: z.number().min(1),
   scores: IScoresSchema,
   corners: ICornersSchema,
   bookings: IBookingsSchema,
