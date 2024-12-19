@@ -98,3 +98,15 @@ body {
     scrollbar-width: none; /* Firefox */
   }
 }
+
+.pagination {
+  @apply flex justify-center space-x-3 list-none card p-3 font-medium;
+}
+
+.pagination li a {
+  @apply inline-block text-small py-[5px] px-[9px] border border-border rounded-md hover:bg-muted hover:text-primary;
+}
+
+.pagination li.active a {
+  @apply bg-primary text-primary-foreground;
+}

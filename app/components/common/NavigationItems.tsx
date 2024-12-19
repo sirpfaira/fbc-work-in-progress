@@ -19,14 +19,19 @@ import {
 export const AdminNavigationItems = [
   { label: "Home", link: "/admin", icon: <HomeIcon size={14} /> },
   {
+    label: "Manage Trending",
+    link: "/admin/manage-trending",
+    icon: <Flame size={14} />,
+  },
+  {
     label: "Manage Bets",
     link: "/admin/manage-bets",
-    icon: <HomeIcon size={14} />,
+    icon: <Layers size={14} />,
   },
   {
     label: "Manage Punters",
     link: "/admin/manage-punters",
-    icon: <HomeIcon size={14} />,
+    icon: <User size={14} />,
   },
   {
     label: "Manage Fixtures",

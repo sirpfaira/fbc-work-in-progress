@@ -84,10 +84,7 @@ function DummyBets({ bets, dummies, trendings }: DummyBetsProps) {
       <div className="flex flex-col space-y-4">
         <div className="flex flex-col space-y-4">
           <Bets bets={dummyBets} trendings={trendings} />
-        </div>
-        {/* <div className="flex w-full justify-center items-center px-4 py-2 card">
-                <PaginationComponent hasNext={hasNext} />
-              </div> */}
+        </div>        
       </div>
       <div className="hidden lg:flex flex-col card p-6">
         <span>Sidebar</span>
