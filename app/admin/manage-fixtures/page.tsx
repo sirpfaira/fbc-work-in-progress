@@ -51,13 +51,49 @@ export default function ManageFixtures() {
       },
       {
         accessorKey: "competitionName",
-        header: "Competition",
+        header: ({ column }) => {
+          return (
+            <Button
+              variant="ghost"
+              size="table"
+              onClick={() =>
+                column.toggleSorting(column.getIsSorted() === "asc")
+              }
+              className="ml-2"
+            >
+              Competition
+              <ArrowUpDown className="ml-2 h-4 w-4" />
+            </Button>
+          );
+        },
+        cell: ({ row }) => {
+          return <div className="ml-2">{row.getValue("competitionName")}</div>;
+        },
       },
+
       {
         accessorKey: "date",
-        header: "Date",
+        header: ({ column }) => {
+          return (
+            <Button
+              variant="ghost"
+              size="table"
+              onClick={() =>
+                column.toggleSorting(column.getIsSorted() === "asc")
+              }
+              className="ml-2"
+            >
+              Date
+              <ArrowUpDown className="ml-2 h-4 w-4" />
+            </Button>
+          );
+        },
         cell: ({ row }) => {
-          return <TimeStamp date={row.getValue("date")} />;
+          return (
+            <div className="ml-2">
+              <TimeStamp date={row.getValue("date")} />
+            </div>
+          );
         },
       },
       {

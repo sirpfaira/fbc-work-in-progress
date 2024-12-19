@@ -8,7 +8,9 @@ import moment from "moment";
 export async function GET() {
   try {
     await DatabaseConnection();
-    const fixtures = await Fixture.find({ date: { $gte: moment() } });
+    const fixtures = await Fixture.find({
+      date: { $gte: moment(), $lte: moment().add(7, "days") },
+    });
     if (fixtures) {
       return NextResponse.json({ items: fixtures }, { status: 200 });
     } else {

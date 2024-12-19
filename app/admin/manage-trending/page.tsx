@@ -8,8 +8,9 @@ import PageTitle from "@/app/components/common/PageTitle";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 import Trendings from "@/app/en/trending/Trendings";
 import FiveAside from "./FiveAside";
+import BetBuilder from "./BetBuilder";
 
-export default function EnTrendings() {
+export default function ManageTrendings() {
   const {
     data: trendings,
     isError,
@@ -28,7 +29,7 @@ export default function EnTrendings() {
   return (
     <div className="flex flex-col space-y-5">
       <div className="card flex items-center justify-between px-4 py-2">
-        <PageTitle title="Trending" link="/en" />
+        <PageTitle title="Manage Trendings" link="/en" />
       </div>
       <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
         {isLoading ? (
@@ -36,16 +37,20 @@ export default function EnTrendings() {
         ) : (
           <>
             {trendings && (
-              <Tabs defaultValue="trending" className="max-w-[500px]">
-                <TabsList>
+              <Tabs defaultValue="trending" className="w-full max-w-[500px]">
+                <TabsList className="flex justify-start w-full">
                   <TabsTrigger value="trending">Trending</TabsTrigger>
                   <TabsTrigger value="five_aside">Five Aside</TabsTrigger>
+                  <TabsTrigger value="bet_builder">Bet Builder</TabsTrigger>
                 </TabsList>
                 <TabsContent value="trending">
                   <Trendings trendings={trendings} />
                 </TabsContent>
                 <TabsContent value="five_aside">
                   <FiveAside trendings={trendings} />
+                </TabsContent>
+                <TabsContent value="bet_builder">
+                  <BetBuilder trendings={trendings} />
                 </TabsContent>
               </Tabs>
             )}

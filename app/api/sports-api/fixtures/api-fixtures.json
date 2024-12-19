@@ -1,10 +1,10 @@
 {
   "get": "fixtures",
   "parameters": {
-    "league": "88",
+    "league": "79",
     "season": "2024",
     "from": "2024-12-17",
-    "to": "2024-12-22"
+    "to": "2025-01-12"
   },
   "errors": [],
   "results": 9,
@@ -15,19 +15,19 @@
   "response": [
     {
       "fixture": {
-        "id": 1213591,
-        "referee": "E. Blank",
+        "id": 1226309,
+        "referee": null,
         "timezone": "UTC",
-        "date": "2024-12-20T19:00:00+00:00",
-        "timestamp": 1734721200,
+        "date": "2024-12-20T17:30:00+00:00",
+        "timestamp": 1734715800,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 1144,
-          "name": "Mandemakers Stadion",
-          "city": "Waalwijk"
+          "id": 714,
+          "name": "Merkur Spiel-Arena",
+          "city": "Düsseldorf"
         },
         "status": {
           "long": "Not Started",
@@ -37,25 +37,25 @@
         }
       },
       "league": {
-        "id": 88,
-        "name": "Eredivisie",
-        "country": "Netherlands",
-        "logo": "https://media.api-sports.io/football/leagues/88.png",
-        "flag": "https://media.api-sports.io/flags/nl.svg",
+        "id": 79,
+        "name": "2. Bundesliga",
+        "country": "Germany",
+        "logo": "https://media.api-sports.io/football/leagues/79.png",
+        "flag": "https://media.api-sports.io/flags/de.svg",
         "season": 2024,
         "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 417,
-          "name": "Waalwijk",
-          "logo": "https://media.api-sports.io/football/teams/417.png",
+          "id": 158,
+          "name": "Fortuna Düsseldorf",
+          "logo": "https://media.api-sports.io/football/teams/158.png",
           "winner": null
         },
         "away": {
-          "id": 193,
-          "name": "PEC Zwolle",
-          "logo": "https://media.api-sports.io/football/teams/193.png",
+          "id": 179,
+          "name": "1. FC Magdeburg",
+          "logo": "https://media.api-sports.io/football/teams/179.png",
           "winner": null
         }
       },
@@ -84,19 +84,19 @@
     },
     {
       "fixture": {
-        "id": 1213588,
-        "referee": "B. Nijhuis",
+        "id": 1226313,
+        "referee": null,
         "timezone": "UTC",
-        "date": "2024-12-21T15:30:00+00:00",
-        "timestamp": 1734795000,
+        "date": "2024-12-20T17:30:00+00:00",
+        "timestamp": 1734715800,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 1130,
-          "name": "De Adelaarshorst",
-          "city": "Deventer"
+          "id": 710,
+          "name": "URSAPHARM-Arena an der Kaiserlinde",
+          "city": "Spiesen-Elversberg"
         },
         "status": {
           "long": "Not Started",
@@ -106,25 +106,25 @@
         }
       },
       "league": {
-        "id": 88,
-        "name": "Eredivisie",
-        "country": "Netherlands",
-        "logo": "https://media.api-sports.io/football/leagues/88.png",
-        "flag": "https://media.api-sports.io/flags/nl.svg",
+        "id": 79,
+        "name": "2. Bundesliga",
+        "country": "Germany",
+        "logo": "https://media.api-sports.io/football/leagues/79.png",
+        "flag": "https://media.api-sports.io/flags/de.svg",
         "season": 2024,
         "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 410,
-          "name": "GO Ahead Eagles",
-          "logo": "https://media.api-sports.io/football/teams/410.png",
+          "id": 1660,
+          "name": "SV Elversberg",
+          "logo": "https://media.api-sports.io/football/teams/1660.png",
           "winner": null
         },
         "away": {
-          "id": 203,
-          "name": "NAC Breda",
-          "logo": "https://media.api-sports.io/football/teams/203.png",
+          "id": 174,
+          "name": "FC Schalke 04",
+          "logo": "https://media.api-sports.io/football/teams/174.png",
           "winner": null
         }
       },
@@ -153,19 +153,19 @@
     },
     {
       "fixture": {
-        "id": 1213585,
-        "referee": "M. Vos",
+        "id": 1226310,
+        "referee": null,
         "timezone": "UTC",
-        "date": "2024-12-21T17:45:00+00:00",
-        "timestamp": 1734803100,
+        "date": "2024-12-21T12:00:00+00:00",
+        "timestamp": 1734782400,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 1141,
-          "name": "Yanmar Stadion",
-          "city": "Almere"
+          "id": 720,
+          "name": "Volksparkstadion",
+          "city": "Hamburg"
         },
         "status": {
           "long": "Not Started",
@@ -175,25 +175,25 @@
         }
       },
       "league": {
-        "id": 88,
-        "name": "Eredivisie",
-        "country": "Netherlands",
-        "logo": "https://media.api-sports.io/football/leagues/88.png",
-        "flag": "https://media.api-sports.io/flags/nl.svg",
+        "id": 79,
+        "name": "2. Bundesliga",
+        "country": "Germany",
+        "logo": "https://media.api-sports.io/football/leagues/79.png",
+        "flag": "https://media.api-sports.io/flags/de.svg",
         "season": 2024,
         "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 419,
-          "name": "Almere City FC",
-          "logo": "https://media.api-sports.io/football/teams/419.png",
+          "id": 175,
+          "name": "Hamburger SV",
+          "logo": "https://media.api-sports.io/football/teams/175.png",
           "winner": null
         },
         "away": {
-          "id": 210,
-          "name": "Heerenveen",
-          "logo": "https://media.api-sports.io/football/teams/210.png",
+          "id": 178,
+          "name": "SpVgg Greuther Fürth",
+          "logo": "https://media.api-sports.io/football/teams/178.png",
           "winner": null
         }
       },
@@ -222,19 +222,19 @@
     },
     {
       "fixture": {
-        "id": 1213586,
-        "referee": "J. Kooij",
+        "id": 1226312,
+        "referee": null,
         "timezone": "UTC",
-        "date": "2024-12-21T19:00:00+00:00",
-        "timestamp": 1734807600,
+        "date": "2024-12-21T12:00:00+00:00",
+        "timestamp": 1734782400,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 1119,
-          "name": "AFAS Stadion",
-          "city": "Alkmaar"
+          "id": 18622,
+          "name": "Home Deluxe Arena",
+          "city": "Paderborn"
         },
         "status": {
           "long": "Not Started",
@@ -244,25 +244,25 @@
         }
       },
       "league": {
-        "id": 88,
-        "name": "Eredivisie",
-        "country": "Netherlands",
-        "logo": "https://media.api-sports.io/football/leagues/88.png",
-        "flag": "https://media.api-sports.io/flags/nl.svg",
+        "id": 79,
+        "name": "2. Bundesliga",
+        "country": "Germany",
+        "logo": "https://media.api-sports.io/football/leagues/79.png",
+        "flag": "https://media.api-sports.io/flags/de.svg",
         "season": 2024,
         "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 201,
-          "name": "AZ Alkmaar",
-          "logo": "https://media.api-sports.io/football/teams/201.png",
+          "id": 185,
+          "name": "SC Paderborn 07",
+          "logo": "https://media.api-sports.io/football/teams/185.png",
           "winner": null
         },
         "away": {
-          "id": 415,
-          "name": "Twente",
-          "logo": "https://media.api-sports.io/football/teams/415.png",
+          "id": 785,
+          "name": "Karlsruher SC",
+          "logo": "https://media.api-sports.io/football/teams/785.png",
           "winner": null
         }
       },
@@ -291,19 +291,19 @@
     },
     {
       "fixture": {
-        "id": 1213589,
-        "referee": "R. Dieperink",
+        "id": 1226316,
+        "referee": null,
         "timezone": "UTC",
-        "date": "2024-12-21T20:00:00+00:00",
-        "timestamp": 1734811200,
+        "date": "2024-12-21T12:00:00+00:00",
+        "timestamp": 1734782400,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 11906,
-          "name": "Asito Stadion",
-          "city": "Almelo"
+          "id": 737,
+          "name": "Preußen-Stadion",
+          "city": "Münster"
         },
         "status": {
           "long": "Not Started",
@@ -313,25 +313,25 @@
         }
       },
       "league": {
-        "id": 88,
-        "name": "Eredivisie",
-        "country": "Netherlands",
-        "logo": "https://media.api-sports.io/football/leagues/88.png",
-        "flag": "https://media.api-sports.io/flags/nl.svg",
+        "id": 79,
+        "name": "2. Bundesliga",
+        "country": "Germany",
+        "logo": "https://media.api-sports.io/football/leagues/79.png",
+        "flag": "https://media.api-sports.io/flags/de.svg",
         "season": 2024,
         "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 206,
-          "name": "Heracles",
-          "logo": "https://media.api-sports.io/football/teams/206.png",
+          "id": 1313,
+          "name": "Preußen Münster",
+          "logo": "https://media.api-sports.io/football/teams/1313.png",
           "winner": null
         },
         "away": {
-          "id": 202,
-          "name": "Groningen",
-          "logo": "https://media.api-sports.io/football/teams/202.png",
+          "id": 1652,
+          "name": "SSV Ulm 1846",
+          "logo": "https://media.api-sports.io/football/teams/1652.png",
           "winner": null
         }
       },
@@ -360,19 +360,19 @@
     },
     {
       "fixture": {
-        "id": 1213592,
-        "referee": "A. Lindhout",
+        "id": 1226314,
+        "referee": null,
         "timezone": "UTC",
-        "date": "2024-12-22T11:15:00+00:00",
-        "timestamp": 1734866100,
+        "date": "2024-12-21T19:30:00+00:00",
+        "timestamp": 1734809400,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 10505,
-          "name": "Sparta-Stadion Het Kasteel",
-          "city": "Rotterdam"
+          "id": 713,
+          "name": "Max-Morlock-Stadion",
+          "city": "Nürnberg"
         },
         "status": {
           "long": "Not Started",
@@ -382,25 +382,25 @@
         }
       },
       "league": {
-        "id": 88,
-        "name": "Eredivisie",
-        "country": "Netherlands",
-        "logo": "https://media.api-sports.io/football/leagues/88.png",
-        "flag": "https://media.api-sports.io/flags/nl.svg",
+        "id": 79,
+        "name": "2. Bundesliga",
+        "country": "Germany",
+        "logo": "https://media.api-sports.io/football/leagues/79.png",
+        "flag": "https://media.api-sports.io/flags/de.svg",
         "season": 2024,
         "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 426,
-          "name": "Sparta Rotterdam",
-          "logo": "https://media.api-sports.io/football/teams/426.png",
+          "id": 171,
+          "name": "1. FC Nürnberg",
+          "logo": "https://media.api-sports.io/football/teams/171.png",
           "winner": null
         },
         "away": {
-          "id": 194,
-          "name": "Ajax",
-          "logo": "https://media.api-sports.io/football/teams/194.png",
+          "id": 744,
+          "name": "Eintracht Braunschweig",
+          "logo": "https://media.api-sports.io/football/teams/744.png",
           "winner": null
         }
       },
@@ -429,19 +429,19 @@
     },
     {
       "fixture": {
-        "id": 1213590,
-        "referee": "S. Gözübüyük",
+        "id": 1226311,
+        "referee": null,
         "timezone": "UTC",
-        "date": "2024-12-22T13:30:00+00:00",
-        "timestamp": 1734874200,
+        "date": "2024-12-22T12:30:00+00:00",
+        "timestamp": 1734870600,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 1143,
-          "name": "Philips Stadion",
-          "city": "Eindhoven"
+          "id": 18858,
+          "name": "Heinz von Heiden-Arena",
+          "city": "Hannover"
         },
         "status": {
           "long": "Not Started",
@@ -451,25 +451,25 @@
         }
       },
       "league": {
-        "id": 88,
-        "name": "Eredivisie",
-        "country": "Netherlands",
-        "logo": "https://media.api-sports.io/football/leagues/88.png",
-        "flag": "https://media.api-sports.io/flags/nl.svg",
+        "id": 79,
+        "name": "2. Bundesliga",
+        "country": "Germany",
+        "logo": "https://media.api-sports.io/football/leagues/79.png",
+        "flag": "https://media.api-sports.io/flags/de.svg",
         "season": 2024,
         "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 197,
-          "name": "PSV Eindhoven",
-          "logo": "https://media.api-sports.io/football/teams/197.png",
+          "id": 166,
+          "name": "Hannover 96",
+          "logo": "https://media.api-sports.io/football/teams/166.png",
           "winner": null
         },
         "away": {
-          "id": 209,
-          "name": "Feyenoord",
-          "logo": "https://media.api-sports.io/football/teams/209.png",
+          "id": 159,
+          "name": "Hertha BSC",
+          "logo": "https://media.api-sports.io/football/teams/159.png",
           "winner": null
         }
       },
@@ -498,19 +498,19 @@
     },
     {
       "fixture": {
-        "id": 1213587,
-        "referee": "A. Bos",
+        "id": 1226317,
+        "referee": null,
         "timezone": "UTC",
-        "date": "2024-12-22T13:30:00+00:00",
-        "timestamp": 1734874200,
+        "date": "2024-12-22T12:30:00+00:00",
+        "timestamp": 1734870600,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 1154,
-          "name": "Stadion Galgenwaard",
-          "city": "Utrecht"
+          "id": 10490,
+          "name": "Jahnstadion Regensburg",
+          "city": "Regensburg"
         },
         "status": {
           "long": "Not Started",
@@ -520,25 +520,25 @@
         }
       },
       "league": {
-        "id": 88,
-        "name": "Eredivisie",
-        "country": "Netherlands",
-        "logo": "https://media.api-sports.io/football/leagues/88.png",
-        "flag": "https://media.api-sports.io/flags/nl.svg",
+        "id": 79,
+        "name": "2. Bundesliga",
+        "country": "Germany",
+        "logo": "https://media.api-sports.io/football/leagues/79.png",
+        "flag": "https://media.api-sports.io/flags/de.svg",
         "season": 2024,
         "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 207,
-          "name": "Utrecht",
-          "logo": "https://media.api-sports.io/football/teams/207.png",
+          "id": 177,
+          "name": "SSV Jahn Regensburg",
+          "logo": "https://media.api-sports.io/football/teams/177.png",
           "winner": null
         },
         "away": {
-          "id": 205,
-          "name": "Fortuna Sittard",
-          "logo": "https://media.api-sports.io/football/teams/205.png",
+          "id": 181,
+          "name": "SV Darmstadt 98",
+          "logo": "https://media.api-sports.io/football/teams/181.png",
           "winner": null
         }
       },
@@ -567,19 +567,19 @@
     },
     {
       "fixture": {
-        "id": 1213593,
-        "referee": "R. Martens",
+        "id": 1226315,
+        "referee": null,
         "timezone": "UTC",
-        "date": "2024-12-22T15:45:00+00:00",
-        "timestamp": 1734882300,
+        "date": "2024-12-22T12:30:00+00:00",
+        "timestamp": 1734870600,
         "periods": {
           "first": null,
           "second": null
         },
         "venue": {
-          "id": 1159,
-          "name": "Koning Willem II Stadion",
-          "city": "Tilburg"
+          "id": 728,
+          "name": "Fritz-Walter-Stadion",
+          "city": "Kaiserslautern"
         },
         "status": {
           "long": "Not Started",
@@ -589,25 +589,25 @@
         }
       },
       "league": {
-        "id": 88,
-        "name": "Eredivisie",
-        "country": "Netherlands",
-        "logo": "https://media.api-sports.io/football/leagues/88.png",
-        "flag": "https://media.api-sports.io/flags/nl.svg",
+        "id": 79,
+        "name": "2. Bundesliga",
+        "country": "Germany",
+        "logo": "https://media.api-sports.io/football/leagues/79.png",
+        "flag": "https://media.api-sports.io/flags/de.svg",
         "season": 2024,
         "round": "Regular Season - 17"
       },
       "teams": {
         "home": {
-          "id": 195,
-          "name": "Willem II",
-          "logo": "https://media.api-sports.io/football/teams/195.png",
+          "id": 745,
+          "name": "1. FC Kaiserslautern",
+          "logo": "https://media.api-sports.io/football/teams/745.png",
           "winner": null
         },
         "away": {
-          "id": 413,
-          "name": "NEC Nijmegen",
-          "logo": "https://media.api-sports.io/football/teams/413.png",
+          "id": 192,
+          "name": "1.FC Köln",
+          "logo": "https://media.api-sports.io/football/teams/192.png",
           "winner": null
         }
       },

@@ -520,7 +520,7 @@ export default function Create() {
                     </AccordionItem>
                   </Accordion>
                 </div>
-                {newItem.title.trim() !== "" && (
+                {newItem.username.trim() !== "" && (
                   <div className="flex flex-col space-y-5">
                     <div className="border border-border px-4 rounded-md">
                       <Accordion type="single" collapsible>

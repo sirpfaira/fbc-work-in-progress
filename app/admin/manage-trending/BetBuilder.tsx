@@ -18,30 +18,30 @@ interface FiveAsideProps {
   trendings: TTrending[];
 }
 
-export default function FiveAside({ trendings }: FiveAsideProps) {
+export default function BetBuilder({ trendings }: FiveAsideProps) {
   const upcomingTrendings = trendings
     ?.sort((a, b) => moment(b.date).diff(moment(a.date)))
     ?.filter((item) =>
       moment(item.date).isAfter(moment().subtract(10, "minute").utc())
     );
 
-  const topTrendingMarkets: MarketTrending = upcomingTrendings.reduce(
+  const topTrendingFixtures: MarketTrending = upcomingTrendings.reduce(
     (acc: MarketTrending, obj: TTrending) => {
-      if (!acc[obj.marketName]) {
-        acc[obj.marketName] = [];
+      if (!acc[obj.fixtureName]) {
+        acc[obj.fixtureName] = [];
       }
-      acc[obj.marketName].push(obj);
+      acc[obj.fixtureName].push(obj);
       return acc;
     },
     {}
   );
 
-  for (const market in topTrendingMarkets) {
-    topTrendingMarkets[market] = topTrendingMarkets[market].sort(
+  for (const fixture in topTrendingFixtures) {
+    topTrendingFixtures[fixture] = topTrendingFixtures[fixture].sort(
       (a, b) => b.count - a.count
     ); //   .slice(0, 5);
   }
-  const entries = Object.entries(topTrendingMarkets);
+  const entries = Object.entries(topTrendingFixtures);
 
   return (
     <div className="flex flex-col space-y-4">
