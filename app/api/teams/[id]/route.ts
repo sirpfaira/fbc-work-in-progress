@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { ITeamSchema } from "@/lib/schemas/team";
 import DatabaseConnection from "@/lib/dbconfig";
 import Team from "@/app/api/models/Team";
+import teams from "../teams.json";
 
 export async function GET(request: NextRequest, { params }: { params: any }) {
   try {
     const { id } = params;
-    await DatabaseConnection();
-    const team = await Team.findOne({ _id: id });
+    const team = teams.find((item) => item._id == id);
+    // await DatabaseConnection();
+    // const team = await Team.findOne({ _id: id });
 
     if (team) {
       return NextResponse.json({ item: team }, { status: 200 });

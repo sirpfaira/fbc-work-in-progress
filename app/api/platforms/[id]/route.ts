@@ -23,8 +23,7 @@ export async function PUT(request: NextRequest, { params }: { params: any }) {
   try {
     const { id } = params;
     const data = await request.json();
-    const update = { uid: data.uid, markets: data.markets };
-    const validated = IPlatformSchema.safeParse(update);
+    const validated = IPlatformSchema.safeParse(data);
     if (validated.success) {
       await DatabaseConnection();
       await Platform.findByIdAndUpdate(id, validated.data);

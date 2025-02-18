@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Dummy from "@/app/api/models/Dummy";
 import Punter from "@/app/api/models/Punter";
 import { IPunter } from "@/lib/schemas/punter";
+import { getRandomPictureURL } from "@/lib/helpers";
 // import dummies from "./dummies.json";
 
 export async function GET() {
@@ -28,14 +29,16 @@ export async function POST(request: NextRequest) {
       const newDummy: IDummy = {
         username: validated.data.username,
         realname: validated.data.realname,
+        platform: validated.data.platform,
         url: validated.data.url,
+        special: validated.data.special || "",
       };
       const newPunter: IPunter = {
         username: validated.data.username,
         name: validated.data.name,
         country: validated.data.country,
         platform: validated.data.platform,
-        image: "",
+        image: getRandomPictureURL(),
         form: [],
         followers: [],
         following: [],

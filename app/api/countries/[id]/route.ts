@@ -2,12 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { ICountrySchema } from "@/lib/schemas/country";
 import DatabaseConnection from "@/lib/dbconfig";
 import Country from "@/app/api/models/Country";
+import countries from "../countries.json";
 
 export async function GET(request: NextRequest, { params }: { params: any }) {
   try {
     const { id } = params;
-    await DatabaseConnection();
-    const country = await Country.findOne({ _id: id });
+
+    const country = countries.find((item) => item._id == id);
+    // await DatabaseConnection();
+    // const country = await Country.findOne({ _id: id });
 
     if (country) {
       return NextResponse.json({ item: country }, { status: 200 });

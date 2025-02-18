@@ -4,7 +4,7 @@ const teamSchema = new Schema(
   {
     uid: Number,
     name: String,
-    competition: Number,
+    country: String,
     alias: String,
   },
   { versionKey: false }

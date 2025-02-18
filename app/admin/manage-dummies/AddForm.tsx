@@ -28,11 +28,11 @@ import ErrorTile from "@/app/components/common/ErrorTile";
 import { TPlatform } from "@/lib/schemas/platform";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 
-interface AddPunterFormProps {
+interface AddDummyFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function AddPunterForm({ setIsOpen }: AddPunterFormProps) {
+export default function AddDummyForm({ setIsOpen }: AddDummyFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -67,6 +67,7 @@ export default function AddPunterForm({ setIsOpen }: AddPunterFormProps) {
       await axios.post(`/api/dummies`, dummy),
     onSuccess: (response: any) => {
       queryClient.invalidateQueries({ queryKey: ["dummies"], exact: true });
+      queryClient.invalidateQueries({ queryKey: ["punters"], exact: true });
       setIsOpen(false);
       toast({
         title: "Added Successfully!",
@@ -151,7 +152,7 @@ export default function AddPunterForm({ setIsOpen }: AddPunterFormProps) {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {platforms?.map((item) => (
+                          {platforms.map((item) => (
                             <SelectItem key={item.uid} value={item.uid}>
                               {item.uid.replaceAll("_", " ")}
                             </SelectItem>
@@ -182,7 +183,7 @@ export default function AddPunterForm({ setIsOpen }: AddPunterFormProps) {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {countries?.map((item) => (
+                          {countries.map((item) => (
                             <SelectItem key={item.uid} value={item.uid}>
                               {item.name}
                             </SelectItem>
@@ -222,6 +223,23 @@ export default function AddPunterForm({ setIsOpen }: AddPunterFormProps) {
                       {form.formState.errors.url && (
                         <FormMessage>
                           {form.formState.errors.url.message}
+                        </FormMessage>
+                      )}
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="special"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Special</FormLabel>
+                      <FormControl>
+                        <Input placeholder="special" {...field} />
+                      </FormControl>
+                      {form.formState.errors.special && (
+                        <FormMessage>
+                          {form.formState.errors.special.message}
                         </FormMessage>
                       )}
                     </FormItem>

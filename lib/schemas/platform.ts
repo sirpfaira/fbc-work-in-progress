@@ -9,11 +9,13 @@ export const IMarketSchema = z.object({
 export const BPlatformSchema = z.object({
   name: z.string().trim().min(3).max(50),
   country: z.string().trim().min(1),
+  url: z.string(),
 });
 
 export const IPlatformSchema = z.object({
   uid: z.string().trim().min(1).max(100),
   country: z.string().trim().min(1),
+  url: z.string(),
   markets: z.array(IMarketSchema),
 });
 

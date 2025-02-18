@@ -81,6 +81,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     const newItem = {
       uid: `${values.name} - ${countryName}`.replaceAll(" ", "_"),
       country: values.country,
+      url: values.url,
       markets: [],
     };
     addItem(newItem);
@@ -144,6 +145,26 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
                   {form.formState.errors.country && (
                     <FormMessage>
                       {form.formState.errors.country.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="url"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Platform URL</FormLabel>
+                  <FormControl>
+                    <Input placeholder="www." {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    This is the base url of the platform.
+                  </FormDescription>
+                  {form.formState.errors.url && (
+                    <FormMessage>
+                      {form.formState.errors.url.message}
                     </FormMessage>
                   )}
                 </FormItem>

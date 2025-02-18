@@ -47,8 +47,8 @@ export default function ManageTeams() {
       },
 
       {
-        accessorKey: "competition",
-        header: "Competition",
+        accessorKey: "country",
+        header: "Country",
       },
       {
         id: "actions",

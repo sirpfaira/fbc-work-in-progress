@@ -33,6 +33,10 @@ export default function ManagePlatforms() {
         accessorFn: (row) => row.markets.length || 0,
       },
       {
+        accessorKey: "url",
+        header: "URL",
+      },
+      {
         id: "actions",
         header: "Actions",
         cell: ({ row }) => <DataTableRowActions row={row} />,

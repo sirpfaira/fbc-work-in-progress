@@ -4,7 +4,7 @@ import { z } from "zod";
 export const ITeamSchema = z.object({
   uid: z.coerce.number().min(1),
   name: z.string().trim().min(1).max(60),
-  competition: z.coerce.number().min(1),
+  country: z.string(),
   alias: z.string(),
 });
 

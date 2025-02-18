@@ -70,3 +70,10 @@ export function getShortDate(isoDateString: string): string {
   const seconds = String(date.getUTCSeconds()).padStart(2, "0");
   return `${year}${month}${day}${hours}${minutes}${seconds}`;
 }
+
+export function getRandomPictureURL() {
+  const genders = ["men", "women"];
+  const randomGender = genders[Math.floor(Math.random() * genders.length)];
+  const randomPosition = Math.floor(Math.random() * 100); // 0 to 99 inclusive
+  return `https://randomuser.me/api/portraits/${randomGender}/${randomPosition}.jpg`;
+}

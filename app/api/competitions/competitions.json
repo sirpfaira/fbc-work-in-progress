@@ -1,18 +1,90 @@
 [
   {
-    "_id": "6745b60b97e108d359a29add",
-    "uid": 39,
-    "name": "Premier League",
-    "season": 2023,
-    "priority": 1063,
-    "country": "ENG"
+    "_id": "675c343bdf0da04597a0dbfb",
+    "uid": 78,
+    "name": "GER · Bundesliga",
+    "season": 2024,
+    "priority": 1061,
+    "country": "GER"
+  },
+  {
+    "_id": "675c3555df0da04597a0dc15",
+    "uid": 2,
+    "name": "UEFA · Champions League",
+    "season": 2024,
+    "priority": 1060,
+    "country": "UEFA"
+  },
+  {
+    "_id": "6765313e791a813ed0f670f2",
+    "uid": 66,
+    "name": "FRA · French Cup",
+    "season": 2024,
+    "priority": 1055,
+    "country": "FRA"
+  },
+  {
+    "_id": "676d1f9c07a6e477d3a3cd60",
+    "uid": 288,
+    "name": "RSA · Premiership",
+    "season": 2024,
+    "priority": 1053,
+    "country": "RSA"
   },
   {
     "_id": "6745b64c97e108d359a29ae6",
     "uid": 135,
-    "name": "Serie A",
-    "season": 2023,
-    "priority": 1060,
+    "name": "ITA · Serie A",
+    "season": 2024,
+    "priority": 1062,
     "country": "ITA"
+  },
+  {
+    "_id": "675c35d2df0da04597a0dc27",
+    "uid": 4,
+    "name": "UEFA · Euro Championship",
+    "season": 2024,
+    "priority": 1057,
+    "country": "UEFA"
+  },
+  {
+    "_id": "6769348cfdc490a760d7bb10",
+    "uid": 89,
+    "name": "NED · Eerste Divisie",
+    "season": 2024,
+    "priority": 1054,
+    "country": "NED"
+  },
+  {
+    "_id": "6745b60b97e108d359a29add",
+    "uid": 39,
+    "name": "ENG · Premier League",
+    "season": 2024,
+    "priority": 1063,
+    "country": "ENG"
+  },
+  {
+    "_id": "675c395bf8bf1a19c8cf404a",
+    "uid": 140,
+    "name": "ESP · La Liga",
+    "season": 2024,
+    "priority": 1058,
+    "country": "ESP"
+  },
+  {
+    "_id": "676431c79cace5955df32d1a",
+    "uid": 48,
+    "name": "ENG · EFL Cup",
+    "season": 2024,
+    "priority": 1056,
+    "country": "ENG"
+  },
+  {
+    "_id": "675c3578df0da04597a0dc1d",
+    "uid": 61,
+    "name": "FRA · Ligue 1",
+    "season": 2024,
+    "priority": 1059,
+    "country": "FRA"
   }
 ]

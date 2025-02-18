@@ -5,7 +5,9 @@ import { BPunterSchema, IPunterSchema } from "./punter";
 export const IDummySchema = z.object({
   realname: z.string().trim().min(3).max(50),
   username: z.string().trim().min(3).max(20),
+  platform: z.string().trim().min(3).max(50),
   url: z.string(),
+  special: z.string().optional(),
 });
 
 export const BFullDummySchema = z.intersection(BPunterSchema, IDummySchema);

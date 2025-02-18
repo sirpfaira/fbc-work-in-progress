@@ -1,0 +1,1744 @@
+[
+  {
+    "uid": 33,
+    "name": "Manchester United",
+    "country": "ENG",
+    "alias": "Manchester United,Man United,Man Utd"
+  },
+  {
+    "uid": 34,
+    "name": "Newcastle",
+    "country": "ENG",
+    "alias": "Newcastle,Newcastle United"
+  },
+  {
+    "uid": 35,
+    "name": "Bournemouth",
+    "country": "ENG",
+    "alias": "Bournemouth,AFC Bournemouth"
+  },
+  {
+    "uid": 36,
+    "name": "Fulham",
+    "country": "ENG",
+    "alias": "Fulham,Fulham FC"
+  },
+  {
+    "uid": 39,
+    "name": "Wolves",
+    "country": "ENG",
+    "alias": "Wolves,Wolverhampton Wanderers"
+  },
+  {
+    "uid": 40,
+    "name": "Liverpool",
+    "country": "ENG",
+    "alias": "Liverpool,Liverpool FC"
+  },
+  {
+    "uid": 41,
+    "name": "Southampton",
+    "country": "ENG",
+    "alias": "Southampton"
+  },
+  {
+    "uid": 42,
+    "name": "Arsenal",
+    "country": "ENG",
+    "alias": "Arsenal,Arsenal FC"
+  },
+  {
+    "uid": 45,
+    "name": "Everton",
+    "country": "ENG",
+    "alias": "Everton,Everton FC"
+  },
+  {
+    "uid": 46,
+    "name": "Leicester",
+    "country": "ENG",
+    "alias": "Leicester City,Leicester"
+  },
+  {
+    "uid": 47,
+    "name": "Tottenham",
+    "country": "ENG",
+    "alias": "Tottenham,Tottenham Hotspur"
+  },
+  {
+    "uid": 48,
+    "name": "West Ham",
+    "country": "ENG",
+    "alias": "West Ham,West Ham United"
+  },
+  {
+    "uid": 49,
+    "name": "Chelsea",
+    "country": "ENG",
+    "alias": "Chelsea,Chelsea FC"
+  },
+  {
+    "uid": 50,
+    "name": "Manchester City",
+    "country": "ENG",
+    "alias": "Manchester City,Man City"
+  },
+  {
+    "uid": 51,
+    "name": "Brighton",
+    "country": "ENG",
+    "alias": "Brighton,Brighton & Hove Albion"
+  },
+  {
+    "uid": 52,
+    "name": "Crystal Palace",
+    "country": "ENG",
+    "alias": "Crystal Palace"
+  },
+  {
+    "uid": 55,
+    "name": "Brentford",
+    "country": "ENG",
+    "alias": "Brentford,Brentford FC"
+  },
+  {
+    "uid": 57,
+    "name": "Ipswich",
+    "country": "ENG",
+    "alias": "Ipswich Town,Ipswich"
+  },
+  {
+    "uid": 65,
+    "name": "Nottingham Forest",
+    "country": "ENG",
+    "alias": "Nottingham Forest,Nottm Forest"
+  },
+  {
+    "uid": 66,
+    "name": "Aston Villa",
+    "country": "ENG",
+    "alias": "Aston Villa"
+  },
+  {
+    "uid": 160,
+    "name": "SC Freiburg",
+    "country": "GER",
+    "alias": "SC Freiburg"
+  },
+  {
+    "uid": 161,
+    "name": "VfL Wolfsburg",
+    "country": "GER",
+    "alias": "VfL Wolfsburg"
+  },
+  {
+    "uid": 162,
+    "name": "Werder Bremen",
+    "country": "GER",
+    "alias": "Werder Bremen"
+  },
+  {
+    "uid": 163,
+    "name": "Monchengladbach",
+    "country": "GER",
+    "alias": "Borussia Monchengladbach,Borussia Mönchengladbach"
+  },
+  {
+    "uid": 164,
+    "name": "FSV Mainz 05",
+    "country": "GER",
+    "alias": "FSV Mainz 05"
+  },
+  {
+    "uid": 165,
+    "name": "Dortmund",
+    "country": "GER",
+    "alias": "Borussia Dortmund,Dortmund"
+  },
+  {
+    "uid": 167,
+    "name": "1899 Hoffenheim",
+    "country": "GER",
+    "alias": "1899 Hoffenheim"
+  },
+  {
+    "uid": 169,
+    "name": "Eintracht Frankfurt",
+    "country": "GER",
+    "alias": "Eintracht Frankfurt"
+  },
+  {
+    "uid": 170,
+    "name": "FC Augsburg",
+    "country": "GER",
+    "alias": "FC Augsburg"
+  },
+  {
+    "uid": 172,
+    "name": "Stuttgart",
+    "country": "GER",
+    "alias": "VfB Stuttgart,Stuttgart"
+  },
+  {
+    "uid": 176,
+    "name": "VfL Bochum",
+    "country": "GER",
+    "alias": "Vfl Bochum"
+  },
+  {
+    "uid": 180,
+    "name": "1. FC Heidenheim",
+    "country": "GER",
+    "alias": "FC Heidenheim"
+  },
+  {
+    "uid": 182,
+    "name": "Union Berlin",
+    "country": "GER",
+    "alias": "Union Berlin"
+  },
+  {
+    "uid": 186,
+    "name": "FC St. Pauli",
+    "country": "GER",
+    "alias": "FC St. Pauli"
+  },
+  {
+    "uid": 191,
+    "name": "Holstein Kiel",
+    "country": "GER",
+    "alias": "Holstein Kiel"
+  },
+  { "uid": 79, "name": "Lille", "country": "FRA", "alias": "Losc Lille,Lille" },
+  {
+    "uid": 106,
+    "name": "Stade Brest",
+    "country": "FRA",
+    "alias": "Stade Brestois 29,Stade Brest,Brest"
+  },
+  {
+    "uid": 157,
+    "name": "Bayern",
+    "country": "GER",
+    "alias": "Bayern München,Bayern Munich,Bayern"
+  },
+  {
+    "uid": 168,
+    "name": "Leverkusen",
+    "country": "GER",
+    "alias": "Bayer Leverkusen,Leverkusen"
+  },
+  {
+    "uid": 173,
+    "name": "Leipzig",
+    "country": "GER",
+    "alias": "RB Leipzig,Leipzig"
+  },
+  {
+    "uid": 197,
+    "name": "PSV Eindhoven",
+    "country": "NED",
+    "alias": "PSV Eindhoven"
+  },
+  { "uid": 209, "name": "Feyenoord", "country": "NED", "alias": "Feyenoord" },
+  { "uid": 211, "name": "Benfica", "country": "PRT", "alias": "Benfica" },
+  {
+    "uid": 228,
+    "name": "Sporting CP",
+    "country": "PRT",
+    "alias": "Sporting CP"
+  },
+  { "uid": 247, "name": "Celtic", "country": "SCT", "alias": "Celtic" },
+  { "uid": 257, "name": "Rangers", "country": "SCT", "alias": "Rangers" },
+  {
+    "uid": 278,
+    "name": "Vikingur Reykjavik",
+    "country": "ISL",
+    "alias": "Vikingur Reykjavik"
+  },
+  { "uid": 327, "name": "Bodo/Glimt", "country": "NOR", "alias": "Bodo/Glimt" },
+  {
+    "uid": 336,
+    "name": "Jagiellonia",
+    "country": "POL",
+    "alias": "Jagiellonia"
+  },
+  {
+    "uid": 354,
+    "name": "The New Saints",
+    "country": "WAL",
+    "alias": "The New Saints"
+  },
+  { "uid": 375, "name": "Malmo FF", "country": "SWE", "alias": "Malmo FF" },
+  {
+    "uid": 394,
+    "name": "Dinamo Minsk",
+    "country": "BLR",
+    "alias": "Dinamo Minsk"
+  },
+  {
+    "uid": 397,
+    "name": "FC Midtjylland",
+    "country": "DNK",
+    "alias": "FC Midtjylland"
+  },
+  { "uid": 415, "name": "Twente", "country": "NED", "alias": "Twente" },
+  {
+    "uid": 489,
+    "name": "AC Milan",
+    "country": "ITA",
+    "alias": "AC Milan,Milan"
+  },
+  { "uid": 496, "name": "Juventus", "country": "ITA", "alias": "Juventus" },
+
+  {
+    "uid": 505,
+    "name": "Inter",
+    "country": "ITA",
+    "alias": "Inter Milan,Inter"
+  },
+  { "uid": 529, "name": "Barcelona", "country": "ESP", "alias": "Barcelona" },
+  {
+    "uid": 530,
+    "name": "Atletico Madrid",
+    "country": "ESP",
+    "alias": "Atletico Madrid,ATM"
+  },
+  {
+    "uid": 550,
+    "name": "Shakhtar Donetsk",
+    "country": "UKR",
+    "alias": "Shakhtar Donetsk"
+  },
+  {
+    "uid": 556,
+    "name": "Qarabag",
+    "country": "AZE",
+    "alias": "Qarabag"
+  },
+  { "uid": 559, "name": "FCSB", "country": "ROU", "alias": "FCSB" },
+  {
+    "uid": 560,
+    "name": "Slavia Praha",
+    "country": "CZE",
+    "alias": "Slavia Praha"
+  },
+  {
+    "uid": 565,
+    "name": "BSC Young Boys",
+    "country": "SUI",
+    "alias": "BSC Young Boys"
+  },
+  { "uid": 566, "name": "Ludogorets", "country": "BUL", "alias": "Ludogorets" },
+  {
+    "uid": 569,
+    "name": "Club Brugge KV",
+    "country": "BEL",
+    "alias": "Club Brugge KV"
+  },
+  {
+    "uid": 571,
+    "name": "Red Bull Salzburg",
+    "country": "AUT",
+    "alias": "Red Bull Salzburg"
+  },
+  {
+    "uid": 572,
+    "name": "Dynamo Kyiv",
+    "country": "UKR",
+    "alias": "Dynamo Kyiv"
+  },
+  {
+    "uid": 573,
+    "name": "FK Partizan",
+    "country": "SRB",
+    "alias": "FK Partizan"
+  },
+  {
+    "uid": 598,
+    "name": "FK Crvena Zvezda",
+    "country": "SRB",
+    "alias": "FK Crvena Zvezda"
+  },
+  {
+    "uid": 604,
+    "name": "Maccabi Tel Aviv",
+    "country": "ISR",
+    "alias": "Maccabi Tel Aviv"
+  },
+  { "uid": 606, "name": "FC Lugano", "country": "SUI", "alias": "FC Lugano" },
+  { "uid": 611, "name": "Fenerbahce", "country": "TUR", "alias": "Fenerbahce" },
+  { "uid": 619, "name": "PAOK", "country": "GRE", "alias": "PAOK" },
+  {
+    "uid": 620,
+    "name": "Dinamo Zagreb",
+    "country": "CRO",
+    "alias": "Dinamo Zagreb"
+  },
+  {
+    "uid": 628,
+    "name": "Sparta Praha",
+    "country": "CZE",
+    "alias": "Sparta Praha"
+  },
+  { "uid": 637, "name": "Sturm Graz", "country": "AUT", "alias": "Sturm Graz" },
+  {
+    "uid": 645,
+    "name": "Galatasaray",
+    "country": "TUR",
+    "alias": "Galatasaray"
+  },
+  {
+    "uid": 649,
+    "name": "HJK helsinki",
+    "country": "FIN",
+    "alias": "HJK helsinki"
+  },
+  {
+    "uid": 651,
+    "name": "Ferencvarosi TC",
+    "country": "HUN",
+    "alias": "Ferencvarosi TC"
+  },
+  {
+    "uid": 652,
+    "name": "Shamrock Rovers",
+    "country": "IRL",
+    "alias": "Shamrock Rovers"
+  },
+  {
+    "uid": 656,
+    "name": "Slovan Bratislava",
+    "country": "SVK",
+    "alias": "Slovan Bratislava"
+  },
+  {
+    "uid": 667,
+    "name": "Lincoln Red Imps FC",
+    "country": "GIB",
+    "alias": "Lincoln Red Imps FC"
+  },
+  {
+    "uid": 684,
+    "name": "FC Differdange 03",
+    "country": "LUX",
+    "alias": "FC Differdange 03"
+  },
+  {
+    "uid": 687,
+    "name": "Flora Tallinn",
+    "country": "EST",
+    "alias": "Flora Tallinn"
+  },
+  { "uid": 692, "name": "Ordabasy", "country": "KAZ", "alias": "Ordabasy" },
+  {
+    "uid": 701,
+    "name": "KI Klaksvik",
+    "country": "FRO",
+    "alias": "KI Klaksvik"
+  },
+  {
+    "uid": 703,
+    "name": "UE Santa Coloma",
+    "country": "AND",
+    "alias": "UE Santa Coloma"
+  },
+  {
+    "uid": 705,
+    "name": "Dinamo Batumi",
+    "country": "GEO",
+    "alias": "Dinamo Batumi"
+  },
+  {
+    "uid": 709,
+    "name": "Pyunik Yerevan",
+    "country": "ARM",
+    "alias": "Pyunik Yerevan"
+  },
+  {
+    "uid": 1393,
+    "name": "Union St. Gilloise",
+    "country": "BEL",
+    "alias": "Union St. Gilloise"
+  },
+  {
+    "uid": 2247,
+    "name": "Apoel Nicosia",
+    "country": "CYP",
+    "alias": "Apoel Nicosia"
+  },
+  { "uid": 2271, "name": "Petrocub", "country": "MDA", "alias": "Petrocub" },
+  {
+    "uid": 3327,
+    "name": "Egnatia Rrogozhinë",
+    "country": "ALB",
+    "alias": "Egnatia Rrogozhinë"
+  },
+  {
+    "uid": 3364,
+    "name": "Borac Banja Luka",
+    "country": "BA",
+    "alias": "Borac Banja Luka"
+  },
+  { "uid": 3745, "name": "Dečić", "country": "ME", "alias": "Dečić" },
+  { "uid": 3874, "name": "Panevėžys", "country": "LT", "alias": "Panevėžys" },
+  { "uid": 4160, "name": "Rīgas FS", "country": "LV", "alias": "Rīgas FS" },
+  { "uid": 4346, "name": "Struga", "country": "MK", "alias": "Struga" },
+  { "uid": 4360, "name": "Celje", "country": "SVN", "alias": "Celje" },
+  {
+    "uid": 4626,
+    "name": "Hamrun Spartans",
+    "country": "MT",
+    "alias": "Hamrun Spartans"
+  },
+  { "uid": 5308, "name": "Virtus", "country": "SM", "alias": "Virtus" },
+  { "uid": 5354, "name": "Larne", "country": "GB", "alias": "Larne" },
+  { "uid": 12733, "name": "Ballkani", "country": "XK", "alias": "Ballkani" },
+  { "uid": 77, "name": "Angers", "country": "FRA", "alias": "Angers" },
+  { "uid": 78, "name": "Bordeaux", "country": "FRA", "alias": "Bordeaux" },
+  { "uid": 80, "name": "Lyon", "country": "FRA", "alias": "Lyon" },
+  { "uid": 81, "name": "Marseille", "country": "FRA", "alias": "Marseille" },
+  {
+    "uid": 82,
+    "name": "Montpellier",
+    "country": "FRA",
+    "alias": "Montpellier"
+  },
+  { "uid": 83, "name": "Nantes", "country": "FRA", "alias": "Nantes" },
+  { "uid": 84, "name": "Nice", "country": "FRA", "alias": "Nice" },
+  {
+    "uid": 85,
+    "name": "PSG",
+    "country": "FRA",
+    "alias": "PSG, Paris Saint Germain"
+  },
+  { "uid": 87, "name": "Amiens", "country": "FRA", "alias": "Amiens" },
+  { "uid": 88, "name": "Caen", "country": "FRA", "alias": "Caen" },
+  { "uid": 89, "name": "Dijon", "country": "FRA", "alias": "Dijon" },
+  { "uid": 90, "name": "Guingamp", "country": "FRA", "alias": "Guingamp" },
+  { "uid": 91, "name": "Monaco", "country": "FRA", "alias": "Monaco" },
+  { "uid": 93, "name": "Reims", "country": "FRA", "alias": "Reims" },
+  { "uid": 94, "name": "Rennes", "country": "FRA", "alias": "Rennes" },
+  { "uid": 95, "name": "Strasbourg", "country": "FRA", "alias": "Strasbourg" },
+  { "uid": 96, "name": "Toulouse", "country": "FRA", "alias": "Toulouse" },
+  { "uid": 97, "name": "Lorient", "country": "FRA", "alias": "Lorient" },
+  { "uid": 98, "name": "Ajaccio", "country": "FRA", "alias": "Ajaccio" },
+  {
+    "uid": 99,
+    "name": "Clermont Foot",
+    "country": "FRA",
+    "alias": "Clermont Foot"
+  },
+  { "uid": 101, "name": "Grenoble", "country": "FRA", "alias": "Grenoble" },
+  { "uid": 102, "name": "Nancy", "country": "FRA", "alias": "Nancy" },
+  { "uid": 103, "name": "Orleans", "country": "FRA", "alias": "Orleans" },
+  {
+    "uid": 104,
+    "name": "RED Star FC 93",
+    "country": "FRA",
+    "alias": "RED Star FC 93"
+  },
+  {
+    "uid": 105,
+    "name": "Valenciennes",
+    "country": "FRA",
+    "alias": "Valenciennes"
+  },
+  { "uid": 108, "name": "Auxerre", "country": "FRA", "alias": "Auxerre" },
+  {
+    "uid": 110,
+    "name": "Estac Troyes",
+    "country": "FRA",
+    "alias": "Estac Troyes"
+  },
+  { "uid": 111, "name": "LE Havre", "country": "FRA", "alias": "LE Havre" },
+  { "uid": 112, "name": "Metz", "country": "FRA", "alias": "Metz" },
+  { "uid": 113, "name": "Niort", "country": "FRA", "alias": "Niort" },
+  { "uid": 114, "name": "Paris FC", "country": "FRA", "alias": "Paris FC" },
+  { "uid": 115, "name": "Sochaux", "country": "FRA", "alias": "Sochaux" },
+  { "uid": 116, "name": "Lens", "country": "FRA", "alias": "Lens" },
+  { "uid": 431, "name": "Quevilly", "country": "FRA", "alias": "Quevilly" },
+  { "uid": 432, "name": "Tours", "country": "FRA", "alias": "Tours" },
+  { "uid": 433, "name": "Laval", "country": "FRA", "alias": "Laval" },
+  {
+    "uid": 1063,
+    "name": "Saint Etienne",
+    "country": "FRA",
+    "alias": "Etienne"
+  },
+  { "uid": 1293, "name": "Drancy", "country": "FRA", "alias": "Drancy" },
+  { "uid": 1296, "name": "Marignane", "country": "FRA", "alias": "Marignane" },
+  { "uid": 1297, "name": "PAU", "country": "FRA", "alias": "PAU" },
+  { "uid": 1298, "name": "Le Mans", "country": "FRA", "alias": "Le Mans" },
+  { "uid": 1299, "name": "Boulogne", "country": "FRA", "alias": "Boulogne" },
+  {
+    "uid": 1300,
+    "name": "Concarneau",
+    "country": "FRA",
+    "alias": "Concarneau"
+  },
+  { "uid": 1301, "name": "Rodez", "country": "FRA", "alias": "Rodez" },
+  {
+    "uid": 1302,
+    "name": "Villefranche",
+    "country": "FRA",
+    "alias": "Villefranche"
+  },
+  { "uid": 1303, "name": "Avranches", "country": "FRA", "alias": "Avranches" },
+  { "uid": 1304, "name": "Dunkerque", "country": "FRA", "alias": "Dunkerque" },
+  { "uid": 1305, "name": "Bastia", "country": "FRA", "alias": "Bastia" },
+  {
+    "uid": 1308,
+    "name": "Les Herbiers",
+    "country": "FRA",
+    "alias": "Les Herbiers"
+  },
+  { "uid": 1309, "name": "Epinal", "country": "FRA", "alias": "Epinal" },
+  { "uid": 3011, "name": "Angoulême", "country": "FRA", "alias": "Angoulême" },
+  { "uid": 3012, "name": "Annecy", "country": "FRA", "alias": "Annecy" },
+  {
+    "uid": 3024,
+    "name": "Biars-Bretenoux",
+    "country": "FRA",
+    "alias": "Biars-Bretenoux"
+  },
+  { "uid": 3025, "name": "Biesheim", "country": "FRA", "alias": "Biesheim" },
+  { "uid": 3027, "name": "Bobigny", "country": "FRA", "alias": "Bobigny" },
+  {
+    "uid": 3030,
+    "name": "Canet Roussillon",
+    "country": "FRA",
+    "alias": "Canet Roussillon"
+  },
+  {
+    "uid": 3048,
+    "name": "Etoile Matoury",
+    "country": "FRA",
+    "alias": "Etoile Matoury"
+  },
+  { "uid": 3056, "name": "Gueugnon", "country": "FRA", "alias": "Gueugnon" },
+  { "uid": 3058, "name": "Haguenau", "country": "FRA", "alias": "Haguenau" },
+  {
+    "uid": 3062,
+    "name": "Illkirch Graffenstaden",
+    "country": "FRA",
+    "alias": "Illkirch Graffenstaden"
+  },
+  {
+    "uid": 3069,
+    "name": "Le Puy Foot",
+    "country": "FRA",
+    "alias": "Le Puy Foot"
+  },
+  {
+    "uid": 3081,
+    "name": "Montagnarde",
+    "country": "FRA",
+    "alias": "Montagnarde"
+  },
+  {
+    "uid": 3093,
+    "name": "Olympique d'Alès",
+    "country": "FRA",
+    "alias": "Olympique d'Alès"
+  },
+  {
+    "uid": 3094,
+    "name": "Olympique de Valence",
+    "country": "FRA",
+    "alias": "Olympique de Valence"
+  },
+  {
+    "uid": 3100,
+    "name": "Raon l'Etape",
+    "country": "FRA",
+    "alias": "Raon l'Etape"
+  },
+  {
+    "uid": 3107,
+    "name": "Saint-Lô Manche",
+    "country": "FRA",
+    "alias": "Saint-Lô Manche"
+  },
+  {
+    "uid": 3108,
+    "name": "Saint-Malo",
+    "country": "FRA",
+    "alias": "Saint-Malo"
+  },
+  {
+    "uid": 3109,
+    "name": "Saint-Omer",
+    "country": "FRA",
+    "alias": "Saint-Omer"
+  },
+  {
+    "uid": 3118,
+    "name": "Stade Beaucairois",
+    "country": "FRA",
+    "alias": "Stade Beaucairois"
+  },
+  { "uid": 3123, "name": "Thaon", "country": "FRA", "alias": "Thaon" },
+  {
+    "uid": 3127,
+    "name": "USSA Vertou",
+    "country": "FRA",
+    "alias": "USSA Vertou"
+  },
+  { "uid": 3129, "name": "Vannes", "country": "FRA", "alias": "Vannes" },
+  {
+    "uid": 3130,
+    "name": "Vendée Fontenay",
+    "country": "FRA",
+    "alias": "Vendée Fontenay"
+  },
+  {
+    "uid": 3131,
+    "name": "Versailles",
+    "country": "FRA",
+    "alias": "Versailles"
+  },
+  { "uid": 3138, "name": "Vitré", "country": "FRA", "alias": "Vitré" },
+  { "uid": 3146, "name": "Anduzien", "country": "FRA", "alias": "Anduzien" },
+  { "uid": 3147, "name": "Arras", "country": "FRA", "alias": "Arras" },
+  {
+    "uid": 3148,
+    "name": "Aubervilliers",
+    "country": "FRA",
+    "alias": "Aubervilliers"
+  },
+  { "uid": 3153, "name": "Beauvais", "country": "FRA", "alias": "Beauvais" },
+  { "uid": 3155, "name": "Bressuire", "country": "FRA", "alias": "Bressuire" },
+  { "uid": 3162, "name": "Chantilly", "country": "FRA", "alias": "Chantilly" },
+  { "uid": 3165, "name": "Chaumont", "country": "FRA", "alias": "Chaumont" },
+  {
+    "uid": 3168,
+    "name": "Cluses-Scionzier",
+    "country": "FRA",
+    "alias": "Cluses-Scionzier"
+  },
+  { "uid": 3169, "name": "Colomiers", "country": "FRA", "alias": "Colomiers" },
+  {
+    "uid": 3176,
+    "name": "Feignies-Aulnoye",
+    "country": "FRA",
+    "alias": "SC Feignies"
+  },
+  { "uid": 3178, "name": "Feytiat", "country": "FRA", "alias": "Feytiat" },
+  { "uid": 3179, "name": "Fleury 91", "country": "FRA", "alias": "Fleury 91" },
+  {
+    "uid": 3182,
+    "name": "Gallia Lucciana",
+    "country": "FRA",
+    "alias": "Gallia Lucciana"
+  },
+  {
+    "uid": 3184,
+    "name": "Grandvillars",
+    "country": "FRA",
+    "alias": "Grandvillars"
+  },
+  {
+    "uid": 3187,
+    "name": "Hauts Lyonnais",
+    "country": "FRA",
+    "alias": "Hauts Lyonnais"
+  },
+  { "uid": 3188, "name": "Houilles", "country": "FRA", "alias": "Houilles" },
+  { "uid": 3196, "name": "Les Ulis", "country": "FRA", "alias": "Les Ulis" },
+  { "uid": 3200, "name": "Martigues", "country": "FRA", "alias": "Martigues" },
+  {
+    "uid": 3206,
+    "name": "Mérignac-Arlac",
+    "country": "FRA",
+    "alias": "Mérignac-Arlac"
+  },
+  {
+    "uid": 3215,
+    "name": "Porto Portugais Amiens",
+    "country": "FRA",
+    "alias": "Porto Portugais Amiens"
+  },
+  {
+    "uid": 3220,
+    "name": "Romorantin",
+    "country": "FRA",
+    "alias": "Romorantin"
+  },
+  { "uid": 3221, "name": "Rouen", "country": "FRA", "alias": "FC Rouen" },
+  {
+    "uid": 3224,
+    "name": "Saint-Colomban Locminé",
+    "country": "FRA",
+    "alias": "Saint-Colomban Locminé"
+  },
+  { "uid": 3225, "name": "Saumur", "country": "FRA", "alias": "Saumur" },
+  {
+    "uid": 3229,
+    "name": "Stade Briochin",
+    "country": "FRA",
+    "alias": "Stade Briochin"
+  },
+  { "uid": 3248, "name": "Alençon", "country": "FRA", "alias": "Alençon" },
+  {
+    "uid": 3261,
+    "name": "Dives-Cabourg",
+    "country": "FRA",
+    "alias": "Dives-Cabourg"
+  },
+  { "uid": 3267, "name": "Istres", "country": "FRA", "alias": "Istres" },
+  { "uid": 3275, "name": "Lunéville", "country": "FRA", "alias": "Lunéville" },
+  { "uid": 3277, "name": "Mâcon", "country": "FRA", "alias": "Mâcon" },
+  {
+    "uid": 3295,
+    "name": "Saint-Pierroise",
+    "country": "Reunion",
+    "alias": "Saint-Pierroise"
+  },
+  {
+    "uid": 3297,
+    "name": "Sarre Union",
+    "country": "FRA",
+    "alias": "Sarre Union"
+  },
+  { "uid": 3310, "name": "TA Rennes", "country": "FRA", "alias": "TA Rennes" },
+  { "uid": 4652, "name": "Arles", "country": "FRA", "alias": "Arles" },
+  {
+    "uid": 6327,
+    "name": "Jeunesse Evolution",
+    "country": "GP",
+    "alias": "Jeunesse Evolution"
+  },
+  {
+    "uid": 9237,
+    "name": "C' Chartres",
+    "country": "FRA",
+    "alias": "C' Chartres"
+  },
+  {
+    "uid": 9254,
+    "name": "Chasselay MDA",
+    "country": "FRA",
+    "alias": "Chasselay MDA"
+  },
+  {
+    "uid": 9255,
+    "name": "Jura Sud Foot",
+    "country": "FRA",
+    "alias": "Jura Sud Foot"
+  },
+  { "uid": 9263, "name": "Agde", "country": "FRA", "alias": "Agde" },
+  { "uid": 9267, "name": "Boulay", "country": "FRA", "alias": "Boulay" },
+  {
+    "uid": 9268,
+    "name": "Bourgoin-Jallieu",
+    "country": "FRA",
+    "alias": "Bourgoin-Jallieu"
+  },
+  {
+    "uid": 9275,
+    "name": "Dinan Léhon",
+    "country": "FRA",
+    "alias": "Dinan Léhon"
+  },
+  {
+    "uid": 9287,
+    "name": "Le Touquet",
+    "country": "FRA",
+    "alias": "Le Touquet"
+  },
+  {
+    "uid": 9288,
+    "name": "Linas-Montlhery",
+    "country": "FRA",
+    "alias": "Linas-Montlhery"
+  },
+  { "uid": 9301, "name": "Paimpol", "country": "FRA", "alias": "Paimpol" },
+  { "uid": 9304, "name": "Sablé", "country": "FRA", "alias": "Sablé" },
+  {
+    "uid": 9309,
+    "name": "Saint-Pierre Milizac",
+    "country": "FRA",
+    "alias": "Saint-Pierre Milizac"
+  },
+  {
+    "uid": 9315,
+    "name": "Union Saint-Jean",
+    "country": "FRA",
+    "alias": "Union Saint-Jean"
+  },
+  {
+    "uid": 9915,
+    "name": "La Roche VF",
+    "country": "FRA",
+    "alias": "La Roche VF"
+  },
+  { "uid": 9932, "name": "Cannes", "country": "FRA", "alias": "Cannes" },
+  {
+    "uid": 9937,
+    "name": "Jura Dolois",
+    "country": "FRA",
+    "alias": "Jura Dolois"
+  },
+  {
+    "uid": 9941,
+    "name": "Valdahon Vercel",
+    "country": "FRA",
+    "alias": "Valdahon Vercel"
+  },
+  { "uid": 9969, "name": "Chambéry", "country": "FRA", "alias": "Chambéry" },
+  {
+    "uid": 9973,
+    "name": "Rumilly Vallières",
+    "country": "FRA",
+    "alias": "Rumilly Vallières"
+  },
+  { "uid": 10166, "name": "Bayonne", "country": "FRA", "alias": "Bayonne" },
+  {
+    "uid": 10684,
+    "name": "La Roche sur Yon",
+    "country": "FRA",
+    "alias": "La Roche sur Yon"
+  },
+  { "uid": 13583, "name": "Colmar", "country": "FRA", "alias": "Colmar" },
+  {
+    "uid": 13592,
+    "name": "Brétigny Foot",
+    "country": "FRA",
+    "alias": "Brétigny Foot"
+  },
+  {
+    "uid": 13601,
+    "name": "Espaly-Saint-Marcel",
+    "country": "FRA",
+    "alias": "Espaly-Saint-Marcel"
+  },
+  {
+    "uid": 13648,
+    "name": "Ginglin Cesson",
+    "country": "FRA",
+    "alias": "Ginglin Cesson"
+  },
+  { "uid": 13697, "name": "Marboz", "country": "FRA", "alias": "Marboz" },
+  {
+    "uid": 13710,
+    "name": "Saint-Brieuc",
+    "country": "FRA",
+    "alias": "Saint-Brieuc"
+  },
+  { "uid": 13722, "name": "Cesson", "country": "FRA", "alias": "Cesson" },
+  { "uid": 13723, "name": "Corte", "country": "FRA", "alias": "Corte" },
+  { "uid": 13736, "name": "Marmande", "country": "FRA", "alias": "Marmande" },
+  { "uid": 13803, "name": "Vesoul", "country": "FRA", "alias": "Vesoul" },
+  {
+    "uid": 15110,
+    "name": "St-Philbert Gd Lieu",
+    "country": "FRA",
+    "alias": "St-Philbert Gd Lieu"
+  },
+  {
+    "uid": 15114,
+    "name": "Cannet Rocheville",
+    "country": "FRA",
+    "alias": "Cannet Rocheville"
+  },
+  {
+    "uid": 15592,
+    "name": "Samaritaine",
+    "country": "FRA",
+    "alias": "Samaritaine"
+  },
+  { "uid": 18146, "name": "Raismes", "country": "FRA", "alias": "Raismes" },
+  {
+    "uid": 18148,
+    "name": "Saint-Cyr Collonges",
+    "country": "FRA",
+    "alias": "Saint-Cyr Collonges"
+  },
+  {
+    "uid": 18149,
+    "name": "Saint-Denis",
+    "country": "FRA",
+    "alias": "Saint-Denis"
+  },
+  {
+    "uid": 18153,
+    "name": "Stade Béthunois",
+    "country": "FRA",
+    "alias": "Stade Béthunois"
+  },
+  {
+    "uid": 19617,
+    "name": "Vierzon FC",
+    "country": "FRA",
+    "alias": "Vierzon FC"
+  },
+  { "uid": 19916, "name": "Carnoux", "country": "FRA", "alias": "Carnoux" },
+  {
+    "uid": 20567,
+    "name": "AC Paris 15",
+    "country": "FRA",
+    "alias": "AC Paris 15"
+  },
+  {
+    "uid": 20575,
+    "name": "Liancourt Clermont",
+    "country": "FRA",
+    "alias": "Liancourt Clermont"
+  },
+  {
+    "uid": 20580,
+    "name": "Pays de Cassel",
+    "country": "FRA",
+    "alias": "Pays de Cassel"
+  },
+  {
+    "uid": 20581,
+    "name": "SA Mérignac",
+    "country": "FRA",
+    "alias": "SA Mérignac"
+  },
+  {
+    "uid": 20600,
+    "name": "Diables Noirs",
+    "country": "FRA",
+    "alias": "Diables Noirs"
+  },
+  { "uid": 21310, "name": "Dragon", "country": "Tahiti", "alias": "Dragon" },
+  {
+    "uid": 22038,
+    "name": "Neuilly sur Marne",
+    "country": "FRA",
+    "alias": "Neuilly sur Marne"
+  },
+  {
+    "uid": 22039,
+    "name": "Thionville Lusitanos",
+    "country": "FRA",
+    "alias": "Thionville Lusitanos"
+  },
+  { "uid": 22744, "name": "RC Calais", "country": "FRA", "alias": "RC Calais" },
+  {
+    "uid": 22753,
+    "name": "Étoile Maritime",
+    "country": "FRA",
+    "alias": "Étoile Maritime"
+  },
+  { "uid": 24546, "name": "OCPAM", "country": "FRA", "alias": "OCPAM" },
+  {
+    "uid": 25324,
+    "name": "ASS Still Mutzig",
+    "country": "FRA",
+    "alias": "ASS Still Mutzig"
+  },
+  {
+    "uid": 25325,
+    "name": "Allobroges Asafia",
+    "country": "FRA",
+    "alias": "Allobroges Asafia"
+  },
+  {
+    "uid": 25326,
+    "name": "Beaumont Saint-Cyr",
+    "country": "FRA",
+    "alias": "Beaumont Saint-Cyr"
+  },
+  { "uid": 25327, "name": "Blenod", "country": "FRA", "alias": "Blenod" },
+  { "uid": 25328, "name": "Bolbec", "country": "FRA", "alias": "Bolbec" },
+  {
+    "uid": 25329,
+    "name": "Calais Beau-Marais",
+    "country": "FRA",
+    "alias": "Calais Beau-Marais"
+  },
+  { "uid": 25330, "name": "Comtal", "country": "FRA", "alias": "Comtal" },
+  {
+    "uid": 25331,
+    "name": "Couzeix-Chaptelat",
+    "country": "FRA",
+    "alias": "Couzeix-Chaptelat"
+  },
+  {
+    "uid": 25332,
+    "name": "ETC Anstaing Chéreng",
+    "country": "FRA",
+    "alias": "ETC Anstaing Chéreng"
+  },
+  {
+    "uid": 25333,
+    "name": "FCSR Obernai",
+    "country": "FRA",
+    "alias": "FCSR Obernai"
+  },
+  {
+    "uid": 25334,
+    "name": "Fief-Gesté",
+    "country": "FRA",
+    "alias": "Fief-Gesté"
+  },
+  { "uid": 25335, "name": "Foron", "country": "FRA", "alias": "Foron" },
+  { "uid": 25336, "name": "Freyming", "country": "FRA", "alias": "Freyming" },
+  {
+    "uid": 25337,
+    "name": "Guéreins Genouilleux",
+    "country": "FRA",
+    "alias": "Guéreins Genouilleux"
+  },
+  {
+    "uid": 25338,
+    "name": "Haubourdin",
+    "country": "FRA",
+    "alias": "Haubourdin"
+  },
+  {
+    "uid": 25339,
+    "name": "Hettange-Grande",
+    "country": "FRA",
+    "alias": "Hettange-Grande"
+  },
+  { "uid": 25340, "name": "Labourse", "country": "FRA", "alias": "Labourse" },
+  { "uid": 25341, "name": "Lempdes", "country": "FRA", "alias": "Lempdes" },
+  {
+    "uid": 25342,
+    "name": "Maladrerie",
+    "country": "FRA",
+    "alias": "Maladrerie"
+  },
+  { "uid": 25343, "name": "Monnaie", "country": "FRA", "alias": "Monnaie" },
+  {
+    "uid": 25344,
+    "name": "Montferrand",
+    "country": "FRA",
+    "alias": "Montferrand"
+  },
+  {
+    "uid": 25345,
+    "name": "Nousseviller",
+    "country": "FRA",
+    "alias": "Nousseviller"
+  },
+  {
+    "uid": 25346,
+    "name": "Noyelles sous Lens",
+    "country": "FRA",
+    "alias": "Noyelles sous Lens"
+  },
+  {
+    "uid": 25347,
+    "name": "Olympique Cazaux",
+    "country": "FRA",
+    "alias": "Olympique Cazaux"
+  },
+  { "uid": 25348, "name": "Roubaix", "country": "FRA", "alias": "Roubaix" },
+  {
+    "uid": 25349,
+    "name": "Ruffiac Malestroit",
+    "country": "FRA",
+    "alias": "Ruffiac Malestroit"
+  },
+  {
+    "uid": 25350,
+    "name": "Sauveteurs Brivois",
+    "country": "FRA",
+    "alias": "Sauveteurs Brivois"
+  },
+  {
+    "uid": 25351,
+    "name": "Serquigny Nassandres",
+    "country": "FRA",
+    "alias": "Serquigny Nassandres"
+  },
+  {
+    "uid": 25352,
+    "name": "St-Just St-Rambert",
+    "country": "FRA",
+    "alias": "St-Just St-Rambert"
+  },
+  {
+    "uid": 25353,
+    "name": "St-Philbert Réorthe JA",
+    "country": "FRA",
+    "alias": "St-Philbert Réorthe JA"
+  },
+  { "uid": 25354, "name": "Thouars", "country": "FRA", "alias": "Thouars" },
+  {
+    "uid": 25355,
+    "name": "Valence FC",
+    "country": "FRA",
+    "alias": "Valence FC"
+  },
+  {
+    "uid": 25356,
+    "name": "Avenir Mourenxois",
+    "country": "FRA",
+    "alias": "Avenir Mourenxois"
+  },
+  {
+    "uid": 25357,
+    "name": "Crépy-en-Valois",
+    "country": "FRA",
+    "alias": "Crépy-en-Valois"
+  },
+  {
+    "uid": 25358,
+    "name": "Grau-du-Roi",
+    "country": "FRA",
+    "alias": "Grau-du-Roi"
+  },
+  {
+    "uid": 25369,
+    "name": "Aigles d'Or de Mana",
+    "country": "FRA",
+    "alias": "Aigles d'Or de Mana"
+  },
+  {
+    "uid": 25370,
+    "name": "RC Saint Joseph",
+    "country": "FRA",
+    "alias": "RC Saint Joseph"
+  },
+  { "uid": 2669, "name": "Amazulu", "country": "RSA", "alias": "Amazulu" },
+  {
+    "uid": 2682,
+    "name": "Marumo Gallants",
+    "country": "RSA",
+    "alias": "Marumo Gallants"
+  },
+  {
+    "uid": 2690,
+    "name": "Golden Arrows",
+    "country": "RSA",
+    "alias": "Golden arrows"
+  },
+  {
+    "uid": 2691,
+    "name": "Kaizer Chiefs",
+    "country": "RSA",
+    "alias": "Kaizer Chiefs"
+  },
+  {
+    "uid": 2693,
+    "name": "Polokwane City",
+    "country": "RSA",
+    "alias": "Polokwane "
+  },
+  {
+    "uid": 2694,
+    "name": "Supersport United",
+    "country": "RSA",
+    "alias": "Supersport"
+  },
+  {
+    "uid": 2697,
+    "name": "Cape Town City",
+    "country": "RSA",
+    "alias": "Cape Town City"
+  },
+  {
+    "uid": 2698,
+    "name": "Chippa United",
+    "country": "RSA",
+    "alias": "Chippa United"
+  },
+  {
+    "uid": 2699,
+    "name": "Mamelodi Sundowns",
+    "country": "RSA",
+    "alias": "Mamelodi Sundowns"
+  },
+  {
+    "uid": 2700,
+    "name": "Orlando Pirates",
+    "country": "RSA",
+    "alias": "Pirates"
+  },
+  {
+    "uid": 4905,
+    "name": "Stellenbosch",
+    "country": "South-Africa",
+    "alias": "Stellenbosch"
+  },
+  {
+    "uid": 8074,
+    "name": "TS Galaxy",
+    "country": "South-Africa",
+    "alias": "TS Galaxy"
+  },
+  { "uid": 10566, "name": "Royal AM", "country": "RSA", "alias": "Royal AM" },
+  {
+    "uid": 10567,
+    "name": "Richards Bay",
+    "country": "South-Africa",
+    "alias": "Richards Bay"
+  },
+  {
+    "uid": 15537,
+    "name": "Sekhukhune United",
+    "country": "RSA",
+    "alias": "Sekhukhune United"
+  },
+  {
+    "uid": 19999,
+    "name": "Magesi",
+    "country": "South-Africa",
+    "alias": "Magesi"
+  },
+  { "uid": 487, "name": "Lazio", "country": "ITA", "alias": "Lazio" },
+  { "uid": 490, "name": "Cagliari", "country": "ITA", "alias": "Cagliari" },
+  { "uid": 492, "name": "Napoli", "country": "ITA", "alias": "Napoli" },
+  { "uid": 494, "name": "Udinese", "country": "ITA", "alias": "Udinese" },
+  { "uid": 495, "name": "Genoa", "country": "ITA", "alias": "Genoa" },
+  { "uid": 497, "name": "AS Roma", "country": "ITA", "alias": "AS Roma" },
+  { "uid": 499, "name": "Atalanta", "country": "ITA", "alias": "Atalanta" },
+  { "uid": 500, "name": "Bologna", "country": "ITA", "alias": "Bologna" },
+  {
+    "uid": 502,
+    "name": "Fiorentina",
+    "country": "ITA",
+    "alias": "Fiorentina"
+  },
+  { "uid": 503, "name": "Torino", "country": "ITA", "alias": "Torino" },
+  { "uid": 504, "name": "Verona", "country": "ITA", "alias": "Verona" },
+  { "uid": 511, "name": "Empoli", "country": "ITA", "alias": "Empoli" },
+  { "uid": 517, "name": "Venezia", "country": "ITA", "alias": "Venezia" },
+  { "uid": 523, "name": "Parma", "country": "ITA", "alias": "Parma" },
+  { "uid": 867, "name": "Lecce", "country": "ITA", "alias": "Lecce" },
+  { "uid": 895, "name": "Como", "country": "ITA", "alias": "Como 1907" },
+  { "uid": 1579, "name": "Monza", "country": "ITA", "alias": "Monza" },
+  { "uid": 1, "name": "Belgium", "country": "BEL", "alias": "Belgium" },
+  { "uid": 2, "name": "France", "country": "FRA", "alias": "France" },
+  { "uid": 3, "name": "Croatia", "country": "CRO", "alias": "Croatia" },
+  { "uid": 9, "name": "Spain", "country": "ESP", "alias": "Spain" },
+  { "uid": 10, "name": "England", "country": "ENG", "alias": "England" },
+  { "uid": 14, "name": "Serbia", "country": "SRB", "alias": "Serbia" },
+  {
+    "uid": 15,
+    "name": "Switzerland",
+    "country": "SUI",
+    "alias": "Switzerland"
+  },
+  { "uid": 21, "name": "Denmark", "country": "DK", "alias": "Denmark" },
+  { "uid": 24, "name": "Poland", "country": "POL", "alias": "Poland" },
+  { "uid": 25, "name": "Germany", "country": "GER", "alias": "Germany" },
+  { "uid": 27, "name": "Portugal", "country": "PRT", "alias": "Portugal" },
+  { "uid": 768, "name": "Italy", "country": "ITA", "alias": "Italy" },
+  { "uid": 769, "name": "Hungary", "country": "HUN", "alias": "Hungary" },
+  {
+    "uid": 770,
+    "name": "Czech Republic",
+    "country": "CZ",
+    "alias": "Czech Republic"
+  },
+  { "uid": 772, "name": "Ukraine", "country": "UKR", "alias": "Ukraine" },
+  { "uid": 773, "name": "Slovakia", "country": "SVK", "alias": "Slovakia" },
+  { "uid": 774, "name": "Romania", "country": "RO", "alias": "Romania" },
+  { "uid": 775, "name": "Austria", "country": "AUT", "alias": "Austria" },
+  { "uid": 777, "name": "Türkiye", "country": "TUR", "alias": "Türkiye" },
+  { "uid": 778, "name": "Albania", "country": "ALB", "alias": "Albania" },
+  { "uid": 1091, "name": "Slovenia", "country": "SVN", "alias": "Slovenia" },
+  { "uid": 1104, "name": "Georgia", "country": "GEO", "alias": "Georgia" },
+  { "uid": 1108, "name": "Scotland", "country": "SCT", "alias": "Scotland" },
+  {
+    "uid": 1118,
+    "name": "Netherlands",
+    "country": "NED",
+    "alias": "Netherlands"
+  },
+  { "uid": 196, "name": "Excelsior", "country": "NED", "alias": "Excelsior" },
+  {
+    "uid": 198,
+    "name": "ADO Den Haag",
+    "country": "NED",
+    "alias": "ADO Den Haag"
+  },
+  {
+    "uid": 199,
+    "name": "De Graafschap",
+    "country": "NED",
+    "alias": "De Graafschap"
+  },
+  { "uid": 200, "name": "Vitesse", "country": "NED", "alias": "Vitesse" },
+  { "uid": 204, "name": "VVV Venlo", "country": "NED", "alias": "VVV Venlo" },
+  { "uid": 208, "name": "Emmen", "country": "NED", "alias": "Emmen" },
+  { "uid": 409, "name": "Dordrecht", "country": "NED", "alias": "Dordrecht" },
+  { "uid": 411, "name": "Jong PSV", "country": "NED", "alias": "Jong PSV" },
+  { "uid": 412, "name": "MVV", "country": "NED", "alias": "MVV" },
+  { "uid": 414, "name": "Roda", "country": "NED", "alias": "Kerkrade" },
+  {
+    "uid": 416,
+    "name": "FC Volendam",
+    "country": "NED",
+    "alias": "FC Volendam"
+  },
+  { "uid": 418, "name": "Jong AZ", "country": "NED", "alias": "Jong AZ" },
+  { "uid": 420, "name": "Cambuur", "country": "NED", "alias": "Cambuur" },
+  { "uid": 421, "name": "Den Bosch", "country": "NED", "alias": "Den Bosch" },
+  {
+    "uid": 422,
+    "name": "FC Eindhoven",
+    "country": "NED",
+    "alias": "FC Eindhoven"
+  },
+  { "uid": 423, "name": "FC OSS", "country": "NED", "alias": "FC OSS" },
+  {
+    "uid": 424,
+    "name": "Helmond Sport",
+    "country": "NED",
+    "alias": "Helmond Sport"
+  },
+  {
+    "uid": 425,
+    "name": "Jong Ajax",
+    "country": "NED",
+    "alias": "Jong Ajax Amsterdam"
+  },
+  { "uid": 427, "name": "Telstar", "country": "NED", "alias": "Telstar" },
+  {
+    "uid": 428,
+    "name": "Jong Utrecht",
+    "country": "NED",
+    "alias": "Jong Utrecht"
+  },
+  {
+    "uid": 531,
+    "name": "Athletic Club",
+    "country": "ESP",
+    "alias": "Athletic Club"
+  },
+  { "uid": 532, "name": "Valencia", "country": "ESP", "alias": "Valencia" },
+  {
+    "uid": 533,
+    "name": "Villarreal",
+    "country": "ESP",
+    "alias": "Villarreal"
+  },
+  {
+    "uid": 534,
+    "name": "Las Palmas",
+    "country": "ESP",
+    "alias": "Las Palmas"
+  },
+  { "uid": 536, "name": "Sevilla", "country": "ESP", "alias": "Sevilla" },
+  { "uid": 537, "name": "Leganes", "country": "ESP", "alias": "Leganes" },
+  {
+    "uid": 538,
+    "name": "Celta Vigo",
+    "country": "ESP",
+    "alias": "Celta Vigo"
+  },
+  { "uid": 540, "name": "Espanyol", "country": "ESP", "alias": "Espanyol" },
+  {
+    "uid": 541,
+    "name": "Real Madrid",
+    "country": "ESP",
+    "alias": "Real Madrid"
+  },
+  { "uid": 542, "name": "Alaves", "country": "ESP", "alias": "Alaves" },
+  {
+    "uid": 543,
+    "name": "Real Betis",
+    "country": "ESP",
+    "alias": "Real Betis"
+  },
+  { "uid": 546, "name": "Getafe", "country": "ESP", "alias": "Getafe" },
+  { "uid": 547, "name": "Girona", "country": "ESP", "alias": "Girona" },
+  {
+    "uid": 548,
+    "name": "Real Sociedad",
+    "country": "ESP",
+    "alias": "Real Sociedad"
+  },
+  { "uid": 720, "name": "Valladolid", "country": "ESP", "alias": "Valladolid" },
+  { "uid": 727, "name": "Osasuna", "country": "ESP", "alias": "Osasuna" },
+  {
+    "uid": 728,
+    "name": "Rayo Vallecano",
+    "country": "ESP",
+    "alias": "Rayo Vallecano"
+  },
+  { "uid": 798, "name": "Mallorca", "country": "ESP", "alias": "Mallorca" },
+  {
+    "uid": 37,
+    "name": "Huddersfield",
+    "country": "ENG",
+    "alias": "Huddersfield"
+  },
+  { "uid": 38, "name": "Watford", "country": "ENG", "alias": "Watford" },
+  { "uid": 43, "name": "Cardiff", "country": "WAL", "alias": "Cardiff" },
+  {
+    "uid": 44,
+    "name": "Burnley",
+    "country": "ENG",
+    "alias": "Burnley,Burnley FC"
+  },
+  { "uid": 53, "name": "Reading", "country": "ENG", "alias": "Reading" },
+  { "uid": 54, "name": "Birmingham", "country": "ENG", "alias": "Birmingham" },
+  {
+    "uid": 56,
+    "name": "Bristol City",
+    "country": "ENG",
+    "alias": "Bristol City"
+  },
+  { "uid": 58, "name": "Millwall", "country": "ENG", "alias": "Millwall" },
+  { "uid": 59, "name": "Preston", "country": "ENG", "alias": "Preston" },
+  { "uid": 60, "name": "West Brom", "country": "ENG", "alias": "West Brom" },
+  { "uid": 61, "name": "Wigan", "country": "ENG", "alias": "Wigan" },
+  {
+    "uid": 62,
+    "name": "Sheffield Utd",
+    "country": "ENG",
+    "alias": "Sheffield Utd,Sheffield United"
+  },
+  { "uid": 63, "name": "Leeds", "country": "ENG", "alias": "Leeds" },
+  { "uid": 64, "name": "Hull City", "country": "ENG", "alias": "Hull City" },
+  { "uid": 67, "name": "Blackburn", "country": "ENG", "alias": "Blackburn" },
+  { "uid": 68, "name": "Bolton", "country": "ENG", "alias": "Bolton" },
+  { "uid": 69, "name": "Derby", "country": "ENG", "alias": "Derby" },
+  {
+    "uid": 70,
+    "name": "Middlesbrough",
+    "country": "ENG",
+    "alias": "Middlesbrough"
+  },
+  { "uid": 71, "name": "Norwich", "country": "ENG", "alias": "Norwich" },
+  { "uid": 72, "name": "QPR", "country": "ENG", "alias": "QPR" },
+  { "uid": 73, "name": "Rotherham", "country": "ENG", "alias": "Rotherham" },
+  {
+    "uid": 74,
+    "name": "Sheffield Wednesday",
+    "country": "ENG",
+    "alias": "Sheffield Wednesday"
+  },
+  { "uid": 75, "name": "Stoke City", "country": "ENG", "alias": "Stoke City" },
+  { "uid": 76, "name": "Swansea", "country": "WAL", "alias": "Swansea" },
+  { "uid": 746, "name": "Sunderland", "country": "ENG", "alias": "Sunderland" },
+  { "uid": 747, "name": "Barnsley", "country": "ENG", "alias": "Barnsley" },
+  {
+    "uid": 748,
+    "name": "Burton Albion",
+    "country": "ENG",
+    "alias": "Burton Albion"
+  },
+  {
+    "uid": 1333,
+    "name": "AFC Wimbledon",
+    "country": "ENG",
+    "alias": "AFC Wimbledon"
+  },
+  {
+    "uid": 1334,
+    "name": "Bristol Rovers",
+    "country": "ENG",
+    "alias": "Bristol Rovers"
+  },
+  { "uid": 1335, "name": "Charlton", "country": "ENG", "alias": "Charlton" },
+  {
+    "uid": 1336,
+    "name": "Fleetwood Town",
+    "country": "ENG",
+    "alias": "Fleetwood Town"
+  },
+  {
+    "uid": 1337,
+    "name": "Northampton",
+    "country": "ENG",
+    "alias": "Northampton"
+  },
+  {
+    "uid": 1338,
+    "name": "Oxford United",
+    "country": "ENG",
+    "alias": "Oxford United"
+  },
+  { "uid": 1342, "name": "Walsall", "country": "ENG", "alias": "Walsall" },
+  { "uid": 1343, "name": "Bradford", "country": "ENG", "alias": "Bradford" },
+  {
+    "uid": 1345,
+    "name": "Chesterfield",
+    "country": "ENG",
+    "alias": "Chesterfield"
+  },
+  { "uid": 1346, "name": "Coventry", "country": "ENG", "alias": "Coventry" },
+  {
+    "uid": 1347,
+    "name": "Gillingham",
+    "country": "ENG",
+    "alias": "Gillingham"
+  },
+  {
+    "uid": 1348,
+    "name": "Milton Keynes Dons",
+    "country": "ENG",
+    "alias": "Milton Keynes Dons"
+  },
+  {
+    "uid": 1350,
+    "name": "Peterborough",
+    "country": "ENG",
+    "alias": "Peterborough"
+  },
+  { "uid": 1351, "name": "Port Vale", "country": "ENG", "alias": "Port Vale" },
+  {
+    "uid": 1352,
+    "name": "Shrewsbury",
+    "country": "ENG",
+    "alias": "Shrewsbury"
+  },
+  {
+    "uid": 1353,
+    "name": "Swindon Town",
+    "country": "ENG",
+    "alias": "Swindon Town"
+  },
+  { "uid": 1354, "name": "Doncaster", "country": "ENG", "alias": "Doncaster" },
+  {
+    "uid": 1355,
+    "name": "Portsmouth",
+    "country": "ENG",
+    "alias": "Portsmouth"
+  },
+  { "uid": 1356, "name": "Blackpool", "country": "ENG", "alias": "Blackpool" },
+  { "uid": 1357, "name": "Plymouth", "country": "ENG", "alias": "Plymouth" },
+  { "uid": 1358, "name": "Wycombe", "country": "ENG", "alias": "Wycombe" },
+  {
+    "uid": 1359,
+    "name": "Luton",
+    "country": "ENG",
+    "alias": "Luton,Luton Town"
+  },
+  {
+    "uid": 1360,
+    "name": "Accrington ST",
+    "country": "ENG",
+    "alias": "Accrington ST"
+  },
+  {
+    "uid": 1361,
+    "name": "Colchester",
+    "country": "ENG",
+    "alias": "Colchester"
+  },
+  {
+    "uid": 1362,
+    "name": "Crawley Town",
+    "country": "ENG",
+    "alias": "Crawley Town"
+  },
+  { "uid": 1363, "name": "Crewe", "country": "ENG", "alias": "Crewe" },
+  {
+    "uid": 1364,
+    "name": "Exeter City",
+    "country": "ENG",
+    "alias": "Exeter City"
+  },
+  { "uid": 1365, "name": "Grimsby", "country": "ENG", "alias": "Grimsby" },
+  {
+    "uid": 1367,
+    "name": "Newport County",
+    "country": "WAL",
+    "alias": "Newport County"
+  },
+  { "uid": 1368, "name": "Stevenage", "country": "ENG", "alias": "Stevenage" },
+  {
+    "uid": 1370,
+    "name": "Cambridge United",
+    "country": "ENG",
+    "alias": "Cambridge United"
+  },
+  { "uid": 1371, "name": "Carlisle", "country": "ENG", "alias": "Carlisle" },
+  {
+    "uid": 1372,
+    "name": "Cheltenham",
+    "country": "ENG",
+    "alias": "Cheltenham"
+  },
+  {
+    "uid": 1373,
+    "name": "Leyton Orient",
+    "country": "ENG",
+    "alias": "Leyton Orient"
+  },
+  {
+    "uid": 1374,
+    "name": "Mansfield Town",
+    "country": "ENG",
+    "alias": "Mansfield Town"
+  },
+  { "uid": 1375, "name": "Morecambe", "country": "ENG", "alias": "Morecambe" },
+  {
+    "uid": 1376,
+    "name": "Notts County",
+    "country": "ENG",
+    "alias": "Notts County"
+  },
+  { "uid": 1379, "name": "Lincoln", "country": "ENG", "alias": "Lincoln" },
+  { "uid": 1381, "name": "Tranmere", "country": "ENG", "alias": "Tranmere" },
+  { "uid": 1819, "name": "Barrow", "country": "ENG", "alias": "Barrow" },
+  { "uid": 1832, "name": "Bromley", "country": "ENG", "alias": "Bromley" },
+  { "uid": 1837, "name": "Wrexham", "country": "WAL", "alias": "Wrexham" },
+  {
+    "uid": 1842,
+    "name": "Harrogate Town",
+    "country": "ENG",
+    "alias": "Harrogate Town"
+  },
+  {
+    "uid": 1844,
+    "name": "Salford City",
+    "country": "ENG",
+    "alias": "Salford City"
+  },
+  {
+    "uid": 4686,
+    "name": "Stockport County",
+    "country": "ENG",
+    "alias": "Stockport County"
+  },
+  {
+    "uid": 715,
+    "name": "Granada CF",
+    "country": "ESP",
+    "alias": "Granada CF,"
+  },
+  { "uid": 723, "name": "Almeria", "country": "ESP", "alias": "Almeria," },
+  { "uid": 724, "name": "Cadiz", "country": "ESP", "alias": "Cadiz," },
+  {
+    "uid": 181,
+    "name": "SV Darmstadt 98",
+    "country": "GER",
+    "alias": "SV Darmstadt 98,"
+  },
+  {
+    "uid": 192,
+    "name": "1.FC Koln",
+    "country": "GER",
+    "alias": "1.FC KÃ¶ln,FC Koln"
+  },
+  { "uid": 488, "name": "Sassuolo", "country": "ITA", "alias": "Sassuolo," },
+  { "uid": 512, "name": "Frosinone", "country": "ITA", "alias": "Frosinone," },
+  {
+    "uid": 514,
+    "name": "Salernitana",
+    "country": "ITA",
+    "alias": "Salernitana,"
+  },
+  {
+    "uid": 2681,
+    "name": "Richards Bay",
+    "country": "RSA",
+    "alias": "Richards bay"
+  },
+  {
+    "uid": 2667,
+    "name": "Stellenbosch",
+    "country": "RSA",
+    "alias": "Stellenbosch FC"
+  },
+  { "uid": 2670, "name": "Magesi", "country": "RSA", "alias": "Magesi FC" },
+  {
+    "uid": 2687,
+    "name": "TS Galaxy",
+    "country": "RSA",
+    "alias": "TS Galaxy FC"
+  }
+]

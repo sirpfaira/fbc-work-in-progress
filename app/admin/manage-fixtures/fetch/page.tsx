@@ -180,7 +180,7 @@ export default function FetchFixtures() {
 
   async function updateTrendings(newFixture: TFixture) {
     try {
-      if (trendings && trendings.length > 0) {
+      if (trendings && trendings?.length > 0) {
         const fixtureTrendings = trendings.filter(
           (i) => i.fixture === newFixture.uid && i.result === null
         );
@@ -206,7 +206,7 @@ export default function FetchFixtures() {
 
   async function updateFixtures(newFixtures: IFixture[]) {
     try {
-      if (fixtures) {
+      if (fixtures && newFixtures) {
         if (newFixtures.length > 0) {
           const brandNewFixtures: IFixture[] = [];
           for (const newFixture of newFixtures) {
@@ -268,23 +268,6 @@ export default function FetchFixtures() {
     }
   }
 
-  const handleFetchLeague = (uid: number) => {
-    setIsFetchingLeague(true);
-    const league = leagues.find((i) => i.uid === uid);
-    if (league) {
-      const newLeagues = leagues.map((item) => {
-        if (item.uid === uid) {
-          item.fetched = true;
-          return item;
-        } else {
-          return item;
-        }
-      });
-      setLeagues(newLeagues);
-      fetchLeague(league);
-    }
-  };
-
   function handleAddLeague(data: BLeague) {
     const item = leagues.find((i) => i.uid == data.competition);
     if (item) {
@@ -319,6 +302,23 @@ export default function FetchFixtures() {
     }
     setIsAddOpen(false);
   }
+
+  const handleFetchLeague = (uid: number) => {
+    setIsFetchingLeague(true);
+    const league = leagues.find((i) => i.uid === uid);
+    if (league) {
+      const newLeagues = leagues.map((item) => {
+        if (item.uid === uid) {
+          item.fetched = true;
+          return item;
+        } else {
+          return item;
+        }
+      });
+      setLeagues(newLeagues);
+      fetchLeague(league);
+    }
+  };
 
   if (isError) return <ErrorTile error={error.message} />;
 

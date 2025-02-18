@@ -8,32 +8,19 @@ export async function GET(request: NextRequest, { params }: { params: any }) {
   try {
     const { id } = params;
     await DatabaseConnection();
-    const punter = await Punter.findOne({ _id: id });
-    if (punter) {
-      const dummy = await Dummy.findOne({ username: punter.username });
-      if (dummy) {
+    const dummy = await Dummy.findOne({ _id: id });
+    if (dummy) {
+      const punter = await Punter.findOne({ username: dummy.username });
+      if (punter) {
         return NextResponse.json(
           { item: { punter: punter, dummy: dummy } },
           { status: 200 }
         );
       } else {
-        return NextResponse.json(
-          {
-            item: {
-              punter: punter,
-              dummy: {
-                _id: "",
-                realname: "",
-                username: "",
-                url: "",
-              },
-            },
-          },
-          { status: 200 }
-        );
+        throw new Error("Punter not found!");
       }
     } else {
-      throw new Error("Punter not found!");
+      throw new Error("Dummy not found!");
     }
   } catch (error: any) {
     return NextResponse.json(error.message, { status: 500 });
@@ -47,27 +34,33 @@ export async function PUT(request: NextRequest, { params }: { params: any }) {
     const validated = BFullDummySchema.safeParse(data);
     if (validated.success) {
       await DatabaseConnection();
-      const punter = await Punter.findOne({ _id: id });
-      if (punter) {
-        await Punter.findByIdAndUpdate(id, {
-          $set: {
-            name: validated.data.name,
-            username: validated.data.username,
-            country: validated.data.country,
-            platform: validated.data.platform,
-          },
-        });
+      const dummy = await Dummy.findOne({ _id: id });
+      if (dummy) {
         await Dummy.findOneAndUpdate(
-          { username: punter.username },
+          { _id: id },
           {
             $set: {
               realname: validated.data.realname,
               username: validated.data.username,
+              platform: validated.data.platform,
               url: validated.data.url,
+              special: validated.data.special,
             },
           },
           { upsert: false, new: true } // new: true - returns an updated object
         );
+        await Punter.findOneAndUpdate(
+          { username: dummy.username },
+          {
+            $set: {
+              name: validated.data.name,
+              username: validated.data.username,
+              country: validated.data.country,
+              platform: validated.data.platform,
+            },
+          }
+        );
+
         return NextResponse.json({ message: "Success!" }, { status: 200 });
       } else {
         throw new Error("Invalid data!");
@@ -86,10 +79,15 @@ export async function DELETE(
 ) {
   try {
     const { id } = params;
-
     if (id) {
       await DatabaseConnection();
-      await Dummy.findByIdAndDelete(id);
+      const dummy = await Dummy.findOne({ _id: id });
+      if (dummy) {
+        await Dummy.findByIdAndDelete(id);
+        await Punter.findOneAndDelete({ username: dummy.username });
+      } else {
+        throw new Error("Dummy not found!");
+      }
       return NextResponse.json({ message: "Success!" }, { status: 200 });
     } else {
       throw new Error("Dummy id was not received!");

@@ -1,27 +1,25 @@
 "use client";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { ColumnDef, Row } from "@tanstack/react-table";
-import { Switch } from "@/components/ui/switch";
 import { PlusCircle, ArrowUpDown, SquarePen, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ObjectId } from "mongoose";
-import { TPunter } from "@/lib/schemas/punter";
 import DataTable from "@/app/components/common/DataTable";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 import CustomDialog from "@/app/components/common/CustomDialog";
 import PageTitle from "@/app/components/common/PageTitle";
 import DeleteForm from "@/app/components/common/DeleteForm";
-import AddForm from "./AddPunterForm";
+import AddForm from "./AddForm";
 import EditForm from "./EditForm";
 import { TDummy } from "@/lib/schemas/dummy";
 
 export default function ManagePunters() {
   const [isAddOpen, setIsAddOpen] = useState<boolean>(false);
 
-  const columns = useMemo<ColumnDef<TPunter>[]>(
+  const columns = useMemo<ColumnDef<TDummy>[]>(
     () => [
       {
         accessorKey: "username",
@@ -31,7 +29,7 @@ export default function ManagePunters() {
         },
       },
       {
-        accessorKey: "name",
+        accessorKey: "realname",
         header: ({ column }) => {
           return (
             <Button
@@ -41,19 +39,22 @@ export default function ManagePunters() {
                 column.toggleSorting(column.getIsSorted() === "asc")
               }
             >
-              Punter Name
+              Real Name
               <ArrowUpDown className="ml-2 h-4 w-4" />
             </Button>
           );
         },
       },
       {
-        accessorKey: "country",
-        header: "Country",
-      },
-      {
-        header: "Followers",
-        accessorFn: (row) => row.followers.length || 0,
+        accessorKey: "platform",
+        header: () => <div className="ml-2">Platform</div>,
+        cell: ({ row }) => {
+          return (
+            <div className="ml-2">
+              {`${row.getValue("platform")}`.replaceAll("_", " ")}
+            </div>
+          );
+        },
       },
       {
         id: "actions",
@@ -77,20 +78,12 @@ export default function ManagePunters() {
     },
   });
 
-  const { data: punters } = useQuery({
-    queryKey: ["punters"],
-    queryFn: async () => {
-      const { data } = await axios.get(`/api/punters`);
-      return data.items as TPunter[];
-    },
-  });
-
   if (isError) return <ErrorTile error={error.message} />;
 
   return (
     <div className="flex flex-col space-y-5">
       <div className="card flex items-center justify-between px-4 py-2">
-        <PageTitle title="Manage punters" link="/admin" />
+        <PageTitle title="Manage dummies" link="/admin" />
         <Button onClick={() => setIsAddOpen(true)} variant={"ghost"}>
           <PlusCircle size={26} />
         </Button>
@@ -99,13 +92,8 @@ export default function ManagePunters() {
         <TableSkeleton columns={3} />
       ) : (
         <>
-          {dummies && punters && (
-            <DataTableFilter
-              columns={columns}
-              dummies={dummies}
-              punters={punters}
-              filter="name"
-            />
+          {dummies && (
+            <DataTable columns={columns} data={dummies} filter="realname" />
           )}
         </>
       )}
@@ -113,49 +101,6 @@ export default function ManagePunters() {
         <AddForm setIsOpen={setIsAddOpen} />
       </CustomDialog>
     </div>
-  );
-}
-
-interface DataTableFilterProps {
-  columns: ColumnDef<TPunter>[];
-  dummies: TDummy[];
-  punters: TPunter[];
-  filter: string;
-}
-
-function DataTableFilter({
-  columns,
-  dummies,
-  punters,
-  filter,
-}: DataTableFilterProps) {
-  const [showDummiesOnly, setShowDummiesOnly] = useState<boolean>(false);
-  const [currentItems, setCurrentItems] = useState<TPunter[]>(punters);
-
-  useEffect(() => {
-    if (showDummiesOnly) {
-      const dummyPunters = punters?.filter((item1) =>
-        dummies?.some((item2) => item2.username === item1.username)
-      );
-      setCurrentItems(dummyPunters);
-    } else {
-      setCurrentItems(punters);
-    }
-  }, [showDummiesOnly, dummies, punters]);
-
-  return (
-    <>
-      <div className="flex space-x-2 card p-3">
-        <Switch
-          checked={showDummiesOnly}
-          onCheckedChange={setShowDummiesOnly}
-        />
-        <span>Show Dummy Punters Only</span>
-      </div>
-      {currentItems && (
-        <DataTable columns={columns} data={currentItems} filter={filter} />
-      )}
-    </>
   );
 }
 
@@ -190,7 +135,7 @@ function DataTableRowActions<TData extends WithId<ObjectId>>({
         <DeleteForm
           itemId={itemId}
           setIsOpen={setIsDeleteOpen}
-          route="punters"
+          route="dummies"
         />
       </CustomDialog>
       <div className="flex items-center">

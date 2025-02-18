@@ -4,7 +4,9 @@ const dummySchema = new Schema(
   {
     realname: String,
     username: String,
+    platform: String,
     url: String,
+    special: String,
   },
   { versionKey: false }
 );

@@ -25,7 +25,7 @@ import {
 import { ITeam, ITeamSchema, TTeam } from "@/lib/schemas/team";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import { FormSkeleton } from "@/app/components/common/LoadingSkeletons";
-import { TCompetition } from "@/lib/schemas/competition";
+import { TCountry } from "@/lib/schemas/country";
 
 interface AddFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -35,11 +35,11 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const { data: competitions } = useQuery({
-    queryKey: ["competitions"],
+  const { data: countries } = useQuery({
+    queryKey: ["countries"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/competitions`);
-      return data.items as TCompetition[];
+      const { data } = await axios.get(`/api/countries`);
+      return data.items as TCountry[];
     },
   });
 
@@ -146,19 +146,19 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
             />
             <FormField
               control={form.control}
-              name="competition"
+              name="country"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Team Competition</FormLabel>
+                  <FormLabel>Team Country</FormLabel>
                   <Select onValueChange={field.onChange}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a competition" />
+                        <SelectValue placeholder="Select a country" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {competitions?.map((item) => (
-                        <SelectItem key={item.uid} value={String(item.uid)}>
+                      {countries?.map((item) => (
+                        <SelectItem key={item.uid} value={item.uid}>
                           {item.name}
                         </SelectItem>
                       ))}

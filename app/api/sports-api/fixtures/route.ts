@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import apiFixturesResponse from "./api-fixtures.json";
-import { IFixture } from "@/lib/schemas/fixture";
+// import apiFixturesResponse from "./api-fixtures.json";
+import { IFixture, ILeagueSchema } from "@/lib/schemas/fixture";
+import moment from "moment";
 
 interface RawFixture {
   fixture: {
@@ -88,16 +89,66 @@ interface TApiFixtureResponse {
   response: RawFixture[];
 }
 
+// {
+//   uid: 135,
+//   name: 'Serie A',
+//   season: 2024,
+//   date: '2024-12-13T19:45:00.000Z',
+//   count: 34,
+//   auto: 12,
+//   fetched: true
+// }
+
 export async function POST(request: NextRequest) {
   // Fetches one league at a time
   try {
     const league = await request.json();
-    console.log(league);
-    const result: TApiFixtureResponse = apiFixturesResponse;
-    const rawFixtures = result.response;
-    const fbcFixtures = getFbcFixtures(rawFixtures);
-    return NextResponse.json({ items: fbcFixtures }, { status: 200 });
+    const validated = ILeagueSchema.safeParse(league);
+    console.log(validated);
+    if (validated.success) {
+      const league = validated.data.uid;
+      const season = validated.data.season;
+      const date = moment(validated.data.date);
+      const from = date.format("YYYY-MM-DD");
+      const to = date.add(14, "days").format("YYYY-MM-DD");
+
+      const baseURL = "https://v3.football.api-sports.io/fixtures";
+      const { API_FOOTBALL_KEY } = process.env;
+
+      // `${baseURL}?league=${league}&season=${season}&from=${from}&to=${to}`,
+
+      await fetch(`${baseURL}?league=${league}&season=${season}&date=${from}`, {
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": "v3.football.api-sports.io",
+          "x-apisports-key": `394de5473ecfff90cf3b0a7319731757`,
+        },
+      })
+        .then(async (res: any) => {
+          const response = await res.json();
+          // console.log(response);
+          if ("response" in response) {
+            const result: TApiFixtureResponse = response;
+            const rawFixtures = result.response;
+            if (rawFixtures && rawFixtures?.length > 0) {
+              const fbcFixtures = getFbcFixtures(rawFixtures);
+              return NextResponse.json({ items: fbcFixtures }, { status: 200 });
+            } else {
+              throw new Error("No fixtures fetched!");
+            }
+          }
+        })
+        .catch((err: any) => {
+          console.log(err);
+          throw new Error("API Connection Error!", err?.message);
+        });
+
+      return NextResponse.json("Success!", { status: 200 });
+    } else {
+      throw new Error("Invalid data!");
+    }
   } catch (error: any) {
+    console.log(error);
     return NextResponse.json(error.message, { status: 500 });
   }
 }

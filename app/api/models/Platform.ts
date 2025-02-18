@@ -4,6 +4,7 @@ const platformSchema = new Schema(
   {
     uid: String,
     country: String,
+    url: String,
     markets: [{ _id: Number, name: String }],
   },
   { versionKey: false }

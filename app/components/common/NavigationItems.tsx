@@ -29,8 +29,8 @@ export const AdminNavigationItems = [
     icon: <Layers size={14} />,
   },
   {
-    label: "Manage Punters",
-    link: "/admin/manage-punters",
+    label: "Manage Dummies",
+    link: "/admin/manage-dummies",
     icon: <User size={14} />,
   },
   {
@@ -49,13 +49,13 @@ export const AdminNavigationItems = [
     icon: <Folder size={14} />,
   },
   {
-    label: "Manage Teams",
-    link: "/admin/manage-teams",
+    label: "Manage Competitions",
+    link: "/admin/manage-competitions",
     icon: <Settings size={14} />,
   },
   {
-    label: "Manage Competitions",
-    link: "/admin/manage-competitions",
+    label: "Manage Teams",
+    link: "/admin/manage-teams",
     icon: <Settings size={14} />,
   },
   {

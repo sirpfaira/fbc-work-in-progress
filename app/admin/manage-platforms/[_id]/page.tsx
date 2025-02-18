@@ -189,7 +189,10 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
     <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
       <div className="flex flex-col space-y-4">
         <div className="card flex items-center justify-between px-3 py-2">
-          <PageTitle title={item.uid} link="/admin/manage-platforms" />
+          <PageTitle
+            title={item.uid?.replaceAll("_", " ")}
+            link="/admin/manage-platforms"
+          />
         </div>
         <div className="flex flex-col  gap-2 items-center md:flex-row md:justify-between p-3 card">
           <div className="flex space-x-2">
