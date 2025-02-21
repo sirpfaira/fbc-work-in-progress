@@ -1,1 +1,16 @@
-[]
+[
+  { "uid": "AG", "name": "Antigua And Barbuda" },
+  { "uid": "BA", "name": "Bosnia" },
+  { "uid": "TW", "name": "Chinese Taipei" },
+  { "uid": "CD", "name": "Congo" },
+  { "uid": "CG", "name": "Congo DR" },
+  { "uid": "CE", "name": "Crimea" },
+  { "uid": "GM", "name": "Gambia" },
+  { "uid": "CI", "name": "Ivory Coast" },
+  { "uid": "MO", "name": "Macao" },
+  { "uid": "MK", "name": "Macedonia" },
+  { "uid": "RU", "name": "Russia" },
+  { "uid": "SR", "name": "Surinam" },
+  { "uid": "TT", "name": "Trinidad And Tobago" },
+  { "uid": "US", "name": "USA" }
+]

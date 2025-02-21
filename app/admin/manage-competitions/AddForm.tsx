@@ -1,8 +1,27 @@
 "use client";
 import React, { Dispatch, SetStateAction } from "react";
 import { useToast } from "@/components/hooks/use-toast";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useMutation,
+  useSuspenseQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import axios from "axios";
+import { cn } from "@/lib/utils";
+import { Check, ChevronsUpDown } from "lucide-react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import {
   Select,
   SelectContent,
@@ -40,24 +59,24 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const { data: competitions } = useQuery({
-    queryKey: ["competitions"],
-    queryFn: async () => {
-      const { data } = await axios.get(`/api/competitions`);
-      return data.items as TCompetition[];
-    },
-  });
-
-  const {
-    data: countries,
-    isError,
-    error,
-    isLoading,
-  } = useQuery({
+  const { data: countries } = useSuspenseQuery({
     queryKey: ["countries"],
     queryFn: async () => {
       const { data } = await axios.get(`/api/countries`);
       return data.items as TCountry[];
+    },
+  });
+
+  const {
+    data: competitions,
+    isError,
+    error,
+    isLoading,
+  } = useSuspenseQuery({
+    queryKey: ["competitions"],
+    queryFn: async () => {
+      const { data } = await axios.get(`/api/competitions`);
+      return data.items as TCompetition[];
     },
   });
 
@@ -102,7 +121,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     addItem(values);
   };
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorTile error={error?.message} />;
 
   return (
     <>
@@ -114,37 +133,6 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
             onSubmit={form.handleSubmit(onSubmit)}
             className="w-full space-y-6"
           >
-            <FormField
-              control={form.control}
-              name="country"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Country</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a country" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {countries?.map((item) => (
-                        <SelectItem key={item.uid} value={item.uid}>
-                          {item.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {form.formState.errors.country && (
-                    <FormMessage>
-                      {form.formState.errors.country.message}
-                    </FormMessage>
-                  )}
-                </FormItem>
-              )}
-            />
             <FormField
               control={form.control}
               name="uid"
@@ -217,6 +205,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
                   <FormControl className="mx-auto">
                     <Input
                       type="number"
+                      defaultValue={1063 - competitions?.length}
                       placeholder="Priority"
                       {...field}
                       className="w-[97%]"
@@ -227,6 +216,70 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
                       {form.formState.errors.priority.message}
                     </FormMessage>
                   )}
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="country"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel>Competition country</FormLabel>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant="outline"
+                          role="combobox"
+                          className={cn(
+                            "w-full justify-between",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value
+                            ? countries?.find(
+                                (item) => item.uid === field.value
+                              )?.name
+                            : "Select country"}
+                          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-full p-0">
+                      <Command>
+                        <CommandInput placeholder="Search market..." />
+                        <CommandList>
+                          <CommandEmpty>No country found.</CommandEmpty>
+                          <CommandGroup>
+                            {countries
+                              ?.sort((a, b) =>
+                                a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+                              )
+                              ?.map((item) => (
+                                <CommandItem
+                                  value={`${item.name}|${item.uid}`}
+                                  key={item.uid}
+                                  onSelect={() => {
+                                    form.setValue("country", item.uid);
+                                  }}
+                                >
+                                  {item.name}
+                                  <Check
+                                    className={cn(
+                                      "ml-auto",
+                                      item.uid === field.value
+                                        ? "opacity-100"
+                                        : "opacity-0"
+                                    )}
+                                  />
+                                </CommandItem>
+                              ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                  <FormMessage />
                 </FormItem>
               )}
             />

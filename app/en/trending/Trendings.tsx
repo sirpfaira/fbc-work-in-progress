@@ -41,7 +41,7 @@ export default function Trendings({ trendings }: Readonly<TrendingsProps>) {
         ?.filter((item) => moment(item.date).isAfter(moment().utc()));
     }
     setFiltered(result);
-  }, [period]);
+  }, [period, trendings]);
 
   useEffect(() => {
     window.scrollTo({

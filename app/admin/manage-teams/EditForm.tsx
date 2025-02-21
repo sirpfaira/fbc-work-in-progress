@@ -7,13 +7,20 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { cn } from "@/lib/utils";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import {
   Form,
   FormControl,
@@ -26,6 +33,7 @@ import { ITeam, ITeamSchema, TTeam } from "@/lib/schemas/team";
 import ErrorTile from "@/app/components/common/ErrorTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 import { TCountry } from "@/lib/schemas/country";
+import { Check, ChevronsUpDown } from "lucide-react";
 
 interface EditFormProps {
   itemId: string;
@@ -176,25 +184,61 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
           control={form.control}
           name="country"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Team Country</FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={String(field.value)}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a country" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {countries?.map((item) => (
-                    <SelectItem key={item.uid} value={item.uid}>
-                      {item.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            <FormItem className="flex flex-col">
+              <FormLabel>Team country</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      className={cn(
+                        "w-full justify-between",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value
+                        ? countries?.find((item) => item.uid === field.value)
+                            ?.name
+                        : "Select country"}
+                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput placeholder="Search market..." />
+                    <CommandList>
+                      <CommandEmpty>No country found.</CommandEmpty>
+                      <CommandGroup>
+                        {countries
+                          ?.sort((a, b) =>
+                            a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+                          )
+                          ?.map((item) => (
+                            <CommandItem
+                              value={`${item.name}|${item.uid}`}
+                              key={item.uid}
+                              onSelect={() => {
+                                form.setValue("country", item.uid);
+                              }}
+                            >
+                              {item.name}
+                              <Check
+                                className={cn(
+                                  "ml-auto",
+                                  item.uid === field.value
+                                    ? "opacity-100"
+                                    : "opacity-0"
+                                )}
+                              />
+                            </CommandItem>
+                          ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
               <FormMessage />
             </FormItem>
           )}

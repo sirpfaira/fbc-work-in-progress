@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { IPlatformSchema } from "@/lib/schemas/platform";
 import DatabaseConnection from "@/lib/dbconfig";
 import Platform from "@/app/api/models/Platform";
+import platforms from "../platforms.json";
 
 export async function GET(request: NextRequest, { params }: { params: any }) {
   try {
     const { id } = params;
-    await DatabaseConnection();
-    const platform = await Platform.findOne({ _id: id });
+    const platform = platforms.find((item) => item._id == id);
+    // await DatabaseConnection();
+    // const platform = await Platform.findOne({ _id: id });
 
     if (platform) {
       return NextResponse.json({ item: platform }, { status: 200 });

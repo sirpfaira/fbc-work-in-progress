@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SquarePen, Trash2 } from "lucide-react";
@@ -81,6 +82,7 @@ interface EditFieldsProps {
 }
 
 const EditFields = ({ item, platforms }: EditFieldsProps) => {
+  const router = useRouter();
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [newItem, setNewItem] = useState<TPlatform>(item);
@@ -106,13 +108,14 @@ const EditFields = ({ item, platforms }: EditFieldsProps) => {
       await axios.put(`/api/platforms/${item._id}`, platform),
     onSuccess: (response: any) => {
       toast({
-        title: "Added Successfully!",
+        title: "Platform Updated Successfully!",
         description: response.data.message,
       });
       queryClient.invalidateQueries({
         queryKey: ["platforms"],
         exact: true,
       });
+      router.push("/admin/manage-platforms");
     },
     onError: (response: any) => {
       toast({

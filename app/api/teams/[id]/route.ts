@@ -10,7 +10,6 @@ export async function GET(request: NextRequest, { params }: { params: any }) {
     const team = teams.find((item) => item._id == id);
     // await DatabaseConnection();
     // const team = await Team.findOne({ _id: id });
-
     if (team) {
       return NextResponse.json({ item: team }, { status: 200 });
     } else {

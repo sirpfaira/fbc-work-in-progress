@@ -261,7 +261,7 @@ export default function Create() {
       });
       setNewItem({ ...newItem, selections: newSelections });
     }
-    const initialSelection2 = {...initialSelection, market: values.market}
+    const initialSelection2 = { ...initialSelection, market: values.market };
     setOldSelection(initialSelection2);
     setIsAddSelectionOpen(false);
   }
@@ -987,7 +987,7 @@ interface AddCodeProps {
 function AddCode({ addCode, platforms, setIsAddCodeOpen }: AddCodeProps) {
   const form = useForm<BCode>({
     resolver: zodResolver(BCodeSchema),
-    defaultValues: {value:"",platform:"Betway_-_South_Africa"},
+    defaultValues: { value: "", platform: "Betway_-_South_Africa" },
   });
 
   const onSubmit = async (values: BCode) => {

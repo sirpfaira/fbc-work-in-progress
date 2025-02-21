@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { IOddSelectorSchema } from "@/lib/schemas/oddselector";
 import DatabaseConnection from "@/lib/dbconfig";
 import OddSelector from "@/app/api/models/OddSelector";
+import oddSelectors from "../oddselectors.json";
 
 export async function GET(request: NextRequest, { params }: { params: any }) {
   try {
     const { id } = params;
-    await DatabaseConnection();
-    const oddSelector = await OddSelector.findOne({ _id: id });
+    const oddSelector = oddSelectors.find((item) => item._id == id);
+    // await DatabaseConnection();
+    // const oddSelector = await OddSelector.findOne({ _id: id });
 
     if (oddSelector) {
       return NextResponse.json({ item: oddSelector }, { status: 200 });

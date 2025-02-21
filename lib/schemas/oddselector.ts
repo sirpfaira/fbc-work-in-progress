@@ -4,7 +4,7 @@ import { z } from "zod";
 export const IOddSelectorSchema = z.object({
   uid: z.number().min(100),
   apiId: z.number().min(1),
-  name: z.string().trim().min(1).max(60),
+  name: z.string().trim().min(1).max(100),
   alias: z.string().optional(),
 });
 

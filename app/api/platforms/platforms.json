@@ -1,28 +1,9 @@
 [
   {
-    "_id": "67569ac107e3191fda1b8014",
+    "_id": "67b8607a6bf60b0af0f68475",
     "uid": "Betway_-_South_Africa",
-    "country": "ZAR",
-    "markets": [
-      {
-        "_id": 101,
-        "name": "Match Result (1X2) - Home"
-      },
-      {
-        "_id": 201,
-        "name": "Both Teams To Score - Yes"
-      }
-    ]
-  },
-  {
-    "_id": "67569ae907e3191fda1b8017",
-    "uid": "GBets_-_South_Africa",
-    "country": "ZAR",
-    "markets": [
-      {
-        "_id": 101,
-        "name": "Match Result (1X2) - Home"
-      }
-    ]
+    "country": "RSA",
+    "url": "https://www.betway.co.za",
+    "markets": []
   }
 ]

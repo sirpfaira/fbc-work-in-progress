@@ -1,3411 +1,3369 @@
 [
   {
-    "_id": "67b34beba0cc1c8fa334184a",
+    "_id": "67b454973753907732306f63",
     "uid": 33,
     "name": "Manchester United",
     "country": "ENG",
     "alias": "Manchester United,Man United,Man Utd"
   },
   {
-    "_id": "67b34beba0cc1c8fa334184b",
+    "_id": "67b454973753907732306f64",
     "uid": 34,
     "name": "Newcastle",
     "country": "ENG",
     "alias": "Newcastle,Newcastle United"
   },
   {
-    "_id": "67b34beba0cc1c8fa334184c",
+    "_id": "67b454973753907732306f65",
     "uid": 35,
     "name": "Bournemouth",
     "country": "ENG",
     "alias": "Bournemouth,AFC Bournemouth"
   },
   {
-    "_id": "67b34beba0cc1c8fa334184d",
+    "_id": "67b454973753907732306f66",
     "uid": 36,
     "name": "Fulham",
     "country": "ENG",
     "alias": "Fulham,Fulham FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa334184e",
+    "_id": "67b454973753907732306f67",
     "uid": 39,
     "name": "Wolves",
     "country": "ENG",
     "alias": "Wolves,Wolverhampton Wanderers"
   },
   {
-    "_id": "67b34beba0cc1c8fa334184f",
+    "_id": "67b454973753907732306f68",
     "uid": 40,
     "name": "Liverpool",
     "country": "ENG",
     "alias": "Liverpool,Liverpool FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341850",
+    "_id": "67b454973753907732306f69",
     "uid": 41,
     "name": "Southampton",
     "country": "ENG",
     "alias": "Southampton"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341851",
+    "_id": "67b454973753907732306f6a",
     "uid": 42,
     "name": "Arsenal",
     "country": "ENG",
     "alias": "Arsenal,Arsenal FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341852",
+    "_id": "67b454973753907732306f6b",
     "uid": 45,
     "name": "Everton",
     "country": "ENG",
     "alias": "Everton,Everton FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341853",
+    "_id": "67b454973753907732306f6c",
     "uid": 46,
     "name": "Leicester",
     "country": "ENG",
     "alias": "Leicester City,Leicester"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341854",
+    "_id": "67b454973753907732306f6d",
     "uid": 47,
     "name": "Tottenham",
     "country": "ENG",
     "alias": "Tottenham,Tottenham Hotspur"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341855",
+    "_id": "67b454973753907732306f6e",
     "uid": 48,
     "name": "West Ham",
     "country": "ENG",
     "alias": "West Ham,West Ham United"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341856",
+    "_id": "67b454973753907732306f6f",
     "uid": 49,
     "name": "Chelsea",
     "country": "ENG",
     "alias": "Chelsea,Chelsea FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341857",
+    "_id": "67b454973753907732306f70",
     "uid": 50,
     "name": "Manchester City",
     "country": "ENG",
     "alias": "Manchester City,Man City"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341858",
+    "_id": "67b454973753907732306f71",
     "uid": 51,
     "name": "Brighton",
     "country": "ENG",
     "alias": "Brighton,Brighton & Hove Albion"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341859",
+    "_id": "67b454973753907732306f72",
     "uid": 52,
     "name": "Crystal Palace",
     "country": "ENG",
     "alias": "Crystal Palace"
   },
   {
-    "_id": "67b34beba0cc1c8fa334185a",
+    "_id": "67b454973753907732306f73",
     "uid": 55,
     "name": "Brentford",
     "country": "ENG",
     "alias": "Brentford,Brentford FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa334185b",
+    "_id": "67b454973753907732306f74",
     "uid": 57,
     "name": "Ipswich",
     "country": "ENG",
     "alias": "Ipswich Town,Ipswich"
   },
   {
-    "_id": "67b34beba0cc1c8fa334185c",
+    "_id": "67b454973753907732306f75",
     "uid": 65,
     "name": "Nottingham Forest",
     "country": "ENG",
     "alias": "Nottingham Forest,Nottm Forest"
   },
   {
-    "_id": "67b34beba0cc1c8fa334185d",
+    "_id": "67b454973753907732306f76",
     "uid": 66,
     "name": "Aston Villa",
     "country": "ENG",
     "alias": "Aston Villa"
   },
   {
-    "_id": "67b34beba0cc1c8fa334185e",
-    "uid": 157,
-    "name": "Bayern München",
-    "country": "GER",
-    "alias": "Bayern Munich"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa334185f",
+    "_id": "67b454973753907732306f77",
     "uid": 160,
     "name": "SC Freiburg",
     "country": "GER",
     "alias": "SC Freiburg"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341860",
+    "_id": "67b454973753907732306f78",
     "uid": 161,
     "name": "VfL Wolfsburg",
     "country": "GER",
     "alias": "VfL Wolfsburg"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341861",
+    "_id": "67b454973753907732306f79",
     "uid": 162,
     "name": "Werder Bremen",
     "country": "GER",
     "alias": "Werder Bremen"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341862",
+    "_id": "67b454973753907732306f7a",
     "uid": 163,
-    "name": "Borussia Mönchengladbach",
+    "name": "Monchengladbach",
     "country": "GER",
     "alias": "Borussia Monchengladbach,Borussia Mönchengladbach"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341863",
+    "_id": "67b454973753907732306f7b",
     "uid": 164,
     "name": "FSV Mainz 05",
     "country": "GER",
     "alias": "FSV Mainz 05"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341864",
+    "_id": "67b454973753907732306f7c",
     "uid": 165,
-    "name": "Borussia Dortmund",
+    "name": "Dortmund",
     "country": "GER",
-    "alias": "Borussia Dortmund"
+    "alias": "Borussia Dortmund,Dortmund"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341865",
+    "_id": "67b454973753907732306f7d",
     "uid": 167,
     "name": "1899 Hoffenheim",
     "country": "GER",
     "alias": "1899 Hoffenheim"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341866",
-    "uid": 168,
-    "name": "Bayer Leverkusen",
-    "country": "GER",
-    "alias": "Bayer Leverkusen"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa3341867",
+    "_id": "67b454973753907732306f7e",
     "uid": 169,
     "name": "Eintracht Frankfurt",
     "country": "GER",
     "alias": "Eintracht Frankfurt"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341868",
+    "_id": "67b454973753907732306f7f",
     "uid": 170,
     "name": "FC Augsburg",
     "country": "GER",
     "alias": "FC Augsburg"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341869",
+    "_id": "67b454973753907732306f80",
     "uid": 172,
-    "name": "VfB Stuttgart",
+    "name": "Stuttgart",
     "country": "GER",
-    "alias": "VfB Stuttgart"
+    "alias": "VfB Stuttgart,Stuttgart"
   },
   {
-    "_id": "67b34beba0cc1c8fa334186a",
-    "uid": 173,
-    "name": "RB Leipzig",
-    "country": "GER",
-    "alias": "RB Leipzig"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa334186b",
+    "_id": "67b454973753907732306f81",
     "uid": 176,
     "name": "VfL Bochum",
     "country": "GER",
     "alias": "Vfl Bochum"
   },
   {
-    "_id": "67b34beba0cc1c8fa334186c",
+    "_id": "67b454973753907732306f82",
     "uid": 180,
     "name": "1. FC Heidenheim",
     "country": "GER",
     "alias": "FC Heidenheim"
   },
   {
-    "_id": "67b34beba0cc1c8fa334186d",
+    "_id": "67b454973753907732306f83",
     "uid": 182,
     "name": "Union Berlin",
     "country": "GER",
     "alias": "Union Berlin"
   },
   {
-    "_id": "67b34beba0cc1c8fa334186e",
+    "_id": "67b454973753907732306f84",
     "uid": 186,
     "name": "FC St. Pauli",
     "country": "GER",
     "alias": "FC St. Pauli"
   },
   {
-    "_id": "67b34beba0cc1c8fa334186f",
+    "_id": "67b454973753907732306f85",
     "uid": 191,
     "name": "Holstein Kiel",
     "country": "GER",
     "alias": "Holstein Kiel"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341870",
+    "_id": "67b454973753907732306f86",
     "uid": 79,
     "name": "Lille",
     "country": "FRA",
-    "alias": "Lille"
+    "alias": "Losc Lille,Lille"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341871",
-    "uid": 85,
-    "name": "Paris Saint Germain",
-    "country": "FRA",
-    "alias": "Paris Saint Germain"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa3341872",
-    "uid": 91,
-    "name": "Monaco",
-    "country": "FRA",
-    "alias": "Monaco"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa3341873",
+    "_id": "67b454973753907732306f87",
     "uid": 106,
-    "name": "Stade Brestois 29",
+    "name": "Stade Brest",
     "country": "FRA",
-    "alias": "Stade Brestois 29"
+    "alias": "Stade Brestois 29,Stade Brest,Brest"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341874",
+    "_id": "67b454973753907732306f88",
     "uid": 157,
-    "name": "Bayern München",
+    "name": "Bayern",
     "country": "GER",
-    "alias": "Bayern Munich"
+    "alias": "Bayern München,Bayern Munich,Bayern"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341875",
-    "uid": 165,
-    "name": "Borussia Dortmund",
-    "country": "GER",
-    "alias": "Borussia Dortmund"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa3341876",
+    "_id": "67b454973753907732306f89",
     "uid": 168,
-    "name": "Bayer Leverkusen",
+    "name": "Leverkusen",
     "country": "GER",
-    "alias": "Bayer Leverkusen"
+    "alias": "Bayer Leverkusen,Leverkusen"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341877",
-    "uid": 172,
-    "name": "VfB Stuttgart",
-    "country": "GER",
-    "alias": "VfB Stuttgart"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa3341878",
+    "_id": "67b454973753907732306f8a",
     "uid": 173,
-    "name": "RB Leipzig",
+    "name": "Leipzig",
     "country": "GER",
-    "alias": "RB Leipzig"
+    "alias": "RB Leipzig,Leipzig"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341879",
+    "_id": "67b454973753907732306f8b",
     "uid": 197,
     "name": "PSV Eindhoven",
     "country": "NED",
     "alias": "PSV Eindhoven"
   },
   {
-    "_id": "67b34beba0cc1c8fa334187a",
+    "_id": "67b454973753907732306f8c",
     "uid": 209,
     "name": "Feyenoord",
     "country": "NED",
     "alias": "Feyenoord"
   },
   {
-    "_id": "67b34beba0cc1c8fa334187b",
+    "_id": "67b454973753907732306f8d",
     "uid": 211,
     "name": "Benfica",
     "country": "PRT",
     "alias": "Benfica"
   },
   {
-    "_id": "67b34beba0cc1c8fa334187c",
+    "_id": "67b454973753907732306f8e",
     "uid": 228,
     "name": "Sporting CP",
     "country": "PRT",
     "alias": "Sporting CP"
   },
   {
-    "_id": "67b34beba0cc1c8fa334187d",
+    "_id": "67b454973753907732306f8f",
     "uid": 247,
     "name": "Celtic",
     "country": "SCT",
     "alias": "Celtic"
   },
   {
-    "_id": "67b34beba0cc1c8fa334187e",
+    "_id": "67b454973753907732306f90",
     "uid": 257,
     "name": "Rangers",
     "country": "SCT",
     "alias": "Rangers"
   },
   {
-    "_id": "67b34beba0cc1c8fa334187f",
+    "_id": "67b454973753907732306f91",
     "uid": 278,
     "name": "Vikingur Reykjavik",
     "country": "ISL",
     "alias": "Vikingur Reykjavik"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341880",
+    "_id": "67b454973753907732306f92",
     "uid": 327,
     "name": "Bodo/Glimt",
     "country": "NOR",
     "alias": "Bodo/Glimt"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341881",
+    "_id": "67b454973753907732306f93",
     "uid": 336,
     "name": "Jagiellonia",
     "country": "POL",
     "alias": "Jagiellonia"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341882",
+    "_id": "67b454973753907732306f94",
     "uid": 354,
     "name": "The New Saints",
     "country": "WAL",
     "alias": "The New Saints"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341883",
+    "_id": "67b454973753907732306f95",
     "uid": 375,
     "name": "Malmo FF",
     "country": "SWE",
     "alias": "Malmo FF"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341884",
+    "_id": "67b454973753907732306f96",
     "uid": 394,
     "name": "Dinamo Minsk",
     "country": "BLR",
     "alias": "Dinamo Minsk"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341885",
+    "_id": "67b454973753907732306f97",
     "uid": 397,
     "name": "FC Midtjylland",
     "country": "DNK",
     "alias": "FC Midtjylland"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341886",
+    "_id": "67b454973753907732306f98",
     "uid": 415,
     "name": "Twente",
     "country": "NED",
     "alias": "Twente"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341887",
+    "_id": "67b454973753907732306f99",
     "uid": 489,
     "name": "AC Milan",
     "country": "ITA",
-    "alias": "AC Milan"
+    "alias": "AC Milan,Milan"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341888",
+    "_id": "67b454973753907732306f9a",
     "uid": 496,
     "name": "Juventus",
     "country": "ITA",
     "alias": "Juventus"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341889",
-    "uid": 499,
-    "name": "Atalanta",
-    "country": "ITA",
-    "alias": "Atalanta"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa334188a",
-    "uid": 500,
-    "name": "Bologna",
-    "country": "ITA",
-    "alias": "Bologna"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa334188b",
+    "_id": "67b454973753907732306f9b",
     "uid": 505,
     "name": "Inter",
     "country": "ITA",
-    "alias": "Inter"
+    "alias": "Inter Milan,Inter"
   },
   {
-    "_id": "67b34beba0cc1c8fa334188c",
+    "_id": "67b454973753907732306f9c",
     "uid": 529,
     "name": "Barcelona",
     "country": "ESP",
     "alias": "Barcelona"
   },
   {
-    "_id": "67b34beba0cc1c8fa334188d",
+    "_id": "67b454973753907732306f9d",
     "uid": 530,
     "name": "Atletico Madrid",
     "country": "ESP",
-    "alias": "Atletico Madrid"
+    "alias": "Atletico Madrid,ATM"
   },
   {
-    "_id": "67b34beba0cc1c8fa334188e",
-    "uid": 541,
-    "name": "Real Madrid",
-    "country": "ESP",
-    "alias": "Real Madrid"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa334188f",
-    "uid": 547,
-    "name": "Girona",
-    "country": "ESP",
-    "alias": "Girona"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa3341890",
+    "_id": "67b454973753907732306f9e",
     "uid": 550,
     "name": "Shakhtar Donetsk",
     "country": "UKR",
     "alias": "Shakhtar Donetsk"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341891",
+    "_id": "67b454973753907732306f9f",
     "uid": 556,
     "name": "Qarabag",
     "country": "AZE",
     "alias": "Qarabag"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341892",
+    "_id": "67b454973753907732306fa0",
     "uid": 559,
     "name": "FCSB",
     "country": "ROU",
     "alias": "FCSB"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341893",
+    "_id": "67b454973753907732306fa1",
     "uid": 560,
     "name": "Slavia Praha",
     "country": "CZE",
     "alias": "Slavia Praha"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341894",
+    "_id": "67b454973753907732306fa2",
     "uid": 565,
     "name": "BSC Young Boys",
     "country": "SUI",
     "alias": "BSC Young Boys"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341895",
+    "_id": "67b454973753907732306fa3",
     "uid": 566,
     "name": "Ludogorets",
     "country": "BUL",
     "alias": "Ludogorets"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341896",
+    "_id": "67b454973753907732306fa4",
     "uid": 569,
     "name": "Club Brugge KV",
     "country": "BEL",
     "alias": "Club Brugge KV"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341897",
+    "_id": "67b454973753907732306fa5",
     "uid": 571,
     "name": "Red Bull Salzburg",
     "country": "AUT",
     "alias": "Red Bull Salzburg"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341898",
+    "_id": "67b454973753907732306fa6",
     "uid": 572,
     "name": "Dynamo Kyiv",
     "country": "UKR",
     "alias": "Dynamo Kyiv"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341899",
+    "_id": "67b454973753907732306fa7",
     "uid": 573,
     "name": "FK Partizan",
     "country": "SRB",
     "alias": "FK Partizan"
   },
   {
-    "_id": "67b34beba0cc1c8fa334189a",
+    "_id": "67b454973753907732306fa8",
     "uid": 598,
     "name": "FK Crvena Zvezda",
     "country": "SRB",
     "alias": "FK Crvena Zvezda"
   },
   {
-    "_id": "67b34beba0cc1c8fa334189b",
+    "_id": "67b454973753907732306fa9",
     "uid": 604,
     "name": "Maccabi Tel Aviv",
     "country": "ISR",
     "alias": "Maccabi Tel Aviv"
   },
   {
-    "_id": "67b34beba0cc1c8fa334189c",
+    "_id": "67b454973753907732306faa",
     "uid": 606,
     "name": "FC Lugano",
     "country": "SUI",
     "alias": "FC Lugano"
   },
   {
-    "_id": "67b34beba0cc1c8fa334189d",
+    "_id": "67b454973753907732306fab",
     "uid": 611,
     "name": "Fenerbahce",
     "country": "TUR",
     "alias": "Fenerbahce"
   },
   {
-    "_id": "67b34beba0cc1c8fa334189e",
+    "_id": "67b454973753907732306fac",
     "uid": 619,
     "name": "PAOK",
     "country": "GRE",
     "alias": "PAOK"
   },
   {
-    "_id": "67b34beba0cc1c8fa334189f",
+    "_id": "67b454973753907732306fad",
     "uid": 620,
     "name": "Dinamo Zagreb",
     "country": "CRO",
     "alias": "Dinamo Zagreb"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418a0",
+    "_id": "67b454973753907732306fae",
     "uid": 628,
     "name": "Sparta Praha",
     "country": "CZE",
     "alias": "Sparta Praha"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418a1",
+    "_id": "67b454973753907732306faf",
     "uid": 637,
     "name": "Sturm Graz",
     "country": "AUT",
     "alias": "Sturm Graz"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418a2",
+    "_id": "67b454973753907732306fb0",
     "uid": 645,
     "name": "Galatasaray",
     "country": "TUR",
     "alias": "Galatasaray"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418a3",
+    "_id": "67b454973753907732306fb1",
     "uid": 649,
     "name": "HJK helsinki",
     "country": "FIN",
     "alias": "HJK helsinki"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418a4",
+    "_id": "67b454973753907732306fb2",
     "uid": 651,
     "name": "Ferencvarosi TC",
     "country": "HUN",
     "alias": "Ferencvarosi TC"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418a5",
+    "_id": "67b454973753907732306fb3",
     "uid": 652,
     "name": "Shamrock Rovers",
     "country": "IRL",
     "alias": "Shamrock Rovers"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418a6",
+    "_id": "67b454973753907732306fb4",
     "uid": 656,
     "name": "Slovan Bratislava",
     "country": "SVK",
     "alias": "Slovan Bratislava"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418a7",
+    "_id": "67b454973753907732306fb5",
     "uid": 667,
     "name": "Lincoln Red Imps FC",
     "country": "GIB",
     "alias": "Lincoln Red Imps FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418a8",
+    "_id": "67b454973753907732306fb6",
     "uid": 684,
     "name": "FC Differdange 03",
     "country": "LUX",
     "alias": "FC Differdange 03"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418a9",
+    "_id": "67b454973753907732306fb7",
     "uid": 687,
     "name": "Flora Tallinn",
     "country": "EST",
     "alias": "Flora Tallinn"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418aa",
+    "_id": "67b454973753907732306fb8",
     "uid": 692,
     "name": "Ordabasy",
     "country": "KAZ",
     "alias": "Ordabasy"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ab",
+    "_id": "67b454973753907732306fb9",
     "uid": 701,
     "name": "KI Klaksvik",
     "country": "FRO",
     "alias": "KI Klaksvik"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ac",
+    "_id": "67b454973753907732306fba",
     "uid": 703,
     "name": "UE Santa Coloma",
     "country": "AND",
     "alias": "UE Santa Coloma"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ad",
+    "_id": "67b454973753907732306fbb",
     "uid": 705,
     "name": "Dinamo Batumi",
     "country": "GEO",
     "alias": "Dinamo Batumi"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ae",
+    "_id": "67b454973753907732306fbc",
     "uid": 709,
     "name": "Pyunik Yerevan",
     "country": "ARM",
     "alias": "Pyunik Yerevan"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418af",
+    "_id": "67b454973753907732306fbd",
     "uid": 1393,
     "name": "Union St. Gilloise",
     "country": "BEL",
     "alias": "Union St. Gilloise"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418b0",
+    "_id": "67b454973753907732306fbe",
     "uid": 2247,
     "name": "Apoel Nicosia",
     "country": "CYP",
     "alias": "Apoel Nicosia"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418b1",
+    "_id": "67b454973753907732306fbf",
     "uid": 2271,
     "name": "Petrocub",
     "country": "MDA",
     "alias": "Petrocub"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418b2",
+    "_id": "67b454973753907732306fc0",
     "uid": 3327,
     "name": "Egnatia Rrogozhinë",
     "country": "ALB",
     "alias": "Egnatia Rrogozhinë"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418b3",
+    "_id": "67b454973753907732306fc1",
     "uid": 3364,
     "name": "Borac Banja Luka",
     "country": "BA",
     "alias": "Borac Banja Luka"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418b4",
+    "_id": "67b454973753907732306fc2",
     "uid": 3745,
     "name": "Dečić",
     "country": "ME",
     "alias": "Dečić"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418b5",
+    "_id": "67b454973753907732306fc3",
     "uid": 3874,
     "name": "Panevėžys",
     "country": "LT",
     "alias": "Panevėžys"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418b6",
+    "_id": "67b454973753907732306fc4",
     "uid": 4160,
     "name": "Rīgas FS",
     "country": "LV",
     "alias": "Rīgas FS"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418b7",
+    "_id": "67b454973753907732306fc5",
     "uid": 4346,
     "name": "Struga",
     "country": "MK",
     "alias": "Struga"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418b8",
+    "_id": "67b454973753907732306fc6",
     "uid": 4360,
     "name": "Celje",
     "country": "SVN",
     "alias": "Celje"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418b9",
+    "_id": "67b454973753907732306fc7",
     "uid": 4626,
     "name": "Hamrun Spartans",
     "country": "MT",
     "alias": "Hamrun Spartans"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ba",
+    "_id": "67b454973753907732306fc8",
     "uid": 5308,
     "name": "Virtus",
     "country": "SM",
     "alias": "Virtus"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418bb",
+    "_id": "67b454973753907732306fc9",
     "uid": 5354,
     "name": "Larne",
     "country": "GB",
     "alias": "Larne"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418bc",
+    "_id": "67b454973753907732306fca",
     "uid": 12733,
     "name": "Ballkani",
     "country": "XK",
     "alias": "Ballkani"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418bd",
+    "_id": "67b454973753907732306fcb",
     "uid": 77,
     "name": "Angers",
     "country": "FRA",
     "alias": "Angers"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418be",
+    "_id": "67b454973753907732306fcc",
     "uid": 78,
     "name": "Bordeaux",
     "country": "FRA",
     "alias": "Bordeaux"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418bf",
-    "uid": 79,
-    "name": "Lille",
-    "country": "FRA",
-    "alias": "Lille"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa33418c0",
+    "_id": "67b454973753907732306fcd",
     "uid": 80,
     "name": "Lyon",
     "country": "FRA",
     "alias": "Lyon"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418c1",
+    "_id": "67b454973753907732306fce",
     "uid": 81,
     "name": "Marseille",
     "country": "FRA",
     "alias": "Marseille"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418c2",
+    "_id": "67b454973753907732306fcf",
     "uid": 82,
     "name": "Montpellier",
     "country": "FRA",
     "alias": "Montpellier"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418c3",
+    "_id": "67b454973753907732306fd0",
     "uid": 83,
     "name": "Nantes",
     "country": "FRA",
     "alias": "Nantes"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418c4",
+    "_id": "67b454973753907732306fd1",
     "uid": 84,
     "name": "Nice",
     "country": "FRA",
     "alias": "Nice"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418c5",
+    "_id": "67b454973753907732306fd2",
     "uid": 85,
-    "name": "Paris Saint Germain",
+    "name": "PSG",
     "country": "FRA",
-    "alias": "Paris Saint Germain"
+    "alias": "PSG, Paris Saint Germain"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418c6",
+    "_id": "67b454973753907732306fd3",
     "uid": 87,
     "name": "Amiens",
     "country": "FRA",
     "alias": "Amiens"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418c7",
+    "_id": "67b454973753907732306fd4",
     "uid": 88,
     "name": "Caen",
     "country": "FRA",
     "alias": "Caen"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418c8",
+    "_id": "67b454973753907732306fd5",
     "uid": 89,
     "name": "Dijon",
     "country": "FRA",
     "alias": "Dijon"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418c9",
+    "_id": "67b454973753907732306fd6",
     "uid": 90,
     "name": "Guingamp",
     "country": "FRA",
     "alias": "Guingamp"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ca",
+    "_id": "67b454973753907732306fd7",
     "uid": 91,
     "name": "Monaco",
     "country": "FRA",
     "alias": "Monaco"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418cb",
+    "_id": "67b454973753907732306fd8",
     "uid": 93,
     "name": "Reims",
     "country": "FRA",
     "alias": "Reims"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418cc",
+    "_id": "67b454973753907732306fd9",
     "uid": 94,
     "name": "Rennes",
     "country": "FRA",
     "alias": "Rennes"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418cd",
+    "_id": "67b454973753907732306fda",
     "uid": 95,
     "name": "Strasbourg",
     "country": "FRA",
     "alias": "Strasbourg"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ce",
+    "_id": "67b454973753907732306fdb",
     "uid": 96,
     "name": "Toulouse",
     "country": "FRA",
     "alias": "Toulouse"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418cf",
+    "_id": "67b454973753907732306fdc",
     "uid": 97,
     "name": "Lorient",
     "country": "FRA",
     "alias": "Lorient"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418d0",
+    "_id": "67b454973753907732306fdd",
     "uid": 98,
     "name": "Ajaccio",
     "country": "FRA",
     "alias": "Ajaccio"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418d1",
+    "_id": "67b454973753907732306fde",
     "uid": 99,
     "name": "Clermont Foot",
     "country": "FRA",
     "alias": "Clermont Foot"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418d2",
+    "_id": "67b454973753907732306fdf",
     "uid": 101,
     "name": "Grenoble",
     "country": "FRA",
     "alias": "Grenoble"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418d3",
+    "_id": "67b454973753907732306fe0",
     "uid": 102,
     "name": "Nancy",
     "country": "FRA",
     "alias": "Nancy"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418d4",
+    "_id": "67b454973753907732306fe1",
     "uid": 103,
     "name": "Orleans",
     "country": "FRA",
     "alias": "Orleans"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418d5",
+    "_id": "67b454973753907732306fe2",
     "uid": 104,
     "name": "RED Star FC 93",
     "country": "FRA",
     "alias": "RED Star FC 93"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418d6",
+    "_id": "67b454973753907732306fe3",
     "uid": 105,
     "name": "Valenciennes",
     "country": "FRA",
     "alias": "Valenciennes"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418d7",
-    "uid": 106,
-    "name": "Stade Brestois 29",
-    "country": "FRA",
-    "alias": "Stade Brestois 29"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa33418d8",
+    "_id": "67b454973753907732306fe4",
     "uid": 108,
     "name": "Auxerre",
     "country": "FRA",
     "alias": "Auxerre"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418d9",
+    "_id": "67b454973753907732306fe5",
     "uid": 110,
     "name": "Estac Troyes",
     "country": "FRA",
     "alias": "Estac Troyes"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418da",
+    "_id": "67b454973753907732306fe6",
     "uid": 111,
     "name": "LE Havre",
     "country": "FRA",
     "alias": "LE Havre"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418db",
+    "_id": "67b454973753907732306fe7",
     "uid": 112,
     "name": "Metz",
     "country": "FRA",
     "alias": "Metz"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418dc",
+    "_id": "67b454973753907732306fe8",
     "uid": 113,
     "name": "Niort",
     "country": "FRA",
     "alias": "Niort"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418dd",
+    "_id": "67b454973753907732306fe9",
     "uid": 114,
     "name": "Paris FC",
     "country": "FRA",
     "alias": "Paris FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418de",
+    "_id": "67b454973753907732306fea",
     "uid": 115,
     "name": "Sochaux",
     "country": "FRA",
     "alias": "Sochaux"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418df",
+    "_id": "67b454973753907732306feb",
     "uid": 116,
     "name": "Lens",
     "country": "FRA",
     "alias": "Lens"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418e0",
+    "_id": "67b454973753907732306fec",
     "uid": 431,
     "name": "Quevilly",
     "country": "FRA",
     "alias": "Quevilly"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418e1",
+    "_id": "67b454973753907732306fed",
     "uid": 432,
     "name": "Tours",
     "country": "FRA",
     "alias": "Tours"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418e2",
+    "_id": "67b454973753907732306fee",
     "uid": 433,
     "name": "Laval",
     "country": "FRA",
     "alias": "Laval"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418e3",
+    "_id": "67b454973753907732306fef",
     "uid": 1063,
     "name": "Saint Etienne",
     "country": "FRA",
     "alias": "Etienne"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418e4",
+    "_id": "67b454973753907732306ff0",
     "uid": 1293,
     "name": "Drancy",
     "country": "FRA",
     "alias": "Drancy"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418e5",
+    "_id": "67b454973753907732306ff1",
     "uid": 1296,
     "name": "Marignane",
     "country": "FRA",
     "alias": "Marignane"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418e6",
+    "_id": "67b454973753907732306ff2",
     "uid": 1297,
     "name": "PAU",
     "country": "FRA",
     "alias": "PAU"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418e7",
+    "_id": "67b454973753907732306ff3",
     "uid": 1298,
     "name": "Le Mans",
     "country": "FRA",
     "alias": "Le Mans"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418e8",
+    "_id": "67b454973753907732306ff4",
     "uid": 1299,
     "name": "Boulogne",
     "country": "FRA",
     "alias": "Boulogne"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418e9",
+    "_id": "67b454973753907732306ff5",
     "uid": 1300,
     "name": "Concarneau",
     "country": "FRA",
     "alias": "Concarneau"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ea",
+    "_id": "67b454973753907732306ff6",
     "uid": 1301,
     "name": "Rodez",
     "country": "FRA",
     "alias": "Rodez"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418eb",
+    "_id": "67b454973753907732306ff7",
     "uid": 1302,
     "name": "Villefranche",
     "country": "FRA",
     "alias": "Villefranche"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ec",
+    "_id": "67b454973753907732306ff8",
     "uid": 1303,
     "name": "Avranches",
     "country": "FRA",
     "alias": "Avranches"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ed",
+    "_id": "67b454973753907732306ff9",
     "uid": 1304,
     "name": "Dunkerque",
     "country": "FRA",
     "alias": "Dunkerque"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ee",
+    "_id": "67b454973753907732306ffa",
     "uid": 1305,
     "name": "Bastia",
     "country": "FRA",
     "alias": "Bastia"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ef",
+    "_id": "67b454973753907732306ffb",
     "uid": 1308,
     "name": "Les Herbiers",
     "country": "FRA",
     "alias": "Les Herbiers"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418f0",
+    "_id": "67b454973753907732306ffc",
     "uid": 1309,
     "name": "Epinal",
     "country": "FRA",
     "alias": "Epinal"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418f1",
+    "_id": "67b454973753907732306ffd",
     "uid": 3011,
     "name": "Angoulême",
     "country": "FRA",
     "alias": "Angoulême"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418f2",
+    "_id": "67b454973753907732306ffe",
     "uid": 3012,
     "name": "Annecy",
     "country": "FRA",
     "alias": "Annecy"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418f3",
+    "_id": "67b454973753907732306fff",
     "uid": 3024,
     "name": "Biars-Bretenoux",
     "country": "FRA",
     "alias": "Biars-Bretenoux"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418f4",
+    "_id": "67b454973753907732307000",
     "uid": 3025,
     "name": "Biesheim",
     "country": "FRA",
     "alias": "Biesheim"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418f5",
+    "_id": "67b454973753907732307001",
     "uid": 3027,
     "name": "Bobigny",
     "country": "FRA",
     "alias": "Bobigny"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418f6",
+    "_id": "67b454973753907732307002",
     "uid": 3030,
     "name": "Canet Roussillon",
     "country": "FRA",
     "alias": "Canet Roussillon"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418f7",
+    "_id": "67b454973753907732307003",
     "uid": 3048,
     "name": "Etoile Matoury",
     "country": "FRA",
     "alias": "Etoile Matoury"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418f8",
+    "_id": "67b454973753907732307004",
     "uid": 3056,
     "name": "Gueugnon",
     "country": "FRA",
     "alias": "Gueugnon"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418f9",
+    "_id": "67b454973753907732307005",
     "uid": 3058,
     "name": "Haguenau",
     "country": "FRA",
     "alias": "Haguenau"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418fa",
+    "_id": "67b454973753907732307006",
     "uid": 3062,
     "name": "Illkirch Graffenstaden",
     "country": "FRA",
     "alias": "Illkirch Graffenstaden"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418fb",
+    "_id": "67b454973753907732307007",
     "uid": 3069,
     "name": "Le Puy Foot",
     "country": "FRA",
     "alias": "Le Puy Foot"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418fc",
+    "_id": "67b454973753907732307008",
     "uid": 3081,
     "name": "Montagnarde",
     "country": "FRA",
     "alias": "Montagnarde"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418fd",
+    "_id": "67b454973753907732307009",
     "uid": 3093,
     "name": "Olympique d'Alès",
     "country": "FRA",
     "alias": "Olympique d'Alès"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418fe",
+    "_id": "67b45497375390773230700a",
     "uid": 3094,
     "name": "Olympique de Valence",
     "country": "FRA",
     "alias": "Olympique de Valence"
   },
   {
-    "_id": "67b34beba0cc1c8fa33418ff",
+    "_id": "67b45497375390773230700b",
     "uid": 3100,
     "name": "Raon l'Etape",
     "country": "FRA",
     "alias": "Raon l'Etape"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341900",
+    "_id": "67b45497375390773230700c",
     "uid": 3107,
     "name": "Saint-Lô Manche",
     "country": "FRA",
     "alias": "Saint-Lô Manche"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341901",
+    "_id": "67b45497375390773230700d",
     "uid": 3108,
     "name": "Saint-Malo",
     "country": "FRA",
     "alias": "Saint-Malo"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341902",
+    "_id": "67b45497375390773230700e",
     "uid": 3109,
     "name": "Saint-Omer",
     "country": "FRA",
     "alias": "Saint-Omer"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341903",
+    "_id": "67b45497375390773230700f",
     "uid": 3118,
     "name": "Stade Beaucairois",
     "country": "FRA",
     "alias": "Stade Beaucairois"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341904",
+    "_id": "67b454973753907732307010",
     "uid": 3123,
     "name": "Thaon",
     "country": "FRA",
     "alias": "Thaon"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341905",
+    "_id": "67b454973753907732307011",
     "uid": 3127,
     "name": "USSA Vertou",
     "country": "FRA",
     "alias": "USSA Vertou"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341906",
+    "_id": "67b454973753907732307012",
     "uid": 3129,
     "name": "Vannes",
     "country": "FRA",
     "alias": "Vannes"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341907",
+    "_id": "67b454973753907732307013",
     "uid": 3130,
     "name": "Vendée Fontenay",
     "country": "FRA",
     "alias": "Vendée Fontenay"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341908",
+    "_id": "67b454973753907732307014",
     "uid": 3131,
     "name": "Versailles",
     "country": "FRA",
     "alias": "Versailles"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341909",
+    "_id": "67b454973753907732307015",
     "uid": 3138,
     "name": "Vitré",
     "country": "FRA",
     "alias": "Vitré"
   },
   {
-    "_id": "67b34beba0cc1c8fa334190a",
+    "_id": "67b454973753907732307016",
     "uid": 3146,
     "name": "Anduzien",
     "country": "FRA",
     "alias": "Anduzien"
   },
   {
-    "_id": "67b34beba0cc1c8fa334190b",
+    "_id": "67b454973753907732307017",
     "uid": 3147,
     "name": "Arras",
     "country": "FRA",
     "alias": "Arras"
   },
   {
-    "_id": "67b34beba0cc1c8fa334190c",
+    "_id": "67b454973753907732307018",
     "uid": 3148,
     "name": "Aubervilliers",
     "country": "FRA",
     "alias": "Aubervilliers"
   },
   {
-    "_id": "67b34beba0cc1c8fa334190d",
+    "_id": "67b454973753907732307019",
     "uid": 3153,
     "name": "Beauvais",
     "country": "FRA",
     "alias": "Beauvais"
   },
   {
-    "_id": "67b34beba0cc1c8fa334190e",
+    "_id": "67b45497375390773230701a",
     "uid": 3155,
     "name": "Bressuire",
     "country": "FRA",
     "alias": "Bressuire"
   },
   {
-    "_id": "67b34beba0cc1c8fa334190f",
+    "_id": "67b45497375390773230701b",
     "uid": 3162,
     "name": "Chantilly",
     "country": "FRA",
     "alias": "Chantilly"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341910",
+    "_id": "67b45497375390773230701c",
     "uid": 3165,
     "name": "Chaumont",
     "country": "FRA",
     "alias": "Chaumont"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341911",
+    "_id": "67b45497375390773230701d",
     "uid": 3168,
     "name": "Cluses-Scionzier",
     "country": "FRA",
     "alias": "Cluses-Scionzier"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341912",
+    "_id": "67b45497375390773230701e",
     "uid": 3169,
     "name": "Colomiers",
     "country": "FRA",
     "alias": "Colomiers"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341913",
+    "_id": "67b45497375390773230701f",
     "uid": 3176,
     "name": "Feignies-Aulnoye",
     "country": "FRA",
     "alias": "SC Feignies"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341914",
+    "_id": "67b454973753907732307020",
     "uid": 3178,
     "name": "Feytiat",
     "country": "FRA",
     "alias": "Feytiat"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341915",
+    "_id": "67b454973753907732307021",
     "uid": 3179,
     "name": "Fleury 91",
     "country": "FRA",
     "alias": "Fleury 91"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341916",
+    "_id": "67b454973753907732307022",
     "uid": 3182,
     "name": "Gallia Lucciana",
     "country": "FRA",
     "alias": "Gallia Lucciana"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341917",
+    "_id": "67b454973753907732307023",
     "uid": 3184,
     "name": "Grandvillars",
     "country": "FRA",
     "alias": "Grandvillars"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341918",
+    "_id": "67b454973753907732307024",
     "uid": 3187,
     "name": "Hauts Lyonnais",
     "country": "FRA",
     "alias": "Hauts Lyonnais"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341919",
+    "_id": "67b454973753907732307025",
     "uid": 3188,
     "name": "Houilles",
     "country": "FRA",
     "alias": "Houilles"
   },
   {
-    "_id": "67b34beba0cc1c8fa334191a",
+    "_id": "67b454973753907732307026",
     "uid": 3196,
     "name": "Les Ulis",
     "country": "FRA",
     "alias": "Les Ulis"
   },
   {
-    "_id": "67b34beba0cc1c8fa334191b",
+    "_id": "67b454973753907732307027",
     "uid": 3200,
     "name": "Martigues",
     "country": "FRA",
     "alias": "Martigues"
   },
   {
-    "_id": "67b34beba0cc1c8fa334191c",
+    "_id": "67b454973753907732307028",
     "uid": 3206,
     "name": "Mérignac-Arlac",
     "country": "FRA",
     "alias": "Mérignac-Arlac"
   },
   {
-    "_id": "67b34beba0cc1c8fa334191d",
+    "_id": "67b454973753907732307029",
     "uid": 3215,
     "name": "Porto Portugais Amiens",
     "country": "FRA",
     "alias": "Porto Portugais Amiens"
   },
   {
-    "_id": "67b34beba0cc1c8fa334191e",
+    "_id": "67b45497375390773230702a",
     "uid": 3220,
     "name": "Romorantin",
     "country": "FRA",
     "alias": "Romorantin"
   },
   {
-    "_id": "67b34beba0cc1c8fa334191f",
+    "_id": "67b45497375390773230702b",
     "uid": 3221,
     "name": "Rouen",
     "country": "FRA",
     "alias": "FC Rouen"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341920",
+    "_id": "67b45497375390773230702c",
     "uid": 3224,
     "name": "Saint-Colomban Locminé",
     "country": "FRA",
     "alias": "Saint-Colomban Locminé"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341921",
+    "_id": "67b45497375390773230702d",
     "uid": 3225,
     "name": "Saumur",
     "country": "FRA",
     "alias": "Saumur"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341922",
+    "_id": "67b45497375390773230702e",
     "uid": 3229,
     "name": "Stade Briochin",
     "country": "FRA",
     "alias": "Stade Briochin"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341923",
+    "_id": "67b45497375390773230702f",
     "uid": 3248,
     "name": "Alençon",
     "country": "FRA",
     "alias": "Alençon"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341924",
+    "_id": "67b454973753907732307030",
     "uid": 3261,
     "name": "Dives-Cabourg",
     "country": "FRA",
     "alias": "Dives-Cabourg"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341925",
+    "_id": "67b454973753907732307031",
     "uid": 3267,
     "name": "Istres",
     "country": "FRA",
     "alias": "Istres"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341926",
+    "_id": "67b454973753907732307032",
     "uid": 3275,
     "name": "Lunéville",
     "country": "FRA",
     "alias": "Lunéville"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341927",
+    "_id": "67b454973753907732307033",
     "uid": 3277,
     "name": "Mâcon",
     "country": "FRA",
     "alias": "Mâcon"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341928",
+    "_id": "67b454973753907732307034",
     "uid": 3295,
     "name": "Saint-Pierroise",
     "country": "Reunion",
     "alias": "Saint-Pierroise"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341929",
+    "_id": "67b454973753907732307035",
     "uid": 3297,
     "name": "Sarre Union",
     "country": "FRA",
     "alias": "Sarre Union"
   },
   {
-    "_id": "67b34beba0cc1c8fa334192a",
+    "_id": "67b454973753907732307036",
     "uid": 3310,
     "name": "TA Rennes",
     "country": "FRA",
     "alias": "TA Rennes"
   },
   {
-    "_id": "67b34beba0cc1c8fa334192b",
+    "_id": "67b454973753907732307037",
     "uid": 4652,
     "name": "Arles",
     "country": "FRA",
     "alias": "Arles"
   },
   {
-    "_id": "67b34beba0cc1c8fa334192c",
+    "_id": "67b454973753907732307038",
     "uid": 6327,
     "name": "Jeunesse Evolution",
     "country": "GP",
     "alias": "Jeunesse Evolution"
   },
   {
-    "_id": "67b34beba0cc1c8fa334192d",
+    "_id": "67b454973753907732307039",
     "uid": 9237,
     "name": "C' Chartres",
     "country": "FRA",
     "alias": "C' Chartres"
   },
   {
-    "_id": "67b34beba0cc1c8fa334192e",
+    "_id": "67b45497375390773230703a",
     "uid": 9254,
     "name": "Chasselay MDA",
     "country": "FRA",
     "alias": "Chasselay MDA"
   },
   {
-    "_id": "67b34beba0cc1c8fa334192f",
+    "_id": "67b45497375390773230703b",
     "uid": 9255,
     "name": "Jura Sud Foot",
     "country": "FRA",
     "alias": "Jura Sud Foot"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341930",
+    "_id": "67b45497375390773230703c",
     "uid": 9263,
     "name": "Agde",
     "country": "FRA",
     "alias": "Agde"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341931",
+    "_id": "67b45497375390773230703d",
     "uid": 9267,
     "name": "Boulay",
     "country": "FRA",
     "alias": "Boulay"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341932",
+    "_id": "67b45497375390773230703e",
     "uid": 9268,
     "name": "Bourgoin-Jallieu",
     "country": "FRA",
     "alias": "Bourgoin-Jallieu"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341933",
+    "_id": "67b45497375390773230703f",
     "uid": 9275,
     "name": "Dinan Léhon",
     "country": "FRA",
     "alias": "Dinan Léhon"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341934",
+    "_id": "67b454973753907732307040",
     "uid": 9287,
     "name": "Le Touquet",
     "country": "FRA",
     "alias": "Le Touquet"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341935",
+    "_id": "67b454973753907732307041",
     "uid": 9288,
     "name": "Linas-Montlhery",
     "country": "FRA",
     "alias": "Linas-Montlhery"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341936",
+    "_id": "67b454973753907732307042",
     "uid": 9301,
     "name": "Paimpol",
     "country": "FRA",
     "alias": "Paimpol"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341937",
+    "_id": "67b454973753907732307043",
     "uid": 9304,
     "name": "Sablé",
     "country": "FRA",
     "alias": "Sablé"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341938",
+    "_id": "67b454973753907732307044",
     "uid": 9309,
     "name": "Saint-Pierre Milizac",
     "country": "FRA",
     "alias": "Saint-Pierre Milizac"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341939",
+    "_id": "67b454973753907732307045",
     "uid": 9315,
     "name": "Union Saint-Jean",
     "country": "FRA",
     "alias": "Union Saint-Jean"
   },
   {
-    "_id": "67b34beba0cc1c8fa334193a",
+    "_id": "67b454973753907732307046",
     "uid": 9915,
     "name": "La Roche VF",
     "country": "FRA",
     "alias": "La Roche VF"
   },
   {
-    "_id": "67b34beba0cc1c8fa334193b",
+    "_id": "67b454973753907732307047",
     "uid": 9932,
     "name": "Cannes",
     "country": "FRA",
     "alias": "Cannes"
   },
   {
-    "_id": "67b34beba0cc1c8fa334193c",
+    "_id": "67b454973753907732307048",
     "uid": 9937,
     "name": "Jura Dolois",
     "country": "FRA",
     "alias": "Jura Dolois"
   },
   {
-    "_id": "67b34beba0cc1c8fa334193d",
+    "_id": "67b454973753907732307049",
     "uid": 9941,
     "name": "Valdahon Vercel",
     "country": "FRA",
     "alias": "Valdahon Vercel"
   },
   {
-    "_id": "67b34beba0cc1c8fa334193e",
+    "_id": "67b45497375390773230704a",
     "uid": 9969,
     "name": "Chambéry",
     "country": "FRA",
     "alias": "Chambéry"
   },
   {
-    "_id": "67b34beba0cc1c8fa334193f",
+    "_id": "67b45497375390773230704b",
     "uid": 9973,
     "name": "Rumilly Vallières",
     "country": "FRA",
     "alias": "Rumilly Vallières"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341940",
+    "_id": "67b45497375390773230704c",
     "uid": 10166,
     "name": "Bayonne",
     "country": "FRA",
     "alias": "Bayonne"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341941",
+    "_id": "67b45497375390773230704d",
     "uid": 10684,
     "name": "La Roche sur Yon",
     "country": "FRA",
     "alias": "La Roche sur Yon"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341942",
+    "_id": "67b45497375390773230704e",
     "uid": 13583,
     "name": "Colmar",
     "country": "FRA",
     "alias": "Colmar"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341943",
+    "_id": "67b45497375390773230704f",
     "uid": 13592,
     "name": "Brétigny Foot",
     "country": "FRA",
     "alias": "Brétigny Foot"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341944",
+    "_id": "67b454973753907732307050",
     "uid": 13601,
     "name": "Espaly-Saint-Marcel",
     "country": "FRA",
     "alias": "Espaly-Saint-Marcel"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341945",
+    "_id": "67b454973753907732307051",
     "uid": 13648,
     "name": "Ginglin Cesson",
     "country": "FRA",
     "alias": "Ginglin Cesson"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341946",
+    "_id": "67b454973753907732307052",
     "uid": 13697,
     "name": "Marboz",
     "country": "FRA",
     "alias": "Marboz"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341947",
+    "_id": "67b454973753907732307053",
     "uid": 13710,
     "name": "Saint-Brieuc",
     "country": "FRA",
     "alias": "Saint-Brieuc"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341948",
+    "_id": "67b454973753907732307054",
     "uid": 13722,
     "name": "Cesson",
     "country": "FRA",
     "alias": "Cesson"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341949",
+    "_id": "67b454973753907732307055",
     "uid": 13723,
     "name": "Corte",
     "country": "FRA",
     "alias": "Corte"
   },
   {
-    "_id": "67b34beba0cc1c8fa334194a",
+    "_id": "67b454973753907732307056",
     "uid": 13736,
     "name": "Marmande",
     "country": "FRA",
     "alias": "Marmande"
   },
   {
-    "_id": "67b34beba0cc1c8fa334194b",
+    "_id": "67b454973753907732307057",
     "uid": 13803,
     "name": "Vesoul",
     "country": "FRA",
     "alias": "Vesoul"
   },
   {
-    "_id": "67b34beba0cc1c8fa334194c",
+    "_id": "67b454973753907732307058",
     "uid": 15110,
     "name": "St-Philbert Gd Lieu",
     "country": "FRA",
     "alias": "St-Philbert Gd Lieu"
   },
   {
-    "_id": "67b34beba0cc1c8fa334194d",
+    "_id": "67b454973753907732307059",
     "uid": 15114,
     "name": "Cannet Rocheville",
     "country": "FRA",
     "alias": "Cannet Rocheville"
   },
   {
-    "_id": "67b34beba0cc1c8fa334194e",
+    "_id": "67b45497375390773230705a",
     "uid": 15592,
     "name": "Samaritaine",
     "country": "FRA",
     "alias": "Samaritaine"
   },
   {
-    "_id": "67b34beba0cc1c8fa334194f",
+    "_id": "67b45497375390773230705b",
     "uid": 18146,
     "name": "Raismes",
     "country": "FRA",
     "alias": "Raismes"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341950",
+    "_id": "67b45497375390773230705c",
     "uid": 18148,
     "name": "Saint-Cyr Collonges",
     "country": "FRA",
     "alias": "Saint-Cyr Collonges"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341951",
+    "_id": "67b45497375390773230705d",
     "uid": 18149,
     "name": "Saint-Denis",
     "country": "FRA",
     "alias": "Saint-Denis"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341952",
+    "_id": "67b45497375390773230705e",
     "uid": 18153,
     "name": "Stade Béthunois",
     "country": "FRA",
     "alias": "Stade Béthunois"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341953",
+    "_id": "67b45497375390773230705f",
     "uid": 19617,
     "name": "Vierzon FC",
     "country": "FRA",
     "alias": "Vierzon FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341954",
+    "_id": "67b454973753907732307060",
     "uid": 19916,
     "name": "Carnoux",
     "country": "FRA",
     "alias": "Carnoux"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341955",
+    "_id": "67b454973753907732307061",
     "uid": 20567,
     "name": "AC Paris 15",
     "country": "FRA",
     "alias": "AC Paris 15"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341956",
+    "_id": "67b454973753907732307062",
     "uid": 20575,
     "name": "Liancourt Clermont",
     "country": "FRA",
     "alias": "Liancourt Clermont"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341957",
+    "_id": "67b454973753907732307063",
     "uid": 20580,
     "name": "Pays de Cassel",
     "country": "FRA",
     "alias": "Pays de Cassel"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341958",
+    "_id": "67b454973753907732307064",
     "uid": 20581,
     "name": "SA Mérignac",
     "country": "FRA",
     "alias": "SA Mérignac"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341959",
+    "_id": "67b454973753907732307065",
     "uid": 20600,
     "name": "Diables Noirs",
     "country": "FRA",
     "alias": "Diables Noirs"
   },
   {
-    "_id": "67b34beba0cc1c8fa334195a",
+    "_id": "67b454973753907732307066",
     "uid": 21310,
     "name": "Dragon",
     "country": "Tahiti",
     "alias": "Dragon"
   },
   {
-    "_id": "67b34beba0cc1c8fa334195b",
+    "_id": "67b454973753907732307067",
     "uid": 22038,
     "name": "Neuilly sur Marne",
     "country": "FRA",
     "alias": "Neuilly sur Marne"
   },
   {
-    "_id": "67b34beba0cc1c8fa334195c",
+    "_id": "67b454973753907732307068",
     "uid": 22039,
     "name": "Thionville Lusitanos",
     "country": "FRA",
     "alias": "Thionville Lusitanos"
   },
   {
-    "_id": "67b34beba0cc1c8fa334195d",
+    "_id": "67b454973753907732307069",
     "uid": 22744,
     "name": "RC Calais",
     "country": "FRA",
     "alias": "RC Calais"
   },
   {
-    "_id": "67b34beba0cc1c8fa334195e",
+    "_id": "67b45497375390773230706a",
     "uid": 22753,
     "name": "Étoile Maritime",
     "country": "FRA",
     "alias": "Étoile Maritime"
   },
   {
-    "_id": "67b34beba0cc1c8fa334195f",
+    "_id": "67b45497375390773230706b",
     "uid": 24546,
     "name": "OCPAM",
     "country": "FRA",
     "alias": "OCPAM"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341960",
+    "_id": "67b45497375390773230706c",
     "uid": 25324,
     "name": "ASS Still Mutzig",
     "country": "FRA",
     "alias": "ASS Still Mutzig"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341961",
+    "_id": "67b45497375390773230706d",
     "uid": 25325,
     "name": "Allobroges Asafia",
     "country": "FRA",
     "alias": "Allobroges Asafia"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341962",
+    "_id": "67b45497375390773230706e",
     "uid": 25326,
     "name": "Beaumont Saint-Cyr",
     "country": "FRA",
     "alias": "Beaumont Saint-Cyr"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341963",
+    "_id": "67b45497375390773230706f",
     "uid": 25327,
     "name": "Blenod",
     "country": "FRA",
     "alias": "Blenod"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341964",
+    "_id": "67b454973753907732307070",
     "uid": 25328,
     "name": "Bolbec",
     "country": "FRA",
     "alias": "Bolbec"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341965",
+    "_id": "67b454973753907732307071",
     "uid": 25329,
     "name": "Calais Beau-Marais",
     "country": "FRA",
     "alias": "Calais Beau-Marais"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341966",
+    "_id": "67b454973753907732307072",
     "uid": 25330,
     "name": "Comtal",
     "country": "FRA",
     "alias": "Comtal"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341967",
+    "_id": "67b454973753907732307073",
     "uid": 25331,
     "name": "Couzeix-Chaptelat",
     "country": "FRA",
     "alias": "Couzeix-Chaptelat"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341968",
+    "_id": "67b454973753907732307074",
     "uid": 25332,
     "name": "ETC Anstaing Chéreng",
     "country": "FRA",
     "alias": "ETC Anstaing Chéreng"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341969",
+    "_id": "67b454973753907732307075",
     "uid": 25333,
     "name": "FCSR Obernai",
     "country": "FRA",
     "alias": "FCSR Obernai"
   },
   {
-    "_id": "67b34beba0cc1c8fa334196a",
+    "_id": "67b454973753907732307076",
     "uid": 25334,
     "name": "Fief-Gesté",
     "country": "FRA",
     "alias": "Fief-Gesté"
   },
   {
-    "_id": "67b34beba0cc1c8fa334196b",
+    "_id": "67b454973753907732307077",
     "uid": 25335,
     "name": "Foron",
     "country": "FRA",
     "alias": "Foron"
   },
   {
-    "_id": "67b34beba0cc1c8fa334196c",
+    "_id": "67b454973753907732307078",
     "uid": 25336,
     "name": "Freyming",
     "country": "FRA",
     "alias": "Freyming"
   },
   {
-    "_id": "67b34beba0cc1c8fa334196d",
+    "_id": "67b454973753907732307079",
     "uid": 25337,
     "name": "Guéreins Genouilleux",
     "country": "FRA",
     "alias": "Guéreins Genouilleux"
   },
   {
-    "_id": "67b34beba0cc1c8fa334196e",
+    "_id": "67b45497375390773230707a",
     "uid": 25338,
     "name": "Haubourdin",
     "country": "FRA",
     "alias": "Haubourdin"
   },
   {
-    "_id": "67b34beba0cc1c8fa334196f",
+    "_id": "67b45497375390773230707b",
     "uid": 25339,
     "name": "Hettange-Grande",
     "country": "FRA",
     "alias": "Hettange-Grande"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341970",
+    "_id": "67b45497375390773230707c",
     "uid": 25340,
     "name": "Labourse",
     "country": "FRA",
     "alias": "Labourse"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341971",
+    "_id": "67b45497375390773230707d",
     "uid": 25341,
     "name": "Lempdes",
     "country": "FRA",
     "alias": "Lempdes"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341972",
+    "_id": "67b45497375390773230707e",
     "uid": 25342,
     "name": "Maladrerie",
     "country": "FRA",
     "alias": "Maladrerie"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341973",
+    "_id": "67b45497375390773230707f",
     "uid": 25343,
     "name": "Monnaie",
     "country": "FRA",
     "alias": "Monnaie"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341974",
+    "_id": "67b454973753907732307080",
     "uid": 25344,
     "name": "Montferrand",
     "country": "FRA",
     "alias": "Montferrand"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341975",
+    "_id": "67b454973753907732307081",
     "uid": 25345,
     "name": "Nousseviller",
     "country": "FRA",
     "alias": "Nousseviller"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341976",
+    "_id": "67b454973753907732307082",
     "uid": 25346,
     "name": "Noyelles sous Lens",
     "country": "FRA",
     "alias": "Noyelles sous Lens"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341977",
+    "_id": "67b454973753907732307083",
     "uid": 25347,
     "name": "Olympique Cazaux",
     "country": "FRA",
     "alias": "Olympique Cazaux"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341978",
+    "_id": "67b454973753907732307084",
     "uid": 25348,
     "name": "Roubaix",
     "country": "FRA",
     "alias": "Roubaix"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341979",
+    "_id": "67b454973753907732307085",
     "uid": 25349,
     "name": "Ruffiac Malestroit",
     "country": "FRA",
     "alias": "Ruffiac Malestroit"
   },
   {
-    "_id": "67b34beba0cc1c8fa334197a",
+    "_id": "67b454973753907732307086",
     "uid": 25350,
     "name": "Sauveteurs Brivois",
     "country": "FRA",
     "alias": "Sauveteurs Brivois"
   },
   {
-    "_id": "67b34beba0cc1c8fa334197b",
+    "_id": "67b454973753907732307087",
     "uid": 25351,
     "name": "Serquigny Nassandres",
     "country": "FRA",
     "alias": "Serquigny Nassandres"
   },
   {
-    "_id": "67b34beba0cc1c8fa334197c",
+    "_id": "67b454973753907732307088",
     "uid": 25352,
     "name": "St-Just St-Rambert",
     "country": "FRA",
     "alias": "St-Just St-Rambert"
   },
   {
-    "_id": "67b34beba0cc1c8fa334197d",
+    "_id": "67b454973753907732307089",
     "uid": 25353,
     "name": "St-Philbert Réorthe JA",
     "country": "FRA",
     "alias": "St-Philbert Réorthe JA"
   },
   {
-    "_id": "67b34beba0cc1c8fa334197e",
+    "_id": "67b45497375390773230708a",
     "uid": 25354,
     "name": "Thouars",
     "country": "FRA",
     "alias": "Thouars"
   },
   {
-    "_id": "67b34beba0cc1c8fa334197f",
+    "_id": "67b45497375390773230708b",
     "uid": 25355,
     "name": "Valence FC",
     "country": "FRA",
     "alias": "Valence FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341980",
+    "_id": "67b45497375390773230708c",
     "uid": 25356,
     "name": "Avenir Mourenxois",
     "country": "FRA",
     "alias": "Avenir Mourenxois"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341981",
+    "_id": "67b45497375390773230708d",
     "uid": 25357,
     "name": "Crépy-en-Valois",
     "country": "FRA",
     "alias": "Crépy-en-Valois"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341982",
+    "_id": "67b45497375390773230708e",
     "uid": 25358,
     "name": "Grau-du-Roi",
     "country": "FRA",
     "alias": "Grau-du-Roi"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341983",
+    "_id": "67b45497375390773230708f",
     "uid": 25369,
     "name": "Aigles d'Or de Mana",
     "country": "FRA",
     "alias": "Aigles d'Or de Mana"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341984",
+    "_id": "67b454973753907732307090",
     "uid": 25370,
     "name": "RC Saint Joseph",
     "country": "FRA",
     "alias": "RC Saint Joseph"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341985",
+    "_id": "67b454973753907732307091",
     "uid": 2669,
     "name": "Amazulu",
     "country": "RSA",
     "alias": "Amazulu"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341986",
+    "_id": "67b454973753907732307092",
     "uid": 2682,
     "name": "Marumo Gallants",
     "country": "RSA",
     "alias": "Marumo Gallants"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341987",
+    "_id": "67b454973753907732307093",
     "uid": 2690,
     "name": "Golden Arrows",
     "country": "RSA",
     "alias": "Golden arrows"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341988",
+    "_id": "67b454973753907732307094",
     "uid": 2691,
     "name": "Kaizer Chiefs",
     "country": "RSA",
     "alias": "Kaizer Chiefs"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341989",
+    "_id": "67b454973753907732307095",
     "uid": 2693,
     "name": "Polokwane City",
     "country": "RSA",
     "alias": "Polokwane "
   },
   {
-    "_id": "67b34beba0cc1c8fa334198a",
+    "_id": "67b454973753907732307096",
     "uid": 2694,
     "name": "Supersport United",
     "country": "RSA",
     "alias": "Supersport"
   },
   {
-    "_id": "67b34beba0cc1c8fa334198b",
+    "_id": "67b454973753907732307097",
     "uid": 2697,
     "name": "Cape Town City",
     "country": "RSA",
     "alias": "Cape Town City"
   },
   {
-    "_id": "67b34beba0cc1c8fa334198c",
+    "_id": "67b454973753907732307098",
     "uid": 2698,
     "name": "Chippa United",
     "country": "RSA",
     "alias": "Chippa United"
   },
   {
-    "_id": "67b34beba0cc1c8fa334198d",
+    "_id": "67b454973753907732307099",
     "uid": 2699,
     "name": "Mamelodi Sundowns",
     "country": "RSA",
     "alias": "Mamelodi Sundowns"
   },
   {
-    "_id": "67b34beba0cc1c8fa334198e",
+    "_id": "67b45497375390773230709a",
     "uid": 2700,
     "name": "Orlando Pirates",
     "country": "RSA",
     "alias": "Pirates"
   },
   {
-    "_id": "67b34beba0cc1c8fa334198f",
+    "_id": "67b45497375390773230709b",
     "uid": 4905,
     "name": "Stellenbosch",
     "country": "South-Africa",
     "alias": "Stellenbosch"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341990",
+    "_id": "67b45497375390773230709c",
     "uid": 8074,
     "name": "TS Galaxy",
     "country": "South-Africa",
     "alias": "TS Galaxy"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341991",
+    "_id": "67b45497375390773230709d",
     "uid": 10566,
     "name": "Royal AM",
     "country": "RSA",
     "alias": "Royal AM"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341992",
+    "_id": "67b45497375390773230709e",
     "uid": 10567,
     "name": "Richards Bay",
     "country": "South-Africa",
     "alias": "Richards Bay"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341993",
+    "_id": "67b45497375390773230709f",
     "uid": 15537,
     "name": "Sekhukhune United",
     "country": "RSA",
     "alias": "Sekhukhune United"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341994",
+    "_id": "67b4549737539077323070a0",
     "uid": 19999,
     "name": "Magesi",
     "country": "South-Africa",
     "alias": "Magesi"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341995",
+    "_id": "67b4549737539077323070a1",
     "uid": 487,
     "name": "Lazio",
     "country": "ITA",
     "alias": "Lazio"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341996",
-    "uid": 489,
-    "name": "AC Milan",
-    "country": "ITA",
-    "alias": "AC Milan"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa3341997",
+    "_id": "67b4549737539077323070a2",
     "uid": 490,
     "name": "Cagliari",
     "country": "ITA",
     "alias": "Cagliari"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341998",
+    "_id": "67b4549737539077323070a3",
     "uid": 492,
     "name": "Napoli",
     "country": "ITA",
     "alias": "Napoli"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341999",
+    "_id": "67b4549737539077323070a4",
     "uid": 494,
     "name": "Udinese",
     "country": "ITA",
     "alias": "Udinese"
   },
   {
-    "_id": "67b34beba0cc1c8fa334199a",
+    "_id": "67b4549737539077323070a5",
     "uid": 495,
     "name": "Genoa",
     "country": "ITA",
     "alias": "Genoa"
   },
   {
-    "_id": "67b34beba0cc1c8fa334199b",
-    "uid": 496,
-    "name": "Juventus",
-    "country": "ITA",
-    "alias": "Juventus"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa334199c",
+    "_id": "67b4549737539077323070a6",
     "uid": 497,
     "name": "AS Roma",
     "country": "ITA",
     "alias": "AS Roma"
   },
   {
-    "_id": "67b34beba0cc1c8fa334199d",
+    "_id": "67b4549737539077323070a7",
     "uid": 499,
     "name": "Atalanta",
     "country": "ITA",
     "alias": "Atalanta"
   },
   {
-    "_id": "67b34beba0cc1c8fa334199e",
+    "_id": "67b4549737539077323070a8",
     "uid": 500,
     "name": "Bologna",
     "country": "ITA",
     "alias": "Bologna"
   },
   {
-    "_id": "67b34beba0cc1c8fa334199f",
+    "_id": "67b4549737539077323070a9",
     "uid": 502,
     "name": "Fiorentina",
     "country": "ITA",
     "alias": "Fiorentina"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419a0",
+    "_id": "67b4549737539077323070aa",
     "uid": 503,
     "name": "Torino",
     "country": "ITA",
     "alias": "Torino"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419a1",
+    "_id": "67b4549737539077323070ab",
     "uid": 504,
     "name": "Verona",
     "country": "ITA",
     "alias": "Verona"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419a2",
-    "uid": 505,
-    "name": "Inter",
-    "country": "ITA",
-    "alias": "Inter"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa33419a3",
+    "_id": "67b4549737539077323070ac",
     "uid": 511,
     "name": "Empoli",
     "country": "ITA",
     "alias": "Empoli"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419a4",
+    "_id": "67b4549737539077323070ad",
     "uid": 517,
     "name": "Venezia",
     "country": "ITA",
     "alias": "Venezia"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419a5",
+    "_id": "67b4549737539077323070ae",
     "uid": 523,
     "name": "Parma",
     "country": "ITA",
     "alias": "Parma"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419a6",
+    "_id": "67b4549737539077323070af",
     "uid": 867,
     "name": "Lecce",
     "country": "ITA",
     "alias": "Lecce"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419a7",
+    "_id": "67b4549737539077323070b0",
     "uid": 895,
     "name": "Como",
     "country": "ITA",
     "alias": "Como 1907"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419a8",
+    "_id": "67b4549737539077323070b1",
     "uid": 1579,
     "name": "Monza",
     "country": "ITA",
     "alias": "Monza"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419a9",
+    "_id": "67b4549737539077323070b2",
     "uid": 1,
     "name": "Belgium",
     "country": "BEL",
     "alias": "Belgium"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419aa",
+    "_id": "67b4549737539077323070b3",
     "uid": 2,
     "name": "France",
     "country": "FRA",
     "alias": "France"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ab",
+    "_id": "67b4549737539077323070b4",
     "uid": 3,
     "name": "Croatia",
     "country": "CRO",
     "alias": "Croatia"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ac",
+    "_id": "67b4549737539077323070b5",
     "uid": 9,
     "name": "Spain",
     "country": "ESP",
     "alias": "Spain"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ad",
+    "_id": "67b4549737539077323070b6",
     "uid": 10,
     "name": "England",
     "country": "ENG",
     "alias": "England"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ae",
+    "_id": "67b4549737539077323070b7",
     "uid": 14,
     "name": "Serbia",
     "country": "SRB",
     "alias": "Serbia"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419af",
+    "_id": "67b4549737539077323070b8",
     "uid": 15,
     "name": "Switzerland",
     "country": "SUI",
     "alias": "Switzerland"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419b0",
+    "_id": "67b4549737539077323070b9",
     "uid": 21,
     "name": "Denmark",
     "country": "DK",
     "alias": "Denmark"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419b1",
+    "_id": "67b4549737539077323070ba",
     "uid": 24,
     "name": "Poland",
     "country": "POL",
     "alias": "Poland"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419b2",
+    "_id": "67b4549737539077323070bb",
     "uid": 25,
     "name": "Germany",
     "country": "GER",
     "alias": "Germany"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419b3",
+    "_id": "67b4549737539077323070bc",
     "uid": 27,
     "name": "Portugal",
     "country": "PRT",
     "alias": "Portugal"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419b4",
+    "_id": "67b4549737539077323070bd",
     "uid": 768,
     "name": "Italy",
     "country": "ITA",
     "alias": "Italy"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419b5",
+    "_id": "67b4549737539077323070be",
     "uid": 769,
     "name": "Hungary",
     "country": "HUN",
     "alias": "Hungary"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419b6",
+    "_id": "67b4549737539077323070bf",
     "uid": 770,
     "name": "Czech Republic",
     "country": "CZ",
     "alias": "Czech Republic"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419b7",
+    "_id": "67b4549737539077323070c0",
     "uid": 772,
     "name": "Ukraine",
     "country": "UKR",
     "alias": "Ukraine"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419b8",
+    "_id": "67b4549737539077323070c1",
     "uid": 773,
     "name": "Slovakia",
     "country": "SVK",
     "alias": "Slovakia"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419b9",
+    "_id": "67b4549737539077323070c2",
     "uid": 774,
     "name": "Romania",
     "country": "RO",
     "alias": "Romania"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ba",
+    "_id": "67b4549737539077323070c3",
     "uid": 775,
     "name": "Austria",
     "country": "AUT",
     "alias": "Austria"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419bb",
+    "_id": "67b4549737539077323070c4",
     "uid": 777,
     "name": "Türkiye",
     "country": "TUR",
     "alias": "Türkiye"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419bc",
+    "_id": "67b4549737539077323070c5",
     "uid": 778,
     "name": "Albania",
     "country": "ALB",
     "alias": "Albania"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419bd",
+    "_id": "67b4549737539077323070c6",
     "uid": 1091,
     "name": "Slovenia",
     "country": "SVN",
     "alias": "Slovenia"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419be",
+    "_id": "67b4549737539077323070c7",
     "uid": 1104,
     "name": "Georgia",
     "country": "GEO",
     "alias": "Georgia"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419bf",
+    "_id": "67b4549737539077323070c8",
     "uid": 1108,
     "name": "Scotland",
     "country": "SCT",
     "alias": "Scotland"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419c0",
+    "_id": "67b4549737539077323070c9",
     "uid": 1118,
     "name": "Netherlands",
     "country": "NED",
     "alias": "Netherlands"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419c1",
+    "_id": "67b4549737539077323070ca",
     "uid": 196,
     "name": "Excelsior",
     "country": "NED",
     "alias": "Excelsior"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419c2",
+    "_id": "67b4549737539077323070cb",
     "uid": 198,
     "name": "ADO Den Haag",
     "country": "NED",
     "alias": "ADO Den Haag"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419c3",
+    "_id": "67b4549737539077323070cc",
     "uid": 199,
     "name": "De Graafschap",
     "country": "NED",
     "alias": "De Graafschap"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419c4",
+    "_id": "67b4549737539077323070cd",
     "uid": 200,
     "name": "Vitesse",
     "country": "NED",
     "alias": "Vitesse"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419c5",
+    "_id": "67b4549737539077323070ce",
     "uid": 204,
     "name": "VVV Venlo",
     "country": "NED",
     "alias": "VVV Venlo"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419c6",
+    "_id": "67b4549737539077323070cf",
     "uid": 208,
     "name": "Emmen",
     "country": "NED",
     "alias": "Emmen"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419c7",
+    "_id": "67b4549737539077323070d0",
     "uid": 409,
     "name": "Dordrecht",
     "country": "NED",
     "alias": "Dordrecht"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419c8",
+    "_id": "67b4549737539077323070d1",
     "uid": 411,
     "name": "Jong PSV",
     "country": "NED",
     "alias": "Jong PSV"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419c9",
+    "_id": "67b4549737539077323070d2",
     "uid": 412,
     "name": "MVV",
     "country": "NED",
     "alias": "MVV"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ca",
+    "_id": "67b4549737539077323070d3",
     "uid": 414,
     "name": "Roda",
     "country": "NED",
     "alias": "Kerkrade"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419cb",
+    "_id": "67b4549737539077323070d4",
     "uid": 416,
     "name": "FC Volendam",
     "country": "NED",
     "alias": "FC Volendam"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419cc",
+    "_id": "67b4549737539077323070d5",
     "uid": 418,
     "name": "Jong AZ",
     "country": "NED",
     "alias": "Jong AZ"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419cd",
+    "_id": "67b4549737539077323070d6",
     "uid": 420,
     "name": "Cambuur",
     "country": "NED",
     "alias": "Cambuur"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ce",
+    "_id": "67b4549737539077323070d7",
     "uid": 421,
     "name": "Den Bosch",
     "country": "NED",
     "alias": "Den Bosch"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419cf",
+    "_id": "67b4549737539077323070d8",
     "uid": 422,
     "name": "FC Eindhoven",
     "country": "NED",
     "alias": "FC Eindhoven"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419d0",
+    "_id": "67b4549737539077323070d9",
     "uid": 423,
     "name": "FC OSS",
     "country": "NED",
     "alias": "FC OSS"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419d1",
+    "_id": "67b4549737539077323070da",
     "uid": 424,
     "name": "Helmond Sport",
     "country": "NED",
     "alias": "Helmond Sport"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419d2",
+    "_id": "67b4549737539077323070db",
     "uid": 425,
     "name": "Jong Ajax",
     "country": "NED",
     "alias": "Jong Ajax Amsterdam"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419d3",
+    "_id": "67b4549737539077323070dc",
     "uid": 427,
     "name": "Telstar",
     "country": "NED",
     "alias": "Telstar"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419d4",
+    "_id": "67b4549737539077323070dd",
     "uid": 428,
     "name": "Jong Utrecht",
     "country": "NED",
     "alias": "Jong Utrecht"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419d5",
-    "uid": 529,
-    "name": "Barcelona",
-    "country": "ESP",
-    "alias": "Barcelona"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa33419d6",
-    "uid": 530,
-    "name": "Atletico Madrid",
-    "country": "ESP",
-    "alias": "Atletico Madrid"
-  },
-  {
-    "_id": "67b34beba0cc1c8fa33419d7",
+    "_id": "67b4549737539077323070de",
     "uid": 531,
     "name": "Athletic Club",
     "country": "ESP",
     "alias": "Athletic Club"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419d8",
+    "_id": "67b4549737539077323070df",
     "uid": 532,
     "name": "Valencia",
     "country": "ESP",
     "alias": "Valencia"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419d9",
+    "_id": "67b4549737539077323070e0",
     "uid": 533,
     "name": "Villarreal",
     "country": "ESP",
     "alias": "Villarreal"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419da",
+    "_id": "67b4549737539077323070e1",
     "uid": 534,
     "name": "Las Palmas",
     "country": "ESP",
     "alias": "Las Palmas"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419db",
+    "_id": "67b4549737539077323070e2",
     "uid": 536,
     "name": "Sevilla",
     "country": "ESP",
     "alias": "Sevilla"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419dc",
+    "_id": "67b4549737539077323070e3",
     "uid": 537,
     "name": "Leganes",
     "country": "ESP",
     "alias": "Leganes"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419dd",
+    "_id": "67b4549737539077323070e4",
     "uid": 538,
     "name": "Celta Vigo",
     "country": "ESP",
     "alias": "Celta Vigo"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419de",
+    "_id": "67b4549737539077323070e5",
     "uid": 540,
     "name": "Espanyol",
     "country": "ESP",
     "alias": "Espanyol"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419df",
+    "_id": "67b4549737539077323070e6",
     "uid": 541,
     "name": "Real Madrid",
     "country": "ESP",
     "alias": "Real Madrid"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419e0",
+    "_id": "67b4549737539077323070e7",
     "uid": 542,
     "name": "Alaves",
     "country": "ESP",
     "alias": "Alaves"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419e1",
+    "_id": "67b4549737539077323070e8",
     "uid": 543,
     "name": "Real Betis",
     "country": "ESP",
     "alias": "Real Betis"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419e2",
+    "_id": "67b4549737539077323070e9",
     "uid": 546,
     "name": "Getafe",
     "country": "ESP",
     "alias": "Getafe"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419e3",
+    "_id": "67b4549737539077323070ea",
     "uid": 547,
     "name": "Girona",
     "country": "ESP",
     "alias": "Girona"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419e4",
+    "_id": "67b4549737539077323070eb",
     "uid": 548,
     "name": "Real Sociedad",
     "country": "ESP",
     "alias": "Real Sociedad"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419e5",
+    "_id": "67b4549737539077323070ec",
     "uid": 720,
     "name": "Valladolid",
     "country": "ESP",
     "alias": "Valladolid"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419e6",
+    "_id": "67b4549737539077323070ed",
     "uid": 727,
     "name": "Osasuna",
     "country": "ESP",
     "alias": "Osasuna"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419e7",
+    "_id": "67b4549737539077323070ee",
     "uid": 728,
     "name": "Rayo Vallecano",
     "country": "ESP",
     "alias": "Rayo Vallecano"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419e8",
+    "_id": "67b4549737539077323070ef",
     "uid": 798,
     "name": "Mallorca",
     "country": "ESP",
     "alias": "Mallorca"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419e9",
+    "_id": "67b4549737539077323070f0",
     "uid": 37,
     "name": "Huddersfield",
     "country": "ENG",
     "alias": "Huddersfield"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ea",
+    "_id": "67b4549737539077323070f1",
     "uid": 38,
     "name": "Watford",
     "country": "ENG",
     "alias": "Watford"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419eb",
+    "_id": "67b4549737539077323070f2",
     "uid": 43,
     "name": "Cardiff",
     "country": "WAL",
     "alias": "Cardiff"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ec",
+    "_id": "67b4549737539077323070f3",
     "uid": 44,
     "name": "Burnley",
     "country": "ENG",
     "alias": "Burnley,Burnley FC"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ed",
+    "_id": "67b4549737539077323070f4",
     "uid": 53,
     "name": "Reading",
     "country": "ENG",
     "alias": "Reading"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ee",
+    "_id": "67b4549737539077323070f5",
     "uid": 54,
     "name": "Birmingham",
     "country": "ENG",
     "alias": "Birmingham"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ef",
+    "_id": "67b4549737539077323070f6",
     "uid": 56,
     "name": "Bristol City",
     "country": "ENG",
     "alias": "Bristol City"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419f0",
+    "_id": "67b4549737539077323070f7",
     "uid": 58,
     "name": "Millwall",
     "country": "ENG",
     "alias": "Millwall"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419f1",
+    "_id": "67b4549737539077323070f8",
     "uid": 59,
     "name": "Preston",
     "country": "ENG",
     "alias": "Preston"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419f2",
+    "_id": "67b4549737539077323070f9",
     "uid": 60,
     "name": "West Brom",
     "country": "ENG",
     "alias": "West Brom"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419f3",
+    "_id": "67b4549737539077323070fa",
     "uid": 61,
     "name": "Wigan",
     "country": "ENG",
     "alias": "Wigan"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419f4",
+    "_id": "67b4549737539077323070fb",
     "uid": 62,
     "name": "Sheffield Utd",
     "country": "ENG",
     "alias": "Sheffield Utd,Sheffield United"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419f5",
+    "_id": "67b4549737539077323070fc",
     "uid": 63,
     "name": "Leeds",
     "country": "ENG",
     "alias": "Leeds"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419f6",
+    "_id": "67b4549737539077323070fd",
     "uid": 64,
     "name": "Hull City",
     "country": "ENG",
     "alias": "Hull City"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419f7",
+    "_id": "67b4549737539077323070fe",
     "uid": 67,
     "name": "Blackburn",
     "country": "ENG",
     "alias": "Blackburn"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419f8",
+    "_id": "67b4549737539077323070ff",
     "uid": 68,
     "name": "Bolton",
     "country": "ENG",
     "alias": "Bolton"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419f9",
+    "_id": "67b454973753907732307100",
     "uid": 69,
     "name": "Derby",
     "country": "ENG",
     "alias": "Derby"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419fa",
+    "_id": "67b454973753907732307101",
     "uid": 70,
     "name": "Middlesbrough",
     "country": "ENG",
     "alias": "Middlesbrough"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419fb",
+    "_id": "67b454973753907732307102",
     "uid": 71,
     "name": "Norwich",
     "country": "ENG",
     "alias": "Norwich"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419fc",
+    "_id": "67b454973753907732307103",
     "uid": 72,
     "name": "QPR",
     "country": "ENG",
     "alias": "QPR"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419fd",
+    "_id": "67b454973753907732307104",
     "uid": 73,
     "name": "Rotherham",
     "country": "ENG",
     "alias": "Rotherham"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419fe",
+    "_id": "67b454973753907732307105",
     "uid": 74,
     "name": "Sheffield Wednesday",
     "country": "ENG",
     "alias": "Sheffield Wednesday"
   },
   {
-    "_id": "67b34beba0cc1c8fa33419ff",
+    "_id": "67b454973753907732307106",
     "uid": 75,
     "name": "Stoke City",
     "country": "ENG",
     "alias": "Stoke City"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a00",
+    "_id": "67b454973753907732307107",
     "uid": 76,
     "name": "Swansea",
     "country": "WAL",
     "alias": "Swansea"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a01",
+    "_id": "67b454973753907732307108",
     "uid": 746,
     "name": "Sunderland",
     "country": "ENG",
     "alias": "Sunderland"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a02",
+    "_id": "67b454973753907732307109",
     "uid": 747,
     "name": "Barnsley",
     "country": "ENG",
     "alias": "Barnsley"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a03",
+    "_id": "67b45497375390773230710a",
     "uid": 748,
     "name": "Burton Albion",
     "country": "ENG",
     "alias": "Burton Albion"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a04",
+    "_id": "67b45497375390773230710b",
     "uid": 1333,
     "name": "AFC Wimbledon",
     "country": "ENG",
     "alias": "AFC Wimbledon"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a05",
+    "_id": "67b45497375390773230710c",
     "uid": 1334,
     "name": "Bristol Rovers",
     "country": "ENG",
     "alias": "Bristol Rovers"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a06",
+    "_id": "67b45497375390773230710d",
     "uid": 1335,
     "name": "Charlton",
     "country": "ENG",
     "alias": "Charlton"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a07",
+    "_id": "67b45497375390773230710e",
     "uid": 1336,
     "name": "Fleetwood Town",
     "country": "ENG",
     "alias": "Fleetwood Town"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a08",
+    "_id": "67b45497375390773230710f",
     "uid": 1337,
     "name": "Northampton",
     "country": "ENG",
     "alias": "Northampton"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a09",
+    "_id": "67b454973753907732307110",
     "uid": 1338,
     "name": "Oxford United",
     "country": "ENG",
     "alias": "Oxford United"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a0a",
+    "_id": "67b454973753907732307111",
     "uid": 1342,
     "name": "Walsall",
     "country": "ENG",
     "alias": "Walsall"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a0b",
+    "_id": "67b454973753907732307112",
     "uid": 1343,
     "name": "Bradford",
     "country": "ENG",
     "alias": "Bradford"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a0c",
+    "_id": "67b454973753907732307113",
     "uid": 1345,
     "name": "Chesterfield",
     "country": "ENG",
     "alias": "Chesterfield"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a0d",
+    "_id": "67b454973753907732307114",
     "uid": 1346,
     "name": "Coventry",
     "country": "ENG",
     "alias": "Coventry"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a0e",
+    "_id": "67b454973753907732307115",
     "uid": 1347,
     "name": "Gillingham",
     "country": "ENG",
     "alias": "Gillingham"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a0f",
+    "_id": "67b454973753907732307116",
     "uid": 1348,
     "name": "Milton Keynes Dons",
     "country": "ENG",
     "alias": "Milton Keynes Dons"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a10",
+    "_id": "67b454973753907732307117",
     "uid": 1350,
     "name": "Peterborough",
     "country": "ENG",
     "alias": "Peterborough"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a11",
+    "_id": "67b454973753907732307118",
     "uid": 1351,
     "name": "Port Vale",
     "country": "ENG",
     "alias": "Port Vale"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a12",
+    "_id": "67b454973753907732307119",
     "uid": 1352,
     "name": "Shrewsbury",
     "country": "ENG",
     "alias": "Shrewsbury"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a13",
+    "_id": "67b45497375390773230711a",
     "uid": 1353,
     "name": "Swindon Town",
     "country": "ENG",
     "alias": "Swindon Town"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a14",
+    "_id": "67b45497375390773230711b",
     "uid": 1354,
     "name": "Doncaster",
     "country": "ENG",
     "alias": "Doncaster"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a15",
+    "_id": "67b45497375390773230711c",
     "uid": 1355,
     "name": "Portsmouth",
     "country": "ENG",
     "alias": "Portsmouth"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a16",
+    "_id": "67b45497375390773230711d",
     "uid": 1356,
     "name": "Blackpool",
     "country": "ENG",
     "alias": "Blackpool"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a17",
+    "_id": "67b45497375390773230711e",
     "uid": 1357,
     "name": "Plymouth",
     "country": "ENG",
     "alias": "Plymouth"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a18",
+    "_id": "67b45497375390773230711f",
     "uid": 1358,
     "name": "Wycombe",
     "country": "ENG",
     "alias": "Wycombe"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a19",
+    "_id": "67b454973753907732307120",
     "uid": 1359,
     "name": "Luton",
     "country": "ENG",
     "alias": "Luton,Luton Town"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a1a",
+    "_id": "67b454973753907732307121",
     "uid": 1360,
     "name": "Accrington ST",
     "country": "ENG",
     "alias": "Accrington ST"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a1b",
+    "_id": "67b454973753907732307122",
     "uid": 1361,
     "name": "Colchester",
     "country": "ENG",
     "alias": "Colchester"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a1c",
+    "_id": "67b454973753907732307123",
     "uid": 1362,
     "name": "Crawley Town",
     "country": "ENG",
     "alias": "Crawley Town"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a1d",
+    "_id": "67b454973753907732307124",
     "uid": 1363,
     "name": "Crewe",
     "country": "ENG",
     "alias": "Crewe"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a1e",
+    "_id": "67b454973753907732307125",
     "uid": 1364,
     "name": "Exeter City",
     "country": "ENG",
     "alias": "Exeter City"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a1f",
+    "_id": "67b454973753907732307126",
     "uid": 1365,
     "name": "Grimsby",
     "country": "ENG",
     "alias": "Grimsby"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a20",
+    "_id": "67b454973753907732307127",
     "uid": 1367,
     "name": "Newport County",
     "country": "WAL",
     "alias": "Newport County"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a21",
+    "_id": "67b454973753907732307128",
     "uid": 1368,
     "name": "Stevenage",
     "country": "ENG",
     "alias": "Stevenage"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a22",
+    "_id": "67b454973753907732307129",
     "uid": 1370,
     "name": "Cambridge United",
     "country": "ENG",
     "alias": "Cambridge United"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a23",
+    "_id": "67b45497375390773230712a",
     "uid": 1371,
     "name": "Carlisle",
     "country": "ENG",
     "alias": "Carlisle"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a24",
+    "_id": "67b45497375390773230712b",
     "uid": 1372,
     "name": "Cheltenham",
     "country": "ENG",
     "alias": "Cheltenham"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a25",
+    "_id": "67b45497375390773230712c",
     "uid": 1373,
     "name": "Leyton Orient",
     "country": "ENG",
     "alias": "Leyton Orient"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a26",
+    "_id": "67b45497375390773230712d",
     "uid": 1374,
     "name": "Mansfield Town",
     "country": "ENG",
     "alias": "Mansfield Town"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a27",
+    "_id": "67b45497375390773230712e",
     "uid": 1375,
     "name": "Morecambe",
     "country": "ENG",
     "alias": "Morecambe"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a28",
+    "_id": "67b45497375390773230712f",
     "uid": 1376,
     "name": "Notts County",
     "country": "ENG",
     "alias": "Notts County"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a29",
+    "_id": "67b454973753907732307130",
     "uid": 1379,
     "name": "Lincoln",
     "country": "ENG",
     "alias": "Lincoln"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a2a",
+    "_id": "67b454973753907732307131",
     "uid": 1381,
     "name": "Tranmere",
     "country": "ENG",
     "alias": "Tranmere"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a2b",
+    "_id": "67b454973753907732307132",
     "uid": 1819,
     "name": "Barrow",
     "country": "ENG",
     "alias": "Barrow"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a2c",
+    "_id": "67b454973753907732307133",
     "uid": 1832,
     "name": "Bromley",
     "country": "ENG",
     "alias": "Bromley"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a2d",
+    "_id": "67b454973753907732307134",
     "uid": 1837,
     "name": "Wrexham",
     "country": "WAL",
     "alias": "Wrexham"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a2e",
+    "_id": "67b454973753907732307135",
     "uid": 1842,
     "name": "Harrogate Town",
     "country": "ENG",
     "alias": "Harrogate Town"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a2f",
+    "_id": "67b454973753907732307136",
     "uid": 1844,
     "name": "Salford City",
     "country": "ENG",
     "alias": "Salford City"
   },
   {
-    "_id": "67b34beba0cc1c8fa3341a30",
+    "_id": "67b454973753907732307137",
     "uid": 4686,
     "name": "Stockport County",
     "country": "ENG",
     "alias": "Stockport County"
+  },
+  {
+    "_id": "67b454973753907732307138",
+    "uid": 715,
+    "name": "Granada CF",
+    "country": "ESP",
+    "alias": "Granada CF,"
+  },
+  {
+    "_id": "67b454973753907732307139",
+    "uid": 723,
+    "name": "Almeria",
+    "country": "ESP",
+    "alias": "Almeria,"
+  },
+  {
+    "_id": "67b45497375390773230713a",
+    "uid": 724,
+    "name": "Cadiz",
+    "country": "ESP",
+    "alias": "Cadiz,"
+  },
+  {
+    "_id": "67b45497375390773230713b",
+    "uid": 181,
+    "name": "SV Darmstadt 98",
+    "country": "GER",
+    "alias": "SV Darmstadt 98,"
+  },
+  {
+    "_id": "67b45497375390773230713c",
+    "uid": 192,
+    "name": "1.FC Koln",
+    "country": "GER",
+    "alias": "1.FC KÃ¶ln,FC Koln"
+  },
+  {
+    "_id": "67b45497375390773230713d",
+    "uid": 488,
+    "name": "Sassuolo",
+    "country": "ITA",
+    "alias": "Sassuolo,"
+  },
+  {
+    "_id": "67b45497375390773230713e",
+    "uid": 512,
+    "name": "Frosinone",
+    "country": "ITA",
+    "alias": "Frosinone,"
+  },
+  {
+    "_id": "67b45497375390773230713f",
+    "uid": 514,
+    "name": "Salernitana",
+    "country": "ITA",
+    "alias": "Salernitana,"
+  },
+  {
+    "_id": "67b454973753907732307140",
+    "uid": 2681,
+    "name": "Richards Bay",
+    "country": "RSA",
+    "alias": "Richards bay"
+  },
+  {
+    "_id": "67b454973753907732307141",
+    "uid": 2667,
+    "name": "Stellenbosch",
+    "country": "RSA",
+    "alias": "Stellenbosch FC"
+  },
+  {
+    "_id": "67b454973753907732307142",
+    "uid": 2670,
+    "name": "Magesi",
+    "country": "RSA",
+    "alias": "Magesi FC"
+  },
+  {
+    "_id": "67b454973753907732307143",
+    "uid": 2687,
+    "name": "TS Galaxy",
+    "country": "RSA",
+    "alias": "TS Galaxy FC"
   }
 ]

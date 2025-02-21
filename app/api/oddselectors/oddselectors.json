@@ -1,16 +1,310 @@
 [
   {
-    "_id": "6723ed22b276b8ef12c760a9",
+    "_id": "675d404fdb3bae995aac8120",
     "uid": 101,
     "apiId": 100,
-    "name": "Match Result (1X2) - Home",
-    "alias": "1,Home"
+    "name": "Match Result · FT · Home",
+    "alias": "1"
+  },
+  {
+    "_id": "675d027debbd1ef62b9fe383",
+    "uid": 102,
+    "apiId": 100,
+    "name": "Match Result · FT · Draw",
+    "alias": "X"
+  },
+  {
+    "_id": "675d0297ebbd1ef62b9fe387",
+    "uid": 103,
+    "apiId": 100,
+    "name": "Match Result · FT · Away",
+    "alias": "2"
   },
   {
     "_id": "672a1a862fce2c4b10855a93",
     "uid": 201,
     "apiId": 3,
-    "name": "BTS - Yes",
+    "name": "BTS · FT · Yes",
     "alias": "GG"
+  },
+  {
+    "_id": "675d34c550d12bf5a5f19d01",
+    "uid": 202,
+    "apiId": 200,
+    "name": "BTS · FT · No",
+    "alias": "NG"
+  },
+  {
+    "_id": "675da4bcd3a1b0726f1e8fc1",
+    "uid": 301,
+    "apiId": 300,
+    "name": "Double Chance · FT · Home or Draw",
+    "alias": "1X"
+  },
+  {
+    "_id": "675da4f0d3a1b0726f1e8fc5",
+    "uid": 302,
+    "apiId": 300,
+    "name": "Double Chance · FT · Draw or Away",
+    "alias": "X2"
+  },
+  {
+    "_id": "675da516d3a1b0726f1e8fc9",
+    "uid": 303,
+    "apiId": 300,
+    "name": "Double Chance · FT · Home or Away",
+    "alias": "12"
+  },
+  {
+    "_id": "675d35f40a7250247afbd789",
+    "uid": 501,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Over 0.5",
+    "alias": "O05"
+  },
+  {
+    "_id": "675d36280a7250247afbd78d",
+    "uid": 502,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Under 0.5",
+    "alias": "U05"
+  },
+  {
+    "_id": "675d366d0a7250247afbd791",
+    "uid": 503,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Over 1.5",
+    "alias": "O15"
+  },
+  {
+    "_id": "675d36ac0a7250247afbd795",
+    "uid": 504,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Under 1.5",
+    "alias": "U15"
+  },
+  {
+    "_id": "675c638ab00adea276a4f3e8",
+    "uid": 505,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Over 2.5",
+    "alias": "O25"
+  },
+  {
+    "_id": "675d37240a7250247afbd799",
+    "uid": 506,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Under 2.5",
+    "alias": "U25"
+  },
+  {
+    "_id": "675d374a0a7250247afbd79d",
+    "uid": 507,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Over 3.5",
+    "alias": "O35"
+  },
+  {
+    "_id": "675d376d0a7250247afbd7a1",
+    "uid": 508,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Under 3.5",
+    "alias": "U35"
+  },
+  {
+    "_id": "675d37da0a7250247afbd7a5",
+    "uid": 509,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Over 4.5",
+    "alias": "O45"
+  },
+  {
+    "_id": "675d380d0a7250247afbd7a9",
+    "uid": 510,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Under 4.5",
+    "alias": "U45"
+  },
+  {
+    "_id": "675d38340a7250247afbd7ad",
+    "uid": 511,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Over 5.5",
+    "alias": "O55"
+  },
+  {
+    "_id": "675d387a0a7250247afbd7b1",
+    "uid": 512,
+    "apiId": 500,
+    "name": "Goals Overs/Unders · FT · Under 5.5",
+    "alias": "U55"
+  },
+  {
+    "_id": "675d39900a7250247afbd7b5",
+    "uid": 1001,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Over 5.5",
+    "alias": "CO55"
+  },
+  {
+    "_id": "675d3af00a7250247afbd7d5",
+    "uid": 1002,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Under 5.5",
+    "alias": "CU55"
+  },
+  {
+    "_id": "675d39b50a7250247afbd7b9",
+    "uid": 1003,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Over 6.5",
+    "alias": "CO65"
+  },
+  {
+    "_id": "675d3b120a7250247afbd7d9",
+    "uid": 1004,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Under 6.5",
+    "alias": "CU65"
+  },
+  {
+    "_id": "675d39df0a7250247afbd7bd",
+    "uid": 1005,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Over 7.5",
+    "alias": "CO75"
+  },
+  {
+    "_id": "675d3b2f0a7250247afbd7dd",
+    "uid": 1006,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Under 7.5",
+    "alias": "CU75"
+  },
+  {
+    "_id": "675d3a050a7250247afbd7c1",
+    "uid": 1007,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Over 8.5",
+    "alias": "CO85"
+  },
+  {
+    "_id": "675d3b620a7250247afbd7e1",
+    "uid": 1008,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Under 8.5",
+    "alias": "CU85"
+  },
+  {
+    "_id": "675d3a2b0a7250247afbd7c5",
+    "uid": 1009,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Over 9.5",
+    "alias": "CO95"
+  },
+  {
+    "_id": "675d3b890a7250247afbd7e5",
+    "uid": 1010,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Under 9.5",
+    "alias": "CU95"
+  },
+  {
+    "_id": "675d3a630a7250247afbd7c9",
+    "uid": 1011,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Over 10.5",
+    "alias": "CO105"
+  },
+  {
+    "_id": "675d3bbc0a7250247afbd7e9",
+    "uid": 1012,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Under 10.5",
+    "alias": "CU105"
+  },
+  {
+    "_id": "675d3a930a7250247afbd7cd",
+    "uid": 1013,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Over 11.5",
+    "alias": "CO115"
+  },
+  {
+    "_id": "675d3bdb0a7250247afbd7ed",
+    "uid": 1014,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Under 11.5",
+    "alias": "CU115"
+  },
+  {
+    "_id": "675d3aad0a7250247afbd7d1",
+    "uid": 1015,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Over 12.5",
+    "alias": "CO125"
+  },
+  {
+    "_id": "675d3bfd0a7250247afbd7f1",
+    "uid": 1016,
+    "apiId": 1000,
+    "name": "Corners Overs/Unders · FT · Under 12.5",
+    "alias": "CU125"
+  },
+  {
+    "_id": "675ea7ca568625a2408d7da3",
+    "uid": 2501,
+    "apiId": 2500,
+    "name": "Team Goals Overs/Unders · FT · Home · Over 0.5",
+    "alias": "HO05"
+  },
+  {
+    "_id": "675ea8b7568625a2408d7db3",
+    "uid": 2502,
+    "apiId": 2500,
+    "name": "Team Goals Overs/Unders · FT · Away · Over 0.5",
+    "alias": "AO05"
+  },
+  {
+    "_id": "675ea7fa568625a2408d7da7",
+    "uid": 2503,
+    "apiId": 2500,
+    "name": "Team Goals Overs/Unders · FT · Home · Under 0.5",
+    "alias": "HU05"
+  },
+  {
+    "_id": "675ea916568625a2408d7dbb",
+    "uid": 2504,
+    "apiId": 2500,
+    "name": "Team Goals Overs/Unders · FT · Away · Under 0.5",
+    "alias": "AU05"
+  },
+  {
+    "_id": "675ea832568625a2408d7dab",
+    "uid": 2505,
+    "apiId": 2500,
+    "name": "Team Goals Overs/Unders · FT · Home · Over 1.5",
+    "alias": "HO15"
+  },
+  {
+    "_id": "675ea832868625a2408d7dab",
+    "uid": 2506,
+    "apiId": 2500,
+    "name": "Team Goals Overs/Unders · FT · Away · Over 1.5",
+    "alias": "AO15"
+  },
+  {
+    "_id": "675ea87f568625a2408d7daf",
+    "uid": 2507,
+    "apiId": 2500,
+    "name": "Team Goals Overs/Unders · FT · Home · Under 1.5",
+    "alias": "HU15"
+  },
+  {
+    "_id": "675ea932568625a2408d7dbf",
+    "uid": 2508,
+    "apiId": 2500,
+    "name": "Team Goals Overs/Unders · FT · Away · Under 1.5",
+    "alias": "AU15"
   }
 ]

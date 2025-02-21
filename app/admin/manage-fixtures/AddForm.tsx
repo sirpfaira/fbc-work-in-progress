@@ -7,6 +7,21 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { cn } from "@/lib/utils";
+import { Check, ChevronsUpDown } from "lucide-react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import {
   Select,
   SelectContent,
@@ -125,7 +140,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
         penalties: null,
       },
       corners: {
-        halfTime:null,
+        halfTime: null,
         fullTime: null,
       },
       bookings: {
@@ -217,30 +232,63 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
               control={form.control}
               name="competition"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel>Competition</FormLabel>
-                  <Select
-                    onValueChange={(value) => field.onChange(Number(value))}
-                    defaultValue={String(field.value)}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a competition" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {competitions?.map((item) => (
-                        <SelectItem key={item.uid} value={String(item.uid)}>
-                          {item.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {form.formState.errors.competition && (
-                    <FormMessage>
-                      {form.formState.errors.competition.message}
-                    </FormMessage>
-                  )}
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant="outline"
+                          role="combobox"
+                          className={cn(
+                            "w-full justify-between",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value
+                            ? competitions?.find(
+                                (item) => item.uid === field.value
+                              )?.name
+                            : "Select competition"}
+                          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-full p-0">
+                      <Command>
+                        <CommandInput placeholder="Search competition..." />
+                        <CommandList>
+                          <CommandEmpty>No competition found.</CommandEmpty>
+                          <CommandGroup>
+                            {competitions
+                              ?.sort((a, b) =>
+                                a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+                              )
+                              ?.map((item) => (
+                                <CommandItem
+                                  value={`${item.name}|${item.uid}`}
+                                  key={item.uid}
+                                  onSelect={() => {
+                                    form.setValue("competition", item.uid);
+                                  }}
+                                >
+                                  {item.name}
+                                  <Check
+                                    className={cn(
+                                      "ml-auto",
+                                      item.uid === field.value
+                                        ? "opacity-100"
+                                        : "opacity-0"
+                                    )}
+                                  />
+                                </CommandItem>
+                              ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -248,30 +296,62 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
               control={form.control}
               name="homeTeam"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel>Home Team</FormLabel>
-                  <Select
-                    onValueChange={(value) => field.onChange(Number(value))}
-                    defaultValue={String(field.value)}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select home team" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {teams?.map((item) => (
-                        <SelectItem key={item.uid} value={String(item.uid)}>
-                          {item.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {form.formState.errors.homeTeam && (
-                    <FormMessage>
-                      {form.formState.errors.homeTeam.message}
-                    </FormMessage>
-                  )}
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant="outline"
+                          role="combobox"
+                          className={cn(
+                            "w-full justify-between",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value
+                            ? teams?.find((item) => item.uid === field.value)
+                                ?.name
+                            : "Select home team"}
+                          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-full p-0">
+                      <Command>
+                        <CommandInput placeholder="Search team..." />
+                        <CommandList>
+                          <CommandEmpty>No team found.</CommandEmpty>
+                          <CommandGroup>
+                            {teams
+                              ?.sort((a, b) =>
+                                a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+                              )
+                              ?.map((item) => (
+                                <CommandItem
+                                  value={`${item.name}|${item.uid}`}
+                                  key={item.uid}
+                                  onSelect={() => {
+                                    form.setValue("homeTeam", item.uid);
+                                  }}
+                                >
+                                  {item.name}
+                                  <Check
+                                    className={cn(
+                                      "ml-auto",
+                                      item.uid === field.value
+                                        ? "opacity-100"
+                                        : "opacity-0"
+                                    )}
+                                  />
+                                </CommandItem>
+                              ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -279,30 +359,62 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
               control={form.control}
               name="awayTeam"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel>Away Team</FormLabel>
-                  <Select
-                    onValueChange={(value) => field.onChange(Number(value))}
-                    defaultValue={String(field.value)}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select away team" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {teams?.map((item) => (
-                        <SelectItem key={item.uid} value={String(item.uid)}>
-                          {item.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {form.formState.errors.awayTeam && (
-                    <FormMessage>
-                      {form.formState.errors.awayTeam.message}
-                    </FormMessage>
-                  )}
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant="outline"
+                          role="combobox"
+                          className={cn(
+                            "w-full justify-between",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value
+                            ? teams?.find((item) => item.uid === field.value)
+                                ?.name
+                            : "Select away team"}
+                          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-full p-0">
+                      <Command>
+                        <CommandInput placeholder="Search team..." />
+                        <CommandList>
+                          <CommandEmpty>No team found.</CommandEmpty>
+                          <CommandGroup>
+                            {teams
+                              ?.sort((a, b) =>
+                                a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+                              )
+                              ?.map((item) => (
+                                <CommandItem
+                                  value={`${item.name}|${item.uid}`}
+                                  key={item.uid}
+                                  onSelect={() => {
+                                    form.setValue("awayTeam", item.uid);
+                                  }}
+                                >
+                                  {item.name}
+                                  <Check
+                                    className={cn(
+                                      "ml-auto",
+                                      item.uid === field.value
+                                        ? "opacity-100"
+                                        : "opacity-0"
+                                    )}
+                                  />
+                                </CommandItem>
+                              ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                  <FormMessage />
                 </FormItem>
               )}
             />

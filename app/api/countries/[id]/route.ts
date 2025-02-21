@@ -7,7 +7,6 @@ import countries from "../countries.json";
 export async function GET(request: NextRequest, { params }: { params: any }) {
   try {
     const { id } = params;
-
     const country = countries.find((item) => item._id == id);
     // await DatabaseConnection();
     // const country = await Country.findOne({ _id: id });
