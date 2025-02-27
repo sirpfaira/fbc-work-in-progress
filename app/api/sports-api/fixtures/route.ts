@@ -89,39 +89,33 @@ interface TApiFixtureResponse {
   response: RawFixture[];
 }
 
-// {
-//   uid: 135,
-//   name: 'Serie A',
-//   season: 2024,
-//   date: '2024-12-13T19:45:00.000Z',
-//   count: 34,
-//   auto: 12,
-//   fetched: true
-// }
-
 export async function POST(request: NextRequest) {
   // Fetches one league at a time
   try {
     const league = await request.json();
     const validated = ILeagueSchema.safeParse(league);
-    console.log(validated);
+
     if (validated.success) {
       const league = validated.data.uid;
       const season = validated.data.season;
-      const date = moment(validated.data.date);
-      const from = date.format("YYYY-MM-DD");
-      const to = date.add(14, "days").format("YYYY-MM-DD");
+      const from = validated.data.date;
+      const to = moment(from).add(14, "days").format("YYYY-MM-DD");
 
       const baseURL = "https://v3.football.api-sports.io/fixtures";
-      const { API_FOOTBALL_KEY } = process.env;
+      const parameters = `?league=${league}&season=${season}&from=${from}&to=${to}`;
+      // const parameters = `?league=${league}&season=${season}&date=${from}`;
+      const API_FOOTBALL_KEY = process.env.API_FOOTBALL_KEY as string;
 
-      // `${baseURL}?league=${league}&season=${season}&from=${from}&to=${to}`,
+      // console.log("url", baseURL + parameters);
+      // console.log("api-key", API_FOOTBALL_KEY);
 
-      await fetch(`${baseURL}?league=${league}&season=${season}&date=${from}`, {
+      let fixtures: IFixture[] = [];
+
+      await fetch(baseURL + parameters, {
         method: "GET",
         headers: {
           "x-rapidapi-host": "v3.football.api-sports.io",
-          "x-apisports-key": `394de5473ecfff90cf3b0a7319731757`,
+          "x-apisports-key": API_FOOTBALL_KEY,
         },
       })
         .then(async (res: any) => {
@@ -131,8 +125,8 @@ export async function POST(request: NextRequest) {
             const result: TApiFixtureResponse = response;
             const rawFixtures = result.response;
             if (rawFixtures && rawFixtures?.length > 0) {
-              const fbcFixtures = getFbcFixtures(rawFixtures);
-              return NextResponse.json({ items: fbcFixtures }, { status: 200 });
+              const fbcFixtures: IFixture[] = getFbcFixtures(rawFixtures);
+              fixtures = [...fbcFixtures];
             } else {
               throw new Error("No fixtures fetched!");
             }
@@ -143,7 +137,7 @@ export async function POST(request: NextRequest) {
           throw new Error("API Connection Error!", err?.message);
         });
 
-      return NextResponse.json("Success!", { status: 200 });
+      return NextResponse.json({ items: fixtures }, { status: 200 });
     } else {
       throw new Error("Invalid data!");
     }
@@ -163,14 +157,14 @@ const getResult = (homeResult: number | null, awayResult: number | null) => {
 const getFixture = (rawFixture: RawFixture) => {
   if (rawFixture) {
     const fixture: IFixture = {
-      uid: rawFixture.fixture.id || 9999,
+      uid: rawFixture.fixture.id || 0,
       date: rawFixture.fixture.date || "",
       status: rawFixture.fixture.status.long || "",
-      competition: rawFixture.league.id || 9999,
+      competition: rawFixture.league.id || 0,
       competitionName: rawFixture.league.name || "No competition",
       teams: rawFixture.teams.home.name + " v " + rawFixture.teams.away.name,
-      homeTeam: rawFixture.teams.home.id || 9999,
-      awayTeam: rawFixture.teams.away.id || 9999,
+      homeTeam: rawFixture.teams.home.id || 0,
+      awayTeam: rawFixture.teams.away.id || 0,
       scores: {
         tenMinutes: null,
         halfTime: getResult(

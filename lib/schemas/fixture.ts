@@ -8,12 +8,8 @@ export const BLeagueSchema = z.object({
 
 export const ILeagueSchema = z.object({
   uid: z.number().min(1),
-  name: z.string().min(1),
   season: z.number().min(1),
   date: z.string().min(1),
-  count: z.number(),
-  auto: z.number(),
-  fetched: z.boolean(),
 });
 
 export const IScoresSchema = z.object({
