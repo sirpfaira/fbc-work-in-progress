@@ -110,9 +110,9 @@ export default function ManageFixtures() {
   );
 
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["fixtures"],
+    queryKey: ["all-fixtures"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/fixtures`);
+      const { data } = await axios.get(`/api/fixtures?filter=all`);
       return data.items as TFixture[];
     },
   });

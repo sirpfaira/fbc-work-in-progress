@@ -5,16 +5,18 @@ import Fixture from "@/app/api/models/Fixture";
 import moment from "moment";
 // import fixtures from "./fixtures.json";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    const filter = request.nextUrl.searchParams.get("filter");
     await DatabaseConnection();
-    const fixtures = await Fixture.find({
-      date: { $gte: moment(), $lte: moment().add(7, "days") },
-    });
-    if (fixtures) {
+    if (filter === "all") {
+      const fixtures = await Fixture.find();
       return NextResponse.json({ items: fixtures }, { status: 200 });
     } else {
-      throw new Error("Something went wrong!");
+      const fixtures = await Fixture.find({
+        date: { $gte: moment(), $lte: moment().add(7, "days") },
+      });
+      return NextResponse.json({ items: fixtures }, { status: 200 });
     }
   } catch (error: any) {
     return NextResponse.json(error.message, { status: 500 });

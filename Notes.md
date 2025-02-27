@@ -75,6 +75,7 @@ https://medium.com/@dinh.nt/create-your-own-datetime-picker-using-shadcn-409e672
 # React Query
 
 ```
+https://borstch.com/blog/development/creating-custom-react-hooks-with-react-query-library-for-reusable-data-fetching-logic
 https://mitchellhein25.github.io/CSharp-and-React-Insights/2023/06/26/React-Query-useMutation-hook.html
 https://tkdodo.eu/blog/mastering-mutations-in-react-query
 ```

@@ -119,9 +119,9 @@ export default function Create() {
   });
 
   const { data: fixtures } = useQuery({
-    queryKey: ["fixtures"],
+    queryKey: ["current-fixtures"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/fixtures`);
+      const { data } = await axios.get(`/api/fixtures?filter=current`);
       const result = data.items as TFixture[];
       return result?.sort((a, b) =>
         a.teams > b.teams ? 1 : b.teams > a.teams ? -1 : 0

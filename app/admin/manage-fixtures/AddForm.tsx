@@ -80,9 +80,9 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
   });
 
   const { data: fixtures } = useQuery({
-    queryKey: ["fixtures"],
+    queryKey: ["all-fixtures"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/fixtures`);
+      const { data } = await axios.get(`/api/fixtures?filter=all`);
       return data.items as TFixture[];
     },
   });
