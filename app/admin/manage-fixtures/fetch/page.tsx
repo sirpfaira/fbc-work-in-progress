@@ -1,7 +1,11 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useMutation,
+  useSuspenseQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { useToast } from "@/components/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +20,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import {
   Form,
@@ -32,7 +37,7 @@ import {
   IFixture,
   TFixture,
 } from "@/lib/schemas/fixture";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 import PageTitle from "@/app/components/common/PageTitle";
 import { TCompetition } from "@/lib/schemas/competition";
@@ -56,15 +61,12 @@ import {
 } from "@/components/ui/popover";
 import TimeStamp from "@/app/components/common/TimeStamp";
 import { TTrending } from "@/lib/schemas/trending";
-import { autoMarkets } from "@/lib/constants";
-import { getTrendingResult } from "@/lib/helpers";
-
-const initialData = { league: 0, date: new Date() };
+import { updateFixturesInDatabase } from "@/lib/helpers/fixture";
 
 export default function FetchFixtures() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const [fetchError, setFetchError] = useState<string | null>(null);
+  const [errors, setErrors] = useState<string[]>([]);
   const [fetchedFixtures, setFetchedFixtures] = useState<IFixture[]>([]);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
@@ -73,7 +75,7 @@ export default function FetchFixtures() {
     isError,
     error,
     isLoading,
-  } = useQuery({
+  } = useSuspenseQuery({
     queryKey: ["all-fixtures"],
     queryFn: async () => {
       const { data } = await axios.get(`/api/fixtures?filter=all`);
@@ -81,15 +83,15 @@ export default function FetchFixtures() {
     },
   });
 
-  const { data: trendings } = useQuery({
-    queryKey: ["trendings"],
+  const { data: trending } = useSuspenseQuery({
+    queryKey: ["trending"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/trendings`);
+      const { data } = await axios.get(`/api/trending`);
       return data.items as TTrending[];
     },
   });
 
-  const { data: competitions } = useQuery({
+  const { data: competitions } = useSuspenseQuery({
     queryKey: ["competitions"],
     queryFn: async () => {
       const { data } = await axios.get(`/api/competitions`);
@@ -103,20 +105,19 @@ export default function FetchFixtures() {
     onSuccess: (response: any) => {
       const matches = response.data.items as IFixture[];
       toast({
-        title: "Success",
+        title: "Success!",
         description: "Successfully fetched fixtures!",
       });
       setFetchedFixtures(matches);
     },
     onError: (response: any) => {
-      setFetchError(response?.message);
+      setErrors([response?.message]);
     },
   });
 
   const form = useForm<BLeague>({
     resolver: zodResolver(BLeagueSchema),
     mode: "onBlur",
-    defaultValues: initialData,
   });
 
   const onSubmitForm = (values: BLeague) => {
@@ -124,152 +125,38 @@ export default function FetchFixtures() {
     newDate.setHours(values.date.getHours() + 4);
     const leagueToFetch: ILeague = {
       uid: values.competition,
-      date: format(newDate, "yyy-MM-dd"),
+      date: format(newDate, "yyyy-MM-dd"),
       season:
         competitions?.find((item) => item.uid == values.competition)?.season ||
         new Date().getFullYear(),
     };
-    // toast({
-    //   title: "You submitted the following values:",
-    //   description: (
-    //     <pre className="mt-2 w-full rounded-md bg-muted-block p-4">
-    //       <code className="text-sky-600">{JSON.stringify(data, null, 2)}</code>
-    //     </pre>
-    //   ),
-    // });
-    setFetchError(null);
+    setErrors([]);
     fetchLeagueFixtures(leagueToFetch);
   };
 
-  function compareFixtures(oldFixture: TFixture, newFixture: IFixture) {
-    const statusChanged = oldFixture.status !== newFixture.status;
-    const scoresChanged =
-      oldFixture.scores.fullTime !== newFixture.scores.fullTime;
-    if (statusChanged || scoresChanged) {
-      return true;
-    }
-    return false;
+  async function onSaveToDatabase() {
+    setIsProcessing(true);
+    const errors = await updateFixturesInDatabase(
+      fixtures,
+      fetchedFixtures,
+      trending
+    );
+    queryClient.invalidateQueries({
+      queryKey: ["fixtures"],
+      exact: true,
+    });
+    queryClient.invalidateQueries({
+      queryKey: ["trending"],
+      exact: true,
+    });
+    setErrors([...errors]);
+    setIsProcessing(false);
+    toast({
+      title: "Success!",
+      description: "Successfully updated fixtures & trending!",
+    });
   }
-
-  async function updateTrendings(newFixture: TFixture) {
-    try {
-      if (trendings && trendings?.length > 0) {
-        const pendingItems = trendings.filter(
-          (i) => i.fixture === newFixture.uid && i.result === null
-        );
-
-        if (pendingItems.length > 0) {
-          for (const trend of pendingItems) {
-            if (autoMarkets.includes(trend.market)) {
-              const result = getTrendingResult(newFixture, trend.market);
-              trend.result = result;
-              const response = await axios.put(
-                `/api/trendings/${trend._id}`,
-                trend
-              );
-              if (response.status != 200) {
-                toast({
-                  title: "Error!",
-                  description: `Error updating trending ${trend.uid}`,
-                  variant: "destructive",
-                });
-              }
-            }
-          }
-        }
-      } else {
-        toast({
-          title: "Error!",
-          description: "No trending selections found!",
-          variant: "destructive",
-        });
-      }
-    } catch (error: any) {
-      toast({
-        title: "Error!",
-        description: error?.message,
-        variant: "destructive",
-      });
-    }
-  }
-
-  async function updateDatabase() {
-    try {
-      setIsProcessing(true);
-      if (fixtures && fetchedFixtures) {
-        if (fetchedFixtures.length > 0) {
-          const newFixtures: IFixture[] = [];
-          for (const newFixture of fetchedFixtures) {
-            const oldFixture = fixtures.find(
-              (item) => item.uid === newFixture.uid
-            );
-            if (oldFixture) {
-              const infoChanged = compareFixtures(oldFixture, newFixture);
-              if (infoChanged) {
-                oldFixture.status = newFixture.status;
-                oldFixture.scores.halfTime = newFixture.scores.halfTime;
-                oldFixture.scores.fullTime = newFixture.scores.fullTime;
-                oldFixture.scores.extraTime = newFixture.scores.extraTime;
-                oldFixture.scores.penalties = newFixture.scores.penalties;
-                const response = await axios.put(
-                  `/api/fixtures/${oldFixture._id}`,
-                  oldFixture
-                );
-                if (response.status == 200) {
-                  updateTrendings(oldFixture);
-                } else {
-                  toast({
-                    title: "Error!",
-                    description: `Error updating fixture ${oldFixture.uid}`,
-                    variant: "destructive",
-                  });
-                }
-              }
-            } else {
-              newFixtures.push(newFixture);
-            }
-          }
-          if (newFixtures.length > 0) {
-            const response = await axios.post(
-              `/api/batch/fixtures`,
-              newFixtures
-            );
-            if (response.status !== 200) {
-              toast({
-                title: "Error!",
-                description: "Failed to add new fixtures batch!",
-                variant: "destructive",
-              });
-            }
-          }
-          queryClient.invalidateQueries({
-            queryKey: ["fixtures"],
-            exact: true,
-          });
-          queryClient.invalidateQueries({
-            queryKey: ["trendings"],
-            exact: true,
-          });
-          setIsProcessing(false);
-          toast({
-            title: "Success!",
-            description: "Successfully updated fixtures & trendings!",
-          });
-        } else {
-          throw new Error("No fixtures received from API!");
-        }
-      }
-    } catch (error: any) {
-      setIsProcessing(false);
-      toast({
-        title: "Error!",
-        description: error?.message,
-        variant: "destructive",
-      });
-    }
-  }
-
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[`${error?.message}`]} />;
 
   return (
     <div className="flex flex-col space-y-5">
@@ -286,6 +173,7 @@ export default function FetchFixtures() {
                 <Dialog open={isPending || isProcessing}>
                   <DialogContent className="sm:max-w-[400px]">
                     <DialogHeader>
+                      <DialogTitle>Processing...</DialogTitle>
                       <DialogDescription>
                         <div className="flex space-x-1 items-center">
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -413,30 +301,40 @@ export default function FetchFixtures() {
                     </div>
                   </div>
                 </div>
-
-                {fetchError && <ErrorTile error={fetchError} />}
                 {fetchedFixtures.length > 0 && (
-                  <div className="flex flex-col space-y-5 card p-4 w-full">
-                    <span className="text-big font-medium">
-                      Fetched fixtures
-                    </span>
-                    {fetchedFixtures.map((item) => (
-                      <div
-                        key={item.uid}
-                        className="flex flex-col border border-border px-4 rounded-md"
-                      >
-                        <span>{item.uid}</span>
-                        <span>{item.teams}</span>
-                        <TimeStamp date={item.date} />
-                      </div>
-                    ))}
-                    <div className="w-full flex justify-center items-center space-x-3 pt-3">
-                      <Button className="w-full" onClick={updateDatabase}>
-                        Update database
-                      </Button>
-                    </div>
-                  </div>
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <span className="text-big font-medium w-full text-start">
+                          Fetched fixtures
+                        </span>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="flex flex-col space-y-5 card p-4 w-full">
+                          {fetchedFixtures.map((item) => (
+                            <div
+                              key={item.uid}
+                              className="flex flex-col border border-border px-4 rounded-md"
+                            >
+                              <span>{item.uid}</span>
+                              <span>{item.teams}</span>
+                              <TimeStamp date={item.date} />
+                            </div>
+                          ))}
+                          <div className="w-full flex justify-center items-center space-x-3 pt-3">
+                            <Button
+                              className="w-full"
+                              onClick={onSaveToDatabase}
+                            >
+                              Update database
+                            </Button>
+                          </div>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 )}
+                {errors.length > 0 && <ErrorsTile errors={errors} />}
               </div>
               <div className="hidden lg:flex flex-col">
                 <div className="flex flex-col space-y-5 card p-4 w-full">

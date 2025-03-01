@@ -2,7 +2,7 @@ import DatabaseConnection from "@/lib/dbconfig";
 import { CBet, CBetSchema, IBet, ISelection } from "@/lib/schemas/bet";
 import { NextRequest, NextResponse } from "next/server";
 import Bet from "@/app/api/models/Bet";
-import { getShortDate } from "@/lib/helpers";
+import { getShortDate } from "@/lib/helpers/common";
 import Trending from "../models/Trending";
 import { ITrending, TTrending } from "@/lib/schemas/trending";
 // import bets from "./bets.json";
@@ -35,11 +35,11 @@ export async function POST(request: NextRequest) {
         const databaseBet = createBet(newBet);
         const bet = await Bet.create(databaseBet);
         if (bet && selections.length > 0) {
-          const trendings: TTrending[] = await Trending.find();
+          const trending: TTrending[] = await Trending.find();
           const newTrends: ITrending[] = [];
           const oldTrends: TTrending[] = [];
           selections.map((item) => {
-            const trend = trendings.find(
+            const trend = trending.find(
               (element) =>
                 element.fixture === item.fixture &&
                 element.market === item.market

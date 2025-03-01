@@ -30,7 +30,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { ITeam, ITeamSchema, TTeam } from "@/lib/schemas/team";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 import { TCountry } from "@/lib/schemas/country";
 import { Check, ChevronsUpDown } from "lucide-react";
@@ -51,7 +51,7 @@ export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>

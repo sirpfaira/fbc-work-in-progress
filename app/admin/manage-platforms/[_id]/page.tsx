@@ -39,7 +39,7 @@ import {
   IPlatformMarket,
   TPlatform,
 } from "@/lib/schemas/platform";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 import PageTitle from "@/app/components/common/PageTitle";
 import CustomDialog from "@/app/components/common/CustomDialog";
@@ -56,7 +56,7 @@ export default function EditForm() {
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
   const current = data?.find((item) => item._id.toString() === _id);
 
   return (
@@ -68,7 +68,7 @@ export default function EditForm() {
           {current && data ? (
             <EditFields item={current} platforms={data} />
           ) : (
-            <ErrorTile error={`Platform with id ${_id} was not found!`} />
+            <ErrorsTile error={`Platform with id ${_id} was not found!`} />
           )}
         </>
       )}

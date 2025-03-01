@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Dummy from "@/app/api/models/Dummy";
 import Punter from "@/app/api/models/Punter";
 import { IPunter } from "@/lib/schemas/punter";
-import { getRandomPictureURL } from "@/lib/helpers";
+import { getRandomPictureURL } from "@/lib/helpers/punter";
 // import dummies from "./dummies.json";
 
 export async function GET() {

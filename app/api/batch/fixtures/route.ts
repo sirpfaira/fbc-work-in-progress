@@ -6,10 +6,10 @@ import Fixture from "@/app/api/models/Fixture";
 export async function POST(request: NextRequest) {
   try {
     const data = (await request.json()) as IFixture[];
-    const valid = validateArray(data);
-    if (valid.length > 0) {
+    const validFixtures = validateArray(data);
+    if (validFixtures.length > 0) {
       await DatabaseConnection();
-      const docs = await Fixture.insertMany(valid);
+      const docs = await Fixture.insertMany(validFixtures);
       if (docs) {
         return NextResponse.json({ message: "Success!" }, { status: 200 });
       } else {
@@ -21,9 +21,9 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function validateArray(array: IFixture[]) {
+function validateArray(fixtures: IFixture[]) {
   const valid: IFixture[] = [];
-  for (const item of array) {
+  for (const item of fixtures) {
     const validated = IFixtureSchema.safeParse(item);
     if (validated.success) {
       valid.push(validated.data);

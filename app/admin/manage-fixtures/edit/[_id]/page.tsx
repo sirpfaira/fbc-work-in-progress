@@ -39,7 +39,7 @@ import {
   ICornersBookings,
   IFixtureInfo,
 } from "@/lib/schemas/fixture";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 import PageTitle from "@/app/components/common/PageTitle";
 import CustomDialog from "@/app/components/common/CustomDialog";
@@ -60,7 +60,7 @@ export default function EditForm() {
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>
@@ -71,7 +71,7 @@ export default function EditForm() {
           {data ? (
             <EditFields item={data} />
           ) : (
-            <ErrorTile error={`Fixture with id ${_id} was not found!`} />
+            <ErrorsTile error={`Fixture with id ${_id} was not found!`} />
           )}
         </>
       )}

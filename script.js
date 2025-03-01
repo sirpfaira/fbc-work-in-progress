@@ -1,26 +1,20 @@
-var fs = require("fs");
-
+// var fs = require("fs");
 // const countries = require("./app/api/countries/countries.json");
 // const competitions = require("./app/api/competitions/competitions.json");
 // const teams = require("./app/api/teams/teams.json");
+const fixtures = require("./app/api/fixtures/fixtures.json");
 
-async function myFunction() {
-  const uniqueValues = new Set(teams.map((v) => v.uid));
+const findDuplicatedIds = (data) => {
+  const idCounts = data.reduce((acc, item) => {
+    acc[item.uid] = (acc[item.uid] || 0) + 1;
+    return acc;
+  }, {});
 
-  if (uniqueValues.size < teams.length) {
-    console.log("Contains duplicates!");
-  } else {
-    console.log("No duplicates found!");
-  }
+  return Object.keys(idCounts)
+    .filter((uid) => idCounts[uid] > 1)
+    .map((uid) => parseInt(uid, 10));
+};
 
-  // fs.writeFile("output.json", JSON.stringify(data), function (err) {
-  //   if (err) throw err;
-  //   console.log("complete");
-  // });
-}
+const duplicatedIds = findDuplicatedIds(fixtures);
 
-myFunction();
-
-
-
-
+console.log(duplicatedIds); 

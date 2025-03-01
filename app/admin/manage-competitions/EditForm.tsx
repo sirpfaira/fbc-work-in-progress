@@ -42,9 +42,9 @@ import {
   ICompetitionSchema,
   TCompetition,
 } from "@/lib/schemas/competition";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
-import { getSeasonsOptions } from "@/lib/helpers";
+import { getSeasonOptions } from "@/lib/helpers/competition";
 import { TCountry } from "@/lib/schemas/country";
 
 interface EditFormProps {
@@ -63,7 +63,7 @@ export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>
@@ -208,7 +208,7 @@ const EditFields = ({ itemId, item, setIsOpen }: EditFieldsProps) => {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {getSeasonsOptions().map((item) => (
+                  {getSeasonOptions().map((item) => (
                     <SelectItem key={item} value={String(item)}>
                       {item}
                     </SelectItem>

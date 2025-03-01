@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/form";
 import { BFullDummy, BFullDummySchema } from "@/lib/schemas/dummy";
 import { TCountry } from "@/lib/schemas/country";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import { TPlatform } from "@/lib/schemas/platform";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 
@@ -87,7 +87,7 @@ export default function AddDummyForm({ setIsOpen }: AddDummyFormProps) {
     addDummy(values);
   };
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>

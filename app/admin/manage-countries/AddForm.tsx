@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { ICountry, ICountrySchema, TCountry } from "@/lib/schemas/country";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import { FormSkeleton } from "@/app/components/common/LoadingSkeletons";
 
 interface AddFormProps {
@@ -69,7 +69,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     addItem(values);
   };
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>

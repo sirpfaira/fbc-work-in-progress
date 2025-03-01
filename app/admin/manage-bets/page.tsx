@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { PlusCircle } from "lucide-react";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 import PageTitle from "@/app/components/common/PageTitle";
 import { TDummy } from "@/lib/schemas/dummy";
@@ -33,15 +33,15 @@ export default function ManageBets() {
     },
   });
 
-  const { data: trendings } = useQuery({
-    queryKey: ["trendings"],
+  const { data: trending } = useQuery({
+    queryKey: ["trending"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/trendings`);
+      const { data } = await axios.get(`/api/trending`);
       return data.items as TTrending[];
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <div className="flex flex-col space-y-5">
@@ -55,8 +55,8 @@ export default function ManageBets() {
         <TableSkeleton columns={3} />
       ) : (
         <>
-          {bets && dummies && trendings && (
-            <DummyBets bets={bets} dummies={dummies} trendings={trendings} />
+          {bets && dummies && trending && (
+            <DummyBets bets={bets} dummies={dummies} trending={trending} />
           )}
         </>
       )}
@@ -67,10 +67,10 @@ export default function ManageBets() {
 interface DummyBetsProps {
   bets: TBet[];
   dummies: TDummy[];
-  trendings: TTrending[];
+  trending: TTrending[];
 }
 
-function DummyBets({ bets, dummies, trendings }: DummyBetsProps) {
+function DummyBets({ bets, dummies, trending }: DummyBetsProps) {
   const dummyUsernames = dummies.map((item) => {
     return item.username;
   });
@@ -83,8 +83,8 @@ function DummyBets({ bets, dummies, trendings }: DummyBetsProps) {
     <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
       <div className="flex flex-col space-y-4">
         <div className="flex flex-col space-y-4">
-          <Bets bets={dummyBets} trendings={trendings} />
-        </div>        
+          <Bets bets={dummyBets} trending={trending} />
+        </div>
       </div>
       <div className="hidden lg:flex flex-col card p-6">
         <span>Sidebar</span>

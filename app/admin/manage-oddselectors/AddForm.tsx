@@ -12,7 +12,7 @@ import {
   IOddSelectorSchema,
   TOddSelector,
 } from "@/lib/schemas/oddselector";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import { FormSkeleton } from "@/app/components/common/LoadingSkeletons";
 
 interface AddFormProps {
@@ -81,7 +81,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     addItem(values);
   };
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>

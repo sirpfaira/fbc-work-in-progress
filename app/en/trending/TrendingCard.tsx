@@ -5,7 +5,7 @@ import PlayButton from "@/app/components/en/PlayButton";
 import { TTrending } from "@/lib/schemas/trending";
 import TimeStamp from "@/app/components/common/TimeStamp";
 import { Calendar, CircleDollarSign, Flame } from "lucide-react";
-import { shortenNumber } from "@/lib/helpers";
+import { shortenNumber } from "@/lib/helpers/common";
 
 const TrendingCard = ({
   key,

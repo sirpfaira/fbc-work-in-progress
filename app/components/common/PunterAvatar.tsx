@@ -15,7 +15,9 @@ const PunterAvatar = ({ image, rating, size }: Readonly<PunterAvatarProps>) => {
           ? "ring-rating-top"
           : rating > 33
           ? "ring-rating-middle"
-          : "ring-rating-bottom"
+          : rating >= 0
+          ? "ring-rating-bottom"
+          : "ring-border"
       }`}
       width={0}
       height={0}

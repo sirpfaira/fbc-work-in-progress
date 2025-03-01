@@ -2,26 +2,26 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { TTrending } from "@/lib/schemas/trending";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import PageTitle from "@/app/components/common/PageTitle";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
-import Trendings from "@/app/en/trending/Trendings";
+import Trending from "@/app/en/trending/Trending";
 
-export default function EnTrendings() {
+export default function EnTrending() {
   const {
-    data: trendings,
+    data: trending,
     isError,
     error,
     isLoading,
   } = useQuery({
-    queryKey: ["trendings"],
+    queryKey: ["trending"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/trendings`);
+      const { data } = await axios.get(`/api/trending`);
       return data.items as TTrending[];
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <div className="flex flex-col space-y-5">
@@ -31,7 +31,7 @@ export default function EnTrendings() {
       {isLoading ? (
         <TableSkeleton columns={3} />
       ) : (
-        <>{trendings && <Trendings trendings={trendings} />}</>
+        <>{trending && <Trending trending={trending} />}</>
       )}
     </div>
   );

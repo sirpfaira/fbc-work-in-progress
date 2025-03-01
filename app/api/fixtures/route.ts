@@ -13,10 +13,13 @@ export async function GET(request: NextRequest) {
       const fixtures = await Fixture.find();
       return NextResponse.json({ items: fixtures }, { status: 200 });
     } else {
-      const fixtures = await Fixture.find({
+      const upcomingFixtures = await Fixture.find({
         date: { $gte: moment(), $lte: moment().add(7, "days") },
       });
-      return NextResponse.json({ items: fixtures }, { status: 200 });
+      // const upcomingFixtures = fixtures.filter((item) =>
+      //   moment(item.date).isAfter(moment())
+      // );
+      return NextResponse.json({ items: upcomingFixtures }, { status: 200 });
     }
   } catch (error: any) {
     return NextResponse.json(error.message, { status: 500 });

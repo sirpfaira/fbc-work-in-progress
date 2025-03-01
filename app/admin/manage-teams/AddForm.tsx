@@ -31,10 +31,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { ITeam, ITeamSchema, TTeam } from "@/lib/schemas/team";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import { FormSkeleton } from "@/app/components/common/LoadingSkeletons";
 import { TCountry } from "@/lib/schemas/country";
-
 
 interface AddFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -102,7 +101,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     addItem(values);
   };
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>

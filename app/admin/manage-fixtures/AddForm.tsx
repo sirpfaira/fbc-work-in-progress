@@ -47,7 +47,7 @@ import { fixtureStatus } from "@/lib/constants";
 import DateTimePicker from "@/app/components/common/DateTimePicker";
 import { TCompetition } from "@/lib/schemas/competition";
 import { FormSkeleton } from "@/app/components/common/LoadingSkeletons";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import { TTeam } from "@/lib/schemas/team";
 
 interface AddFormProps {
@@ -152,7 +152,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     addItem(newItem);
   };
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>

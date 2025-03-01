@@ -99,7 +99,8 @@ export async function POST(request: NextRequest) {
       const league = validated.data.uid;
       const season = validated.data.season;
       const from = validated.data.date;
-      const to = moment(from).add(14, "days").format("YYYY-MM-DD");
+      // const to = moment(from).add(14, "days").format("YYYY-MM-DD");
+      const to = moment(from).add(9, "days").format("YYYY-MM-DD");
 
       const baseURL = "https://v3.football.api-sports.io/fixtures";
       const parameters = `?league=${league}&season=${season}&from=${from}&to=${to}`;

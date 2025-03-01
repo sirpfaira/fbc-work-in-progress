@@ -4,7 +4,7 @@ import Suggestion from "@/app/components/en/punter/Suggestion";
 import { TPunter } from "@/lib/schemas/punter";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 import { EllipsisVertical, Search } from "lucide-react";
 
@@ -22,7 +22,7 @@ const RightSideBar = () => {
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <div className="fixed hidden xl:block top-14 right-0 w-[420px] mt-5 overflow-y-hidden px-2">

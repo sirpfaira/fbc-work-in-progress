@@ -21,14 +21,21 @@ export async function GET(request: NextRequest, { params }: { params: any }) {
 
 export async function PUT(request: NextRequest, { params }: { params: any }) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const data = await request.json();
     const validated = IFixtureSchema.safeParse(data);
+    console.log("ID", id);
     if (validated.success) {
-      //TO DO If fixture info changed also edit trending info for all trendings where fixture === uid
+      console.log("passed", validated.data);
+      //TO DO If fixture info changed also edit trending info for all trending where fixture === uid
       await DatabaseConnection();
-      await Fixture.findByIdAndUpdate(id, validated.data);
-      return NextResponse.json({ message: "Success!" }, { status: 200 });
+      const updated = await Fixture.findByIdAndUpdate(id, validated.data, {
+        new: true,
+      });
+      return NextResponse.json(
+        { message: "Success!", fixture: updated },
+        { status: 200 }
+      );
     } else {
       throw new Error("Invalid data!");
     }

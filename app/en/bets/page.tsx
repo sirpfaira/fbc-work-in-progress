@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { TBet } from "@/lib/schemas/bet";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import PageTitle from "@/app/components/common/PageTitle";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 import Bets from "@/app/en/bets/Bets";
@@ -22,15 +22,15 @@ export default function EnBets() {
     },
   });
 
-  const { data: trendings } = useQuery({
-    queryKey: ["trendings"],
+  const { data: trending } = useQuery({
+    queryKey: ["trending"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/trendings`);
+      const { data } = await axios.get(`/api/trending`);
       return data.items as TTrending[];
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <div className="flex flex-col space-y-5">
@@ -40,7 +40,7 @@ export default function EnBets() {
       {isLoading ? (
         <TableSkeleton columns={3} />
       ) : (
-        <>{bets && trendings && <Bets bets={bets} trendings={trendings}/>}</>
+        <>{bets && trending && <Bets bets={bets} trending={trending} />}</>
       )}
     </div>
   );

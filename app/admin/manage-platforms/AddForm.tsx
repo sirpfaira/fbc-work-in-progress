@@ -34,7 +34,7 @@ import {
 import { BPlatform, BPlatformSchema, IPlatform } from "@/lib/schemas/platform";
 import { TCountry } from "@/lib/schemas/country";
 import { FormSkeleton } from "@/app/components/common/LoadingSkeletons";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 
 interface AddFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -95,7 +95,7 @@ export default function AddForm({ setIsOpen }: AddFormProps) {
     addItem(newItem);
   };
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>

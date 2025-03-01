@@ -3,40 +3,40 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TTrending } from "@/lib/schemas/trending";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import PageTitle from "@/app/components/common/PageTitle";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
-import Trendings from "@/app/en/trending/Trendings";
+import Trending from "@/app/en/trending/Trending";
 import FiveAside from "./FiveAside";
 import BetBuilder from "./BetBuilder";
 
-export default function ManageTrendings() {
+export default function ManageTrending() {
   const {
-    data: trendings,
+    data: trending,
     isError,
     error,
     isLoading,
   } = useQuery({
-    queryKey: ["trendings"],
+    queryKey: ["trending"],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/trendings`);
+      const { data } = await axios.get(`/api/trending`);
       return data.items as TTrending[];
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <div className="flex flex-col space-y-5">
       <div className="card flex items-center justify-between px-4 py-2">
-        <PageTitle title="Manage Trendings" link="/en" />
+        <PageTitle title="Manage Trending" link="/en" />
       </div>
       <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
         {isLoading ? (
           <TableSkeleton columns={3} />
         ) : (
           <>
-            {trendings && (
+            {trending && (
               <Tabs defaultValue="trending" className="w-full max-w-[500px]">
                 <TabsList className="flex justify-start w-full">
                   <TabsTrigger value="trending">Trending</TabsTrigger>
@@ -44,13 +44,13 @@ export default function ManageTrendings() {
                   <TabsTrigger value="bet_builder">Bet Builder</TabsTrigger>
                 </TabsList>
                 <TabsContent value="trending">
-                  <Trendings trendings={trendings} />
+                  <Trending trending={trending} />
                 </TabsContent>
                 <TabsContent value="five_aside">
-                  <FiveAside trendings={trendings} />
+                  <FiveAside trending={trending} />
                 </TabsContent>
                 <TabsContent value="bet_builder">
-                  <BetBuilder trendings={trendings} />
+                  <BetBuilder trending={trending} />
                 </TabsContent>
               </Tabs>
             )}

@@ -63,13 +63,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { TDummy } from "@/lib/schemas/dummy";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 import CustomDialog from "@/app/components/common/CustomDialog";
 import { TFixture } from "@/lib/schemas/fixture";
 import { TOddSelector } from "@/lib/schemas/oddselector";
 import TimeStamp from "@/app/components/common/TimeStamp";
-import { getShortDate } from "@/lib/helpers";
+import { getShortDate } from "@/lib/helpers/common";
 import Link from "next/link";
 import DateTimePicker from "@/app/components/common/DateTimePicker";
 import AddPunterForm from "@/app/admin/manage-dummies/AddForm";
@@ -407,7 +407,7 @@ export default function Create() {
     }
   }
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <div className="flex flex-col space-y-5">

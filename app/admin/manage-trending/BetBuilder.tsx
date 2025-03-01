@@ -1,5 +1,5 @@
 "use client";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import TrendingCard from "@/app/en/trending/TrendingCard";
 import {
   Accordion,
@@ -15,17 +15,17 @@ interface MarketTrending {
 }
 
 interface FiveAsideProps {
-  trendings: TTrending[];
+  trending: TTrending[];
 }
 
-export default function BetBuilder({ trendings }: FiveAsideProps) {
-  const upcomingTrendings = trendings
+export default function BetBuilder({ trending }: FiveAsideProps) {
+  const upcomingTrending = trending
     ?.sort((a, b) => moment(b.date).diff(moment(a.date)))
     ?.filter((item) =>
       moment(item.date).isAfter(moment().subtract(10, "minute").utc())
     );
 
-  const topTrendingFixtures: MarketTrending = upcomingTrendings.reduce(
+  const topTrendingFixtures: MarketTrending = upcomingTrending.reduce(
     (acc: MarketTrending, obj: TTrending) => {
       if (!acc[obj.fixtureName]) {
         acc[obj.fixtureName] = [];
@@ -82,7 +82,7 @@ export default function BetBuilder({ trendings }: FiveAsideProps) {
           ))}
         </>
       ) : (
-        <ErrorTile error="Nothing to show!" />
+        <ErrorsTile error="Nothing to show!" />
       )}
     </div>
   );

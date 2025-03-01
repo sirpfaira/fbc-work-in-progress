@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import TrendingCard from "@/app/en/trending/TrendingCard";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import { TTrending } from "@/lib/schemas/trending";
 import moment from "moment";
 
@@ -11,12 +11,12 @@ const TrendPeriodOptions = [
   { value: "upcoming", label: "Upcoming" },
 ];
 
-interface TrendingsProps {
-  trendings: TTrending[];
+interface TrendingProps {
+  trending: TTrending[];
 }
 
-export default function Trendings({ trendings }: Readonly<TrendingsProps>) {
-  const [filtered, setFiltered] = useState<TTrending[]>(trendings);
+export default function Trending({ trending }: Readonly<TrendingProps>) {
+  const [filtered, setFiltered] = useState<TTrending[]>(trending);
   const [period, setPeriod] = useState<string>("upcoming");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -32,16 +32,16 @@ export default function Trendings({ trendings }: Readonly<TrendingsProps>) {
   useEffect(() => {
     let result: TTrending[] = [];
     if (period === "finished") {
-      result = trendings
+      result = trending
         ?.sort((a, b) => moment(b.date).diff(moment(a.date)))
         ?.filter((item) => moment(item.date).isBefore(moment().utc()));
     } else {
-      result = trendings
+      result = trending
         ?.sort((a, b) => moment(b.date).diff(moment(a.date)))
         ?.filter((item) => moment(item.date).isAfter(moment().utc()));
     }
     setFiltered(result);
-  }, [period, trendings]);
+  }, [period, trending]);
 
   useEffect(() => {
     window.scrollTo({
@@ -94,7 +94,7 @@ export default function Trendings({ trendings }: Readonly<TrendingsProps>) {
           />
         </div>
       ) : (
-        <ErrorTile error="Nothing to show!" />
+        <ErrorsTile error="Nothing to show!" />
       )}
     </div>
   );

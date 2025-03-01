@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Multiple from "@/app/en/bets/Multiple";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import { TBet, XBet } from "@/lib/schemas/bet";
 import { ITrending, TTrending } from "@/lib/schemas/trending";
 import { Button } from "@/components/ui/button";
 
 interface BetsProps {
   bets: TBet[];
-  trendings: TTrending[];
+  trending: TTrending[];
 }
 
-export default function Bets({ bets, trendings }: Readonly<BetsProps>) {
+export default function Bets({ bets, trending }: Readonly<BetsProps>) {
   const [filtered, setFiltered] = useState<XBet[]>(getXBets());
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,7 +36,7 @@ export default function Bets({ bets, trendings }: Readonly<BetsProps>) {
   function getSelections(selections: string[]): ITrending[] {
     const result: ITrending[] = [];
     selections.map((item) => {
-      const trend = trendings.find((el) => el.uid === item);
+      const trend = trending.find((el) => el.uid === item);
       if (trend) {
         const newItem = {
           value: trend.value,
@@ -102,7 +102,7 @@ export default function Bets({ bets, trendings }: Readonly<BetsProps>) {
         </div>
       ) : (
         <div className="flex flex-col space-y-3">
-          <ErrorTile error="Nothing to show!" />
+          <ErrorsTile error="Nothing to show!" />
           <Button>Clear All Filters</Button>
         </div>
       )}

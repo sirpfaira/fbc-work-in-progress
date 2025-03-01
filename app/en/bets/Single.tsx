@@ -4,7 +4,7 @@ import ShareButton from "@/app/components/en/ShareButton";
 import PlayButton from "@/app/components/en/PlayButton";
 import { ITrending } from "@/lib/schemas/trending";
 import TimeStamp from "@/app/components/common/TimeStamp";
-import { shortenNumber } from "@/lib/helpers";
+import { shortenNumber } from "@/lib/helpers/common";
 import { CircleDollarSign, Flame } from "lucide-react";
 
 const Single = ({ selection }: { selection: ITrending }) => {

@@ -8,7 +8,7 @@ import { useToast } from "@/components/hooks/use-toast";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { ICountry, ICountrySchema, TCountry } from "@/lib/schemas/country";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 
 interface EditFormProps {
@@ -32,7 +32,7 @@ export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>

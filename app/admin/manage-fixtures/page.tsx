@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { ObjectId } from "mongoose";
 import { TFixture } from "@/lib/schemas/fixture";
 import DataTable from "@/app/components/common/DataTable";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 import CustomDialog from "@/app/components/common/CustomDialog";
 import PageTitle from "@/app/components/common/PageTitle";
@@ -117,7 +117,7 @@ export default function ManageFixtures() {
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <div className="flex flex-col space-y-5">

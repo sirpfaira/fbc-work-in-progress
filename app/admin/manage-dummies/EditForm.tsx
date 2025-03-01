@@ -23,7 +23,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { TPunter } from "@/lib/schemas/punter";
-import ErrorTile from "@/app/components/common/ErrorTile";
+import ErrorsTile from "@/app/components/common/ErrorsTile";
 import FormSkeleton from "@/app/components/common/LoadingSkeletons";
 import { BFullDummy, BFullDummySchema, TDummy } from "@/lib/schemas/dummy";
 import { TCountry } from "@/lib/schemas/country";
@@ -65,7 +65,7 @@ export default function EditForm({ itemId, setIsOpen }: EditFormProps) {
     },
   });
 
-  if (isError) return <ErrorTile error={error.message} />;
+  if (isError) return <ErrorsTile errors={[error.message]} />;
 
   return (
     <>
