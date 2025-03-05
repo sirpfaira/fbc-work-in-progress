@@ -9,6 +9,8 @@ import TableSkeleton from "@/app/components/common/LoadingSkeletons";
 import Trending from "@/app/en/trending/Trending";
 import FiveAside from "./FiveAside";
 import BetBuilder from "./BetBuilder";
+import Link from "next/link";
+import { Download } from "lucide-react";
 
 export default function ManageTrending() {
   const {
@@ -30,6 +32,9 @@ export default function ManageTrending() {
     <div className="flex flex-col space-y-5">
       <div className="card flex items-center justify-between px-4 py-2">
         <PageTitle title="Manage Trending" link="/en" />
+        <Link href="/admin/manage-trending/results">
+          <Download size={26} />
+        </Link>
       </div>
       <div className="grid w-full lg:grid-cols-[520px_1fr] gap-8">
         {isLoading ? (

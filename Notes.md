@@ -121,6 +121,8 @@ function deleteCOI(companyId: string, buildingId: string) {
 
 > [Populate-a-mongoose-model-with-a-field-that-isnt-an-id](https://stackoverflow.com/questions/19287142/populate-a-mongoose-model-with-a-field-that-isnt-an-id)
 
+> [Reference by other field instead of \_id](https://github.com/Automattic/mongoose/issues/8282)
+
 # Typescript & ESLint
 
 ```

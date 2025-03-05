@@ -77,7 +77,9 @@ export default function Trending({ trending }: Readonly<TrendingProps>) {
         <div className="flex flex-col space-y-4">
           <div className="flex flex-col space-y-4">
             {currentItems?.map((item) => (
-              <TrendingCard key={item._id.toString()} trending={item} />
+              <div key={item._id.toString()}>
+                <TrendingCard trending={item} />
+              </div>
             ))}
           </div>
           <ReactPaginate
@@ -94,7 +96,7 @@ export default function Trending({ trending }: Readonly<TrendingProps>) {
           />
         </div>
       ) : (
-        <ErrorsTile error="Nothing to show!" />
+        <ErrorsTile errors={[`Nothing to show!`]} />
       )}
     </div>
   );

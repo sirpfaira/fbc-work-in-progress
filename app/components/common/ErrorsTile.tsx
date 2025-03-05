@@ -5,9 +5,12 @@ const ErrorsTile = ({ errors }: { errors: string[] }) => {
         Something went wrong!
       </span>
       <div className="flex flex-col w-full">
-        {errors && errors.map((item) => (
-          <span className="text-destructive text-small">{item}</span>
-        ))}
+        {errors &&
+          errors.map((item, index) => (
+            <span key={index} className="text-destructive text-small">
+              {item}
+            </span>
+          ))}
       </div>
     </div>
   );

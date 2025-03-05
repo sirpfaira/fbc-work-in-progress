@@ -3,8 +3,9 @@ import { CBet, CBetSchema, IBet, ISelection } from "@/lib/schemas/bet";
 import { NextRequest, NextResponse } from "next/server";
 import Bet from "@/app/api/models/Bet";
 import { getShortDate } from "@/lib/helpers/common";
-import Trending from "../models/Trending";
+import Trending from "@/app/api/models/Trending";
 import { ITrending, TTrending } from "@/lib/schemas/trending";
+import Punter from "@/app/api/models/Punter";
 // import bets from "./bets.json";
 
 export async function GET() {
@@ -24,7 +25,6 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    console.log(data);
     const validated = CBetSchema.safeParse(data);
     if (validated.success) {
       await DatabaseConnection();
@@ -38,6 +38,8 @@ export async function POST(request: NextRequest) {
           const trending: TTrending[] = await Trending.find();
           const newTrends: ITrending[] = [];
           const oldTrends: TTrending[] = [];
+          const formTrends: string[] = [];
+
           selections.map((item) => {
             const trend = trending.find(
               (element) =>
@@ -60,6 +62,7 @@ export async function POST(request: NextRequest) {
                 count: trend.count + 1,
               };
               oldTrends.push(updatedTrend);
+              formTrends.push(trend.uid);
             } else {
               const newTrend: ITrending = {
                 uid: `${item.fixture}-${item.market}-${getShortDate(
@@ -77,15 +80,20 @@ export async function POST(request: NextRequest) {
                 value: item.value,
               };
               newTrends.push(newTrend);
+              formTrends.push(newTrend.uid);
             }
           });
 
           await Trending.insertMany(newTrends);
-          console.log(oldTrends);
 
           for (const item of oldTrends) {
             await Trending.findByIdAndUpdate(item._id, item);
           }
+
+          await Punter.updateOne(
+            { username: newBet.username },
+            { $addToSet: { form: { $each: formTrends } } }
+          );
 
           return NextResponse.json({ message: "Success!" }, { status: 200 });
         } else {
@@ -128,7 +136,7 @@ function createBet(bet: CBet): IBet {
     uid: `${bet.username}-${getShortDate(new Date().toISOString())}`,
     username: bet.username,
     title: bet.title,
-    date: bet.date,
+    date: new Date().toISOString(),
     boom: [],
     doom: [],
     selections: selections,

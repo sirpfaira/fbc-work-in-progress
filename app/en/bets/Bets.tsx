@@ -102,7 +102,7 @@ export default function Bets({ bets, trending }: Readonly<BetsProps>) {
         </div>
       ) : (
         <div className="flex flex-col space-y-3">
-          <ErrorsTile error="Nothing to show!" />
+          <ErrorsTile errors={["Nothing to show!"]} />
           <Button>Clear All Filters</Button>
         </div>
       )}

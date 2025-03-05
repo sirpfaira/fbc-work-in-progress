@@ -35,13 +35,11 @@ export const ICodeSchema = z.object({
 export const BBetInfoSchema = z.object({
   username: z.string().trim().min(1),
   title: z.string().trim().min(1),
-  date: z.date(),
 });
 
 export const CBetSchema = z.object({
   username: z.string().trim().min(1),
   title: z.string().trim().min(1),
-  date: z.string(),
   selections: z.array(ISelectionSchema),
   codes: z.array(ICodeSchema),
 });

@@ -71,7 +71,7 @@ export default function EditForm() {
           {data ? (
             <EditFields item={data} />
           ) : (
-            <ErrorsTile error={`Fixture with id ${_id} was not found!`} />
+            <ErrorsTile errors={[`Fixture with id ${_id} was not found!`]} />
           )}
         </>
       )}

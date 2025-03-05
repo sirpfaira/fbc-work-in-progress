@@ -5,9 +5,14 @@ export const fixtureStatus = [
   "Cancelled",
 ];
 
-export const autoMarkets = [
+export const scoresMarkets = [
   101, 102, 103, 201, 202, 301, 302, 303, 501, 502, 503, 504, 505, 506, 507,
   508, 509, 510, 511, 512, 2501, 2502, 2503, 2504, 2505, 2506, 2507, 2508,
+];
+
+export const statisticsMarkets = [
+  1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013,
+  1014, 1015, 1016,
 ];
 
 export const session = {

@@ -101,7 +101,7 @@ export default function FetchFixtures() {
 
   const { mutate: fetchLeagueFixtures, isPending } = useMutation({
     mutationFn: async (league: ILeague) =>
-      await axios.post(`/api/sports-api/fixtures`, league),
+      await axios.post(`/api/external/sports-api/fixtures`, league),
     onSuccess: (response: any) => {
       const matches = response.data.items as IFixture[];
       toast({
@@ -139,7 +139,8 @@ export default function FetchFixtures() {
     const errors = await updateFixturesInDatabase(
       fixtures,
       fetchedFixtures,
-      trending
+      trending,
+      "scores"
     );
     queryClient.invalidateQueries({
       queryKey: ["fixtures"],
@@ -173,7 +174,9 @@ export default function FetchFixtures() {
                 <Dialog open={isPending || isProcessing}>
                   <DialogContent className="sm:max-w-[400px]">
                     <DialogHeader>
-                      <DialogTitle>Processing...</DialogTitle>
+                      <DialogTitle className="flex text-start">
+                        Processing...
+                      </DialogTitle>
                       <DialogDescription>
                         <div className="flex space-x-1 items-center">
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -302,37 +305,41 @@ export default function FetchFixtures() {
                   </div>
                 </div>
                 {fetchedFixtures.length > 0 && (
-                  <Accordion type="single" collapsible>
-                    <AccordionItem value="item-1">
-                      <AccordionTrigger>
-                        <span className="text-big font-medium w-full text-start">
-                          Fetched fixtures
-                        </span>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <div className="flex flex-col space-y-5 card p-4 w-full">
-                          {fetchedFixtures.map((item) => (
-                            <div
-                              key={item.uid}
-                              className="flex flex-col border border-border px-4 rounded-md"
-                            >
-                              <span>{item.uid}</span>
-                              <span>{item.teams}</span>
-                              <TimeStamp date={item.date} />
+                  <div className="flex flex-col space-y-5 card p-4 w-full">
+                    <div className="border border-border px-4 rounded-md">
+                      <Accordion type="single" collapsible>
+                        <AccordionItem value="item-1">
+                          <AccordionTrigger>
+                            <span className="text-big font-medium w-full text-start">
+                              Fetched fixtures
+                            </span>
+                          </AccordionTrigger>
+                          <AccordionContent>
+                            <div className="flex flex-col space-y-5 card p-4 w-full">
+                              {fetchedFixtures.map((item) => (
+                                <div
+                                  key={item.uid}
+                                  className="flex flex-col border border-border px-4 rounded-md"
+                                >
+                                  <span>{item.uid}</span>
+                                  <span>{item.teams}</span>
+                                  <TimeStamp date={item.date} />
+                                </div>
+                              ))}
+                              <div className="w-full flex justify-center items-center space-x-3 pt-3">
+                                <Button
+                                  className="w-full"
+                                  onClick={onSaveToDatabase}
+                                >
+                                  Update database
+                                </Button>
+                              </div>
                             </div>
-                          ))}
-                          <div className="w-full flex justify-center items-center space-x-3 pt-3">
-                            <Button
-                              className="w-full"
-                              onClick={onSaveToDatabase}
-                            >
-                              Update database
-                            </Button>
-                          </div>
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                    </div>
+                  </div>
                 )}
                 {errors.length > 0 && <ErrorsTile errors={errors} />}
               </div>

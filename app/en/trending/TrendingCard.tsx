@@ -7,13 +7,7 @@ import TimeStamp from "@/app/components/common/TimeStamp";
 import { Calendar, CircleDollarSign, Flame } from "lucide-react";
 import { shortenNumber } from "@/lib/helpers/common";
 
-const TrendingCard = ({
-  key,
-  trending,
-}: {
-  key: string;
-  trending: TTrending;
-}) => {
+const TrendingCard = ({ trending }: { trending: TTrending }) => {
   const {
     uid,
     fixture,
@@ -35,10 +29,7 @@ const TrendingCard = ({
     : "text-foreground";
 
   return (
-    <div
-      key={key}
-      className="flex w-full flex-col items-center px-3 pb-3 text-small divide-y divide-border card"
-    >
+    <div className="flex w-full flex-col items-center px-3 pb-3 text-small divide-y divide-border card">
       <div
         className={`flex flex-col w-full divide-y divide-border ${textColor}`}
       >

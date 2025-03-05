@@ -1,12 +1,15 @@
+import axios from "axios";
 import { TFixture } from "@/lib/schemas/fixture";
 import { TTrending } from "@/lib/schemas/trending";
-import { autoMarkets } from "@/lib/constants";
-import axios from "axios";
+import { scoresMarkets, statisticsMarkets } from "@/lib/constants";
+import { isFixtureFinished } from "@/lib/helpers/fixture";
 
 type TResult = {
   home: number;
   away: number;
 };
+
+type FResult = "won" | "lost" | null;
 
 function splitResult(result: string | null): TResult | null {
   try {
@@ -23,16 +26,15 @@ function splitResult(result: string | null): TResult | null {
       return null;
     }
   } catch (error: any) {
+    console.log(error?.message);
     return null;
   }
 }
 
-export function getTrendingResult(
-  fixture: TFixture,
-  market: number
-): "won" | "lost" | null {
+export function getTrendingResult(fixture: TFixture, market: number): FResult {
   if (fixture && market) {
     const ftScore = splitResult(fixture.scores.fullTime);
+    const ftCorners = splitResult(fixture.corners.fullTime);
     switch (market) {
       case 101:
         if (ftScore) {
@@ -160,7 +162,102 @@ export function getTrendingResult(
         } else {
           return null;
         }
-
+      case 1001:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away > 5.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1002:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away < 5.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1003:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away > 6.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1004:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away < 6.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1005:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away > 7.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1006:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away < 7.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1007:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away > 8.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1008:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away < 8.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1009:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away > 9.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1010:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away < 9.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1011:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away > 10.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1012:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away < 10.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1013:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away > 11.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1014:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away < 11.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1015:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away > 12.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
+      case 1016:
+        if (ftCorners) {
+          return ftCorners.home + ftCorners.away < 12.5 ? "won" : "lost";
+        } else {
+          return null;
+        }
       case 2501:
         if (ftScore) {
           return ftScore.home > 0.5 ? "won" : "lost";
@@ -218,27 +315,36 @@ export function getTrendingResult(
 
 export async function updateTrending(
   trending: TTrending[],
-  newFixture: TFixture
+  newFixture: TFixture,
+  mode: "scores" | "statistics" | "events"
 ) {
   const errors: string[] = [];
   try {
     if (trending && trending?.length > 0) {
       const pendingItems = trending.filter(
-        (item) => item.fixture === newFixture.uid && item.result === null
+        (item) =>
+          item.fixture === newFixture.uid &&
+          item.result === null &&
+          isFixtureFinished(item.date)
       );
 
       if (pendingItems.length > 0) {
         for (const trend of pendingItems) {
-          if (autoMarkets.includes(trend.market)) {
-            const result = getTrendingResult(newFixture, trend.market);
-            trend.result = result;
-            const response = await axios.put(
-              `/api/trending/${trend._id}`,
-              trend
-            );
-            if (response.status != 200) {
-              errors.push(`Failed to update trend ${trend.uid}`);
+          let result: FResult = null;
+          if (mode === "scores") {
+            if (scoresMarkets.includes(trend.market)) {
+              result = getTrendingResult(newFixture, trend.market);
             }
+          } else if (mode === "statistics") {
+            if (statisticsMarkets.includes(trend.market)) {
+              result = getTrendingResult(newFixture, trend.market);
+            }
+          }
+
+          trend.result = result;
+          const response = await axios.put(`/api/trending/${trend._id}`, trend);
+          if (response.status != 200) {
+            errors.push(`Failed to update trend ${trend.uid}`);
           }
         }
       }
