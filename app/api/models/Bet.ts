@@ -14,7 +14,10 @@ const codeSchema = new Schema(
 const betSchema = new Schema(
   {
     uid: String,
-    username: String,
+    user: {
+      type: String,
+      ref: "Punter",
+    },
     title: String,
     date: String,
     boom: [String],
@@ -22,7 +25,7 @@ const betSchema = new Schema(
     selections: [String],
     codes: [codeSchema],
   },
-  { versionKey: false }
+  { versionKey: false, strictPopulate: false }
 );
 
 const Bet = mongoose.models.Bet || mongoose.model("Bet", betSchema);

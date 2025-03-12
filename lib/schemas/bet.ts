@@ -33,12 +33,12 @@ export const ICodeSchema = z.object({
 });
 
 export const BBetInfoSchema = z.object({
-  username: z.string().trim().min(1),
+  user: z.string().trim().min(1),
   title: z.string().trim().min(1),
 });
 
 export const CBetSchema = z.object({
-  username: z.string().trim().min(1),
+  user: z.string().trim().min(1),
   title: z.string().trim().min(1),
   selections: z.array(ISelectionSchema),
   codes: z.array(ICodeSchema),
@@ -46,7 +46,7 @@ export const CBetSchema = z.object({
 
 export const IBetSchema = z.object({
   uid: z.string().trim().min(1),
-  username: z.string().trim().min(1),
+  user: z.string().trim().min(1),
   date: z.string(),
   title: z.string().trim().min(1),
   boom: z.array(z.string()),
@@ -62,26 +62,33 @@ export type ISelection = z.infer<typeof ISelectionSchema>;
 export type BBetInfo = z.infer<typeof BBetInfoSchema>;
 export type CBet = z.infer<typeof CBetSchema>;
 export type IBet = z.infer<typeof IBetSchema>;
-export type TBet = z.infer<typeof IBetSchema> & {
+
+export interface BUser {
   _id: ObjectId;
-};
+  username: string;
+  name: string;
+  image: string;
+  form: string[];
+}
+
+interface Code {
+  username: string;
+  value: string;
+  platform: string;
+  country: string;
+  flagged: string[];
+}
 
 export interface XBet {
   _id: ObjectId;
   uid: string;
-  username: string;
+  user: BUser;
   title: string;
   date: string;
   boom: string[];
   doom: string[];
   selections: ITrending[];
-  codes: {
-    username: string;
-    value: string;
-    platform: string;
-    country: string;
-    flagged: string[];
-  }[];
+  codes: Code[];
 }
 
 export const XSelectionSchema = z.object({
@@ -89,3 +96,15 @@ export const XSelectionSchema = z.object({
   market: z.string().trim().min(1),
 });
 export type XSelection = z.infer<typeof XSelectionSchema>;
+
+export interface TBet {
+  _id: ObjectId;
+  uid: string;
+  user: BUser;
+  title: string;
+  date: string;
+  boom: string[];
+  doom: string[];
+  selections: string[];
+  codes: Code[];
+}

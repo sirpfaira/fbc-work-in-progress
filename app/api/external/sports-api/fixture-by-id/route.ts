@@ -78,12 +78,14 @@ const getFixture = (fixtureId: string, rawFixtures: RawFixture[]) => {
     },
     corners: {
       halfTime: getResult(
-        home.statistics_1h.find((el) => el.type === "Corner Kicks")?.value!,
-        away.statistics_1h.find((el) => el.type === "Corner Kicks")?.value!
+        home.statistics_1h.find((el) => el.type === "Corner Kicks")?.value ||
+          null,
+        away.statistics_1h.find((el) => el.type === "Corner Kicks")?.value ||
+          null
       ),
       fullTime: getResult(
-        home.statistics.find((el) => el.type === "Corner Kicks")?.value!,
-        away.statistics.find((el) => el.type === "Corner Kicks")?.value!
+        home.statistics.find((el) => el.type === "Corner Kicks")?.value || null,
+        away.statistics.find((el) => el.type === "Corner Kicks")?.value || null
       ),
     },
     bookings: {

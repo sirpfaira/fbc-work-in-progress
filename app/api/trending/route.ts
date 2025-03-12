@@ -2,12 +2,12 @@ import DatabaseConnection from "@/lib/dbconfig";
 import { ITrendingSchema } from "@/lib/schemas/trending";
 import { NextRequest, NextResponse } from "next/server";
 import Trending from "@/app/api/models/Trending";
-// import trending from "./trending.json";
+import trending from "./trending.json";
 
 export async function GET() {
   try {
-    await DatabaseConnection();
-    const trending = await Trending.find();
+    // await DatabaseConnection();
+    // const trending = await Trending.find();
     if (trending) {
       return NextResponse.json({ items: trending }, { status: 200 });
     } else {

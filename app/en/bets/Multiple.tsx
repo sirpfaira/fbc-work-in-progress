@@ -6,7 +6,6 @@ import {
 import Single from "@/app/en/bets/Single";
 import PunterPopup from "@/app/components/en/punter/PunterPopup";
 import { XBet } from "@/lib/schemas/bet";
-import Suggestion from "@/app/components/en/punter/Suggestion";
 import {
   ChevronDown,
   ChevronsUpDown,
@@ -19,30 +18,20 @@ import {
   User,
 } from "lucide-react";
 import IconWrapper from "@/app/components/common/IconWrapper";
+import UserTile from "./UserTile";
+import { TTrending } from "@/lib/schemas/trending";
 // import LikeButton from "@/app/components/common/LikeButton";
 // import DislikeButton from "@/app/components/common/DislikeButton";
 // import StarButton from "@/app/components/common/StarButton";
 // import PlayButton from "@/app/components/common/PlayButton";
 // import ShareButton from "@/app/components/common/ShareButton";
 
-const Multiple = ({ bet }: { bet: XBet }) => {
-  const { username, title, selections, codes } = bet;
+const Multiple = ({ bet, trending }: { bet: XBet; trending: TTrending[] }) => {
+  const { user, title, selections, codes } = bet;
   return (
     <div className="flex flex-col w-full">
       <div className="mt-2">
-        <Suggestion
-          punter={{
-            name: "To be populated",
-            username: username,
-            country: "To be populated",
-            platform: "To be populated",
-            image: null,
-            form: [],
-            followers: [],
-            following: [],
-          }}
-          size={54}
-        />
+        <UserTile user={user} size={54} trending={trending} />
       </div>
 
       <details className="group">
@@ -130,8 +119,8 @@ const Multiple = ({ bet }: { bet: XBet }) => {
                         </PopoverTrigger>
                         <PopoverContent>
                           <PunterPopup
-                            username={username}
-                            image={null}
+                            username={user.username}
+                            image={user.image}
                             rating={66}
                             name="To be populated"
                           />

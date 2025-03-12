@@ -3,7 +3,7 @@ import ReactPaginate from "react-paginate";
 import Multiple from "@/app/en/bets/Multiple";
 import ErrorsTile from "@/app/components/common/ErrorsTile";
 import { TBet, XBet } from "@/lib/schemas/bet";
-import { ITrending, TTrending } from "@/lib/schemas/trending";
+import { TTrending } from "@/lib/schemas/trending";
 import { Button } from "@/components/ui/button";
 
 interface BetsProps {
@@ -33,25 +33,25 @@ export default function Bets({ bets, trending }: Readonly<BetsProps>) {
     setCurrentPage(event.selected + 1);
   };
 
-  function getSelections(selections: string[]): ITrending[] {
-    const result: ITrending[] = [];
+  function getSelections(selections: string[]): TTrending[] {
+    const result: TTrending[] = [];
     selections.map((item) => {
       const trend = trending.find((el) => el.uid === item);
       if (trend) {
-        const newItem = {
-          value: trend.value,
-          date: trend.date,
-          uid: item,
-          fixture: trend.fixture,
-          fixtureName: trend.fixtureName,
-          market: trend.market,
-          marketName: trend.marketName,
-          competition: trend.competition,
-          competitionName: trend.competitionName,
-          result: trend.result,
-          count: trend.count,
-        };
-        result.push(newItem);
+        // const newItem = {
+        //   value: trend.value,
+        //   date: trend.date,
+        //   uid: item,
+        //   fixture: trend.fixture,
+        //   fixtureName: trend.fixtureName,
+        //   market: trend.market,
+        //   marketName: trend.marketName,
+        //   competition: trend.competition,
+        //   competitionName: trend.competitionName,
+        //   result: trend.result,
+        //   count: trend.count,
+        // };
+        result.push(trend);
       }
     });
     return result;
@@ -83,7 +83,7 @@ export default function Bets({ bets, trending }: Readonly<BetsProps>) {
           <div className="flex flex-col space-y-4">
             {currentItems?.map((bet) => (
               <div key={bet._id.toString()} className="p-4 card">
-                <Multiple bet={bet} />
+                <Multiple bet={bet} trending={trending} />
               </div>
             ))}
           </div>

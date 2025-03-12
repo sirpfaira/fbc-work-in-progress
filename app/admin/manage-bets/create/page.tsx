@@ -91,7 +91,7 @@ export default function Create() {
   };
 
   const initialBet: CBet = {
-    username: "",
+    user: "",
     title: `My Bet ${getShortDate(new Date().toISOString())}`,
     selections: [],
     codes: [],
@@ -152,7 +152,7 @@ export default function Create() {
     resolver: zodResolver(BBetInfoSchema),
     defaultValues: {
       title: `My Bet ${getShortDate(new Date().toISOString())}`,
-      username: "",
+      user: "",
     },
   });
 
@@ -185,7 +185,7 @@ export default function Create() {
   function updateBetInfo(values: BBetInfo) {
     setNewItem({
       ...newItem,
-      username: values.username,
+      user: values.user,
       title: values.title,
     });
   }
@@ -296,7 +296,7 @@ export default function Create() {
     }
 
     const newCode = {
-      username: newItem.username,
+      username: newItem.user,
       platform: values.platform,
       country:
         platforms?.find((i) => i.uid === values.platform)?.country ||
@@ -332,7 +332,7 @@ export default function Create() {
 
   const handleSaveToDatabase = () => {
     if (
-      newItem.username !== "" &&
+      newItem.user !== "" &&
       newItem.title.trim() !== "" &&
       (newItem.selections.length > 0 || newItem.codes.length > 0)
     ) {
@@ -416,7 +416,7 @@ export default function Create() {
                             />
                             <FormField
                               control={form.control}
-                              name="username"
+                              name="user"
                               render={({ field }) => (
                                 <FormItem className="flex flex-col">
                                   <FormLabel>Dummy Username</FormLabel>
@@ -456,7 +456,7 @@ export default function Create() {
                                                 key={item.username}
                                                 onSelect={() => {
                                                   form.setValue(
-                                                    "username",
+                                                    "user",
                                                     item.username
                                                   );
                                                 }}
@@ -491,7 +491,7 @@ export default function Create() {
                     </AccordionItem>
                   </Accordion>
                 </div>
-                {newItem.username.trim() !== "" && (
+                {newItem.user.trim() !== "" && (
                   <div className="flex flex-col space-y-5">
                     <div className="border border-border px-4 rounded-md">
                       <Accordion type="single" collapsible>

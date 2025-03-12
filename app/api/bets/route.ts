@@ -6,12 +6,17 @@ import { getShortDate } from "@/lib/helpers/common";
 import Trending from "@/app/api/models/Trending";
 import { ITrending, TTrending } from "@/lib/schemas/trending";
 import Punter from "@/app/api/models/Punter";
-// import bets from "./bets.json";
+import bets from "./bets.json";
 
 export async function GET() {
   try {
-    await DatabaseConnection();
-    const bets = await Bet.find();
+    // await DatabaseConnection();
+    // const bets = await Bet.find().populate({
+    //   path: "user",
+    //   model: "Punter",
+    //   select: "name form image",
+    //   foreignField: "username",
+    // });
     if (bets) {
       return NextResponse.json({ items: bets }, { status: 200 });
     } else {
@@ -91,7 +96,7 @@ export async function POST(request: NextRequest) {
           }
 
           await Punter.updateOne(
-            { username: newBet.username },
+            { username: newBet.user },
             { $addToSet: { form: { $each: formTrends } } }
           );
 
@@ -133,8 +138,8 @@ function createBet(bet: CBet): IBet {
     return `${item.fixture}-${item.market}-${getShortDate(item.date)}`;
   });
   const databaseItem: IBet = {
-    uid: `${bet.username}-${getShortDate(new Date().toISOString())}`,
-    username: bet.username,
+    uid: `${bet.user}-${getShortDate(new Date().toISOString())}`,
+    user: bet.user,
     title: bet.title,
     date: new Date().toISOString(),
     boom: [],

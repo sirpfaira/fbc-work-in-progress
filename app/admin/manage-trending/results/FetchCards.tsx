@@ -261,13 +261,13 @@ export default function FetchCards({
                         <span>
                           {
                             trending.find((el) => el.fixture === item)
-                              ?.fixtureName!
+                              ?.fixtureName || "No fixture name"
                           }
                         </span>
                         <div className="mx-2">
                           <TimeStamp
                             date={
-                              trending.find((el) => el.fixture === item)?.date!
+                              trending.find((el) => el.fixture === item)?.date || null
                             }
                           />
                         </div>

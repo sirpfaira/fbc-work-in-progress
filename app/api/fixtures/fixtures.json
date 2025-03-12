@@ -1,6 +1,32 @@
 [
   {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": "2:0",
+      "fullTime": "2:0",
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": "2:1",
+      "fullTime": "3:3"
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
     "_id": "67c0904b03368503b1006b18",
+    "uid": 1208287,
+    "date": "2025-02-27T20:00:00.000Z",
+    "status": "Match Finished",
+    "competition": 39,
+    "competitionName": "Premier League",
+    "teams": "West Ham v Leicester",
+    "homeTeam": 48,
+    "awayTeam": 46,
+    "odds": []
+  },
+  {
     "scores": {
       "tenMinutes": null,
       "halfTime": null,
@@ -16,14 +42,501 @@
       "halfTime": null,
       "fullTime": null
     },
-    "uid": 1208287,
-    "date": "2025-02-27T20:00:00.000Z",
+    "_id": "67c7237f1ae1b06fffad20cd",
+    "uid": 1208293,
+    "date": "2025-03-08T17:30:00.000Z",
     "status": "Not Started",
     "competition": 39,
     "competitionName": "Premier League",
-    "teams": "West Ham v Leicester",
+    "teams": "Brentford v Aston Villa",
+    "homeTeam": 55,
+    "awayTeam": 66,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67c7237f1ae1b06fffad20ce",
+    "uid": 1208302,
+    "date": "2025-03-08T20:00:00.000Z",
+    "status": "Not Started",
+    "competition": 39,
+    "competitionName": "Premier League",
+    "teams": "Wolves v Everton",
+    "homeTeam": 39,
+    "awayTeam": 45,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67c7237f1ae1b06fffad20d2",
+    "uid": 1208301,
+    "date": "2025-03-10T20:00:00.000Z",
+    "status": "Not Started",
+    "competition": 39,
+    "competitionName": "Premier League",
+    "teams": "West Ham v Newcastle",
     "homeTeam": 48,
+    "awayTeam": 34,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67c7237f1ae1b06fffad20ca",
+    "uid": 1208297,
+    "date": "2025-03-08T15:00:00.000Z",
+    "status": "Not Started",
+    "competition": 39,
+    "competitionName": "Premier League",
+    "teams": "Liverpool v Southampton",
+    "homeTeam": 40,
+    "awayTeam": 41,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67c7237f1ae1b06fffad20cb",
+    "uid": 1208294,
+    "date": "2025-03-08T15:00:00.000Z",
+    "status": "Not Started",
+    "competition": 39,
+    "competitionName": "Premier League",
+    "teams": "Brighton v Fulham",
+    "homeTeam": 51,
+    "awayTeam": 36,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67c7237f1ae1b06fffad20d1",
+    "uid": 1208298,
+    "date": "2025-03-09T16:30:00.000Z",
+    "status": "Not Started",
+    "competition": 39,
+    "competitionName": "Premier League",
+    "teams": "Manchester United v Arsenal",
+    "homeTeam": 33,
+    "awayTeam": 42,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67c7237f1ae1b06fffad20c9",
+    "uid": 1208299,
+    "date": "2025-03-08T12:30:00.000Z",
+    "status": "Not Started",
+    "competition": 39,
+    "competitionName": "Premier League",
+    "teams": "Nottingham Forest v Manchester City",
+    "homeTeam": 65,
+    "awayTeam": 50,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67c7237f1ae1b06fffad20cc",
+    "uid": 1208296,
+    "date": "2025-03-08T15:00:00.000Z",
+    "status": "Not Started",
+    "competition": 39,
+    "competitionName": "Premier League",
+    "teams": "Crystal Palace v Ipswich",
+    "homeTeam": 52,
+    "awayTeam": 57,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67c7237f1ae1b06fffad20cf",
+    "uid": 1208300,
+    "date": "2025-03-09T14:00:00.000Z",
+    "status": "Not Started",
+    "competition": 39,
+    "competitionName": "Premier League",
+    "teams": "Tottenham v Bournemouth",
+    "homeTeam": 47,
+    "awayTeam": 35,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67c7237f1ae1b06fffad20d0",
+    "uid": 1208295,
+    "date": "2025-03-09T14:00:00.000Z",
+    "status": "Not Started",
+    "competition": 39,
+    "competitionName": "Premier League",
+    "teams": "Chelsea v Leicester",
+    "homeTeam": 49,
     "awayTeam": 46,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67d050fba25996fb43b747db",
+    "uid": 1224208,
+    "date": "2025-03-14T19:30:00.000Z",
+    "status": "Not Started",
+    "competition": 78,
+    "competitionName": "Bundesliga",
+    "teams": "FC St. Pauli v 1899 Hoffenheim",
+    "homeTeam": 186,
+    "awayTeam": 167,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67d050fba25996fb43b747dc",
+    "uid": 1224203,
+    "date": "2025-03-15T14:30:00.000Z",
+    "status": "Not Started",
+    "competition": 78,
+    "competitionName": "Bundesliga",
+    "teams": "Werder Bremen v Borussia Mönchengladbach",
+    "homeTeam": 162,
+    "awayTeam": 163,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67d050fba25996fb43b747dd",
+    "uid": 1224205,
+    "date": "2025-03-15T14:30:00.000Z",
+    "status": "Not Started",
+    "competition": 78,
+    "competitionName": "Bundesliga",
+    "teams": "FSV Mainz 05 v SC Freiburg",
+    "homeTeam": 164,
+    "awayTeam": 160,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67d050fba25996fb43b747de",
+    "uid": 1224204,
+    "date": "2025-03-15T14:30:00.000Z",
+    "status": "Not Started",
+    "competition": 78,
+    "competitionName": "Bundesliga",
+    "teams": "FC Augsburg v VfL Wolfsburg",
+    "homeTeam": 170,
+    "awayTeam": 161,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67d050fba25996fb43b747df",
+    "uid": 1224206,
+    "date": "2025-03-15T14:30:00.000Z",
+    "status": "Not Started",
+    "competition": 78,
+    "competitionName": "Bundesliga",
+    "teams": "Union Berlin v Bayern München",
+    "homeTeam": 182,
+    "awayTeam": 157,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67d050fba25996fb43b747e0",
+    "uid": 1224201,
+    "date": "2025-03-15T17:30:00.000Z",
+    "status": "Not Started",
+    "competition": 78,
+    "competitionName": "Bundesliga",
+    "teams": "RB Leipzig v Borussia Dortmund",
+    "homeTeam": 173,
+    "awayTeam": 165,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67d050fba25996fb43b747e1",
+    "uid": 1224207,
+    "date": "2025-03-16T14:30:00.000Z",
+    "status": "Not Started",
+    "competition": 78,
+    "competitionName": "Bundesliga",
+    "teams": "VfL Bochum v Eintracht Frankfurt",
+    "homeTeam": 176,
+    "awayTeam": 169,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67d050fba25996fb43b747e2",
+    "uid": 1224202,
+    "date": "2025-03-16T16:30:00.000Z",
+    "status": "Not Started",
+    "competition": 78,
+    "competitionName": "Bundesliga",
+    "teams": "1. FC Heidenheim v Holstein Kiel",
+    "homeTeam": 180,
+    "awayTeam": 191,
+    "odds": []
+  },
+  {
+    "scores": {
+      "tenMinutes": null,
+      "halfTime": null,
+      "fullTime": null,
+      "extraTime": null,
+      "penalties": null
+    },
+    "corners": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "bookings": {
+      "halfTime": null,
+      "fullTime": null
+    },
+    "_id": "67d050fba25996fb43b747e3",
+    "uid": 1224200,
+    "date": "2025-03-16T18:30:00.000Z",
+    "status": "Not Started",
+    "competition": 78,
+    "competitionName": "Bundesliga",
+    "teams": "VfB Stuttgart v Bayer Leverkusen",
+    "homeTeam": 172,
+    "awayTeam": 168,
     "odds": []
   }
 ]

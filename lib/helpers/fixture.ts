@@ -30,7 +30,7 @@ export async function updateFixturesInDatabase(
   trending: TTrending[],
   mode: "scores" | "statistics" | "events"
 ) {
-  let errors: string[] = [];
+  const errors: string[] = [];
   try {
     let newFixtures: IFixture[] = [];
     if (fixtures.length > 0) {

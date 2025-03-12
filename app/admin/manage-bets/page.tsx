@@ -76,7 +76,7 @@ function DummyBets({ bets, dummies, trending }: DummyBetsProps) {
   });
 
   const dummyBets = bets.filter((item) =>
-    dummyUsernames.includes(item.username)
+    dummyUsernames.includes(item.user.username)
   );
 
   return (

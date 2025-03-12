@@ -1,10 +1,30 @@
 import { TTrending } from "@/lib/schemas/trending";
+import { RATING } from "@/lib/constants";
 
 export function getPunterRating(form: string[], trending: TTrending[]): number {
-  if (form.length < 13) {
-    return 0;
+  if (form.length < RATING) {
+    return -1;
   } else {
-    return form.length + trending.length;
+    const formTrending: TTrending[] = [];
+    form.map((item) => {
+      const trend = trending.find((el) => el.uid === item);
+      if (trend) formTrending.push(trend);
+    });
+
+    if (formTrending.length < RATING) {
+      return -1;
+    } else {
+      const resulted = formTrending.filter((item) => item.result !== null);
+      if (resulted.length < RATING) {
+        return -1;
+      } else {
+        const won = formTrending.filter((item) => item.result === "won");
+        const boom = won.reduce((acc, trend) => acc + trend.value, 0);
+        const total = resulted.reduce((acc, trend) => acc + trend.value, 0);
+        return parseFloat(((boom / total) * 100).toFixed(0));
+      }
+    }
+    // return form.length + trending.length;
   }
 }
 

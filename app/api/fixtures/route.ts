@@ -3,22 +3,22 @@ import { IFixtureSchema } from "@/lib/schemas/fixture";
 import { NextRequest, NextResponse } from "next/server";
 import Fixture from "@/app/api/models/Fixture";
 import moment from "moment";
-// import fixtures from "./fixtures.json";
+import fixtures from "./fixtures.json";
 
 export async function GET(request: NextRequest) {
   try {
     const filter = request.nextUrl.searchParams.get("filter");
-    await DatabaseConnection();
+    // await DatabaseConnection();
     if (filter === "all") {
-      const fixtures = await Fixture.find();
+      // const fixtures = await Fixture.find();
       return NextResponse.json({ items: fixtures }, { status: 200 });
     } else {
-      const upcomingFixtures = await Fixture.find({
-        date: { $gte: moment(), $lte: moment().add(7, "days") },
-      });
-      // const upcomingFixtures = fixtures.filter((item) =>
-      //   moment(item.date).isAfter(moment())
-      // );
+      // const upcomingFixtures = await Fixture.find({
+      //   date: { $gte: moment(), $lte: moment().add(7, "days") },
+      // });
+      const upcomingFixtures = fixtures.filter((item) =>
+        moment(item.date).isAfter(moment())
+      );
       return NextResponse.json({ items: upcomingFixtures }, { status: 200 });
     }
   } catch (error: any) {

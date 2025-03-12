@@ -5,6 +5,8 @@ export const fixtureStatus = [
   "Cancelled",
 ];
 
+export const RATING = 6;
+
 export const scoresMarkets = [
   101, 102, 103, 201, 202, 301, 302, 303, 501, 502, 503, 504, 505, 506, 507,
   508, 509, 510, 511, 512, 2501, 2502, 2503, 2504, 2505, 2506, 2507, 2508,
@@ -24,7 +26,7 @@ export const session = {
     form: ["344556-101-39"],
     platform: 1,
     followers: ["bill_gates", "elo345"],
-    following: ["dindex_43", "scboy123", "ndandi_go_round"],
+    following: ["dindex_43", "scboy123", "ndandi_go_round", "kai_wandi"],
     blocked: ["ggngwandaz89", "ndandi_go_round", "elo345", "scboy123"],
     starred: {
       singles: ["344556-101-39", "10921349-501"],

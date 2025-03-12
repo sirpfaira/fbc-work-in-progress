@@ -3,7 +3,7 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 
 interface TimestampProps {
-  date: string;
+  date: string | null;
 }
 
 export default function TimeStamp({ date }: Readonly<TimestampProps>) {
@@ -12,24 +12,28 @@ export default function TimeStamp({ date }: Readonly<TimestampProps>) {
     setHydrated(true);
   }, []);
 
-  if (!hydrated) {
+  if (!hydrated || !date) {
     // Returns null on first render, so the client and server match
     return <span className="text-card">...</span>;
   }
 
   const inputDate = moment(date);
   const currentDate = moment();
-  let timestamp = "";
+  let timestamp = "...";
 
-  if (inputDate.isSame(currentDate, "day")) {
-    timestamp = `Today, ${inputDate.format("HH:mm")}`;
-  } else if (inputDate.isSame(currentDate.clone().subtract(1, "days"), "day")) {
-    timestamp = `Yesterday, ${inputDate.format("HH:mm")}`;
-  } else if (inputDate.isSame(currentDate.clone().add(1, "days"), "day")) {
-    timestamp = `Tomorrow, ${inputDate.format("HH:mm")}`;
-  } else {
-    timestamp = inputDate.format("ddd D MMM, HH:mm");
-  }
+  try {
+    if (inputDate.isSame(currentDate, "day")) {
+      timestamp = `Today, ${inputDate.format("HH:mm")}`;
+    } else if (
+      inputDate.isSame(currentDate.clone().subtract(1, "days"), "day")
+    ) {
+      timestamp = `Yesterday, ${inputDate.format("HH:mm")}`;
+    } else if (inputDate.isSame(currentDate.clone().add(1, "days"), "day")) {
+      timestamp = `Tomorrow, ${inputDate.format("HH:mm")}`;
+    } else {
+      timestamp = inputDate.format("ddd D MMM, HH:mm");
+    }
+  } catch (error: any) {}
 
   return <span> {timestamp}</span>;
 }

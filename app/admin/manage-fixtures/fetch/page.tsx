@@ -101,7 +101,7 @@ export default function FetchFixtures() {
 
   const { mutate: fetchLeagueFixtures, isPending } = useMutation({
     mutationFn: async (league: ILeague) =>
-      await axios.post(`/api/external/sports-api/fixtures`, league),
+      await axios.post(`/api/external/sports-api/fixtures-by-league`, league),
     onSuccess: (response: any) => {
       const matches = response.data.items as IFixture[];
       toast({
